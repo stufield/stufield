@@ -93,16 +93,20 @@ You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4],
 
 #### Contributions
  
+<a href="https://github.com/stufield/SomaDataIO">
+  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=stufield&repo=SomaDataIO&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" />
+</a>
+
+<a href="https://github.com/stufield/SomaPlotr">
+  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=stufield&repo=SomaPlotr&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" />
+</a>
+
 <a href="https://github.com/stufield/testthat">
   <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=stufield&repo=testthat&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" />
 </a>
 
 <a href="https://github.com/stufield/tibble">
   <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=stufield&repo=tibble&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" />
-</a>
-
-<a href="https://github.com/stufield/usethis">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=stufield&repo=usethis&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" />
 </a>
 
 
