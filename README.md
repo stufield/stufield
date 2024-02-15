@@ -28,14 +28,14 @@ You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4],
   This supports projects in the general health care space to 
   generate proteomic based clinical insights in health spaces such as: 
   liver disease, aging, cardiovascular disease, alcohol effects,
-  exercise states, and metabolic disease.
+  exercise status, and metabolic disease.
 - Favorite techniques:
   - logistic regression (old faithful)
   - random forest
   - naive Bayes
   - KKNN (nearest neighbor)
 - I am a proponent of the open-source software, conducting the majority 
-  of my research/analysis via Unix Toolkits, R, and the RStudio IDE. 
+  of my research/analysis via Linux Toolkits, R, and the RStudio IDE.
 - I promote conforming to the adherence of so-called "tidy" data, a 
   philosophy of data science designed to share underlying data 
   structure, grammar, and format which facilitates the generation 
@@ -44,8 +44,10 @@ You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4],
 
 
 ### About Me <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="40">
+
 - 😄 Pronouns: he/him
-- 📫 How to reach me: [![Twitter][1.2]][1], [![Instagram][4.2]][4], [![LinkedIn][3.2]][3]
+- 📫 How to reach me: [![Twitter][1.2]][1], [![Instagram][4.2]][4], [![LinkedIn][3.2]][3],
+  [![Gmail Badge](https://img.shields.io/badge/-Gmail-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:stu.g.field@gmail.com)](mailto:stu.g.field@gmail.com)
 - 💬 Favorite food: 🐟 🌮
 - 🔭 I’m currently working at SomaLogic, Inc. ([http://somalogic.com](http://somalogic.com))
 - 🌱 I’m currently learning ...
@@ -63,6 +65,7 @@ You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4],
 ### 🔧 Tools & Languages
 <!-- Badges -->
 ![](https://img.shields.io/badge/Code-R-informational?style=flat&logo=R&logoColor=blue&color=blue)
+![](https://img.shields.io/badge/GitHub-Actions-informational?style=flat&logo=github&logoColor=white&color=blue)
 ![](https://img.shields.io/badge/OS-Linux-informational?style=flat&logo=linux&color=blue)
 ![](https://img.shields.io/badge/OS-Mac-informational?style=flat&logo=apple&color=blue)
 ![](https://img.shields.io/badge/Shell-BASH,Zsh-informational?style=flat&logo=gnu-bash&color=blue)
@@ -76,6 +79,23 @@ You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4],
 ![](https://img.shields.io/badge/Cloud-Digital_Ocean-informational?style=flat&logo=digitalocean&color=blue)
 ![](https://img.shields.io/badge/Code-Python-informational?style=flat&logo=python&color=blue)
 ![](https://img.shields.io/badge/Collaboration-Slack-informational?style=flat&logo=slack&color=blue)
+
+
+### 🔧 GitHub Commits
+<!-- GH Badges -->
+![](https://img.shields.io/github/last-commit/stufield/SomaDataIO?logo=github&label=SomaDataIO)
+![](https://img.shields.io/github/last-commit/stufield/SomaPlotr?logo=github&label=SomaPlotr)
+![](https://img.shields.io/github/last-commit/stufield/SomaScan.db?logo=github&label=SomaScan.db)
+![](https://img.shields.io/github/last-commit/stufield/system-config?logo=github&label=system-config)
+![](https://img.shields.io/github/last-commit/stufield/gitr?logo=github&label=gitr)
+![](https://img.shields.io/github/last-commit/stufield/git-hooks?logo=github&label=git-hooks)
+![](https://img.shields.io/github/last-commit/stufield/code-works?logo=github&label=code-works)
+![](https://img.shields.io/github/last-commit/stufield/reprex-collection?logo=github&label=reprex-collection)
+![](https://img.shields.io/github/last-commit/stufield/tech-notes?logo=github&label=tech-notes)
+![](https://img.shields.io/github/last-commit/stufield/stutils?logo=github&label=stutils)
+![](https://img.shields.io/github/last-commit/stufield/devel?logo=github&label=devel)
+![](https://img.shields.io/github/last-commit/grapevine?logo=github&label=grapevine)
+![](https://img.shields.io/github/last-commit/git-STAA-577?logo=github&label=git-STAA-577)
 
 
 ------------
