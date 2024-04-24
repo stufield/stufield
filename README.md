@@ -12,6 +12,10 @@ Hi, I'm Stu Field! <img src="https://raw.githubusercontent.com/stufield/stufield
 I'm a software engineer and data scientist
 from 🇨🇦 and currently living in Fort Collins, Colorado.
 
+I am currently exploring new employment opportunities,
+so if you think my skill set and experience is a match for your team,
+please reach out!
+
 You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4],
 [![LinkedIn][3.2]][3], or via email ➡
 [![Gmail Badge](https://img.shields.io/badge/-Gmail-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:stu.g.field@gmail.com)](mailto:stu.g.field@gmail.com)
@@ -49,7 +53,7 @@ You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4],
 - 📫 How to reach me: [![Twitter][1.2]][1], [![Instagram][4.2]][4], [![LinkedIn][3.2]][3],
   [![Gmail Badge](https://img.shields.io/badge/-Gmail-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:stu.g.field@gmail.com)](mailto:stu.g.field@gmail.com)
 - 💬 Favorite food: 🐟 🌮
-- 🔭 I’m currently working at SomaLogic, Inc. ([http://somalogic.com](http://somalogic.com))
+- 🔭 I’m currently open for employment opportunities!
 - 🌱 I’m currently learning ...
 - 🤔 I’m looking for help with ...
 - 💬 Ask me about ...
