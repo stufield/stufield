@@ -14,8 +14,8 @@ GIFs:
 
 
 
-I'm a data scientist and software engineer from 🇨🇦 and currently
-living in Fort Collins, Colorado.
+I'm a data scientist and software engineer from 🇨🇦 and I live
+in Fort Collins, CO ⛰️ .
 I am currently exploring new employment opportunities,
 so if you think my skill set and experience is a match for your team,
 please reach out!
