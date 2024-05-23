@@ -75,13 +75,18 @@ You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4], [![LinkedIn][3.
 
 - I maintain several `R` software libraries (📦) that implement
   statistical and machine learning techniques in biomarker discovery.
-  See [SomaDataIO](https://github.com/SomaLogic/SomaDataIO),
-  [SomaPlotr](https://github.com/SomaLogic/SomaPlotr), and
-  [gitr](https://github.com/stufield/gitr).
-  These projects support analyses in the general health care (Life Sciences)
+  Some of my popular published (CRAN) 📦 are:
+  - [SomaDataIO](https://github.com/SomaLogic/SomaDataIO)
+  - [SomaPlotr](https://github.com/SomaLogic/SomaPlotr)
+  - [gitr](https://github.com/stufield/gitr)
+- These projects support analyses in the general health care (Life Sciences)
   space to generate proteomic based clinical insights in health spaces such as: 
-  liver disease, aging, cardiovascular disease, alcohol effects,
-  exercise status, and metabolic disease.
+  - cardiovascular disease
+  - liver disease (NASH/NAFLD)
+  - alcohol effects
+  - biological aging
+  - exercise status
+  - metabolic disease
 - Favorite techniques:
   - logistic regression (ol' faithful)
   - random forest
