@@ -4,13 +4,18 @@ Hi, I'm Stu Field! <img src="https://raw.githubusercontent.com/stufield/stufield
 </h1>
 
 
+<!-- 
+GIFs:
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcnlzMnJnZnltb21mcmcxN2hlajhtcXJsbTVwNHl5M2w0ODU4MzFkbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKz2eMXx7dn95FS/giphy.gif" width="200px">
+-->
 <p align="center">
-<img src="https://media.giphy.com/media/sRFEa8lbeC7zbcIZZR/giphy.gif" width="200">
+<img src="https://raw.githubusercontent.com/stufield/stufield/main/toy-story-data.gif" width="200px">
 </p>
 
 
-I'm a software engineer and data scientist
-from 🇨🇦 and currently living in Fort Collins, Colorado.
+
+I'm a data scientist and software engineer from 🇨🇦 and currently
+living in Fort Collins, Colorado.
 I am currently exploring new employment opportunities,
 so if you think my skill set and experience is a match for your team,
 please reach out!
@@ -50,16 +55,11 @@ You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4], [![LinkedIn][3.
 -->
 
 
-<!-- Other Gifs -->
-<!-- 
-<img src="https://media.giphy.com/media/6oeRBKg7mwEZnSnYkn/giphy.gif" width="250">
-<img src="https://media.giphy.com/media/YRzQnWzbn4WIxd3ZYx/giphy.gif" width="250">
--->
 
-### About Me <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="40">
+### About Me <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="40px">
 
 - 😄 Pronouns: he/him
-- 📫 How to reach me: best to reach out to
+- 📫 How to reach me: 
   [![Gmail Badge](https://img.shields.io/badge/-Gmail-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:stu.g.field@gmail.com)](mailto:stu.g.field@gmail.com)
   or any of the links on the ⬅️  sidebar
 - 🔭 I’m currently open for employment opportunities!
@@ -68,8 +68,8 @@ You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4], [![LinkedIn][3.
 - 💬 Ask me about ... bikes and `R` ... I'll talk your 👂 off 😄
 - 💬 Favorite food: 🐟 🌮
 - ⚡ Fun fact ... 
-- 🚴 I'm an avid cyclist:
-  - come say hi on [![Strava][5.2]][5]
+- 🚴 I'm an avid cyclist ...
+  come say hi on [<img src="https://raw.githubusercontent.com/stufield/stufield/main/strava-icon.svg" width="24px">][5]
 
 ----------------
 
@@ -200,6 +200,7 @@ Badges for X
 [2.2]: http://i.imgur.com/9I6NRUm.png (github icon without padding)
 [3.2]: https://raw.githubusercontent.com/stufield/stufield/main/linkedin-3-16.png
 [4.2]: https://raw.githubusercontent.com/stufield/stufield/main/icons8-instagram-24.png
+[5.1]: https://raw.githubusercontent.com/stufield/stufield/main/strava-icon.svg
 [5.2]: https://raw.githubusercontent.com/stufield/stufield/main/icons8-strava-24.png
 
 <!-- links to your social media accounts -->
