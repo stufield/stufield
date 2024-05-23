@@ -1,6 +1,6 @@
 
 <h1 align="center">
-Hi, I'm Stu Field! <img src="https://raw.githubusercontent.com/stufield/stufield/master/wave.gif" width="30px">
+Hi, I'm Stu Field! <img src="https://raw.githubusercontent.com/stufield/stufield/main/wave.gif" width="30px">
 </h1>
 
 
@@ -11,14 +11,44 @@ Hi, I'm Stu Field! <img src="https://raw.githubusercontent.com/stufield/stufield
 
 I'm a software engineer and data scientist
 from 🇨🇦 and currently living in Fort Collins, Colorado.
-
 I am currently exploring new employment opportunities,
 so if you think my skill set and experience is a match for your team,
 please reach out!
 
-You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4],
-[![LinkedIn][3.2]][3], or via email ➡
-[![Gmail Badge](https://img.shields.io/badge/-Gmail-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:stu.g.field@gmail.com)](mailto:stu.g.field@gmail.com)
+-------------------
+
+### Professional Summary
+With 14+ years in the Life Sciences proteomics (high dimensional) space,
+I have created a comprehensive machine learning analysis ecosystem
+based in `R` that enables both biomarker discovery and model development.
+Strong leadership and mentoring skills have lead to 40+ production
+level, predictive models resulting in significant revenue generation.
+
+
+### Skills
+| Machine Learning       | Statistics           | Open-Source  | Software Tools  |
+| ---------------------- | -------------------- | ------------ | --------------- |
+| Random Forest          | Logistic regression  | R            | Linux, MacOS    |
+| Naive Bayes            | Linear regression    | C++          | Git, GitHub     |
+| Lasso/ridge regression | GLMMs                | Python       | BASH, GNU       |
+| k-Nearest neighbour    | Mixed-effects models | LaTeX        | BitBucket       |
+| PCA                    | Survival analysis    | CI/CD        | Slack           |
+| Ensemble methods       | Multivariate statistics |           | Atlassian suite |
+| Maximum Likelihood     | ANOVA                |              |                 |
+
+
+#### Additional Skills
+- Analysis of high-throughput, multi-plex, high-dimensional, proteomics assay data
+- Accomplished leader driving small group projects to completion
+- Proven record of accomplishment via publication in peer reviewed, international journals
+- Project development and management, experimental design, and data analysis
+
+
+
+<!-- 
+You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4], [![LinkedIn][3.2]][3].
+-->
+
 
 <!-- Other Gifs -->
 <!-- 
@@ -26,43 +56,55 @@ You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4],
 <img src="https://media.giphy.com/media/YRzQnWzbn4WIxd3ZYx/giphy.gif" width="250">
 -->
 
+### About Me <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="40">
 
-- I maintain several `R` software suites (packages) designed to 
-  implement machine learning techniques in biomarker discovery.
-  This supports projects in the general health care space to 
-  generate proteomic based clinical insights in health spaces such as: 
+- 😄 Pronouns: he/him
+- 📫 How to reach me: best to reach out to
+  [![Gmail Badge](https://img.shields.io/badge/-Gmail-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:stu.g.field@gmail.com)](mailto:stu.g.field@gmail.com)
+  or any of the links on the ⬅️  sidebar
+- 🔭 I’m currently open for employment opportunities!
+- 📚 I am currently learning ... actually, I am constantly learning 😄
+- 🤔 I’m looking for help with ... finding my next role!
+- 💬 Ask me about ... bikes and `R` ... I'll talk your 👂 off 😄
+- 💬 Favorite food: 🐟 🌮
+- ⚡ Fun fact ... 
+- 🚴 I'm an avid cyclist:
+  - come say hi on [![Strava][5.2]][5]
+
+----------------
+
+- I maintain several `R` software libraries (📦) that implement
+  statistical and machine learning techniques in biomarker discovery.
+  See [SomaDataIO](https://github.com/SomaLogic/SomaDataIO),
+  [SomaPlotr](https://github.com/SomaLogic/SomaPlotr), and
+  [gitr](https://github.com/stufield/gitr).
+  These projects support analyses in the general health care (Life Sciences)
+  space to generate proteomic based clinical insights in health spaces such as: 
   liver disease, aging, cardiovascular disease, alcohol effects,
   exercise status, and metabolic disease.
 - Favorite techniques:
-  - logistic regression (old faithful)
+  - logistic regression (ol' faithful)
   - random forest
   - naive Bayes
   - KKNN (nearest neighbor)
+  - survival analyses
+  - ensemble methods
 - I am a proponent of the open-source software, conducting the majority 
-  of my research/analysis via Linux Toolkits, R, and the RStudio IDE.
+  of my research/analysis via Linux toolkits, R, and the RStudio IDE.
 - I promote conforming to the adherence of so-called "tidy" data, a 
   philosophy of data science designed to share underlying data 
   structure, grammar, and format which facilitates the generation 
   of reproducible analyses. 
-- Apart from coding I love to ride my 🚴, come say hi on [![Strava][5.2]][5]
 
 
-### About Me <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="40">
-
-- 😄 Pronouns: he/him
-- 📫 How to reach me: [![Twitter][1.2]][1], [![Instagram][4.2]][4], [![LinkedIn][3.2]][3],
-  [![Gmail Badge](https://img.shields.io/badge/-Gmail-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:stu.g.field@gmail.com)](mailto:stu.g.field@gmail.com)
-- 💬 Favorite food: 🐟 🌮
-- 🔭 I’m currently open for employment opportunities!
-- 🌱 I’m currently learning ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- ⚡ Fun fact: ...
+-------------------
 
 
-![](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fstufield3)
+<!-- 
+Badges for X
 ![](https://img.shields.io/twitter/follow/stufield3?style=social)
 ![](https://img.shields.io/github/followers/stufield?style=social)
+-->
 
 
 
@@ -86,6 +128,7 @@ You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4],
 
 
 ### 🔧 GitHub Commits
+<!-- Badges -->
 <!-- GH Badges -->
 ![](https://img.shields.io/github/last-commit/stufield/SomaDataIO?logo=github&label=SomaDataIO)
 ![](https://img.shields.io/github/last-commit/stufield/SomaPlotr?logo=github&label=SomaPlotr)
@@ -105,7 +148,7 @@ You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4],
 ------------
 
 
-### &#x1f4c8; GitHub Stats
+### 📈 GitHub Stats
 
 <a href="https://github.com/stufield/stufield">
   <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=stufield&hide=java,html&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" />
@@ -155,9 +198,9 @@ You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4],
 <!-- icons without padding -->
 [1.2]: http://i.imgur.com/wWzX9uB.png (twitter icon without padding)
 [2.2]: http://i.imgur.com/9I6NRUm.png (github icon without padding)
-[3.2]: https://raw.githubusercontent.com/stufield/stufield/master/linkedin-3-16.png
-[4.2]: https://raw.githubusercontent.com/stufield/stufield/master/icons8-instagram-24.png
-[5.2]: https://raw.githubusercontent.com/stufield/stufield/master/icons8-strava-24.png
+[3.2]: https://raw.githubusercontent.com/stufield/stufield/main/linkedin-3-16.png
+[4.2]: https://raw.githubusercontent.com/stufield/stufield/main/icons8-instagram-24.png
+[5.2]: https://raw.githubusercontent.com/stufield/stufield/main/icons8-strava-24.png
 
 <!-- links to your social media accounts -->
 [1]: https://twitter.com/stufield3
