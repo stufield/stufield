@@ -20,6 +20,13 @@ I am currently exploring new employment opportunities,
 so if you think my skill set and experience is a match for your team,
 please reach out!
 
+
+-------------------
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/stufield/stufield/main/plot-grid.png" width="450px">
+</p>
+
 -------------------
 
 ### Professional Summary
