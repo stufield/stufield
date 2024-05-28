@@ -13,9 +13,11 @@ GIFs:
 </p>
 
 
-
-I'm a data scientist and software engineer from 🇨🇦 and I live
-in Fort Collins, CO ⛰️ .
+I'm a data scientist and software engineer from
+<img src="https://raw.githubusercontent.com/stufield/stufield/main/canada.png" width="20px">
+and I live in Fort Collins, CO
+<img src="https://raw.githubusercontent.com/stufield/stufield/main/colorado.png" width="20px"/>
+⛰️ .
 I am currently exploring new employment opportunities,
 so if you think my skill set and experience is a match for your team,
 please reach out!
@@ -76,7 +78,7 @@ You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4], [![LinkedIn][3.
 - 💬 Favorite food: 🐟 🌮
 - ⚡ Fun fact ... 
 - 🚴 I'm an avid cyclist ...
-  come say hi on [<img src="https://raw.githubusercontent.com/stufield/stufield/main/strava-icon.svg" width="24px">][5]
+  come say hi on [<img src="https://raw.githubusercontent.com/stufield/stufield/main/strava-icon.svg" width="20px">][5]
 
 ----------------
 
