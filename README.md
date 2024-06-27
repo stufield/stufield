@@ -32,11 +32,15 @@ please reach out!
 -------------------
 
 ### Professional Summary
-With 14+ years in the Life Sciences proteomics (high dimensional) space,
-I have created a comprehensive machine learning analysis ecosystem
-based in `R` that enables both biomarker discovery and model development.
+With 12+ years in the Life Sciences proteomics (high dimensional) space,
+I have created a comprehensive R-based machine learning analysis ecosystem
+that standardizes and enables biomarker discovery and model development.
+I am strong proponent reproducible research and bioinformatics pipelines.
 Strong leadership and mentoring skills have lead to 40+ production
 level, predictive models resulting in significant revenue generation.
+My proficiency in data visualization and manipulation, coupled with a
+rigorous analytics approach, has been instrumental in driving biomarker
+discovery and model development within the life sciences proteomics domain.
 
 
 ### Skills
@@ -47,8 +51,8 @@ level, predictive models resulting in significant revenue generation.
 | Lasso/ridge regression | GLMMs                | Python       | BASH, GNU       |
 | k-Nearest neighbour    | Mixed-effects models | LaTeX        | BitBucket       |
 | PCA                    | Survival analysis    | CI/CD        | Slack           |
-| Ensemble methods       | Multivariate statistics |           | Atlassian suite |
-| Maximum Likelihood     | ANOVA                |              |                 |
+| Ensemble methods       | Multivariate statistics | Docker    | AWS             |
+| Maximum Likelihood     | ANOVA                |              | Kubernetes      |
 
 
 #### Additional Skills
