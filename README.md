@@ -32,15 +32,18 @@ please reach out!
 -------------------
 
 ### Professional Summary
-With 12+ years in the Life Sciences proteomics (high dimensional) space,
-I have created a comprehensive R-based machine learning analysis ecosystem
-that standardizes and enables biomarker discovery and model development.
-I am strong proponent reproducible research and bioinformatics pipelines.
-Strong leadership and mentoring skills have lead to 40+ production
+
+An experienced data scientist with 10+ years in the Life Sciences
+proteomics (high dimensional) space,
+Created, designed, and maintained a comprehensive R-based machine
+learning analysis ecosystem that standardizes and enables biomarker
+discovery and model development.
+A strong proponent of reproducible research and bioinformatics pipelines.
+Strong leadership and mentoring skills has lead to 40+ production
 level, predictive models resulting in significant revenue generation.
-My proficiency in data visualization and manipulation, coupled with a
-rigorous analytics approach, has been instrumental in driving biomarker
-discovery and model development within the life sciences proteomics domain.
+Exceptional data visualization and manipulation, coupled with a
+rigorous analytics approach, has driven biomarker discovery and
+model development within the life sciences proteomics domain.
 
 
 ### Skills
