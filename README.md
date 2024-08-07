@@ -1,36 +1,26 @@
 
 <h1 align="center">
-Hi, I'm Stu Field! <img src="https://raw.githubusercontent.com/stufield/stufield/main/wave.gif" width="30px">
+Welcome to my Homapage! <img src="https://raw.githubusercontent.com/stufield/stufield/main/wave.gif" width="30px">
 </h1>
 
 
-<!-- 
+Senior Data Scientist ✨ Machine Learning 🚀 Model Development 🔧 Tool Development 💻 Software Programmer 📦 R Software 📈 Leadership
+
+-----------------
+
+<!--
 GIFs:
 <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcnlzMnJnZnltb21mcmcxN2hlajhtcXJsbTVwNHl5M2w0ODU4MzFkbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKz2eMXx7dn95FS/giphy.gif" width="200px">
 -->
 <p align="center">
-<img src="https://raw.githubusercontent.com/stufield/stufield/main/toy-story-data.gif" width="200px">
+<img src="https://raw.githubusercontent.com/stufield/stufield/main/toy-story-data.gif" width="350px">
+&nbsp;
+<img src="https://raw.githubusercontent.com/stufield/stufield/main/plot-grid.png" width="300px">
 </p>
 
 
-I'm a data scientist and software engineer from
-<img src="https://raw.githubusercontent.com/stufield/stufield/main/canada.png" width="20px">
-and I live in Fort Collins, CO
-<img src="https://raw.githubusercontent.com/stufield/stufield/main/colorado.png" width="20px"/>
-⛰️ .
-I am currently exploring new employment opportunities,
-so if you think my skill set and experience is a match for your team,
-please reach out!
 
-
--------------------
-
-<p align="center">
-<img src="https://raw.githubusercontent.com/stufield/stufield/main/plot-grid.png" width="450px">
-</p>
-
--------------------
-
+<!--
 ### Professional Summary
 
 An experienced data scientist with 10+ years in the Life Sciences
@@ -44,18 +34,71 @@ level, predictive models resulting in significant revenue generation.
 Exceptional data visualization and manipulation, coupled with a
 rigorous analytics approach, has driven biomarker discovery and
 model development within the life sciences proteomics domain.
+-->
+
+
+
+
+<!--
+You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4], [![LinkedIn][3.2]][3].
+-->
+
+
+
+### About Me <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="40px">
+
+I love to solve problems.
+
+Often the problem can be understanding a complex biological process, but
+it can also be as simple as fixing something that's broken
+(e.g. a door that jams, a bicycle, or even machine learning software).
+In particular, I like to apply my data science skills to better
+understand, or even solve, the problems we face.
+
+Over the past 12+ years I have combined my statistical knowledge
+and Open-Source Software tools to solve complex problems in the
+Life Sciences proteomics (high dimensional) space.
+In so doing, I have created a comprehensive R-based machine
+learning analysis ecosystem that standardizes and enables
+biomarker discovery and predictive model development.
+
+Sometimes the problem is inconsistency across teams or analysts ...
+thus I promote adherence of "tidy" data principles and am a
+strong proponent reproducible research and use of bioinformatics pipelines.
+
+Other times the problem can be sharing results across the organization ...
+thus developing an Application Program Interface (API) infrastructure
+that enables anyone to access model results with ease.
+
+With my teaching background, I find it important to mentor junior team members
+while simultaneously leading more senior members. This collaborative spirit
+is essential to building and effective team that delivers to stakeholders,
+fosters a sense of accomplishment, and drives revenue generation.
+
+I am always open to discuss possible roles 🔭 and whether my skill set
+can solve problems in your space. Please reach out via:
+
+| How | Where        |
+|:--- |:------------ |
+| 📫  | [![Gmail Badge](https://img.shields.io/badge/-Gmail-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:stu.g.field@gmail.com)](mailto:stu.g.field@gmail.com) |
+| ☎️   | 970.631.9838 |
+| 🔗  | www.linkedin.com/in/stu-field-sr-data-sci |
+
+
+
+--------------------
 
 
 ### Skills
-| Machine Learning       | Statistics           | Open-Source  | Software Tools  |
-| ---------------------- | -------------------- | ------------ | --------------- |
-| Random Forest          | Logistic regression  | R            | Linux, MacOS    |
-| Naive Bayes            | Linear regression    | C++          | Git, GitHub     |
-| Lasso/ridge regression | GLMMs                | Python       | BASH, GNU       |
-| k-Nearest neighbour    | Mixed-effects models | LaTeX        | BitBucket       |
-| PCA                    | Survival analysis    | CI/CD        | Slack           |
-| Ensemble methods       | Multivariate statistics | Docker    | AWS             |
-| Maximum Likelihood     | ANOVA                |              | Kubernetes      |
+| Machine Learning 🚀    | Statistics 📊        | Open-Source 💻 | Software Tools 🔧 |
+|:---------------------- |:-------------------- |:-------------- |:----------------- |
+| Random Forest          | Logistic regression  | R              | Linux🐧, MacOS 🍎 |
+| Naive Bayes            | Linear regression    | C++            | Git, GitHub :octocat: |
+| Lasso/ridge regression | GLMMs                | Python 🐍      | BASH, GNU         |
+| k-Nearest neighbour    | Mixed-effects models | LaTeX          | BitBucket         |
+| PCA                    | Survival analysis    | CI/CD          | Slack             |
+| Ensemble methods       | Multivariate statistics | Docker 🐋   | AWS               |
+| Maximum Likelihood     | ANOVA                |                | Kubernetes        |
 
 
 #### Additional Skills
@@ -65,29 +108,18 @@ model development within the life sciences proteomics domain.
 - Project development and management, experimental design, and data analysis
 
 
-
-<!-- 
-You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4], [![LinkedIn][3.2]][3].
--->
-
-
-
-### About Me <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="40px">
-
-- 😄 Pronouns: he/him
-- 📫 How to reach me: 
-  [![Gmail Badge](https://img.shields.io/badge/-Gmail-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:stu.g.field@gmail.com)](mailto:stu.g.field@gmail.com)
-  or any of the links on the ⬅️  sidebar
-- 🔭 I’m currently open for employment opportunities!
-- 📚 I am currently learning ... actually, I am constantly learning 😄
-- 🤔 I’m looking for help with ... finding my next role!
-- 💬 Ask me about ... bikes and `R` ... I'll talk your 👂 off 😄
+#### Other Interests
 - 💬 Favorite food: 🐟 🌮
-- ⚡ Fun fact ... 
-- 🚴 I'm an avid cyclist ...
+- 📚 I am currently learning woodworking🪵 ... I'm not very good, but I can make a lot of sawdust!
+- 💬 Ask me about: bikes and `R` ... I'll talk your👂 off!
+- 🚴 I'm an avid cyclist:
   come say hi on [<img src="https://raw.githubusercontent.com/stufield/stufield/main/strava-icon.svg" width="20px">][5]
 
+
 ----------------
+
+
+### More Details
 
 - I maintain several `R` software libraries (📦) that implement
   statistical and machine learning techniques in biomarker discovery.
@@ -96,7 +128,7 @@ You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4], [![LinkedIn][3.
   - [SomaPlotr](https://github.com/SomaLogic/SomaPlotr)
   - [gitr](https://github.com/stufield/gitr)
 - These projects support analyses in the general health care (Life Sciences)
-  space to generate proteomic based clinical insights in health spaces such as: 
+  space to generate proteomic based clinical insights in health spaces such as:
   - cardiovascular disease
   - liver disease (NASH/NAFLD)
   - alcohol effects
@@ -110,18 +142,18 @@ You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4], [![LinkedIn][3.
   - KKNN (nearest neighbor)
   - survival analyses
   - ensemble methods
-- I am a proponent of the open-source software, conducting the majority 
+- I am a proponent of the open-source software, conducting the majority
   of my research/analysis via Linux toolkits, R, and the RStudio IDE.
-- I promote conforming to the adherence of so-called "tidy" data, a 
-  philosophy of data science designed to share underlying data 
-  structure, grammar, and format which facilitates the generation 
-  of reproducible analyses. 
+- I promote conforming to the adherence of so-called "tidy" data, a
+  philosophy of data science designed to share underlying data
+  structure, grammar, and format which facilitates the generation
+  of reproducible analyses.
 
 
 -------------------
 
 
-<!-- 
+<!--
 Badges for X
 ![](https://img.shields.io/twitter/follow/stufield3?style=social)
 ![](https://img.shields.io/github/followers/stufield?style=social)
@@ -180,7 +212,7 @@ Badges for X
 
 
 #### Contributions
- 
+
 <a href="https://github.com/stufield/SomaDataIO">
   <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=stufield&repo=SomaDataIO&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" />
 </a>
