@@ -1,6 +1,6 @@
 
 <h1 align="center">
-Welcome to my Homapage! <img src="https://raw.githubusercontent.com/stufield/stufield/main/wave.gif" width="30px">
+Welcome To My Homepage! <img src="https://raw.githubusercontent.com/stufield/stufield/main/wave.gif" width="30px">
 </h1>
 
 
@@ -94,18 +94,27 @@ can solve problems in your space. Please reach out via:
 |:---------------------- |:-------------------- |:-------------- |:----------------- |
 | Random Forest          | Logistic regression  | R              | Linux🐧, MacOS 🍎 |
 | Naive Bayes            | Linear regression    | C++            | Git, GitHub :octocat: |
-| Lasso/ridge regression | GLMMs                | Python 🐍      | BASH, GNU         |
-| k-Nearest neighbour    | Mixed-effects models | LaTeX          | BitBucket         |
-| PCA                    | Survival analysis    | CI/CD          | Slack             |
-| Ensemble methods       | Multivariate statistics | Docker 🐋   | AWS               |
+| Lasso/ridge regression | GLMMs                | Python 🐍      | AWS               |
+| k-Nearest neighbour    | Mixed-effects models | LaTeX          | BASH, GNU         |
+| PCA                    | Survival analysis    | CI/CD          | BitBucket         |
+| Ensemble methods       | Multivariate statistics | Docker 🐋   | Slack             |
 | Maximum Likelihood     | ANOVA                |                | Kubernetes        |
 
 
-#### Additional Skills
-- Analysis of high-throughput, multi-plex, high-dimensional, proteomics assay data
-- Accomplished leader driving small group projects to completion
-- Proven record of accomplishment via publication in peer reviewed, international journals
-- Project development and management, experimental design, and data analysis
+#### Application of Skill Set
+- **Data Analysis:** created high-dimensional,
+  high-throughput, multi-plex, proteomics machine
+  learning analysis ecosystem which enabled (and standardized)
+  biomarker discovery and model development across analysts.
+- **Project Leadership:** led highly successful Open-Source Software (OSS)
+  initiative enabling customers to not only understand highly complex
+  analysis concepts in the proteomics space, but to conduct those analyses themselves.
+- **Analysis Reports:** generated standardized analysis templates
+  enabling reproducible research and results across the organization.
+- **Leadership:** successfully led a team of 3-5 direct reports through
+  analyses, code review, self-enablement, and career development.
+- **Written Accomplishment:** proven ability to summarize complex analyses via strong
+  publication record.
 
 
 #### Other Interests
