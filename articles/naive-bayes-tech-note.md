@@ -26,14 +26,13 @@ written in terms of probabilities,
 
 $$
 \begin{equation}
-  \tag{1}
   P(outcome\ |\ data) = \frac{P(data\ |\ outcome) \times P(outcome)}{P(data)}
 \end{equation}
 $$
 
 where the term $P(data)$ is a normalizing constant that is independent
 of the *outcome*, and is often ignored if *relative* posteriors are
-desired over *absolute* posteriors. Equation (<tag:1>) then simplifies
+desired over *absolute* posteriors. Equation (2) then simplifies
 to,
 
 $$
@@ -80,7 +79,6 @@ parameters $\mu$ and $\sigma$:
 
 $$
 \begin{eqnarray}
-  \tag{pdf}
    f(x\ |\ \mu_k,\sigma_k) &= \frac{1}{\sqrt{2\pi\sigma_k^2}} \; exp\Bigg( \frac{-(x-\mu_k)^2}{2\sigma_k^2} \Bigg),
 \end{eqnarray}
 $$
@@ -89,19 +87,19 @@ To classify an unknown sample with $p$ feature measurements
 ($\vec x = x_1,...,x_p$) and $k$ classes, calculate the following:
 
 $$
-\begin{eqnarray} \tag{bayes}
+\begin{eqnarray}
    P(k\ |\ \vec x) &= 
       \Bigg[ \prod_{i=1}^{p} \frac{1}{\sqrt{2\pi\sigma_{ik}^2}} \; exp\Bigg( \frac{-(x_i-\mu_{ik})^2}{2\sigma_{ik}^2} \Bigg) \Bigg] \times P(k),
 \end{eqnarray}
 $$
 
-The result of Equation (<tag:bayes>) gives a probability *density* for
+The result of Equation (3) gives a probability *density* for
 each class, which is not constrained on the interval $[0,\ 1]$.
 Normalized posterior probabilities ($Pr$) are obtained by calculating
 the class-specific proportion of the total density,
 
 $$
-\begin{eqnarray} \tag{bayes_prob}
+\begin{eqnarray}
   Pr(k=j\ |\ \vec x) &=& \frac{P(j\ |\ \vec x)}{\sum_{i=1}^k P(i\ |\ \vec x)}
 \end{eqnarray}
 $$
@@ -184,11 +182,13 @@ tibble::as_tibble(sample_data)
 
 ### Raw calculation sample 1:
 
-For unknown **sample 1**, the naïve Bayes posterior conditional
-probability densities are calculated using equation~ as follows:
+For unknown __sample 1__, the naïve Bayes posterior conditional
+probability densities are calculated using equation (???) as follows:
 
-**Control posterior density:** $$
-\begin{eqnarray*}
+**Control posterior density:**
+
+$$
+\begin{eqnarray}
    P(control\ |\ x_1=3.7930077,x_2=2.5993371) &=& P(x_1=3.7930077\ |\ control) \times \\
                && P(x_2=2.5993371\ |\ control) \times \\
                && P(control) \\
@@ -197,11 +197,13 @@ probability densities are calculated using equation~ as follows:
                && (224\ /\ (224 + 73)) \\
                &=& 1.1264967 \times 0.1967663 \times 0.7542088 \\
                &=& 0.1671753 \\
-\end{eqnarray*}
+\end{eqnarray}
 $$
 
-**Disease posterior density:** $$
-\begin{eqnarray*}
+**Disease posterior density:**
+
+$$
+\begin{eqnarray}
    P(disease\ |\ x_1=3.7930077,x_2=2.5993371) &=& P(x_1=3.7930077\ |\ disease) \times \\ 
               && P(x_2=2.5993371\ |\ disease) \times \\
               && P(disease) \\
@@ -210,12 +212,12 @@ $$
               && (73\ /\ (224 + 73)) \\
               &=& 2.1454638 \times 2.0246405 \times 0.2457912 \\
               &=& 1.0676663 \\
-\end{eqnarray*}
+\end{eqnarray}
 $$
 
 **Normalized Posterior Probabilities:**
 
-From Equation (<tag:bayes_prob>), the relative proportion of each
+From Equation (???), the relative proportion of each
 density is:
 
 $$
