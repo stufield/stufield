@@ -117,6 +117,14 @@ can solve problems in your space. Please reach out via:
   publication record.
 
 
+### Tech Notes
+| Topic 🚀    |
+|:---------------------------------------------------- |
+| [False Discovery](articles/tech-note-false-pos-q-values.md) |
+| [Naive Bayes]()  |
+| [Mixed-Effects]()  |
+
+
 #### Other Interests
 - 💬 Favorite food: 🐟 🌮
 - 📚 I am currently learning woodworking🪵 ... I'm not very good, but I can make a lot of sawdust!
