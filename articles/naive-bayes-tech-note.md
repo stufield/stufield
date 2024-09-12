@@ -1,6 +1,7 @@
 Technical note: naïve Bayes Classifiers
 ================
 Stu Field
+
 12 September 2024
 
 ------------------------------------------------------------------------
@@ -330,11 +331,13 @@ p2 <- plotBayesBoundary(
 ```
 
 Bivariate plots of training data used to fit the two feature naïve Bayes
-model. Dotted lines are the class specific means of the model
+model.
+
+Left: dotted lines are the class specific means of the model
 parameters, points are colored by class.
 
-The non-linear Bayes decision boundary reflecting the $p = 0.5$ cutoff
-is represented by the “purple” dashed line. The green `X`’s represent
+Right: non-linear Bayes decision boundary reflecting the $p = 0.5$ cutoff
+is represented by the "purple" dashed line. The green `X`’s represent
 the bivariate coordinates of samples 1–5.
 
 ![](figures/bayes-bivariate-decision-boundary-1.png)<!-- -->
