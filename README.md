@@ -121,7 +121,7 @@ can solve problems in your space. Please reach out via:
 | Topic 🚀    |
 |:---------------------------------------------------- |
 | [False Discovery](articles/tech-note-false-pos-q-values.md) |
-| [Naive Bayes]()  |
+| [Naive Bayes](articles/naive-bayes-tech-note.md) |
 | [Mixed-Effects]()  |
 
 
