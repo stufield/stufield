@@ -1,68 +1,6 @@
-Technical note: False Positive & q-values
-================
+# Mind Your P’s & Q’s
 Stu Field
-
-12 September 2024
-
-``` r
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment  = "#>",
-  fig.path = "figures/fdr-"
-)
-par_def <- list(mar = c(5, 5, 3, 1), mgp = c(3.5, 0.75, 0))
-
-col_alpha   <- ggplot2::alpha
-
-addBox <- function(bottom = NULL, top = NULL, left = NULL, right = NULL,
-                   col, col_alpha = 0.2, ...) {
-  if ( is.null(bottom) ) 
-    bottom <- par("usr")[3L]
-  if ( is.null(left) ) 
-    left <- par("usr")[1L]
-  if ( is.null(top) ) 
-    top <- par("usr")[4L]
-  if ( is.null(right) ) 
-    right <- par("usr")[2L]
-  rect(left, bottom, right, top, border = NA, col = col_alpha(col,  col_alpha), ...)
-}
-
-plotPolygon <- function(upper, lower, add = FALSE,
-                        col = col_alpha("blue", 0.5), ...) {
-  stopifnot(
-    inherits(upper, "list"), length(upper) == 2L,
-    inherits(lower, "list"), length(lower) == 2L
-  )
-  x1 <- upper[[1L]]
-  y1 <- upper[[2L]]
-  x2 <- lower[[1L]]
-  y2 <- lower[[2L]]
-  if ( !add ) {
-    plot(x1, y1, type = "n", ylim = c(min(y1, y2), 
-         max(y1, y2)), xlim = c(min(x1, x2), max(x1, x2)), ...)
-  }
-  polygon(c(x1, rev(x2)), c(y1, rev(y2)), border = NA, col = col)
-}
-
-addText <- function(x, y, text, pos = 4, ...) {
-  if ( length(x) > 1 || length(y) > 1 || length(text) > 1 ) {
-    if ( !(length(x) == length(y) && length(y) == length(text)) )
-      stop("The `x`, `y`, and `text` arguments should all be of equal length.", 
-           call. = FALSE)
-  }
-  plot_x <- par("usr")[1:2L]
-  plot_y <- par("usr")[3:4L]
-  new_x <- x * (max(plot_x) - min(plot_x)) + min(plot_x)
-  new_y <- y * (max(plot_y) - min(plot_y)) + min(plot_y)
-  if ( par("xlog") ) {
-    new_x <- 10^new_x
-  }
-  if ( par("ylog") ) {
-    new_y <- 10^new_y
-  }
-  text(new_x, new_y, text, pos = pos, ...)
-}
-```
+17 September 2024
 
 ------------------------------------------------------------------------
 
@@ -100,11 +38,11 @@ plot(NA, type = "n", xaxt = "n", yaxt = "n",
      xaxs = "i", yaxs = "i", ylim = range(y), xlim = range(x))
 axis(1, labels = x, at = x, cex.axis = 1.5)
 axis(2, labels = y, at=y, las = 2, cex.axis = 1.5)
-addBox(top = 1, col = "blue", col_alpha = 0.5)
-addBox(top = 1.2, bottom = 1, col = "gray", col_alpha = 0.7)
+addBox(top = 1, col = "blue", alpha = 0.5)
+addBox(top = 1.2, bottom = 1, col = "gray", alpha = 0.7)
 ```
 
-![](figures/fdr-null-1.png)<!-- -->
+![](figures/fdr-null-dist-1.png)
 
 **Fig 1.**: Distribution of p-values when there is no effect (i.e. the
 null hypothesis).
@@ -125,8 +63,8 @@ basefig <- function(y = seq(0, 2, 0.2), ...) {
        cex.lab = 2, xaxs = "i", yaxs = "i", ...)
   axis(1, labels = x, at = x, cex.axis = 1.5)
   axis(2, labels = y, at = y, las = 2, cex.axis = 1.5)
-  addBox(bottom = 0.8, col = "gray", col_alpha = 0.7)
-  addBox(top = 0.8, col = "blue", col_alpha = 0.5)
+  addBox(bottom = 0.8, col = "gray", alpha = 0.7)
+  addBox(top = 0.8, col = "blue", alpha = 0.5)
   legend("topright", legend = c("Effect", "No effect"), pch = 15,
          bg = "white",  col = c(col_alpha("red", 0.25), col_alpha("blue", 0.25)),
          inset = 0.02, cex = 1.5, pt.cex = 2)
@@ -140,7 +78,7 @@ plotPolygon(list(xvals, yvals), list(x, rep(0.8, length(x))),
             add = TRUE, col = col_alpha("red", 0.5))
 ```
 
-![](figures/fdr-null-alt-1.png)<!-- -->
+![](figures/fdr-null-alt-1.png)
 
 **Fig 2.**: Distribution of p-values when some (20%) variables are
 affected (i.e. the alternate hypothesis; red).
@@ -167,7 +105,7 @@ addText(0.2, 0.9, "p-value cutoff", font = 2, cex = 1.5)
 arrows(0.2, 1.8, 0.130, 1.8, code = 2, length = 0.2, lwd = 2)
 ```
 
-![](figures/fdr-p-cutoff-1.png)<!-- -->
+![](figures/fdr-p-cutoff-1.png)
 
 **Fig. 3**: Using a p-value cutoff (e.g. $p<0.125$) to decide which
 variables are affected.
@@ -198,7 +136,8 @@ characterizing the blue box ($\sim0.8$). If there are truly no p-values
 coming from the alternate distribution, this intercept will be $\sim1.0$
 as in **Fig. 1**. There are many statistical tools in various programs
 to perform this, in the statistical environment R, there is a package
-simply called `qvalue` available from `Bioconductor`.
+simply called `qvalue` available from
+[Bioconductor](https://www.bioconductor.org/).
 
 # What about false-negatives?
 
@@ -229,7 +168,7 @@ addText(0.2, 0.855, "p-value cutoff", font = 2, cex = 1.5)
 arrows(0.2, 2.4, 0.130, 2.4, code = 2, length = 0.2, lwd = 2)
 ```
 
-![](figures/fdr-power-1.png)<!-- -->
+![](figures/fdr-power-1.png)
 
 **Fig. 4**: p-values for a more powerful version of the experiment in
 **Fig. 3**.
@@ -244,6 +183,59 @@ The q-value makes sense only in the context of “multiple-testing”,
 producing a distribution of p-values and rephrases the question to
 answer: “of the significant tests (for a given cutoff), what proportion
 are expected to be from the null distribution” (i.e. false-positives)?
+
+------------------------------------------------------------------------
+
+# Code Reference
+
+``` r
+par_def <- list(mar = c(5, 5, 3, 1), mgp = c(3.5, 0.75, 0))
+
+col_alpha <- ggplot2::alpha
+
+addBox <- function(bottom = NULL, top = NULL, left = NULL, right = NULL,
+                   col, alpha = 0.2, ...) {
+  pars <- par("usr")
+  if ( is.null(bottom) )
+    bottom <- pars[3L]
+  if ( is.null(left) )
+    left <- pars[1L]
+  if ( is.null(top) )
+    top <- pars[4L]
+  if ( is.null(right) )
+    right <- pars[2L]
+  graphics::rect(left, bottom, right, top, border = NA,
+                 col = col_alpha(col, alpha), ...)
+}
+
+plotPolygon <- function(upper, lower, add = FALSE,
+                        col = col_alpha("blue", 0.5), ...) {
+  x1 <- upper[[1L]]
+  y1 <- upper[[2L]]
+  x2 <- lower[[1L]]
+  y2 <- lower[[2L]]
+  if ( !add ) {
+    plot(x1, y1, type = "n", ylim = c(min(y1, y2),
+         max(y1, y2)), xlim = c(min(x1, x2), max(x1, x2)), ...)
+  }
+  graphics::polygon(c(x1, rev(x2)), c(y1, rev(y2)), border = NA, col = col)
+}
+
+addText <- function(x, y, text, pos = 4, ...) {
+  pars   <- par("usr")
+  plot_x <- pars[1:2L]
+  plot_y <- pars[3:4L]
+  new_x  <- x * (max(plot_x) - min(plot_x)) + min(plot_x)
+  new_y  <- y * (max(plot_y) - min(plot_y)) + min(plot_y)
+  if ( par("xlog") ) {
+    new_x <- 10^new_x
+  }
+  if ( par("ylog") ) {
+    new_y <- 10^new_y
+  }
+  text(new_x, new_y, text, pos = pos, ...)
+}
+```
 
 # References
 
