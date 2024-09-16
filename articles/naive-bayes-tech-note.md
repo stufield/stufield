@@ -1,8 +1,6 @@
-Technical note: naïve Bayes Classifiers
-================
+# Naïve Bayes Classifiers
 Stu Field
-
-12 September 2024
+16 September 2024
 
 ------------------------------------------------------------------------
 
@@ -17,6 +15,8 @@ fitting) in order to make class predictions about the unknown sample.
 
 # Bayes’ Theorem
 
+The Bayes Theorem states:
+
 $$
 \begin{equation}
   Posterior\ Probability = \frac{Likelihood(data) \times Prior}{Evidence}
@@ -25,16 +25,17 @@ $$
 
 written in terms of probabilities,
 
-$$
+<span id="eq-bayes-full">$$
 \begin{equation}
   P(outcome\ |\ data) = \frac{P(data\ |\ outcome) \times P(outcome)}{P(data)}
 \end{equation}
-$$
+ \qquad(1)$$</span>
 
 where the term $P(data)$ is a normalizing constant that is independent
 of the *outcome*, and is often ignored if *relative* posteriors are
-desired over *absolute* posteriors. Equation (2) then simplifies
-to,
+desired over *absolute* posteriors.
+(<a href="#eq-bayes-full" class="quarto-xref">Equation 1</a>) then
+simplifies to,
 
 $$
 \begin{equation}
@@ -78,32 +79,33 @@ prior). Naïve Bayes models assume Gaussian densities and are calculated
 via the probability density function (PDF) given class-specific
 parameters $\mu$ and $\sigma$:
 
-$$
+<span id="eq-pdf">$$
 \begin{eqnarray}
    f(x\ |\ \mu_k,\sigma_k) &= \frac{1}{\sqrt{2\pi\sigma_k^2}} \; exp\Bigg( \frac{-(x-\mu_k)^2}{2\sigma_k^2} \Bigg),
 \end{eqnarray}
-$$
+ \qquad(2)$$</span>
 
 To classify an unknown sample with $p$ feature measurements
 ($\vec x = x_1,...,x_p$) and $k$ classes, calculate the following:
 
-$$
+<span id="eq-bayes">$$
 \begin{eqnarray}
    P(k\ |\ \vec x) &= 
       \Bigg[ \prod_{i=1}^{p} \frac{1}{\sqrt{2\pi\sigma_{ik}^2}} \; exp\Bigg( \frac{-(x_i-\mu_{ik})^2}{2\sigma_{ik}^2} \Bigg) \Bigg] \times P(k),
 \end{eqnarray}
-$$
+ \qquad(3)$$</span>
 
-The result of Equation (3) gives a probability *density* for
-each class, which is not constrained on the interval $[0,\ 1]$.
-Normalized posterior probabilities ($Pr$) are obtained by calculating
-the class-specific proportion of the total density,
+The result of (<a href="#eq-bayes" class="quarto-xref">Equation 3</a>)
+gives a probability *density* for each class, which is not constrained
+on the interval $[0,\ 1]$. Normalized posterior probabilities ($Pr$) are
+obtained by calculating the class-specific proportion of the total
+density,
 
-$$
+<span id="eq-bayes-prob">$$
 \begin{eqnarray}
   Pr(k=j\ |\ \vec x) &=& \frac{P(j\ |\ \vec x)}{\sum_{i=1}^k P(i\ |\ \vec x)}
 \end{eqnarray}
-$$
+ \qquad(4)$$</span>
 
 # Example Calculation
 
@@ -170,6 +172,12 @@ With specific parameters:
 5 unknown samples with 2 measurements each:
 
 ``` r
+sample_data <- train[c(3L, 4L, 5L, 257L, 267L), 1:2L]
+s1 <- as.numeric(sample_data[1L, ])
+s2 <- as.numeric(sample_data[2L, ])
+s3 <- as.numeric(sample_data[3L, ])
+s4 <- as.numeric(sample_data[4L, ])
+s5 <- as.numeric(sample_data[5L, ])
 tibble::as_tibble(sample_data)
 #> # A tibble: 5 × 2
 #>   feat1 feat2
@@ -183,13 +191,15 @@ tibble::as_tibble(sample_data)
 
 ### Raw calculation sample 1:
 
-For unknown __sample 1__, the naïve Bayes posterior conditional
-probability densities are calculated using equation (???) as follows:
+For unknown **sample 1**, the naïve Bayes posterior conditional
+probability densities are calculated using
+(<a href="#eq-bayes-prob" class="quarto-xref">Equation 4</a>) as
+follows:
 
 **Control posterior density:**
 
 $$
-\begin{eqnarray}
+\begin{eqnarray*}
    P(control\ |\ x_1=3.7930077,x_2=2.5993371) &=& P(x_1=3.7930077\ |\ control) \times \\
                && P(x_2=2.5993371\ |\ control) \times \\
                && P(control) \\
@@ -198,13 +208,13 @@ $$
                && (224\ /\ (224 + 73)) \\
                &=& 1.1264967 \times 0.1967663 \times 0.7542088 \\
                &=& 0.1671753 \\
-\end{eqnarray}
+\end{eqnarray*}
 $$
 
 **Disease posterior density:**
 
 $$
-\begin{eqnarray}
+\begin{eqnarray*}
    P(disease\ |\ x_1=3.7930077,x_2=2.5993371) &=& P(x_1=3.7930077\ |\ disease) \times \\ 
               && P(x_2=2.5993371\ |\ disease) \times \\
               && P(disease) \\
@@ -213,13 +223,13 @@ $$
               && (73\ /\ (224 + 73)) \\
               &=& 2.1454638 \times 2.0246405 \times 0.2457912 \\
               &=& 1.0676663 \\
-\end{eqnarray}
+\end{eqnarray*}
 $$
 
 **Normalized Posterior Probabilities:**
 
-From Equation (???), the relative proportion of each
-density is:
+From (<a href="#eq-bayes-prob" class="quarto-xref">Equation 4</a>), the
+relative proportion of each density is:
 
 $$
 \begin{eqnarray*}
@@ -264,6 +274,7 @@ are represented by the dashed vertical line. This graphically indicates
 that Sample 1 is more likely to have come from the control distribution.
 
 ``` r
+library(patchwork)
 p1 <- train |>
   dplyr::select(feat1, Response) |>
   ggplot(aes(x = feat1, fill = Response)) +
@@ -276,10 +287,10 @@ p2 <- train |>
   geom_density(alpha = 0.25, linewidth = 0.1) +
   labs(y = "Probability Density",  title = "Feature 2", x = "value") +
   geom_vline(xintercept = s1f2, linetype = "dashed")
-gridExtra::grid.arrange(p1, p2, ncol = 2)
+p1 + p2
 ```
 
-![](figures/bayes-PDFs-1.png)<!-- -->
+![](figures/bayes-PDFs-1.png)
 
 ## Bivariate Plots and Decision Boundary
 
@@ -331,13 +342,11 @@ p2 <- plotBayesBoundary(
 ```
 
 Bivariate plots of training data used to fit the two feature naïve Bayes
-model.
-
-Left: dotted lines are the class specific means of the model
+model. Dotted lines are the class specific means of the model
 parameters, points are colored by class.
 
-Right: non-linear Bayes decision boundary reflecting the $p = 0.5$ cutoff
-is represented by the "purple" dashed line. The green `X`’s represent
+The non-linear Bayes decision boundary reflecting the $p = 0.5$ cutoff
+is represented by the “purple” dashed line. The green `X`’s represent
 the bivariate coordinates of samples 1–5.
 
-![](figures/bayes-bivariate-decision-boundary-1.png)<!-- -->
+![](figures/bayes-bivariate-decision-boundary-1.png)
