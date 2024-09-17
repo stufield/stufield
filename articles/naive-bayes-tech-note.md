@@ -1,6 +1,6 @@
 # Naïve Bayes Classifiers
 Stu Field
-16 September 2024
+17 September 2024
 
 ------------------------------------------------------------------------
 
@@ -107,6 +107,8 @@ density,
 \end{eqnarray}
  \qquad(4)$$</span>
 
+------------------------------------------------------------------------
+
 # Example Calculation
 
 ## Training data
@@ -156,16 +158,14 @@ bayes_model
 #> disease_sigma 0.2523813 0.09695953
 ```
 
-With specific parameters:
-
-| **Model Parameters**                          | **Control** | **Disease** |
-|:----------------------------------------------|:------------|:------------|
-| Training samples                              | 224         | 73          |
-| Prevalence (prior)                            | 0.7542088   | 0.2457912   |
-| Feature 1 ($\hat{\mu}_c,\ \hat{\mu}_d$)       | 3.7338882   | 4.0007477   |
-| Feature 1 ($\hat{\sigma}_c,\ \hat{\sigma}_d$) | 0.1757146   | 0.2523813   |
-| Feature 2 ($\hat{\mu}_c,\ \hat{\mu}_d$)       | 2.7163842   | 2.8384269   |
-| Feature 2 ($\hat{\sigma}_c,\ \hat{\sigma}_d$) | 0.1019839   | 0.0969595   |
+With specific parameters: \| **Model Parameters** \| **Control** \|
+**Disease** \| \| :—————————————— \| :——————— \| :——————- \| \| Training
+samples \| 224\| 73\| \| Prevalence (prior) \| 0.7542088 \| 0.2457912 \|
+\| Feature 1 ($\hat{\mu}_c,\ \hat{\mu}_d$) \| 3.7338882 \| 4.0007477 \|
+\| Feature 1 ($\hat{\sigma}_c,\ \hat{\sigma}_d$) \| 0.1757146 \|
+0.2523813 \| \| Feature 2 ($\hat{\mu}_c,\ \hat{\mu}_d$) \| 2.7163842 \|
+2.8384269 \| \| Feature 2 ($\hat{\sigma}_c,\ \hat{\sigma}_d$) \|
+0.1019839 \| 0.0969595 \|
 
 ### Sample “new” data
 
@@ -173,11 +173,12 @@ With specific parameters:
 
 ``` r
 sample_data <- train[c(3L, 4L, 5L, 257L, 267L), 1:2L]
-s1 <- as.numeric(sample_data[1L, ])
-s2 <- as.numeric(sample_data[2L, ])
-s3 <- as.numeric(sample_data[3L, ])
-s4 <- as.numeric(sample_data[4L, ])
-s5 <- as.numeric(sample_data[5L, ])
+measures <- t(sample_data)  # convert -> matrix
+s1 <- measures[, 1L]
+s2 <- measures[, 2L]
+s3 <- measures[, 3L]
+s4 <- measures[, 4L]
+s5 <- measures[, 5L]
 tibble::as_tibble(sample_data)
 #> # A tibble: 5 × 2
 #>   feat1 feat2
@@ -191,10 +192,20 @@ tibble::as_tibble(sample_data)
 
 ### Raw calculation sample 1:
 
-For unknown **sample 1**, the naïve Bayes posterior conditional
+In `R`, Normal densities are calculated via the `dnorm()` function, so
+for unknown **sample 1**, the probability that it is a *control* sample
+given that its measurement for *Feature 1* is given by:
+
+``` r
+dnorm(s1[["feat1"]],                                # P(x | control)
+      bayes_model$tables$feat1["control", "mu"],    # mean
+      bayes_model$tables$feat1["control", "sigma"]) # sd
+#> [1] 2.145464
+```
+
+Putting it all together, the naïve Bayes posterior conditional
 probability densities are calculated using
-(<a href="#eq-bayes-prob" class="quarto-xref">Equation 4</a>) as
-follows:
+(<a href="#eq-bayes-prob" class="quarto-xref">Equation 4</a>):
 
 **Control posterior density:**
 
@@ -206,8 +217,8 @@ $$
                &=& P(x_1=3.7930077\ |\ \mu_c=3.7338882, \sigma_c=0.1757146) \times \\
                && P(x_2=2.5993371\ |\ \mu_c=2.7163842, \sigma_c=0.1019839) \times \\
                && (224\ /\ (224 + 73)) \\
-               &=& 1.1264967 \times 0.1967663 \times 0.7542088 \\
-               &=& 0.1671753 \\
+               &=& 2.1454638 \times 2.0246405 \times 0.7542088 \\
+               &=& 3.2761267 \\
 \end{eqnarray*}
 $$
 
@@ -221,8 +232,8 @@ $$
               &=& P(x_1=3.7930077\ |\ \mu_d=4.0007477, \sigma_d=0.2523813) \times \\
               && P(x_2=2.5993371\ |\ \mu_d=2.8384269, \sigma_d=0.0969595) \times \\
               && (73\ /\ (224 + 73)) \\
-              &=& 2.1454638 \times 2.0246405 \times 0.2457912 \\
-              &=& 1.0676663 \\
+              &=& 1.1264967 \times 0.1967663 \times 0.2457912 \\
+              &=& 0.0544812 \\
 \end{eqnarray*}
 $$
 
