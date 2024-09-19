@@ -118,11 +118,13 @@ can solve problems in your space. Please reach out via:
 
 
 ### Tech Notes
-| Topic 🚀    |
-|:---------------------------------------------------- |
-| [False Discovery](articles/tech-note-false-pos-q-values.md) |
-| [Naive Bayes](articles/naive-bayes-tech-note.md) |
-| [Mixed-Effects](articles/tech-note-mixed-effects.md)  |
+
+| Topic 🚀                                                               |
+|:---------------------------------------------------------------------- |
+| [False Discovery](articles/tech-note-false-pos-q-values.md)            |
+| [Naive Bayes](articles/naive-bayes-tech-note.md)                       |
+| [Mixed-Effects](articles/tech-note-mixed-effects.md)                   |
+| [Decision-Boundary-Comparison](articles/decision-boundaries.md)        |
 
 
 #### Other Interests
