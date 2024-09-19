@@ -122,7 +122,7 @@ can solve problems in your space. Please reach out via:
 |:---------------------------------------------------- |
 | [False Discovery](articles/tech-note-false-pos-q-values.md) |
 | [Naive Bayes](articles/naive-bayes-tech-note.md) |
-| [Mixed-Effects]()  |
+| [Mixed-Effects](articles/tech-note-mixed-effects.md)  |
 
 
 #### Other Interests
