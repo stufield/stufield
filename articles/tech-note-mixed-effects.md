@@ -1,5 +1,7 @@
 # Longitudinal Data Analysis via Linear Mixed-Effects Models
+
 Stu Field
+
 20 September 2024
 
 ------------------------------------------------------------------------
