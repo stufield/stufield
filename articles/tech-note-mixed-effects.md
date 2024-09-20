@@ -1,6 +1,6 @@
 # Longitudinal Data Analysis via Linear Mixed-Effects Models
 Stu Field
-19 September 2024
+20 September 2024
 
 ------------------------------------------------------------------------
 
@@ -362,7 +362,9 @@ data-fig-align="center" />
 
 ## Analysis in `R`
 
-The model specification to fit: $$
+The model specification to fit:
+
+$$
 \begin{equation}
    y_{ij} = b_{0i} + \beta_1 time_{ij} + \beta_2 group_i + 
      \beta_3 (group_i \times time_{ij}) + \epsilon_{ij},
