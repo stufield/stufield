@@ -102,6 +102,7 @@ can solve problems in your space. Please reach out via:
 
 
 #### Application of Skill Set
+
 - **Data Analysis:** created high-dimensional,
   high-throughput, multi-plex, proteomics machine
   learning analysis ecosystem which enabled (and standardized)
@@ -123,8 +124,10 @@ can solve problems in your space. Please reach out via:
 |:---------------------------------------------------------------------- |
 | [False Discovery](articles/tech-note-false-pos-q-values.md)            |
 | [Naive Bayes](articles/naive-bayes-tech-note.md)                       |
-| [Mixed-Effects](articles/tech-note-mixed-effects.md)                   |
-| [Decision-Boundary-Comparison](articles/decision-boundaries.md)        |
+| [Mixed Effects](articles/tech-note-mixed-effects.md)                   |
+| [Decision Boundary Comparison](articles/decision-boundaries.md)        |
+| [Logistic Regression](articles/logistic-regression.md)                 |
+| [Mixture Models](articles/mixture-em.md)                               |
 
 
 #### Other Interests
