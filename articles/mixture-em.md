@@ -1,5 +1,7 @@
 # Mixture Model Expectation-Maximization
+
 Stu Field
+
 19 September 2024
 
 ------------------------------------------------------------------------
