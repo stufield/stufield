@@ -1,8 +1,6 @@
 # Longitudinal Data Analysis via Linear Mixed-Effects Models
-
 Stu Field
-
-20 September 2024
+22 September 2024
 
 ------------------------------------------------------------------------
 
@@ -111,7 +109,7 @@ be rewritten in matrix form as:
     \begin{pmatrix}
         \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_n
     \end{pmatrix}
-    \\ \nonumber && \\ \nonumber
+    \\
     \vec y &=& \mathbf{X} \vec \beta + \vec \epsilon
 \end{eqnarray}
  \qquad(6)$$</span>
@@ -140,17 +138,17 @@ $$
 \begin{eqnarray}
   y_{ij} &=& b_{0i} + \beta_1 x_{ij} + \epsilon_{ij} \\
   && \\
-    b_i &\sim& N(0,\sigma^2_b) \\
+  b_i &\sim& N(0,\sigma^2_b) \\
   && \\
-    \epsilon &\sim& N(0,\sigma^2_n)
+  \epsilon &\sim& N(0,\sigma^2_n)
 \end{eqnarray}
 $$
 
 for the $j^{th}$ observation of the $i^{th}$ subject, where $b$ is a
-parameter treated as a random variable (i.e. $i$ subjects sampled from a
+parameter treated as a random variable (i.e. *i* subjects sampled from a
 large, infinite population of potential subjects). These random effects
-are thus assumed to vary by group (in this case subjects) the goal is to
-capture this variation in the coefficients and prevent it from being
+are thus assumed to vary by group (in this case subjects) … the goal is
+to capture this variation in the coefficients and prevent it from being
 packaged into $\epsilon$!
 
 ------------------------------------------------------------------------
