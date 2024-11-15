@@ -6,7 +6,14 @@ Welcome To My Homepage! <img src="https://raw.githubusercontent.com/stufield/stu
 
 Senior Data Scientist ✨ Machine Learning 🚀 Model Development 🔧 Tool Development 💻 Software Programmer 📦 R Software 📈 Leadership
 
------------------
+-----------
+
+
+> "Making predictions is easy ... making accurate ones is much more difficult."
+>   -- Me --
+
+
+-----------
 
 <!--
 GIFs:
@@ -45,7 +52,7 @@ You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4], [![LinkedIn][3.
 
 
 
-### About Me <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="40px">
+## About Me <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="40px">
 
 I love to solve problems.
 
@@ -118,17 +125,16 @@ can solve problems in your space. Please reach out via:
   publication record.
 
 
-### Tech Notes
+## Tech Notes & Vignettes
 
-| Topic 🚀                                                    | Topic 🚀                                               |
-|:----------------------------------------------------------- | ------------------------------------------------------ |
-| [False Discovery](articles/false-pos-q-values.md)           | [Decision Boundaries](articles/decision-boundaries.md) |
-| [Naive Bayes](articles/naive-bayes-tech-note.md)            | [Mixture Models](articles/mixture-em.md)               |
-| [Mixed Effects](articles/mixed-effects-models.md)           | [Monty Hall Paradox](articles/monty-hall-paradox.md)   |
-| [Logistic Regression](articles/logistic-regression.md)      | [The Birthday Paradox](articles/birthday-paradox.md)   |
-| [Mack-Wolfe Tests](articles/mack-wolfe.md)                  |
+| Topic 🚀       | Topic 🚀        | Topic 🚀       |
+|:-------------- |:--------------- |:-------------- |
+| [False Discovery](articles/false-pos-q-values.md) | [Mixture Models](articles/mixture-em.md)             | [Logistic Regression](articles/logistic-regression.md) |
+| [Naive Bayes](articles/naive-bayes-tech-note.md)  | [The Birthday Paradox](articles/birthday-paradox.md) | [Mack-Wolfe Tests](articles/mack-wolfe.md)             |
+| [Mixed Effects](articles/mixed-effects-models.md) | [Monty Hall Paradox](articles/monty-hall-paradox.md) | [Decision Boundaries](articles/decision-boundaries.md) |
 
 
+----------------
 
 
 #### Other Interests
