@@ -2,7 +2,7 @@
 
 Stu Field
 
-17 September 2024
+15 November 2024
 
 ------------------------------------------------------------------------
 
@@ -145,7 +145,7 @@ bayes_model
 #> Robust Naive Bayes Classifier for Discrete Predictors
 #> 
 #> Call:
-#> robustNaiveBayes.default(x = X, y = Response)
+#> fit_nb.formula(formula = Response ~ ., data = train)
 #> 
 #> A-priori probabilities:
 #> Response
@@ -153,21 +153,25 @@ bayes_model
 #> 0.7542088 0.2457912 
 #> 
 #> Conditional densities:
-#>                   feat1      feat2
-#> control_mu    3.7338882 2.71638422
-#> disease_mu    4.0007477 2.83842689
-#> control_sigma 0.1757146 0.10198388
-#> disease_sigma 0.2523813 0.09695953
+#> # A tibble: 4 × 3
+#>   parameter     feat1  feat2
+#>   <chr>         <dbl>  <dbl>
+#> 1 control_mu    3.73  2.72  
+#> 2 disease_mu    4.00  2.84  
+#> 3 control_sigma 0.176 0.102 
+#> 4 disease_sigma 0.252 0.0970
 ```
 
-With specific parameters: \| **Model Parameters** \| **Control** \|
-**Disease** \| \| :—————————————— \| :——————— \| :——————- \| \| Training
-samples \| 224\| 73\| \| Prevalence (prior) \| 0.7542088 \| 0.2457912 \|
-\| Feature 1 ($\hat{\mu}_c,\ \hat{\mu}_d$) \| 3.7338882 \| 4.0007477 \|
-\| Feature 1 ($\hat{\sigma}_c,\ \hat{\sigma}_d$) \| 0.1757146 \|
-0.2523813 \| \| Feature 2 ($\hat{\mu}_c,\ \hat{\mu}_d$) \| 2.7163842 \|
-2.8384269 \| \| Feature 2 ($\hat{\sigma}_c,\ \hat{\sigma}_d$) \|
-0.1019839 \| 0.0969595 \|
+With specific parameters:
+
+| **Model Parameters**                          | **Control** | **Disease** |
+|:----------------------------------------------|:------------|:------------|
+| Training samples                              | 224         | 73          |
+| Prevalence (prior)                            | 0.7542088   | 0.2457912   |
+| Feature 1 ($\hat{\mu}_c,\ \hat{\mu}_d$)       | 3.7338882   | 4.0007477   |
+| Feature 1 ($\hat{\sigma}_c,\ \hat{\sigma}_d$) | 0.1757146   | 0.2523813   |
+| Feature 2 ($\hat{\mu}_c,\ \hat{\mu}_d$)       | 2.7163842   | 2.8384269   |
+| Feature 2 ($\hat{\sigma}_c,\ \hat{\sigma}_d$) | 0.1019839   | 0.0969595   |
 
 ### Sample “new” data
 
@@ -320,34 +324,7 @@ p1 <- ggplot(train, aes(x = feat1, y = feat2)) +
 ```
 
 ``` r
-plotBayesBoundary <- function(data, pos.class, res = 50, main = NULL) {
-  stopifnot(ncol(data) == 3, is.numeric(res))
-  train <- data |>
-    dplyr::rename_if(is.factor, function(.x) "class") |> # rename response
-    dplyr::rename_at(1:2, function(.x) c("F1", "F2"))    # rename features 1,2
-  train$class <- factor(train$class,    # pos.class 2nd
-                        levels = c(setdiff(train$class, pos.class), pos.class))
-  model <- robustNaiveBayes(class ~ F1 + F2, data = train)
-  df <- expand_grid(
-    list(
-      F1 = seq(min(train$F1), max(train$F1), length = res),
-      F2 = seq(min(train$F2), max(train$F2), length = res)
-    )
-  )
-  df$Pr <- predict(model, newdata = df, type = "raw")[, 2L]
-
-  p <- ggplot(df, aes(x = F1, y = F2))
-  p + geom_raster(aes(fill = Pr), alpha = 0.5) +
-    scale_fill_gradient(high = "#00BFC4", low = "#F8766D") +
-    geom_contour(aes(x = F1, y = F2, z = Pr), binwidth = 0.5,
-                 color = "darkorchid4", linetype = "dashed") +
-    geom_point(data = train, mapping = aes(x = F1, y = F2, color = class),
-               size = 2.5, alpha = 0.5) +
-    geom_point(data = train, aes(x = F1, y = F2),
-               size = 2.5, shape = 21, color = "black") +
-    labs(x = "Feature 1", y = "Feature 2", title = main)
-}
-p2 <- plotBayesBoundary(
+p2 <- libml::plot_bayes_boundary(
   train, pos.class = "disease", main = "Bayes Decision Boundary"
   ) +
   geom_point(data = sample_data, aes(x = feat1, y = feat2),

@@ -1,0 +1,386 @@
+---
+title: "Na&iuml;ve Bayes Classifiers"
+author: "Stu Field"
+date: today
+date-format: "D MMMM YYYY"
+format:
+  gfm:
+    preview-mode: raw
+# output:
+#   html_document:
+#     code_folding: show
+#     number_sections: yes
+#     toc: yes
+#     toc_float:
+#       collapsed: no
+---
+
+```{r}
+#| label: setup
+#| include: FALSE
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment  = "#>",
+  fig.path = "figures/bayes-"
+)
+
+burst_model_object <- function(model) {
+  for (f in names(model$tables)) {
+    tab <- model$tables[[f]]
+    assign(paste0(f, "_control_mu"), tab[1L], envir = .GlobalEnv)
+    assign(paste0(f, "_disease_mu"), tab[2L], envir = .GlobalEnv)
+    assign(paste0(f, "_control_sd"), tab[3L], envir = .GlobalEnv)
+    assign(paste0(f, "_disease_sd"), tab[4L], envir = .GlobalEnv)
+  }
+}
+
+library(helpr)
+library(libml)
+library(ggplot2)
+
+thm <- theme_bw() + 
+  theme(
+    panel.background  = element_rect(fill = "transparent", colour = NA), 
+    plot.background   = element_rect(fill = "transparent", colour = NA),
+    legend.position   = "right",
+    panel.border      = element_blank(),
+    legend.background = element_rect(fill = "transparent", colour = NA),
+    legend.key        = element_rect(fill = "transparent", colour = NA)
+  )
+theme_set(thm)
+```
+
+
+----------
+
+
+# Overview
+
+The general goal is to use a probabilistic modeling framework to predict
+the class of an unknown sample. Such mathematical models, or classifiers,
+are based on training data and are built (i.e. model fitting) in order
+to make class predictions about the unknown sample.
+
+
+--------
+
+
+# Bayes' Theorem
+The Bayes Theorem states:
+
+$$
+\begin{equation}
+  Posterior\ Probability = \frac{Likelihood(data) \times Prior}{Evidence}
+\end{equation}
+$$
+
+written in terms of probabilities,
+
+$$
+\begin{equation}
+  P(outcome\ |\ data) = \frac{P(data\ |\ outcome) \times P(outcome)}{P(data)}
+\end{equation}
+$$ {#eq-bayes-full}
+
+where the term $P(data)$ is a normalizing constant that is independent of the
+*outcome*, and is often ignored if *relative* posteriors are desired over
+*absolute* posteriors. (@eq-bayes-full) then simplifies to,
+
+$$
+\begin{equation}
+  P(outcome\ |\ data) \propto P(data\ |\ outcome) \times P(outcome)
+\end{equation}
+$$
+
+
+# Na&iuml;ve Bayes in Practice
+
+Consider an example where *proteomic* measurements (i.e. features = proteins),
+assumed to have Gaussian (i.e. Normal) distributions, are taken from an
+individual and the posterior probability of interest is whether that individual
+belongs to one of $k$ possible outcomes/classes.  For example, if there are
+$k=2$ possible classes, disease or control (i.e. a *binary* classifier), this
+can be re-written as:
+
+$$
+\begin{eqnarray}
+   P(control\ |\ protein\ conc) &=& P(protein\ conc\ |\ control) \times P(control), \\
+   P(disease\ |\ protein\ conc) &=& P(protein\ conc\ |\ disease) \times P(disease).
+\end{eqnarray}
+$$
+
+If we have $p$ features and na&iuml;vely assume all are independent, we can
+multiply their individual probabilities to produce a cumulative probability.
+For the disease posterior this gives:
+
+$$
+\begin{eqnarray}
+   P(control\ |\ protein\ conc) &=& P(control) \times P(prot_1\ |\ control) \times P(prot_2\ |\ control) \times ... \times P(prot_p\ |\ control), \\
+   P(disease\ |\ protein\ conc) &=& P(disease) \times P(prot_1\ |\ disease) \times P(prot_2\ |\ disease) \times ... \times P(prot_p\ |\ disease).
+\end{eqnarray}
+$$
+
+Na&iuml;ve Bayes models contain $2pk + k$ parameters, where $k$ is the number
+of classes, $p$ is the number of features; a **mean** ($\mu$) and **standard
+deviation** ($\sigma$) for each feature $\times$ class combination, plus the
+class-specific **prior**, which is often determined by the training class
+proportions (i.e. an *uninformative* prior).
+Na&iuml;ve Bayes models assume Gaussian densities and are calculated via the
+probability density function (PDF) given class-specific parameters
+$\mu$ and $\sigma$:
+
+$$
+\begin{eqnarray}
+   f(x\ |\ \mu_k,\sigma_k) &= \frac{1}{\sqrt{2\pi\sigma_k^2}} \; exp\Bigg( \frac{-(x-\mu_k)^2}{2\sigma_k^2} \Bigg),
+\end{eqnarray}
+$$ {#eq-pdf}
+
+To classify an unknown sample with $p$ feature measurements
+($\vec x = x_1,...,x_p$) and $k$ classes, calculate the following:
+
+$$
+\begin{eqnarray}
+   P(k\ |\ \vec x) &= 
+      \Bigg[ \prod_{i=1}^{p} \frac{1}{\sqrt{2\pi\sigma_{ik}^2}} \; exp\Bigg( \frac{-(x_i-\mu_{ik})^2}{2\sigma_{ik}^2} \Bigg) \Bigg] \times P(k),
+\end{eqnarray}
+$$ {#eq-bayes}
+
+The result of (@eq-bayes) gives a probability *density* for
+each class, which is not constrained on the interval $[0,\ 1]$.
+Normalized posterior probabilities ($Pr$) are obtained by calculating the
+class-specific proportion of the total density,
+
+$$
+\begin{eqnarray}
+  Pr(k=j\ |\ \vec x) &=& \frac{P(j\ |\ \vec x)}{\sum_{i=1}^k P(i\ |\ \vec x)}
+\end{eqnarray}
+$$ {#eq-bayes-prob}
+
+
+---------------
+
+# Example Calculation
+
+## Training data
+
+```{r}
+#| label: import-data-fit-model
+#| include: FALSE
+train  <- readRDS("data/bayes-data.rds")
+bayes_model <- libml::fit_nb(Response ~ ., data = train)
+counts <- bayes_model$apriori
+prior  <- prop.table(counts)
+burst_model_object(bayes_model)
+```
+
+```{r}
+#| label: train
+tibble::as_tibble(train)
+```
+
+
+## The Model
+
+Consider a $k = 2$ class (disease vs. control) and $p = 2$ feature
+example, with $2pk + k = 10$ parameters. The na&iuml;ve Bayes model looks
+like this:
+
+```{r}
+#| label: model
+bayes_model
+```
+
+With specific parameters:
+
+| **Model Parameters**                        | **Control**            | **Disease**          |
+| :------------------------------------------ | :--------------------- | :------------------- |
+| Training samples                            | `r counts[["control"]]`| `r counts[["disease"]]`|
+| Prevalence (prior)                          | `r prior[["control"]]` | `r prior[["disease"]]` |
+| Feature 1 ($\hat{\mu}_c,\ \hat{\mu}_d$)       | `r feat1_control_mu` | `r feat1_disease_mu` |
+| Feature 1 ($\hat{\sigma}_c,\ \hat{\sigma}_d$) | `r feat1_control_sd` | `r feat1_disease_sd` |
+| Feature 2 ($\hat{\mu}_c,\ \hat{\mu}_d$)       | `r feat2_control_mu` | `r feat2_disease_mu` |
+| Feature 2 ($\hat{\sigma}_c,\ \hat{\sigma}_d$) | `r feat2_control_sd` | `r feat2_disease_sd` |
+
+
+### Sample "new" data
+5 unknown samples with 2 measurements each:
+
+```{r}
+#| label: sample-data
+sample_data <- train[c(3L, 4L, 5L, 257L, 267L), 1:2L]
+measures <- t(sample_data)  # convert -> matrix
+s1 <- measures[, 1L]
+s2 <- measures[, 2L]
+s3 <- measures[, 3L]
+s4 <- measures[, 4L]
+s5 <- measures[, 5L]
+tibble::as_tibble(sample_data)
+```
+
+```{r}
+#| label: sample-data-calcs
+#| echo: FALSE
+s1f1 <- s1[[1L]]  # sample 1; Feature 1
+s1f2 <- s1[[2L]]  # sample 1; Feature 2
+d11 <- dnorm(s1f1, feat1_control_mu, feat1_control_sd)  # class 1; feature 1
+d12 <- dnorm(s1f2, feat2_control_mu, feat2_control_sd)  # class 1; feature 2
+d21 <- dnorm(s1f1, feat1_disease_mu, feat1_disease_sd)  # class 2; feature 1
+d22 <- dnorm(s1f2, feat2_disease_mu, feat2_disease_sd)  # class 2; feature 2
+p_cont <- d11 * d12 * prior[["control"]]
+p_case <- d21 * d22 * prior[["disease"]]
+```
+
+### Raw calculation sample 1:
+
+In `R`, Normal densities are calculated via the `dnorm()` function, so for
+unknown __sample 1__, the probability that it is a _control_ sample given
+that its measurement for _Feature 1_ is given by:
+
+```{r}
+#| label: dnorm-calc
+dnorm(s1[["feat1"]],                                # P(x | control)
+      bayes_model$tables$feat1["control", "mu"],    # mean
+      bayes_model$tables$feat1["control", "sigma"]) # sd
+```
+
+Putting it all together, the na&iuml;ve Bayes posterior conditional
+probability densities are calculated using (@eq-bayes-prob):
+
+
+__Control posterior density:__
+
+$$
+\begin{eqnarray*}
+   P(control\ |\ x_1=`r s1f1`,x_2=`r s1f2`) &=& P(x_1=`r s1f1`\ |\ control) \times \\
+               && P(x_2=`r s1f2`\ |\ control) \times \\
+               && P(control) \\
+               &=& P(x_1=`r s1f1`\ |\ \mu_c=`r feat1_control_mu`, \sigma_c=`r feat1_control_sd`) \times \\
+               && P(x_2=`r s1f2`\ |\ \mu_c=`r feat2_control_mu`, \sigma_c=`r feat2_control_sd`) \times \\
+               && (`r counts[["control"]]`\ /\ (`r counts[["control"]]` + `r counts[["disease"]]`)) \\
+               &=& `r d11` \times `r d12` \times `r prior[["control"]]` \\
+               &=& `r d11 * d12 * prior[["control"]]` \\
+\end{eqnarray*}
+$$
+
+
+__Disease posterior density:__
+
+$$
+\begin{eqnarray*}
+   P(disease\ |\ x_1=`r s1f1`,x_2=`r s1f2`) &=& P(x_1=`r s1f1`\ |\ disease) \times \\ 
+              && P(x_2=`r s1f2`\ |\ disease) \times \\
+              && P(disease) \\
+              &=& P(x_1=`r s1f1`\ |\ \mu_d=`r feat1_disease_mu`, \sigma_d=`r feat1_disease_sd`) \times \\
+              && P(x_2=`r s1f2`\ |\ \mu_d=`r feat2_disease_mu`, \sigma_d=`r feat2_disease_sd`) \times \\
+              && (`r counts[["disease"]]`\ /\ (`r counts[["control"]]` + `r counts[["disease"]]`)) \\
+              &=& `r d21` \times `r d22` \times `r prior[["disease"]]` \\
+              &=& `r d21 * d22 * prior[["disease"]]` \\
+\end{eqnarray*}
+$$
+
+
+__Normalized Posterior Probabilities:__
+
+From (@eq-bayes-prob), the relative proportion of each density is:
+
+$$
+\begin{eqnarray*}
+   Pr(control\ |\ \vec x) &=&
+      \frac{ `r p_cont` }{ `r p_case` + `r p_cont` } = `r p_cont / (p_case + p_cont)` \\
+   && \\
+   Pr(disease\ |\ \vec x) &=&
+      \frac{ `r p_case` }{ `r p_case` + `r p_cont` } = `r p_case / (p_case + p_cont)` \\
+\end{eqnarray*}
+$$
+
+Normalized posterior probabilities for 5 unknown samples are shown below.
+The disease class prediction is based on a decision cutoff of
+$Pr(disease) \ge 0.5$
+
+```{r}
+#| label: preds
+cutoff <- 0.5
+preds  <- tibble::as_tibble(predict(bayes_model, sample_data, type = "raw"))
+preds$class  <- ifelse(preds$disease >= cutoff, "disease", "control")
+names(preds) <- c("Pr(control)", "Pr(disease)", "Class Prediction")
+preds
+```
+
+
+-------
+
+
+
+# Na&iuml;ve Bayes Visualization
+
+## Probability density functions (PDFs)
+
+Probability density functions (scaled by sample size) of the training data
+used to fit the na&iuml;ve Bayes model.
+Curves are colored by class and the feature measurements for Sample 1
+($\vec x =$ `r s1f1`, `r s1f2`) are represented by the dashed vertical line.
+This graphically indicates that Sample 1 is more likely to have come from
+the control distribution.
+
+```{r}
+#| label: PDFs
+#| fig.width: 10
+#| fig.height: 4
+library(patchwork)
+p1 <- train |>
+  dplyr::select(feat1, Response) |>
+  ggplot(aes(x = feat1, fill = Response)) +
+  geom_density(alpha = 0.25, linewidth = 0.1) +
+  labs(y = "Probability Density",  title = "Feature 1", x = "value") +
+  geom_vline(xintercept = s1f1, linetype = "dashed")
+p2 <- train |>
+  dplyr::select(feat2, Response) |>
+  ggplot(aes(x = feat2, fill = Response)) +
+  geom_density(alpha = 0.25, linewidth = 0.1) +
+  labs(y = "Probability Density",  title = "Feature 2", x = "value") +
+  geom_vline(xintercept = s1f2, linetype = "dashed")
+p1 + p2
+```
+
+
+
+## Bivariate Plots and Decision Boundary
+
+```{r}
+#| label: train-bivariate
+p1 <- ggplot(train, aes(x = feat1, y = feat2)) + 
+  geom_point(aes(fill = Response), alpha = 0.5, size = 3,
+             stroke = 1, shape = 21) +
+  geom_vline(xintercept = c(feat1_control_mu, feat1_disease_mu),
+             color = c("#F8766D", "#00BFC4"), linetype = "dashed") +
+  geom_hline(yintercept = c(feat2_control_mu, feat2_disease_mu),
+             color = c("#F8766D", "#00BFC4"), linetype = "dashed") +
+  geom_rug(colour = "navy", linewidth = 0.25, length = unit(0.01, "npc")) +
+  labs(title = "Training Data")
+```
+
+
+```{r}
+#| label: boundary-fun
+p2 <- libml::plot_bayes_boundary(
+  train, pos.class = "disease", main = "Bayes Decision Boundary"
+  ) +
+  geom_point(data = sample_data, aes(x = feat1, y = feat2),
+             shape = "cross", color = "green", size = 3, stroke = 2)
+```
+
+Bivariate plots of training data used to fit the two feature
+na&iuml;ve Bayes model. Dotted lines are the class specific means of the
+model parameters, points are colored by class.
+
+The non-linear Bayes decision boundary reflecting
+the $p = 0.5$ cutoff is represented by the "purple" dashed line.
+The green `X`'s represent the bivariate coordinates of samples 1--5.
+
+```{r}
+#| label: bivariate-decision-boundary
+#| echo: FALSE
+#| fig.width: 12
+#| fig.height: 5
+p1 + p2
+```
