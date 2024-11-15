@@ -2,7 +2,7 @@
 
 Stu Field
 
-19 September 2024
+15 November 2024
 
 ------------------------------------------------------------------------
 
@@ -101,25 +101,25 @@ plot(mix_fit, "likelihood")
 plot(mix_fit, "posterior")
 ```
 
-![cap1](figures/mixture-plot-em1-1.png)
+![caption_em1](figures/mixture-plot-em1-1.png)
 
 ``` r
 plot(mix_fit)
 ```
 
-![cap2](figures/mixture-plot-em2-1.png)
+![caption_em2](figures/mixture-plot-em2-1.png)
 
 Estimates:
 
 ``` r
 mix_fit
 #> ══ Mix Type: normal_k2_mixture ═════════════════════════════════════════════════
-#> n               100
-#> iter            39
-#> mu              1.954, 6.823
-#> sigma           1.126, 1.119
-#> pi_hat          0.523
-#> lambda          0.477, 0.523
-#> final loglik    -218.579
+#> • n               100
+#> • iter            39
+#> • mu              [1.954, 6.823]
+#> • sigma           [1.126, 1.119]
+#> • pi_hat          0.523
+#> • lambda          [0.477, 0.523]
+#> • final loglik    -218.579
 #> ════════════════════════════════════════════════════════════════════════════════
 ```
