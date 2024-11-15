@@ -2,7 +2,7 @@
 
 Stu Field
 
-17 September 2024
+15 November 2024
 
 ------------------------------------------------------------------------
 
@@ -40,8 +40,8 @@ plot(NA, type = "n", xaxt = "n", yaxt = "n",
      xaxs = "i", yaxs = "i", ylim = range(y), xlim = range(x))
 axis(1, labels = x, at = x, cex.axis = 1.5)
 axis(2, labels = y, at=y, las = 2, cex.axis = 1.5)
-addBox(top = 1, col = "blue", alpha = 0.5)
-addBox(top = 1.2, bottom = 1, col = "gray", alpha = 0.7)
+add_box(top = 1, col = "blue", alpha = 0.5)
+add_box(top = 1.2, bottom = 1, col = "gray", alpha = 0.7)
 ```
 
 ![](figures/fdr-null-dist-1.png)
@@ -65,8 +65,8 @@ basefig <- function(y = seq(0, 2, 0.2), ...) {
        cex.lab = 2, xaxs = "i", yaxs = "i", ...)
   axis(1, labels = x, at = x, cex.axis = 1.5)
   axis(2, labels = y, at = y, las = 2, cex.axis = 1.5)
-  addBox(bottom = 0.8, col = "gray", alpha = 0.7)
-  addBox(top = 0.8, col = "blue", alpha = 0.5)
+  add_box(bottom = 0.8, col = "gray", alpha = 0.7)
+  add_box(top = 0.8, col = "blue", alpha = 0.5)
   legend("topright", legend = c("Effect", "No effect"), pch = 15,
          bg = "white",  col = c(col_alpha("red", 0.25), col_alpha("blue", 0.25)),
          inset = 0.02, cex = 1.5, pt.cex = 2)
@@ -76,8 +76,8 @@ alpha <- -4.5
 beta  <- 1
 yvals <- beta * (exp(xvals * alpha)) + 0.8
 basefig()
-plotPolygon(list(xvals, yvals), list(x, rep(0.8, length(x))),
-            add = TRUE, col = col_alpha("red", 0.5))
+plot_polygon(list(xvals, yvals), list(x, rep(0.8, length(x))),
+             add = TRUE, col = col_alpha("red", 0.5))
 ```
 
 ![](figures/fdr-null-alt-1.png)
@@ -96,14 +96,14 @@ shown.
 
 ``` r
 basefig()
-plotPolygon(list(xvals, yvals), list(x, rep(0.8, length(x))),
-            add = TRUE, col = col_alpha("red", 0.5))
+plot_polygon(list(xvals, yvals), list(x, rep(0.8, length(x))),
+             add = TRUE, col = col_alpha("red", 0.5))
 abline(v = 0.125, col = 1, lty = 2, lwd = 2)
-addText(0.015, 0.25, "False\npositive\n(q)", font = 2, cex = 1.5)
-addText(0.015, 0.55, "True\npositive\n(1-q)", font = 2, cex = 1.5)
-addText(0.15, 0.5, "False\nnegative", font = 2, cex = 1.5)
-addText(0.15, 0.25, "True\nnegative", font = 2, cex = 1.5)
-addText(0.2, 0.9, "p-value cutoff", font = 2, cex = 1.5)
+add_text(0.015, 0.25, "False\npositive\n(q)", font = 2, cex = 1.5)
+add_text(0.015, 0.55, "True\npositive\n(1-q)", font = 2, cex = 1.5)
+add_text(0.15, 0.5, "False\nnegative", font = 2, cex = 1.5)
+add_text(0.15, 0.25, "True\nnegative", font = 2, cex = 1.5)
+add_text(0.2, 0.9, "p-value cutoff", font = 2, cex = 1.5)
 arrows(0.2, 1.8, 0.130, 1.8, code = 2, length = 0.2, lwd = 2)
 ```
 
@@ -159,14 +159,14 @@ basefig(y = seq(0, 2.8, 0.2))
 alpha <- -9.5
 beta  <- 1.8
 yvals <- beta * (exp(xvals * alpha)) + 0.8
-plotPolygon(list(xvals, yvals), list(x, rep(0.8, length(x))),
-            add = TRUE, col = col_alpha("red", 0.5))
+plot_polygon(list(xvals, yvals), list(x, rep(0.8, length(x))),
+             add = TRUE, col = col_alpha("red", 0.5))
 abline(v = 0.125, col = 1, lty = 2, lwd = 2)
-addText(0.02, 0.15, "False\npositive\n(q)", font = 2, cex = 1.5)
-addText(0.02, 0.4, "True\npositive\n(1-q)", font = 2, cex = 1.5)
-addText(0.125, 0.33, "False\nnegative", font = 2, cex = 1.5)
-addText(0.15, 0.1, "True\nnegative", font = 2, cex = 1.5)
-addText(0.2, 0.855, "p-value cutoff", font = 2, cex = 1.5)
+add_text(0.02, 0.15, "False\npositive\n(q)", font = 2, cex = 1.5)
+add_text(0.02, 0.4, "True\npositive\n(1-q)", font = 2, cex = 1.5)
+add_text(0.125, 0.33, "False\nnegative", font = 2, cex = 1.5)
+add_text(0.15, 0.1, "True\nnegative", font = 2, cex = 1.5)
+add_text(0.2, 0.855, "p-value cutoff", font = 2, cex = 1.5)
 arrows(0.2, 2.4, 0.130, 2.4, code = 2, length = 0.2, lwd = 2)
 ```
 
@@ -184,7 +184,7 @@ statistic given that the null hypothesis is true, $P(statistic|null)$.
 The q-value makes sense only in the context of “multiple-testing”,
 producing a distribution of p-values and rephrases the question to
 answer: “of the significant tests (for a given cutoff), what proportion
-are expected to be from the null distribution” (i.e. false-positives)?
+are expected to be from the null distribution” (i.e. false-positives)?
 
 ------------------------------------------------------------------------
 
@@ -195,8 +195,8 @@ par_def <- list(mar = c(5, 5, 3, 1), mgp = c(3.5, 0.75, 0))
 
 col_alpha <- ggplot2::alpha
 
-addBox <- function(bottom = NULL, top = NULL, left = NULL, right = NULL,
-                   col, alpha = 0.2, ...) {
+add_box <- function(bottom = NULL, top = NULL, left = NULL, right = NULL,
+                    col, alpha = 0.2, ...) {
   pars <- par("usr")
   if ( is.null(bottom) )
     bottom <- pars[3L]
@@ -210,8 +210,8 @@ addBox <- function(bottom = NULL, top = NULL, left = NULL, right = NULL,
                  col = col_alpha(col, alpha), ...)
 }
 
-plotPolygon <- function(upper, lower, add = FALSE,
-                        col = col_alpha("blue", 0.5), ...) {
+plot_polygon <- function(upper, lower, add = FALSE,
+                         col = col_alpha("blue", 0.5), ...) {
   x1 <- upper[[1L]]
   y1 <- upper[[2L]]
   x2 <- lower[[1L]]
@@ -223,7 +223,7 @@ plotPolygon <- function(upper, lower, add = FALSE,
   graphics::polygon(c(x1, rev(x2)), c(y1, rev(y2)), border = NA, col = col)
 }
 
-addText <- function(x, y, text, pos = 4, ...) {
+add_text <- function(x, y, text, pos = 4, ...) {
   pars   <- par("usr")
   plot_x <- pars[1:2L]
   plot_y <- pars[3:4L]

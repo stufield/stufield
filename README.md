@@ -122,7 +122,7 @@ can solve problems in your space. Please reach out via:
 
 | Topic 🚀                                                    | Topic 🚀                                               |
 |:----------------------------------------------------------- | ------------------------------------------------------ |
-| [False Discovery](articles/tech-note-false-pos-q-values.md) | [Decision Boundaries](articles/decision-boundaries.md) |
+| [False Discovery](articles/false-pos-q-values.md)           | [Decision Boundaries](articles/decision-boundaries.md) |
 | [Naive Bayes](articles/naive-bayes-tech-note.md)            | [Mixture Models](articles/mixture-em.md)               |
 | [Mixed Effects](articles/tech-note-mixed-effects.md)        | [Monty Hall Paradox](articles/monty-hall-paradox.md)   |
 | [Logistic Regression](articles/logistic-regression.md)      |
