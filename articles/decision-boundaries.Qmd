@@ -95,10 +95,10 @@ predict_bivariate_knn <- function(X, newdata, y, k, ...) {
 }
 
 # plot a bivariate decision boundary
-plot_decision_boundary <- function(data, res = 50, model.type = c("knn", "bayes"),
+plot_decision_boundary <- function(data, res = 50, model_type = c("knn", "bayes"),
                                    k = 15, line.col = "darkviolet", lwd = 2,
                                    lty = 2, contours = 0.5) {
-  model.type <- match.arg(model.type)
+  model_type <- match.arg(model_type)
   z  <- data$y
   train <- data$x
   x1 <- train[, 1L]
@@ -107,12 +107,12 @@ plot_decision_boundary <- function(data, res = 50, model.type = c("knn", "bayes"
   x2grid <- seq(min(x2), max(x2), length = res)
   grid <- data.frame(expand.grid(x1 = x1grid, x2 = x2grid))   # grid of probs
 
-  if ( model.type == "bayes" ) {
+  if ( model_type == "bayes" ) {
     rm(k)
     model <- libml::fit_nb(train, data$y)
     prob  <- predict(model, grid, type = "raw")[, "disease"]
     title <- "Naive Bayes | disease (Pr>0.5) space: "
-  } else if ( model.type == "knn" ) {
+  } else if ( model_type == "knn" ) {
     model <- predict_bivariate_knn(train, grid, z, k = k, method = "mink")
     prob  <- model$prob
     title <- sprintf("KNN (k=%i) | disease (Pr>0.5) space: ",k)
@@ -161,10 +161,10 @@ in the boundary between the two methods.
 par_def <- list(mgp = c(2.00, 0.75, 0.00), mar = c(3, 4, 3, 1))
 par(par_def)
 par(mfrow = c(2L, 2L))
-plot_decision_boundary(fake_data(), res = 50, model.type = "knn")
-plot_decision_boundary(fake_data(), res = 50, model.type = "bayes")
-plot_decision_boundary(fake_data2(), res = 50, model.type = "knn")
-plot_decision_boundary(fake_data2(), res = 50, model.type = "bayes")
+plot_decision_boundary(fake_data(), res = 50, model_type = "knn")
+plot_decision_boundary(fake_data(), res = 50, model_type = "bayes")
+plot_decision_boundary(fake_data2(), res = 50, model_type = "knn")
+plot_decision_boundary(fake_data2(), res = 50, model_type = "bayes")
 ```
 
 
@@ -176,7 +176,7 @@ plot_decision_boundary(fake_data2(), res = 50, model.type = "bayes")
 #| fig.height: 10
 par(mfrow = c(3L, 3L))
 for ( i in 2:10 ) {
-  plot_decision_boundary(fake_data(), res = 50, model.type = "knn", k = i)
+  plot_decision_boundary(fake_data(), res = 50, model_type = "knn", k = i)
 }
 ```
 
@@ -184,5 +184,5 @@ for ( i in 2:10 ) {
 
 ### Code Reference
 
-TODO
+- `TODO`
 

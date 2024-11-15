@@ -4,13 +4,13 @@ Stu Field
 
 15 November 2024
 
-------------------------------------------------------------------------
-
 # Overview
 
 It is sometimes nice to visualize the decision boundaries of various
 models. Here we compare 2 commonly used models: naïve Bayes and
 k-nearest neighbors.
+
+------------------------------------------------------------------------
 
 ## KNN vs naïve Bayes
 
@@ -26,10 +26,10 @@ the difference in the boundary between the two methods.
 par_def <- list(mgp = c(2.00, 0.75, 0.00), mar = c(3, 4, 3, 1))
 par(par_def)
 par(mfrow = c(2L, 2L))
-plot_decision_boundary(fake_data(), res = 50, model.type = "knn")
-plot_decision_boundary(fake_data(), res = 50, model.type = "bayes")
-plot_decision_boundary(fake_data2(), res = 50, model.type = "knn")
-plot_decision_boundary(fake_data2(), res = 50, model.type = "bayes")
+plot_decision_boundary(fake_data(), res = 50, model_type = "knn")
+plot_decision_boundary(fake_data(), res = 50, model_type = "bayes")
+plot_decision_boundary(fake_data2(), res = 50, model_type = "knn")
+plot_decision_boundary(fake_data2(), res = 50, model_type = "bayes")
 ```
 
 ![](figures/kknn-bayes-knn-vs-bayes-1.png)
@@ -39,7 +39,7 @@ plot_decision_boundary(fake_data2(), res = 50, model.type = "bayes")
 ``` r
 par(mfrow = c(3L, 3L))
 for ( i in 2:10 ) {
-  plot_decision_boundary(fake_data(), res = 50, model.type = "knn", k = i)
+  plot_decision_boundary(fake_data(), res = 50, model_type = "knn", k = i)
 }
 ```
 
@@ -49,4 +49,4 @@ for ( i in 2:10 ) {
 
 ### Code Reference
 
-TODO
+- `TODO`
