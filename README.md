@@ -120,14 +120,14 @@ can solve problems in your space. Please reach out via:
 
 ### Tech Notes
 
-| Topic 🚀                                                               |
-|:---------------------------------------------------------------------- |
-| [False Discovery](articles/tech-note-false-pos-q-values.md)            |
-| [Naive Bayes](articles/naive-bayes-tech-note.md)                       |
-| [Mixed Effects](articles/tech-note-mixed-effects.md)                   |
-| [Decision Boundary Comparison](articles/decision-boundaries.md)        |
-| [Logistic Regression](articles/logistic-regression.md)                 |
-| [Mixture Models](articles/mixture-em.md)                               |
+| Topic 🚀                                                    | Topic 🚀                                               |
+|:----------------------------------------------------------- | ------------------------------------------------------ |
+| [False Discovery](articles/tech-note-false-pos-q-values.md) | [Decision Boundaries](articles/decision-boundaries.md) |
+| [Naive Bayes](articles/naive-bayes-tech-note.md)            | [Mixture Models](articles/mixture-em.md)               |
+| [Mixed Effects](articles/tech-note-mixed-effects.md)        | [Monty Hall Paradox](articles/monty-hall-paradox.md)   |
+| [Logistic Regression](articles/logistic-regression.md)      |
+
+
 
 
 #### Other Interests
