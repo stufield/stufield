@@ -126,6 +126,7 @@ can solve problems in your space. Please reach out via:
 | [Naive Bayes](articles/naive-bayes-tech-note.md)            | [Mixture Models](articles/mixture-em.md)               |
 | [Mixed Effects](articles/mixed-effects-models.md)           | [Monty Hall Paradox](articles/monty-hall-paradox.md)   |
 | [Logistic Regression](articles/logistic-regression.md)      |
+| [Mack-Wolfe Tests](articles/mack-wolfe.md)                  |
 
 
 
