@@ -1,6 +1,8 @@
 # Longitudinal Data Analysis via Linear Mixed-Effects Models
+
 Stu Field
-22 September 2024
+
+15 November 2024
 
 ------------------------------------------------------------------------
 
@@ -178,13 +180,13 @@ nlme::lme(y ~ time * group, random = ~ 1 + time | pid, data = adat)
 
 ### Syntax Definitions
 
-| Symbol         |               |                  Corresponds to                  |
-|----------------|---------------|:------------------------------------------------:|
-| $y$            | $\rightarrow$ |                     $y_{ij}$                     |
-| $∼ 1$          | $\rightarrow$ |            random effects ($b_{0i}$)             |
-| `pid`          | $\rightarrow$ | field containing the dependent groups (subjects) |
-| `time * group` | $\rightarrow$ |      fixed effects (with interaction term)       |
-| `time * group` | $\rightarrow$ |          `time + group + time * group`           |
+| Symbol |  | Corresponds to |
+|----|----|:--:|
+| $y$ | $\rightarrow$ | $y_{ij}$ |
+| $∼ 1$ | $\rightarrow$ | random effects ($b_{0i}$) |
+| `pid` | $\rightarrow$ | field containing the dependent groups (subjects) |
+| `time * group` | $\rightarrow$ | fixed effects (with interaction term) |
+| `time * group` | $\rightarrow$ | `time + group + time * group` |
 
 ------------------------------------------------------------------------
 
@@ -196,22 +198,22 @@ a serial autocorrelation parameter of 0.1. The default simulation values
 can be seen below:
 
 ``` r
-args(simulateLongData)
-> function (nsubj = 20, beta0 = 1000, beta1 = 10, max.obs = 10, 
->     group = NULL, auto.cor = 0.5, sd.pars = list(sigma = beta0/4, 
->         tau0 = 2, tau1 = 2, tau01 = 0.5), r.seed = 1234) 
+args(simulate_long_data)
+> function (nsubj = 20L, beta0 = 1000, beta1 = 10, max_obs = 10, 
+>     group = NULL, auto_cor = 0.5, sd_pars = list(sigma = beta0/4, 
+>         tau0 = 2, tau1 = 2, tau01 = 0.5), r_seed = 1234L) 
 > NULL
 ```
 
 ``` r
 # simulate longitudinal data
-# createLongData() is a wrapper for simulateLongData()
-p <- list(nsubj = 20, beta0 = 1000, beta1 = 400, max.obs = 10, r.seed = 101,
-          sd.pars = list(sigma = 250), auto.cor = 0.1)
-ResponseData <- createLongData(subject = p)
+# create_long_data() is a wrapper for simulate_long_data()
+p <- list(nsubj = 20, beta0 = 1000, beta1 = 400, max_obs = 10,
+          r_seed = 101, sd_pars = list(sigma = 250), auto_cor = 0.1)
+response_data <- create_long_data(subject = p)
 > Warning: The `sd.pars` argument list is missing these parameter(s): 'tau0', 'tau1', 'tau01'.
 > Using default parameters: 2, 2, 0.5.
-ResponseData
+response_data
 > # A tibble: 127 × 5
 >    pid          time    eij   yij Group  
 >  * <chr>       <dbl>  <dbl> <dbl> <chr>  
@@ -226,7 +228,7 @@ ResponseData
 >  9 subject_003     3  -93.8 2101  subject
 > 10 subject_003     4  167.  2760. subject
 > # ℹ 117 more rows
-table(ResponseData$pid)
+table(response_data$pid)
 > 
 > subject_001 subject_002 subject_003 subject_004 subject_005 subject_006 
 >           3           3           8           9           9           3 
@@ -240,7 +242,7 @@ table(ResponseData$pid)
 
 ``` r
 # plot longitudinal traces by subject ("pid")
-ResponseData |>
+response_data |>
   ggplot(aes(x = time, y = yij, group = pid, colour = pid)) +
   geom_line() +
   geom_point( size = 4, shape = 21, fill = "white") +
@@ -254,7 +256,7 @@ ResponseData |>
 
 ``` r
 # plot longitudinal traces together
-ResponseData |>
+response_data |>
   ggplot(aes(x = time, y = yij, group = pid, colour = pid)) +
   geom_line() +
   geom_point(size = 4, shape = 21, fill = "white") +
@@ -282,10 +284,10 @@ $b_{0i}$ is the subject-specific random *intercept*, and $\beta_1$ is
 the fixed-effect for *time*.
 
 ``` r
-fit1 <- fit_lme_safely(yij ~ time, random = ~ 1 | pid, data = ResponseData)
+fit1 <- fit_lme_safely(yij ~ time, random = ~ 1 | pid, data = response_data)
 summary(fit1)
 > Linear mixed-effects model fit by REML
->   Data: ResponseData 
+>   Data: response_data 
 >        AIC      BIC    logLik
 >   1749.402 1760.715 -870.7009
 > 
@@ -337,17 +339,17 @@ be seen below:
 
 ``` r
 # simulate longitudinal data with group-specific response
-control <- list(nsubj = 20, beta1 = 0, max.obs = 10, r.seed = 10,
-                sd.pars = list(sigma = 150), auto.cor = 0.1)
-treatment <- list(nsubj = 20, beta1 = 500, max.obs = 10, r.seed = 11,
-                  sd.pars = list(sigma = 350), auto.cor = 0.1)
-GroupResponseData <- createLongData(control, treatment)
+control <- list(nsubj = 20, beta1 = 0, max_obs = 10, r_seed = 10,
+                sd_pars = list(sigma = 150), auto_cor = 0.1)
+treatment <- list(nsubj = 20, beta1 = 500, max_obs = 10, r_seed = 11,
+                  sd_pars = list(sigma = 350), auto_cor = 0.1)
+group_data <- create_long_data(control, treatment)
 ```
 
 Now plot the longitudinal time traces:
 
 ``` r
-GroupResponseData |>
+group_data |>
   ggplot(aes(x = time, y = yij, group = pid, colour = pid)) +
   geom_line() +
   geom_point(size = 4, shape = 21, fill = "white") +
@@ -397,18 +399,18 @@ giving,
 
 ``` r
 fit2 <- fit_lme_safely(yij ~ time * Group, random = ~ 1 | pid,
-                       data = GroupResponseData)
+                       data = group_data)
 ```
 
 ## Check Subject-specific Linear Models with `lmList`
 
 It can be a good idea to check the variation on the coefficients of
-subject-specific linear fits of the data. The `mixr::lmeDiagnostic()`
+subject-specific linear fits of the data. The `mixr::lme_diagnostic()`
 function generates diagnostic plots of linear models for each of the *i*
 subjects.
 
 ``` r
-lmeDiagnostic(fit2)
+lme_diagnostic(fit2)
 ```
 
 <img src="figures/mixed-diag-1.png" data-fig-align="center" />
@@ -430,7 +432,7 @@ longitudinal time-series data in a clinical setting).
 ``` r
 summary(fit2)
 > Linear mixed-effects model fit by REML
->   Data: GroupResponseData 
+>   Data: group_data 
 >        AIC      BIC    logLik
 >   3816.172 3837.829 -1902.086
 > 
@@ -486,12 +488,12 @@ how the terms are partitioned.
 
 ``` r
 # simulate longitudinal data with group-specific response
-p1 <- list(nsubj = 20, beta1 = 250, max.obs = 10, r.seed = 10,
-           sd.pars = list(sigma = 150), auto.cor = 0.1)
-p2 <- list(nsubj = 20, beta1 = 500, max.obs = 10, r.seed = 101,
-           sd.pars = list(sigma = 350), auto.cor = 0.1)
-GroupResponseData2 <- createLongData(control = p1, treatment = p2)
-GroupResponseData2 |>
+p1 <- list(nsubj = 20, beta1 = 250, max_obs = 10, r_seed = 10,
+           sd_pars = list(sigma = 150), auto_cor = 0.1)
+p2 <- list(nsubj = 20, beta1 = 500, max_obs = 10, r_seed = 101,
+           sd_pars = list(sigma = 350), auto_cor = 0.1)
+group_data2 <- create_long_data(control = p1, treatment = p2)
+group_data2 |>
   ggplot(aes(x = time, y = yij, group = pid, colour = pid)) +
   geom_line() +
   geom_point(size = 4, shape = 21, fill = "white") +
@@ -506,10 +508,10 @@ data-fig-align="center" />
 
 ``` r
 fit3 <- fit_lme_safely(yij ~ time * Group, random = ~ 1 | pid,
-                       data = GroupResponseData2)
+                       data = group_data2)
 summary(fit3)
 > Linear mixed-effects model fit by REML
->   Data: GroupResponseData2 
+>   Data: group_data2 
 >        AIC      BIC    logLik
 >   3759.704 3781.228 -1873.852
 > 
