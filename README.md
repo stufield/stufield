@@ -125,13 +125,22 @@ can solve problems in your space. Please reach out via:
   publication record.
 
 
-## Tech Notes & Vignettes
+## Tech Notes & Vignettes 📚
 
-| Topic 🚀       | Topic 🚀        | Topic 🚀       |
-|:-------------- |:--------------- |:-------------- |
-| [False Discovery](articles/false-pos-q-values.md) | [Mixture Models](articles/mixture-em.md)             | [Logistic Regression](articles/logistic-regression.md) |
-| [Naive Bayes](articles/naive-bayes-tech-note.md)  | [The Birthday Paradox](articles/birthday-paradox.md) | [Mack-Wolfe Tests](articles/mack-wolfe.md)             |
-| [Mixed Effects](articles/mixed-effects-models.md) | [Monty Hall Paradox](articles/monty-hall-paradox.md) | [Decision Boundaries](articles/decision-boundaries.md) |
+| Topic 🚀                                               | Thumbnail 📈     |
+|:------------------------------------------------------ |:----------------:|
+| [False Discovery](articles/false-pos-q-values.md)      | <a href="articles/false-pos-q-values.md"><img src="articles/figures/fdr-power-1.png" width="100px"></a> |
+| [Mixture Models](articles/mixture-em.md)               | <a href="articles/mixture-em.md"><img src="articles/figures/mixture-plot-em2-1.png" width="100px"></a> |
+| [Logistic Regression](articles/logistic-regression.md) | <a href="articles/logistic-regression.md"><img src="articles/figures/logistic-logit-1.png" width="100px"></a> |
+| [Naive Bayes](articles/naive-bayes-tech-note.md)       | <a href="articles/naive-bayes-tech-note.md"><img src="articles/figures/bayes-PDFs-1.png" width="100px"></a> |
+| [The Birthday Paradox](articles/birthday-paradox.md)   | <a href="articles/birthday-paradox.md"><img src="articles/figures/birthday-paradox-ggplot-prob-fun-1.png" width="100px"></a> |
+| [Mack-Wolfe Tests](articles/mack-wolfe.md)             | <a href="articles/mack-wolfe.md"><img src="articles/figures/mack-wolfe-four-scenario-beeswarm-1.png" width="100px"></a> |
+| [Mixed Effects](articles/mixed-effects-models.md)      | <a href="articles/mixed-effects-models.md"><img src="articles/figures/mixed-plot_long_combined-1.png" width="100px"></a> |
+| [Monty Hall Paradox](articles/monty-hall-paradox.md)   | <a href="articles/monty-hall-paradox.md"><img src="articles/figures/monty-hall-plot-sim-1.png" width="100px"></a> |
+| [Decision Boundaries](articles/decision-boundaries.md) | <a href="articles/decision-boundaries.md"><img src="articles/figures/kknn-bayes-knn-vs-bayes-1.png" width="100px"></a> |
+
+
+
 
 
 ----------------
