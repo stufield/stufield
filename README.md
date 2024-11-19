@@ -152,10 +152,11 @@ can solve problems in your space. Please reach out via:
 
 - I maintain several `R` software libraries (📦) that implement
   statistical and machine learning techniques in biomarker discovery.
-  Some of my popular published (CRAN) 📦 are:
-  - [SomaDataIO](https://github.com/SomaLogic/SomaDataIO)
+  Some of my popular published [CRAN](https://cloud.r-project.org/) 📦 are:
+  - [SomaDataIO](https://cran.r-project.org/web/packages/SomaDataIO/index.html)
   - [SomaPlotr](https://github.com/SomaLogic/SomaPlotr)
   - [gitr](https://github.com/stufield/gitr)
+  - [helpr](https://github.com/stufield/helpr)
 - These projects support analyses in the general health care (Life Sciences)
   space to generate proteomic based clinical insights in health spaces such as:
   - cardiovascular disease
