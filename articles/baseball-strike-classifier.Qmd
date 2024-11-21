@@ -1,0 +1,224 @@
+---
+title: "Baseball Analytics: Strike Classifier"
+author: "Stu Field"
+date: today
+date-format: "D MMMM YYYY"
+format:
+  gfm:
+    preview-mode: raw
+#  html:
+#    number-sections: true
+#    colorlinks: true
+#  pdf:
+#    number-sections: true
+#    colorlinks: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: setup
+#| include: FALSE
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment  = "#>",
+  fig.path = "figures/strike-"
+)
+library(libml)
+library(dplyr)
+library(randomForest)
+library(withr)
+library(ggplot2)
+
+pitch_data <- readRDS("data/pitch_data.rds")
+```
+
+
+# Overview
+
+Add general overview of the aim of the analysis etc ...
+
+Pitch data were obtained from [FanGraphs](https://www.fangraphs.com/)
+
+
+------------------
+
+## Modeling Approach
+
+1. **Explore features**:
+    - there are `r nrow(pitch_data)` pitches (strikes) for analysis
+    - visually and heuristically to identify
+      likely candidates that may be predictive with the
+      response variable `is_strike`
+1. **Feature reduction**: using a combination of
+    - step-wise forward/backward feature selection
+    - [Stability Selection](https://rss.onlinelibrary.wiley.com/doi/10.1111/j.1467-9868.2010.00740.x)
+    - [PCA](https://en.wikipedia.org/wiki/Principal_component_analysis)
+1. **Fit binary classification models**:
+    - Logistic Regression
+    - [Random Forest](https://www.geeksforgeeks.org/random-forest-algorithm-in-machine-learning/)
+    - Naive Bayes
+1. **Evaluate and Refine**:
+    - make predictions
+    - evaluate metrics
+
+
+## Model Features
+
+The `pitch_data` object contains `r ncol(pitch_data) - 1L`
+possible features that could be used in a putative 
+classification model to predict `is_strike`:
+
+```{r}
+#| label: pitch-data
+pitch_data
+
+table(pitch_data$is_strike)  # slight class imbalance
+
+# rm first row: is_strike is the response!
+tibble::enframe(sapply(pitch_data, class)) |> tail(-1L)
+```
+
+Notice there is a class imbalance in the strike response (~ 2:1) which
+could be problematic generalizing to new data outside of these training data.
+See my other tutorial on the dangers of class imbalance [here]().
+Since there samples (pitches) are not in short supply (unlike in, for examples,
+biological data sets), I will simply down sample the major class for
+training.
+
+```{r}
+pitch_data2 <- rebalance(pitch_data, is_strike)
+
+table(pitch_data2$is_strike)  # class imbalance removed
+```
+
+I used a combination of univariate testing, forward- and 
+backward-feature selection, stability selection,
+and simple heuristics (i.e common sense to exclude
+certain variables) to arrive at a final feature set.
+
+The following 4 features were chosen:
+
+```{r}
+#| label: model-features
+feats <- c("plate_location_x",
+           "plate_location_z",
+           "strikes",
+           "balls")
+```
+
+Not surprisingly, `plate_location_*` coordinates were by far the most
+significant predictors in most model building exercises,
+followed by `balls` and `strikes`. As one would expect,
+the pitch count was highly influential on upcoming pitch location.
+Incidentally, PCA revealed `spin_rate` dominated the variance,
+as it was the first (principal) component containing over 99% of the
+total variance, however this variation was *not* associated with `is_strike`.
+
+
+## Fit Model
+
+I evaluated numerous model types and eventually decided
+on a Random Forest model. In my experience CART methods can
+perform especially well with discrete variables/predictors
+(i.e. `strikes` and `balls`).
+
+
+```{r}
+#| label: fit-rf-model
+rf_model <- withr::with_seed(123, {  # set seed for reproducibility
+  randomForest::randomForest(        # use randomForest package
+    as.matrix(pitch_data2[, feats]),  # feature data matrix
+    as.factor(pitch_data2$is_strike), # convert response to factor
+    ntree = 250
+  )
+})
+
+# Gini Importance by feature
+get_gini(rf_model)
+```
+
+and predict strike probability:
+
+```{r}
+#| label: pred-strikes
+rf_probs <- predict(rf_model,
+                    newdata = pitch_data2[, feats], # predict on *training* data
+                    type = "prob")[, 2L]            # class 2 = strike
+
+cmat <- calc_confusion(pitch_data2$is_strike, rf_probs, pos_class = 1L) # confusion matrix
+
+summary(cmat) # evaluate performance
+```
+
+Model performance was surprisingly accurate.
+Stark contrast to my experience in Life Sciences (proteomics) where
+performance is typically *much* lower and `AUC > 0.95` are uncommon.
+
+Also keep in mind that performance here was evaluated on the *training* data,
+and a typical machine learning training and test setup would certainly generate
+reduced *test* performance. 
+
+That said, it should be noted that random forest
+models do perform a sort of *quasi*-internal cross-validation,
+out-of-bag (OOB) samples, that should guard (somewhat) against over-fitting.
+
+
+## Append predictions to original data
+
+It is often safer to immediately append the predicted probabilities
+to the original data set so they do not become out-of-sync:
+
+```{r}
+#| label: add-pred-probs
+pitch_data2$strike_prob <- rf_probs
+
+dplyr::select(pitch_data2, all_of(feats), is_strike, strike_prob)
+```
+
+
+## ROC
+
+At this point generating a ROC curve of the predictive performance
+of the model is superfluous, but I'll do it anyway:
+
+```{r}
+#| label: roc
+plot_emp_roc(pitch_data2$is_strike, pitch_data2$strike_prob, pos_class = 1L,
+             plot_fit = TRUE, lwd = 1, cutoff_shape = 21,
+             cutoff_size = 2.5, outline = FALSE, col = "#002D72") +
+  ggtitle("Strike Classifier ROC Curve")
+```
+
+Perhaps another visual that can be useful is a log-odds plot, where the
+predictions are plotted against the decision boundary to see how close
+they are. Sort of a visual representation of the Brier Score.
+
+Because there are `r nrow(pitch_data2)` samples, this plot can
+become cluttered so I will randomly sample 250 pitches to represent
+patterns in the predictions.
+
+```{r}
+#| label: log-odds
+odds_data <- withr::with_seed(123, dplyr::sample_n(pitch_data2, size = 250L))
+plot_log_odds(odds_data$is_strike, odds_data$strike_prob, pos_class = 1L) +
+  ggplot2::ggtitle("Log-Odds RF Strike Classifier")
+```
+
+A curious pattern emerges:
+
+1. incorrectly classed pitches are directly next to the boundary line
+   (which is good!).
+1. there are a subset (majority?) of pitches with extreme probabilities,
+   that have been thresholded by the plotting routine. The classifier
+   is *absolutely* sure about these predictions, however, what is responsible
+   for the gap between these clusters?
+   This is odd. **TODO:** look into this further ... something with
+   a Random Forest?
+
+--------------
+
+Created in `RStudio` (`v2024.09.1+394`),
+by [Quarto](https://quarto.org/) (`v1.4.555`),
+and `r R.version$version.string`.
+
