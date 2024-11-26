@@ -138,8 +138,14 @@ can solve problems in your space. Please reach out via:
 | [Mixed Effects](articles/mixed-effects-models.md)      | <a href="articles/mixed-effects-models.md"><img src="articles/figures/mixed-plot_long_combined-1.png" width="100px"></a> |
 | [Monty Hall Paradox](articles/monty-hall-paradox.md)   | <a href="articles/monty-hall-paradox.md"><img src="articles/figures/monty-hall-plot-sim-1.png" width="100px"></a> |
 | [Decision Boundaries](articles/decision-boundaries.md) | <a href="articles/decision-boundaries.md"><img src="articles/figures/kknn-bayes-knn-vs-bayes-1.png" width="100px"></a> |
+| [Class Imbalance](articles/class-imbalance.md)          | <a href="articles/class-imbalance.md"><img src="articles/figures/class-imbalance-plot-imbalance-1-1.png" width="100px"></a> |
 
 
+## Baseball
+
+| Topic 🚀                                               | Thumbnail 📈     |
+|:------------------------------------------------------ |:----------------:|
+| [Pitch Classifier](articles/baseball-strike-classifier.md) | <a href="articles/baseball-strike-classifier.md"><img src="articles/figures/strike-log-odds-1.png" width="100px"></a> |
 
 
 
