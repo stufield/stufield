@@ -1,5 +1,5 @@
-# Simulation Highlighting Effect of Class Imbalance on Prediction Accuracy
-#### This is somewhat frightening: a cautionary tail of balance
+# Effect of Class Imbalance on Prediction Accuracy  
+### somewhat frightening: a cautionary tail of balance
 
 Stu Field
 

@@ -81,7 +81,8 @@ tibble::enframe(sapply(pitch_data, class)) |> tail(-1L)
 
 Notice there is a class imbalance in the strike response (~ 2:1) which
 could be problematic generalizing to new data outside of these training data.
-See my other tutorial on the dangers of class imbalance [here]().
+See my other tutorial on the dangers of class imbalance
+[here](https://github.com/stufield/stufield/blob/main/articles/class-imbalance.md).
 Since there samples (pitches) are not in short supply (unlike in, for examples,
 biological data sets), I will simply down sample the major class for
 training.

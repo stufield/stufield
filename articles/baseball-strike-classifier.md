@@ -82,7 +82,8 @@ tibble::enframe(sapply(pitch_data, class)) |> tail(-1L)
 
 Notice there is a class imbalance in the strike response (~ 2:1) which
 could be problematic generalizing to new data outside of these training
-data. See my other tutorial on the dangers of class imbalance [here]().
+data. See my other tutorial on the dangers of class imbalance
+[here](https://github.com/stufield/stufield/blob/main/articles/class-imbalance.md).
 Since there samples (pitches) are not in short supply (unlike in, for
 examples, biological data sets), I will simply down sample the major
 class for training.
@@ -138,10 +139,10 @@ get_gini(rf_model)
 #> # A tibble: 4 × 2
 #>   Feature          Gini_Importance
 #>   <chr>                      <dbl>
-#> 1 plate_location_z           7624.
-#> 2 plate_location_x           7306.
-#> 3 strikes                     842.
-#> 4 balls                       233.
+#> 1 plate_location_z           7723.
+#> 2 plate_location_x           7343.
+#> 3 strikes                     766.
+#> 4 balls                       232.
 ```
 
 and predict strike probability:
@@ -161,29 +162,29 @@ summary(cmat) # evaluate performance
 #> 
 #>      Predicted
 #> Truth     0     1
-#>     0 16523   652
-#>     1    91 17084
+#>     0 16546   629
+#>     1    61 17114
 #> 
 #> ── Performance Metrics (CI95%) ─────────────────────────────────────────────────
 #> 
 #> # A tibble: 10 × 5
 #>    metric              n estimate CI95_lower CI95_upper
 #>    <chr>           <int>    <dbl>      <dbl>      <dbl>
-#>  1 Sensitivity     17175   0.995      0.993      0.996 
-#>  2 Specificity     17175   0.962      0.959      0.965 
-#>  3 PPV (Precision) 17736   0.963      0.960      0.966 
-#>  4 NPV             16614   0.995      0.993      0.996 
-#>  5 Accuracy        34350   0.978      0.977      0.980 
-#>  6 Bal Accuracy    34350   0.978      0.977      0.980 
+#>  1 Sensitivity     17175   0.996      0.995      0.997 
+#>  2 Specificity     17175   0.963      0.960      0.967 
+#>  3 PPV (Precision) 17743   0.965      0.961      0.968 
+#>  4 NPV             16607   0.996      0.995      0.997 
+#>  5 Accuracy        34350   0.980      0.978      0.982 
+#>  6 Bal Accuracy    34350   0.980      0.978      0.982 
 #>  7 Prevalence      34350   0.5        0.494      0.506 
 #>  8 AUC             34350   0.999      0.999      0.999 
-#>  9 Brier Score     34350   0.0178     0.0162     0.0194
-#> 10 MCC                NA   0.957     NA         NA     
+#>  9 Brier Score     34350   0.0175     0.0159     0.0191
+#> 10 MCC                NA   0.960     NA         NA     
 #> 
 #> ── Additional Statistics ───────────────────────────────────────────────────────
 #> 
 #> F_measure    G_mean    Wt_Acc 
-#>     0.979     0.978     0.987
+#>     0.980     0.980     0.988
 ```
 
 Model performance was surprisingly accurate. Stark contrast to my
@@ -210,16 +211,16 @@ dplyr::select(pitch_data2, all_of(feats), is_strike, strike_prob)
 #> # A tibble: 34,350 × 6
 #>    plate_location_x plate_location_z strikes balls is_strike strike_prob
 #>               <dbl>            <dbl>   <int> <int>     <int>       <dbl>
-#>  1            1.16             2.30        1     0         0       0.02 
-#>  2            0.038            0.972       1     1         0       0    
-#>  3           -0.016            1.62        1     1         0       0.456
-#>  4            0.936            2.97        1     0         0       0.324
-#>  5            1.52             1.84        0     0         0       0.016
-#>  6           -0.28             3.62        0     0         0       0.104
-#>  7            0.13             3.5         0     1         0       0.324
-#>  8           -0.958            2.32        0     0         0       0.556
-#>  9            1.18             3.47        0     0         0       0.008
-#> 10           -1.56             2.50        2     2         0       0.008
+#>  1            1.15             2.50        0     0         0       0.016
+#>  2           -0.527            0.796       0     0         0       0.004
+#>  3            1.59             3.05        0     2         0       0.004
+#>  4           -1.00             1.12        2     2         0       0    
+#>  5            0.002            0.532       1     0         0       0    
+#>  6            2.13             2.74        1     1         0       0.036
+#>  7            0.201            1.47        1     1         0       0.416
+#>  8            0.131            0.799       0     1         0       0    
+#>  9           -1.29             3.38        2     2         0       0.008
+#> 10           -0.911            1.66        1     0         0       0.256
 #> # ℹ 34,340 more rows
 ```
 

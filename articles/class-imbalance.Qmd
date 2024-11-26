@@ -1,6 +1,7 @@
 ---
-title: "Simulation Highlighting Effect of Class Imbalance on Prediction Accuracy"
-subtitle: "This is somewhat frightening: a cautionary tail of balance"
+title: |
+  | Effect of Class Imbalance on Prediction Accuracy
+  | somewhat frightening: a cautionary tail of balance
 author: "Stu Field"
 date: today
 date-format: "D MMMM YYYY"
