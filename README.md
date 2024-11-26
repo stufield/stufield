@@ -228,19 +228,18 @@ Badges for X
 ### 🔧 GitHub Commits
 <!-- Badges -->
 <!-- GH Badges -->
+![](https://img.shields.io/github/last-commit/stufield/gitr?logo=github&label=gitr)
+![](https://img.shields.io/github/last-commit/stufield/helpr?logo=github&label=helpr)
+![](https://img.shields.io/github/last-commit/stufield/stufield?logo=github&label=stufield)
 ![](https://img.shields.io/github/last-commit/stufield/SomaDataIO?logo=github&label=SomaDataIO)
 ![](https://img.shields.io/github/last-commit/stufield/SomaPlotr?logo=github&label=SomaPlotr)
-![](https://img.shields.io/github/last-commit/stufield/SomaScan.db?logo=github&label=SomaScan.db)
 ![](https://img.shields.io/github/last-commit/stufield/system-config?logo=github&label=system-config)
-![](https://img.shields.io/github/last-commit/stufield/gitr?logo=github&label=gitr)
+![](https://img.shields.io/github/last-commit/stufield/tech-notes?logo=github&label=tech-notes)
 ![](https://img.shields.io/github/last-commit/stufield/git-hooks?logo=github&label=git-hooks)
 ![](https://img.shields.io/github/last-commit/stufield/code-works?logo=github&label=code-works)
 ![](https://img.shields.io/github/last-commit/stufield/reprex-collection?logo=github&label=reprex-collection)
-![](https://img.shields.io/github/last-commit/stufield/tech-notes?logo=github&label=tech-notes)
-![](https://img.shields.io/github/last-commit/stufield/stutils?logo=github&label=stutils)
 ![](https://img.shields.io/github/last-commit/stufield/devel?logo=github&label=devel)
-![](https://img.shields.io/github/last-commit/grapevine?logo=github&label=grapevine)
-![](https://img.shields.io/github/last-commit/git-STAA-577?logo=github&label=git-STAA-577)
+![](https://img.shields.io/github/last-commit/stufield/grapevine?logo=github&label=grapevine)
 
 
 ------------
