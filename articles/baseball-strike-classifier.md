@@ -1,5 +1,7 @@
 # Baseball Analytics: Strike Classifier
+
 Stu Field
+
 26 November 2024
 
 # Overview
@@ -139,10 +141,10 @@ get_gini(rf_model)
 #> # A tibble: 4 × 2
 #>   Feature          Gini_Importance
 #>   <chr>                      <dbl>
-#> 1 plate_location_z           7723.
-#> 2 plate_location_x           7343.
-#> 3 strikes                     766.
-#> 4 balls                       232.
+#> 1 plate_location_z           7737.
+#> 2 plate_location_x           7356.
+#> 3 strikes                     750.
+#> 4 balls                       234.
 ```
 
 and predict strike probability:
@@ -162,29 +164,29 @@ summary(cmat) # evaluate performance
 #> 
 #>      Predicted
 #> Truth     0     1
-#>     0 16546   629
-#>     1    61 17114
+#>     0 16575   600
+#>     1    78 17097
 #> 
 #> ── Performance Metrics (CI95%) ─────────────────────────────────────────────────
 #> 
 #> # A tibble: 10 × 5
 #>    metric              n estimate CI95_lower CI95_upper
 #>    <chr>           <int>    <dbl>      <dbl>      <dbl>
-#>  1 Sensitivity     17175   0.996      0.995      0.997 
-#>  2 Specificity     17175   0.963      0.960      0.967 
-#>  3 PPV (Precision) 17743   0.965      0.961      0.968 
-#>  4 NPV             16607   0.996      0.995      0.997 
-#>  5 Accuracy        34350   0.980      0.978      0.982 
-#>  6 Bal Accuracy    34350   0.980      0.978      0.982 
+#>  1 Sensitivity     17175   0.995      0.994      0.997 
+#>  2 Specificity     17175   0.965      0.962      0.968 
+#>  3 PPV (Precision) 17697   0.966      0.963      0.969 
+#>  4 NPV             16653   0.995      0.994      0.996 
+#>  5 Accuracy        34350   0.980      0.979      0.982 
+#>  6 Bal Accuracy    34350   0.980      0.979      0.982 
 #>  7 Prevalence      34350   0.5        0.494      0.506 
 #>  8 AUC             34350   0.999      0.999      0.999 
-#>  9 Brier Score     34350   0.0175     0.0159     0.0191
-#> 10 MCC                NA   0.960     NA         NA     
+#>  9 Brier Score     34350   0.0176     0.0160     0.0192
+#> 10 MCC                NA   0.961     NA         NA     
 #> 
 #> ── Additional Statistics ───────────────────────────────────────────────────────
 #> 
 #> F_measure    G_mean    Wt_Acc 
-#>     0.980     0.980     0.988
+#>     0.981     0.980     0.988
 ```
 
 Model performance was surprisingly accurate. Stark contrast to my
@@ -211,16 +213,16 @@ dplyr::select(pitch_data2, all_of(feats), is_strike, strike_prob)
 #> # A tibble: 34,350 × 6
 #>    plate_location_x plate_location_z strikes balls is_strike strike_prob
 #>               <dbl>            <dbl>   <int> <int>     <int>       <dbl>
-#>  1            1.15             2.50        0     0         0       0.016
-#>  2           -0.527            0.796       0     0         0       0.004
-#>  3            1.59             3.05        0     2         0       0.004
-#>  4           -1.00             1.12        2     2         0       0    
-#>  5            0.002            0.532       1     0         0       0    
-#>  6            2.13             2.74        1     1         0       0.036
-#>  7            0.201            1.47        1     1         0       0.416
-#>  8            0.131            0.799       0     1         0       0    
-#>  9           -1.29             3.38        2     2         0       0.008
-#> 10           -0.911            1.66        1     0         0       0.256
+#>  1            0.77             1.60        1     0         0       0.608
+#>  2           -0.321            0.855       0     0         0       0    
+#>  3            0.984            2.93        0     3         0       0.368
+#>  4           -1.26             0.951       2     0         0       0    
+#>  5           -1.08             2.25        1     1         0       0.228
+#>  6            0.984            2.72        1     0         0       0.18 
+#>  7           -0.899            0.285       1     0         0       0    
+#>  8            1.83             2.75        2     2         0       0.008
+#>  9            2.51             3.63        1     3         0       0    
+#> 10           -1.26             2.43        0     1         0       0.024
 #> # ℹ 34,340 more rows
 ```
 
@@ -243,11 +245,11 @@ predictions are plotted against the decision boundary to see how close
 they are. Sort of a visual representation of the Brier Score.
 
 Because there are 34350 samples, this plot can become cluttered so I
-will randomly sample 250 pitches to represent patterns in the
+will randomly sample 1000 pitches to represent patterns in the
 predictions.
 
 ``` r
-odds_data <- withr::with_seed(123, dplyr::sample_n(pitch_data2, size = 250L))
+odds_data <- withr::with_seed(100, dplyr::sample_n(pitch_data2, size = 1000L))
 plot_log_odds(odds_data$is_strike, odds_data$strike_prob, pos_class = 1L) +
   ggplot2::ggtitle("Log-Odds RF Strike Classifier")
 ```

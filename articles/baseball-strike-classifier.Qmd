@@ -196,12 +196,12 @@ predictions are plotted against the decision boundary to see how close
 they are. Sort of a visual representation of the Brier Score.
 
 Because there are `r nrow(pitch_data2)` samples, this plot can
-become cluttered so I will randomly sample 250 pitches to represent
+become cluttered so I will randomly sample 1000 pitches to represent
 patterns in the predictions.
 
 ```{r}
 #| label: log-odds
-odds_data <- withr::with_seed(123, dplyr::sample_n(pitch_data2, size = 250L))
+odds_data <- withr::with_seed(100, dplyr::sample_n(pitch_data2, size = 1000L))
 plot_log_odds(odds_data$is_strike, odds_data$strike_prob, pos_class = 1L) +
   ggplot2::ggtitle("Log-Odds RF Strike Classifier")
 ```
