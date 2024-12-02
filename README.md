@@ -172,6 +172,7 @@ can solve problems in your space. Please reach out via:
   - [SomaPlotr](https://github.com/SomaLogic/SomaPlotr)
   - [gitr](https://github.com/stufield/gitr)
   - [helpr](https://github.com/stufield/helpr)
+  - [power](https://github.com/stufield/power)
 - These projects support analyses in the general health care (Life Sciences)
   space to generate proteomic based clinical insights in health spaces such as:
   - cardiovascular disease
