@@ -167,14 +167,15 @@ can solve problems in your space. Please reach out via:
 
 - I maintain several `R` software libraries (📦) that implement
   statistical and machine learning techniques in biomarker discovery.
-  Some of my popular published [CRAN](https://cloud.r-project.org/) 📦 are:
+  Some of my popular published 📦 are:
   - [SomaDataIO](https://cran.r-project.org/web/packages/SomaDataIO/index.html)
+    ([CRAN](https://cloud.r-project.org/))
   - [SomaPlotr](https://github.com/SomaLogic/SomaPlotr)
   - [gitr](https://github.com/stufield/gitr)
   - [helpr](https://github.com/stufield/helpr)
   - [power](https://github.com/stufield/power)
-- These projects support analyses in the general health care (Life Sciences)
-  space to generate proteomic based clinical insights in health spaces such as:
+- These projects support analyses in the general Life Sciences (BioTech)
+  space to generate proteomic based insights in health spaces such as:
   - cardiovascular disease
   - liver disease (NASH/NAFLD)
   - alcohol effects
@@ -182,8 +183,8 @@ can solve problems in your space. Please reach out via:
   - exercise status
   - metabolic disease
 - Favorite techniques:
-  - logistic regression (ol' faithful)
   - random forest
+  - logistic regression (ol' faithful)
   - naive Bayes
   - KKNN (nearest neighbor)
   - survival analyses
