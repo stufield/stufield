@@ -2,7 +2,7 @@
 
 Stu Field
 
-15 November 2024
+31 March 2025
 
 ------------------------------------------------------------------------
 
@@ -21,7 +21,7 @@ model:
 \begin{eqnarray}
 g(Y) &=& (1-\pi) \phi_{\theta_1}(y) + \pi\phi_{\theta_2}(y), \\
 \text{where,} && \\
-\hat{\pi} &=& {\cal P}(x=2),\; x \in \{1,2\}, \\
+\hat\pi &=& {\cal P}(x=2),\; x \in \{1,2\}, \\
 \phi_{\theta_x}(y) &=& \text{the normal density with parameters } \theta_x, x \in \{1,2\}.
 \end{eqnarray}
  \qquad(1)$$</span>
@@ -31,14 +31,14 @@ g(Y) &=& (1-\pi) \phi_{\theta_1}(y) + \pi\phi_{\theta_2}(y), \\
 ### The steps are as follows:
 
 1.  Make **initial guesses** for:
-    $\hat{\mu_1},\ \hat{\mu_2},\ \hat{\sigma_1}^2,\ \hat{\sigma_2}^2, \text{ and } \hat{\pi}$:
+    $\hat\mu_1,\ \hat\mu_2,\ \hat\sigma_1^2,\ \hat\sigma_2^2, \text{ and } \hat\pi$:
 
 <span id="eq-algorithm">$$
 \begin{eqnarray}
   bins &=& \text{ randomly assign data points to 1 of 2 bins} \\
-  \hat{\sigma_1}^2,\hat{\sigma_2}^2 &=& 1/rexp(2, rate = sd(bins)) \\
-  \hat{\mu_1},\hat{\mu_2} &=& rnorm(2, mean = mean(bins), sd = c(\hat{\sigma_1}^2,\hat{\sigma_2}^2)) \\
-  \hat{\pi} &=& 0.5
+  \hat\sigma_1^2,\hat\sigma_2^2 &=& 1/rexp(2, rate = sd(bins)) \\
+  \hat\mu_1,\hat\mu_2 &=& rnorm(2, mean = mean(bins), sd = c(\hat\sigma_1^2,\hat\sigma_2^2)) \\
+  \hat\pi &=& 0.5
 \end{eqnarray}
  \qquad(2)$$</span>
 
@@ -49,33 +49,33 @@ g(Y) &=& (1-\pi) \phi_{\theta_1}(y) + \pi\phi_{\theta_2}(y), \\
     mode 2 for observation $i$ given the current estimates are:
 
 $$
-\hat{\gamma_i} = \frac{\hat{\pi}\phi_{\theta_2}(y_i)}{(1-\hat{\pi})\phi_{\theta_1}(y_i) + \hat{\pi}\phi_{\theta_2}(y_i)},\quad\quad i = 1,\dots,n.
+\hat\gamma_i = \frac{\hat\pi\phi_{\theta_2}(y_i)}{(1-\hat\pi)\phi_{\theta_1}(y_i) + \hat\pi\phi_{\theta_2}(y_i)},\quad\quad i = 1,\dots,n.
 $$
 
 1.  **Maximization**: compute *weighted* maximum likelihood to update
     the estimates:
 
-$$
-\begin{aligned}
-\hat{\mu}_1 &= \frac{\sum_{i=1}^n(1-\hat{\gamma}_i)y_i}{\sum_{i=1}^n(1-\hat{\gamma}_i)},
-\quad \quad \quad \quad \quad
-\hat{\mu}_2 = \frac{\sum_{i=1}^n\hat{\gamma}_iy_i}{\sum_{i=1}^n\hat{\gamma}_i}, \\
-\hat{\sigma}^2_1 &= \frac{\sum_{i=1}^n(1-\hat{\gamma}_i)(y_i-\hat{\mu}_1)^2}{\sum_{i=1}^n(1-\hat{\gamma}_i)},
+<span id="eq-parameters">$$
+\begin{eqnarray}
+\hat\mu_1 = \frac{\sum\limits_{i=1}^n(1-\hat\gamma_i)y_i}{\sum\limits_{i=1}^n(1-\hat\gamma_i)},
+\quad \quad \quad
+\hat\mu_2 = \frac{\sum\limits_{i=1}^n\hat\gamma_iy_i}{\sum\limits_{i=1}^n\hat\gamma_i}, \\
+\hat\sigma^2_1 = \frac{\sum\limits_{i=1}^n(1-\hat\gamma_i)(y_i-\hat\mu_1)^2}{\sum\limits_{i=1}^n(1-\hat\gamma_i)},
 \quad \quad 
-\hat{\sigma}^2_2 = \frac{\sum_{i=1}^n\hat{\gamma}_i(y_i-\hat{\mu}_2)^2}{\sum_{i=1}^n\hat{\gamma}_i}, \\
-\hat{\pi} &= \sum_{i=1}^n\frac{\hat{\gamma}_i}{n}.
-\end{aligned}
-$$
+\hat\sigma^2_2 = \frac{\sum\limits_{i=1}^n\hat\gamma_i(y_i-\hat\mu_2)^2}{\sum\limits_{i=1}^n\hat\gamma_i}, \\
+\hat\pi = \sum\limits_{i=1}^n\frac{\hat\gamma_i}{n}.
+\end{eqnarray}
+ \qquad(3)$$</span>
 
 1.  Compute log-likelihood:
 
 $$
-{\cal L} = \sum_{i=1}^n log\big[\; (1-\hat{\pi})\phi_{\theta_1}(y_i) + \hat{\pi}\phi_{\theta_2}(y_i)\; \big]
+{\cal L} = \sum_{i=1}^n log\big[\; (1-\hat\pi)\phi_{\theta_1}(y_i) + \hat\pi\phi_{\theta_2}(y_i)\; \big]
 $$
 
 1.  Check **convergence**: check if criterion of the log-likelihood has
     been met, if not, repeat above steps with new values of
-    $\hat{\mu_1},\ \hat{\mu_2},\ \hat{\sigma_1}^2,\ \hat{\sigma_2}^2, \text{ and } \hat{\pi}$
+    $\hat\mu_1,\ \hat\mu_2,\ \hat\sigma_1^2,\ \hat\sigma_2^2, \text{ and } \hat\pi$
     as initial guesses.
 
 ------------------------------------------------------------------------
