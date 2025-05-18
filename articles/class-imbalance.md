@@ -1,9 +1,8 @@
-# Effect of Class Imbalance on Prediction Accuracy  
-### somewhat frightening: a cautionary tail of balance
+# Effect of Class Imbalance on Prediction Accuracy; a cautionary tale of balance
 
 Stu Field
 
-26 November 2024
+18 May 2025
 
 ------------------------------------------------------------------------
 

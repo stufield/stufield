@@ -2,7 +2,7 @@
 
 Stu Field
 
-15 November 2024
+18 May 2025
 
 ------------------------------------------------------------------------
 
@@ -325,8 +325,8 @@ p1 <- ggplot(train, aes(x = feat1, y = feat2)) +
 
 ``` r
 p2 <- libml::plot_bayes_boundary(
-  train, pos.class = "disease", main = "Bayes Decision Boundary"
-  ) +
+  train, pos_class = "disease") +
+  ggtitle("Bayes Decision Boundary") +
   geom_point(data = sample_data, aes(x = feat1, y = feat2),
              shape = "cross", color = "green", size = 3, stroke = 2)
 ```
