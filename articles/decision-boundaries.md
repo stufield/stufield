@@ -2,7 +2,7 @@
 
 Stu Field
 
-18 May 2025
+19 May 2025
 
 # Overview
 
@@ -10,17 +10,18 @@ It is sometimes nice to visualize the decision boundaries of various
 models. Here we compare 2 commonly used models: naïve Bayes and
 k-nearest neighbors.
 
-------------------------------------------------------------------------
+----------------------------------------------------------------------
 
 ## KNN vs naïve Bayes
 
-Below are decision boundaries for 2 simulated data sets using K-Nearest
-Neighbors and naïve Bayes models. For the first data set (top row) the
-true boundary is simulated such that disease (red) protein 1 $> 44$ and
-protein 2 $> 74$, these the data are simulated with an unrealistic harsh
-cutoff to form the classes (unrealistic). The lower 2 panels are more
-realistic data simulated from bivariate normal distributions and show
-the difference in the boundary between the two methods.
+Below are decision boundaries for 2 simulated data sets using
+K-Nearest Neighbors and naïve Bayes models. For the first data set
+(top row) the true boundary is simulated such that disease (red)
+protein 1 $> 44$ and protein 2 $> 74$, these the data are simulated
+with an unrealistic harsh cutoff to form the classes (unrealistic).
+The lower 2 panels are more realistic data simulated from bivariate
+normal distributions and show the difference in the boundary between
+the two methods.
 
 ``` r
 par_def <- list(mgp = c(2.00, 0.75, 0.00), mar = c(3, 4, 3, 1))
@@ -45,7 +46,7 @@ for ( i in 2:10 ) {
 
 ![](figures/kknn-bayes-knn-k-1.png)
 
-------------------------------------------------------------------------
+----------------------------------------------------------------------
 
 ### Code Reference
 

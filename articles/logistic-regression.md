@@ -2,7 +2,7 @@
 
 Stu Field
 
-18 May 2025
+19 May 2025
 
 ## Multivariate Logistic Regression
 
@@ -66,12 +66,12 @@ Similar to linear regression, and analogously to univariate logistic
 regression, the above equations represent the mean or expected
 probability, $\pi(X)$, given $X$.
 
-As this is an estimate, each data point will have an error distribution,
-but rather than a normal distribution (linear regression), we use a
-binomial distribution, to match the dichotomous outcomes. The mean of
-the binomial distribution is $\pi(X)$, and the variance is
-$\pi(X)(1-\pi(X))$. Of course, now $X$ is a vector, whereas it is a
-scalar value in the univariate case.
+As this is an estimate, each data point will have an error
+distribution, but rather than a normal distribution (linear
+regression), we use a binomial distribution, to match the dichotomous
+outcomes. The mean of the binomial distribution is $\pi(X)$, and the
+variance is $\pi(X)(1-\pi(X))$. Of course, now $X$ is a vector,
+whereas it is a scalar value in the univariate case.
 
 Let $\cal{L} = L$$(Data; \theta)$ be the likelihood of the data given
 the model, where $\theta = {\beta_0, \beta_1,\dots,\beta_p}$ are the

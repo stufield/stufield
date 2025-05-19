@@ -2,22 +2,21 @@
 
 Stu Field
 
-18 May 2025
+19 May 2025
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 # Overview of Setup
 
 - logistic regression binary classification model
-- initial global data set of 800 samples -\> 50/50 classes
+- initial global data set of 800 samples \>\>\> 50/50 classes
 - random split data into 400 training set, 400 test set
 - test set is used for Accuracy calculations
-- at each iteration the training set is bootstrap sampled from class 1
-  *only*
-- at the same time, class 2 is down-sampled by the same amount,
-  resulting in a larger and larger class-imbalance (1 \> 2)
+- at each iteration the training set is bootstrap sampled from class 1 *only*
+- at the same time, class 2 is down-sampled by the same amount, resulting in a
+  larger and larger class-imbalance (1 \> 2)
 
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 ## Simulate Data
 

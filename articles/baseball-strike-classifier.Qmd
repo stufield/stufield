@@ -6,6 +6,7 @@ date-format: "D MMMM YYYY"
 format:
   gfm:
     preview-mode: raw
+    columns: 70
 #  html:
 #    number-sections: true
 #    colorlinks: true

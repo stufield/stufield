@@ -2,22 +2,22 @@
 
 Stu Field
 
-18 May 2025
+19 May 2025
 
 # Mack-Wolfe Non-Parametric Peak Tests
 
 Given an expected group ordering
 (i.e. `Group A < Group B < Group C < Group D`), the Mack-Wolfe test
-counts for *each* value in `Group A`, the number of values in `Group B`
-that are greater in magnitude (+0.5 for ties), and repeats this
-calculation for all *each* $n \choose 2$, $n \ge 2$, pairwise
-combinations ($A-B$, $A-C$, $A-D$, $B-C$, $B-D$, $C-D$). In the extreme,
-if there are 9 samples in `Group A` and 15 samples in `Group B`, and
-*all* the samples in `Group B` are greater than the highest value in
-`Group A`, this results in $9 \times 15 = 135$ for that pairwise
-combination. The process is repeated and summed for the other 5
-combinations. See below for 4 different possible JT-test scenarios
-(Mack-Wolfe with peak at end).
+counts for *each* value in `Group A`, the number of values in
+`Group B` that are greater in magnitude (+0.5 for ties), and repeats
+this calculation for all *each* $n \choose 2$, $n \ge 2$, pairwise
+combinations ($A-B$, $A-C$, $A-D$, $B-C$, $B-D$, $C-D$). In the
+extreme, if there are 9 samples in `Group A` and 15 samples in
+`Group B`, and *all* the samples in `Group B` are greater than the
+highest value in `Group A`, this results in $9 \times 15 = 135$ for
+that pairwise combination. The process is repeated and summed for the
+other 5 combinations. See below for 4 different possible JT-test
+scenarios (Mack-Wolfe with peak at end).
 
 ``` r
 mack_fake_data <- function() {
@@ -63,7 +63,7 @@ p[[1L]] + p[[2L]] + p[[3L]] + p[[4L]]
 
 ![cap_4_plot](figures/mack-wolfe-four-scenario-beeswarm-1.png)
 
-------------------------------------------------------------------------
+----------------------------------------------------------------------
 
 For scenarios where there is an expected peak, the test statistic
 ($A_p$) is calculated as essentially the sum of two JT-tests, summing
@@ -80,5 +80,5 @@ $$
 $$
 
 The significance is inferred typically using a large-sample
-approximation to the Gaussian distribution ($A^*$), i.e. conversion to a
-$Z_{score}$, from which an associated p-value can be calculated.
+approximation to the Gaussian distribution ($A^*$), i.e. conversion to
+a $Z_{score}$, from which an associated p-value can be calculated.

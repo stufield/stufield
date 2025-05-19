@@ -2,20 +2,20 @@
 
 Stu Field
 
-18 May 2025
+19 May 2025
 
-------------------------------------------------------------------------
+----------------------------------------------------------------------
 
 # Mixture E-M
 
-Expectation maximization (E-M) is an iterative procedure (algorithm) for
-finding the maximum likelihood solution (estimates) for difficult
-maximum likelihood problems (e.g. models with latent variables). This is
-achieved in a similar way to *k*-means clustering, however instead of
-minimizing the within-cluster variance at each iteration, we maximize
-the likelihood of the data by calculating weighted-maximum likelihood
-estimates of the parameters at each iteration. We are trying to fit the
-model:
+Expectation maximization (E-M) is an iterative procedure (algorithm)
+for finding the maximum likelihood solution (estimates) for difficult
+maximum likelihood problems (e.g. models with latent variables). This
+is achieved in a similar way to *k*-means clustering, however instead
+of minimizing the within-cluster variance at each iteration, we
+maximize the likelihood of the data by calculating weighted-maximum
+likelihood estimates of the parameters at each iteration. We are
+trying to fit the model:
 
 <span id="eq-mix-em">$$
 \begin{eqnarray}
@@ -26,7 +26,7 @@ g(Y) &=& (1-\pi) \phi_{\theta_1}(y) + \pi\phi_{\theta_2}(y), \\
 \end{eqnarray}
  \qquad(1)$$</span>
 
-------------------------------------------------------------------------
+----------------------------------------------------------------------
 
 ### The steps are as follows:
 
@@ -73,12 +73,12 @@ $$
 {\cal L} = \sum_{i=1}^n log\big[\; (1-\hat\pi)\phi_{\theta_1}(y_i) + \hat\pi\phi_{\theta_2}(y_i)\; \big]
 $$
 
-1.  Check **convergence**: check if criterion of the log-likelihood has
-    been met, if not, repeat above steps with new values of
+1.  Check **convergence**: check if criterion of the log-likelihood
+    has been met, if not, repeat above steps with new values of
     $\hat\mu_1,\ \hat\mu_2,\ \hat\sigma_1^2,\ \hat\sigma_2^2, \text{ and } \hat\pi$
     as initial guesses.
 
-------------------------------------------------------------------------
+----------------------------------------------------------------------
 
 ## Running the Algorithm
 

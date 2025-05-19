@@ -25,7 +25,7 @@ all: quarto clean
 
 quarto:
 	@ echo "Rendering Rmarkdown *.md files"
-	@ for i in *.[Qq]md; do quarto render $$i --to default; done
+	@ for i in *.[Qq]md; do echo $$i && quarto render $$i --to default; done
 	@ for i in *[.]md; do sed -i '1,2G' $$i; done
 
 %.pdf: %.tex

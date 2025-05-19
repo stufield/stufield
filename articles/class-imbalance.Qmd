@@ -1,13 +1,12 @@
 ---
-title: >
-  Effect of Class Imbalance on Prediction Accuracy;
-  a cautionary tale of balance
+title: Effect of Class Imbalance on Prediction Accuracy; a cautionary tale of balance
 author: "Stu Field"
 date: today
 date-format: "D MMMM YYYY"
 format:
   gfm:
     preview-mode: raw
+    columns: 80
 #  html:
 #    number-sections: true
 #    colorlinks: true
@@ -41,7 +40,7 @@ library(withr)
 # Overview of Setup
 
 - logistic regression binary classification model
-- initial global data set of 800 samples -> 50/50 classes
+- initial global data set of 800 samples >>> 50/50 classes
 - random split data into 400 training set, 400 test set
 - test set is used for Accuracy calculations
 - at each iteration the training set is bootstrap sampled from class 1 *only*

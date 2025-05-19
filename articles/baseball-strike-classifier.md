@@ -2,7 +2,7 @@
 
 Stu Field
 
-18 May 2025
+19 May 2025
 
 # Overview
 
@@ -10,14 +10,14 @@ Add general overview of the aim of the analysis etc …
 
 Pitch data were obtained from [FanGraphs](https://www.fangraphs.com/)
 
-------------------------------------------------------------------------
+----------------------------------------------------------------------
 
 ## Modeling Approach
 
 1.  **Explore features**:
     - there are 54705 pitches (strikes) for analysis
-    - visually and heuristically to identify likely candidates that may
-      be predictive with the response variable `is_strike`
+    - visually and heuristically to identify likely candidates that
+      may be predictive with the response variable `is_strike`
 2.  **Feature reduction**: using a combination of
     - step-wise forward/backward feature selection
     - [Stability
@@ -34,8 +34,8 @@ Pitch data were obtained from [FanGraphs](https://www.fangraphs.com/)
 
 ## Model Features
 
-The `pitch_data` object contains 21 possible features that could be used
-in a putative classification model to predict `is_strike`:
+The `pitch_data` object contains 21 possible features that could be
+used in a putative classification model to predict `is_strike`:
 
 ``` r
 pitch_data
@@ -83,8 +83,8 @@ tibble::enframe(sapply(pitch_data, class)) |> tail(-1L)
 ```
 
 Notice there is a class imbalance in the strike response (~ 2:1) which
-could be problematic generalizing to new data outside of these training
-data. See my other tutorial on the dangers of class imbalance
+could be problematic generalizing to new data outside of these
+training data. See my other tutorial on the dangers of class imbalance
 [here](https://github.com/stufield/stufield/blob/main/articles/class-imbalance.md).
 Since there samples (pitches) are not in short supply (unlike in, for
 examples, biological data sets), I will simply down sample the major
@@ -124,8 +124,8 @@ variation was *not* associated with `is_strike`.
 ## Fit Model
 
 I evaluated numerous model types and eventually decided on a Random
-Forest model. In my experience CART methods can perform especially well
-with discrete variables/predictors (i.e. `strikes` and `balls`).
+Forest model. In my experience CART methods can perform especially
+well with discrete variables/predictors (i.e. `strikes` and `balls`).
 
 ``` r
 rf_model <- withr::with_seed(123, {  # set seed for reproducibility
@@ -141,10 +141,10 @@ get_gini(rf_model)
 #> # A tibble: 4 × 2
 #>   Feature          Gini_Importance
 #>   <chr>                      <dbl>
-#> 1 plate_location_z           7732.
-#> 2 plate_location_x           7420.
-#> 3 strikes                     735.
-#> 4 balls                       230.
+#> 1 plate_location_z           7629.
+#> 2 plate_location_x           7441.
+#> 3 strikes                     739.
+#> 4 balls                       229.
 ```
 
 and predict strike probability:
@@ -164,23 +164,23 @@ summary(cmat) # evaluate performance
 #> 
 #>      Predicted
 #> Truth     0     1
-#>     0 16557   618
-#>     1    84 17091
+#>     0 16569   606
+#>     1    99 17076
 #> ── Performance Metrics (CI95%) ─────────────────────────────────────────────────
 #> 
 #> # A tibble: 10 × 5
 #>    metric              n estimate CI95_lower CI95_upper
 #>    <chr>           <int>    <dbl>      <dbl>      <dbl>
-#>  1 Sensitivity     17175   0.995      0.994      0.996 
-#>  2 Specificity     17175   0.964      0.961      0.967 
-#>  3 PPV (Precision) 17709   0.965      0.962      0.968 
-#>  4 NPV             16641   0.995      0.994      0.996 
-#>  5 Accuracy        34350   0.980      0.978      0.981 
-#>  6 Bal Accuracy    34350   0.980      0.978      0.981 
+#>  1 Sensitivity     17175   0.994      0.993      0.996 
+#>  2 Specificity     17175   0.965      0.962      0.968 
+#>  3 PPV (Precision) 17682   0.966      0.963      0.969 
+#>  4 NPV             16668   0.994      0.993      0.995 
+#>  5 Accuracy        34350   0.979      0.978      0.981 
+#>  6 Bal Accuracy    34350   0.979      0.978      0.981 
 #>  7 Prevalence      34350   0.5        0.494      0.506 
 #>  8 AUC             34350   0.999      0.999      0.999 
-#>  9 Brier Score     34350   0.0173     0.0158     0.0189
-#> 10 MCC                NA   0.960     NA         NA
+#>  9 Brier Score     34350   0.0177     0.0161     0.0193
+#> 10 MCC                NA   0.959     NA         NA
 #> ── Additional Statistics ───────────────────────────────────────────────────────
 #> 
 #> F_measure    G_mean    Wt_Acc 
@@ -188,12 +188,12 @@ summary(cmat) # evaluate performance
 ```
 
 Model performance was surprisingly accurate. Stark contrast to my
-experience in Life Sciences (proteomics) where performance is typically
-*much* lower and `AUC > 0.95` are uncommon.
+experience in Life Sciences (proteomics) where performance is
+typically *much* lower and `AUC > 0.95` are uncommon.
 
-Also keep in mind that performance here was evaluated on the *training*
-data, and a typical machine learning training and test setup would
-certainly generate reduced *test* performance.
+Also keep in mind that performance here was evaluated on the
+*training* data, and a typical machine learning training and test
+setup would certainly generate reduced *test* performance.
 
 That said, it should be noted that random forest models do perform a
 sort of *quasi*-internal cross-validation, out-of-bag (OOB) samples,
@@ -211,16 +211,16 @@ dplyr::select(pitch_data2, all_of(feats), is_strike, strike_prob)
 #> # A tibble: 34,350 × 6
 #>    plate_location_x plate_location_z strikes balls is_strike strike_prob
 #>               <dbl>            <dbl>   <int> <int>     <int>       <dbl>
-#>  1           -2.25            -0.302       1     0         0       0    
-#>  2           -0.009            3.62        1     2         0       0.116
-#>  3            0.758            2.88        0     0         0       0.672
-#>  4            0.546            1.62        1     0         0       0.644
-#>  5           -1.20             0.959       0     0         0       0    
-#>  6           -1.01             2.47        2     3         0       0.276
-#>  7            0.039            0.21        0     1         0       0    
-#>  8           -0.141            3.70        0     1         0       0.02 
-#>  9           -1.29             1.55        0     0         0       0.008
-#> 10            1.32             2.78        0     2         0       0.004
+#>  1           -0.899            2.80        0     0         0       0.7  
+#>  2            0.441            1.20        0     1         0       0.004
+#>  3            0.028            0.216       2     1         0       0    
+#>  4           -0.801            0.772       0     0         0       0.004
+#>  5            1.28             2.89        0     0         0       0.02 
+#>  6            0.853            1.78        0     2         0       0.52 
+#>  7            1.06             2.00        0     1         0       0.092
+#>  8            1.70             2.38        0     0         0       0.02 
+#>  9           -0.88             0.957       1     0         0       0    
+#> 10           -1.65             2.80        0     0         0       0.012
 #> # ℹ 34,340 more rows
 ```
 
@@ -238,9 +238,9 @@ plot_emp_roc(pitch_data2$is_strike, pitch_data2$strike_prob, pos_class = 1L,
 
 ![](figures/strike-roc-1.png)
 
-Perhaps another visual that can be useful is a log-odds plot, where the
-predictions are plotted against the decision boundary to see how close
-they are. Sort of a visual representation of the Brier Score.
+Perhaps another visual that can be useful is a log-odds plot, where
+the predictions are plotted against the decision boundary to see how
+close they are. Sort of a visual representation of the Brier Score.
 
 Because there are 34350 samples, this plot can become cluttered so I
 will randomly sample 1000 pitches to represent patterns in the
@@ -265,7 +265,7 @@ A curious pattern emerges:
     This is odd. **TODO:** look into this further … something with a
     Random Forest?
 
-------------------------------------------------------------------------
+----------------------------------------------------------------------
 
 Created in `RStudio` (`v2024.09.1+394`), by
 [Quarto](https://quarto.org/) (`v1.4.555`), and R version 4.4.1

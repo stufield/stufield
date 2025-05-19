@@ -2,18 +2,18 @@
 
 Stu Field
 
-18 May 2025
+19 May 2025
 
-------------------------------------------------------------------------
+----------------------------------------------------------------------
 
 # Overview
 
-The general goal is to use a probabilistic modeling framework to predict
-the class of an unknown sample. Such mathematical models, or
+The general goal is to use a probabilistic modeling framework to
+predict the class of an unknown sample. Such mathematical models, or
 classifiers, are based on training data and are built (i.e. model
 fitting) in order to make class predictions about the unknown sample.
 
-------------------------------------------------------------------------
+----------------------------------------------------------------------
 
 # Bayes’ Theorem
 
@@ -50,9 +50,10 @@ $$
 Consider an example where *proteomic* measurements (i.e. features =
 proteins), assumed to have Gaussian (i.e. Normal) distributions, are
 taken from an individual and the posterior probability of interest is
-whether that individual belongs to one of $k$ possible outcomes/classes.
-For example, if there are $k=2$ possible classes, disease or control
-(i.e. a *binary* classifier), this can be re-written as:
+whether that individual belongs to one of $k$ possible
+outcomes/classes. For example, if there are $k=2$ possible classes,
+disease or control (i.e. a *binary* classifier), this can be
+re-written as:
 
 $$
 \begin{eqnarray}
@@ -72,14 +73,14 @@ $$
 \end{eqnarray}
 $$
 
-Naïve Bayes models contain $2pk + k$ parameters, where $k$ is the number
-of classes, $p$ is the number of features; a **mean** ($\mu$) and
-**standard deviation** ($\sigma$) for each feature $\times$ class
+Naïve Bayes models contain $2pk + k$ parameters, where $k$ is the
+number of classes, $p$ is the number of features; a **mean** ($\mu$)
+and **standard deviation** ($\sigma$) for each feature $\times$ class
 combination, plus the class-specific **prior**, which is often
 determined by the training class proportions (i.e. an *uninformative*
-prior). Naïve Bayes models assume Gaussian densities and are calculated
-via the probability density function (PDF) given class-specific
-parameters $\mu$ and $\sigma$:
+prior). Naïve Bayes models assume Gaussian densities and are
+calculated via the probability density function (PDF) given
+class-specific parameters $\mu$ and $\sigma$:
 
 <span id="eq-pdf">$$
 \begin{eqnarray}
@@ -99,8 +100,8 @@ To classify an unknown sample with $p$ feature measurements
 
 The result of (<a href="#eq-bayes" class="quarto-xref">Equation 3</a>)
 gives a probability *density* for each class, which is not constrained
-on the interval $[0,\ 1]$. Normalized posterior probabilities ($Pr$) are
-obtained by calculating the class-specific proportion of the total
+on the interval $[0,\ 1]$. Normalized posterior probabilities ($Pr$)
+are obtained by calculating the class-specific proportion of the total
 density,
 
 <span id="eq-bayes-prob">$$
@@ -109,7 +110,7 @@ density,
 \end{eqnarray}
  \qquad(4)$$</span>
 
-------------------------------------------------------------------------
+----------------------------------------------------------------------
 
 # Example Calculation
 
@@ -199,8 +200,8 @@ tibble::as_tibble(sample_data)
 ### Raw calculation sample 1:
 
 In `R`, Normal densities are calculated via the `dnorm()` function, so
-for unknown **sample 1**, the probability that it is a *control* sample
-given that its measurement for *Feature 1* is given by:
+for unknown **sample 1**, the probability that it is a *control*
+sample given that its measurement for *Feature 1* is given by:
 
 ``` r
 dnorm(s1[["feat1"]],                                # P(x | control)
@@ -245,8 +246,8 @@ $$
 
 **Normalized Posterior Probabilities:**
 
-From (<a href="#eq-bayes-prob" class="quarto-xref">Equation 4</a>), the
-relative proportion of each density is:
+From (<a href="#eq-bayes-prob" class="quarto-xref">Equation 4</a>),
+the relative proportion of each density is:
 
 $$
 \begin{eqnarray*}
@@ -278,17 +279,18 @@ preds
 #> 5         0.231        0.769  disease
 ```
 
-------------------------------------------------------------------------
+----------------------------------------------------------------------
 
 # Naïve Bayes Visualization
 
 ## Probability density functions (PDFs)
 
 Probability density functions (scaled by sample size) of the training
-data used to fit the naïve Bayes model. Curves are colored by class and
-the feature measurements for Sample 1 ($\vec x =$ 3.7930077, 2.5993371)
-are represented by the dashed vertical line. This graphically indicates
-that Sample 1 is more likely to have come from the control distribution.
+data used to fit the naïve Bayes model. Curves are colored by class
+and the feature measurements for Sample 1 ($\vec x =$ 3.7930077,
+2.5993371) are represented by the dashed vertical line. This
+graphically indicates that Sample 1 is more likely to have come from
+the control distribution.
 
 ``` r
 library(patchwork)
@@ -331,8 +333,8 @@ p2 <- libml::plot_bayes_boundary(
              shape = "cross", color = "green", size = 3, stroke = 2)
 ```
 
-Bivariate plots of training data used to fit the two feature naïve Bayes
-model. Dotted lines are the class specific means of the model
+Bivariate plots of training data used to fit the two feature naïve
+Bayes model. Dotted lines are the class specific means of the model
 parameters, points are colored by class.
 
 The non-linear Bayes decision boundary reflecting the $p = 0.5$ cutoff

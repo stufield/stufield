@@ -2,14 +2,14 @@
 
 Stu Field
 
-18 May 2025
+19 May 2025
 
 # The Birthday Paradox
 
 In probability theory, the birthday problem asks for the probability
 that, in a set of n randomly chosen people, at least two will share a
-birthday. The birthday paradox refers to the counter-intuitive fact that
-only 23 people are needed for that probability to exceed 50%.
+birthday. The birthday paradox refers to the counter-intuitive fact
+that only 23 people are needed for that probability to exceed 50%.
 
 This is the [Birthday
 Paradox](https://en.wikipedia.org/wiki/Birthday_problem).
@@ -17,12 +17,13 @@ Paradox](https://en.wikipedia.org/wiki/Birthday_problem).
 ## Summary
 
 - you take 23 random people
-- what is the probability that any two birthdays occur on the same day?
+- what is the probability that any two birthdays occur on the same
+  day?
 - In `R`, this is `runif(min = 1, max = 365)` $\times 23$.
-- To answer, first calculate the probability that all 23 birthdays occur
-  on *different* days ($P(x)$), then the two are mutually exclusive,
-  $P(x') = 1 - P(x)$ is the probability that all birthdays are *not* on
-  different days
+- To answer, first calculate the probability that all 23 birthdays
+  occur on *different* days ($P(x)$), then the two are mutually
+  exclusive, $P(x') = 1 - P(x)$ is the probability that all birthdays
+  are *not* on different days
 
 Thus,
 
@@ -70,11 +71,11 @@ prob_fun(ppl)   # confirms the above
 ## Visualize `n` People
 
 This can be generalized across an arbitrary number of people to get a
-overall view of how probability changes as a function of the opportunity
-for duplicate birthdays. Using the `prob_fun()` function above, the
-red-dashed line represents the $n =$ 23 days described in classic
-example. The cyan-dashed lines are reference lines for 25% and 75%
-respectively.
+overall view of how probability changes as a function of the
+opportunity for duplicate birthdays. Using the `prob_fun()` function
+above, the red-dashed line represents the $n =$ 23 days described in
+classic example. The cyan-dashed lines are reference lines for 25% and
+75% respectively.
 
 ``` r
 base <- ggplot() + xlim(1, 50)
@@ -131,13 +132,13 @@ prob
 
 ### Caveats
 
-1.  the *same* day could be selected *more* than twice; this simulation
-    reflects the probability that *exactly* 2 people are chosen with the
-    same birthday (not 3 or more).
+1.  the *same* day could be selected *more* than twice; this
+    simulation reflects the probability that *exactly* 2 people are
+    chosen with the same birthday (not 3 or more).
 
 2.  the *same* birthday could be selected twice multiple times; this
-    simulation reflects the probability that two people are chosen with
-    the same birthday *at least* once (but could be more).
+    simulation reflects the probability that two people are chosen
+    with the same birthday *at least* once (but could be more).
 
-Considering the 2 caveats above, the simulation agrees fairly well with
-the closed form solution described above and from `prob_fun()`.
+Considering the 2 caveats above, the simulation agrees fairly well
+with the closed form solution described above and from `prob_fun()`.
