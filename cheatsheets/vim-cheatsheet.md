@@ -109,6 +109,7 @@ Stu Field
 |:------ |:----------- |
 | `:w`   | write (save) the file, but don't exit |
 | `:wq`  | write (save) and quit |
+| `ZZ`   | same as `:wq` |
 | `:q`   | quit (fails if anything has changed) |
 | `:q!`  | quit and throw away changes |
 
@@ -120,8 +121,15 @@ Stu Field
 | `?pattern`        | search backward for pattern |
 | `n`               | repeat search in same direction |
 | `N`               | repeat search in opposite direction |
-| `:\%s/old/new/g`  | replace all _old_ with _new_ throughout file |
-| `:\%s/old/new/gc` | replace all _old_ with _new_ throughout file with confirmations |
+| `:%s/<pattern>/<replace>/g`  | replace all *old* with *new* throughout file |
+| `:%s/<pattern>/<replace>/gc` | replace all *old* with *new* throughout file with confirmations |
+
+### Search & Replace All Buffers
+
+```bash
+:bufdo %s/<pattern>/<replace>/ge | update
+```
+
 
 # Multiple Files
 
@@ -137,7 +145,7 @@ Stu Field
 | `ctrl+wq`         | Quit a window |
 | `ctrl+wv`         | Split windows vertically |
 
-# VI Spell Check
+# Spell Check
 
 | key              | action      |
 |:---------------- |:----------- |
@@ -152,4 +160,10 @@ Stu Field
 | `z=`             | List suggestions for misspelled word |
 | `:set spell spelllang=en\_us` | Set region dictionary (us, ca, gb, de\_de, de\_at, de\_ch) |
 | `:set nospell`   | Turn off spell checking |
+
+### Update Spell File
+
+```bash
+:mkspell! ~/.vim/spell/en.utf-8.add
+```
 

@@ -14,18 +14,6 @@ ln -sf [target] [location]         # soft link
 ln -Lf [target] [location]         # hard link
 ```
 
-## VIM
-### rebuild vim spellfile
-
-```bash
-:mkspell! ~/.vim/spell/en.utf-8.add
-```
-
-### Multiple buffer search/replace
-```bash
-:bufdo %s/<pattern>/<replace>/ge | update
-```
-
 
 ## Check System Status CRON
 
