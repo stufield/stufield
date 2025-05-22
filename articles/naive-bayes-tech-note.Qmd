@@ -14,6 +14,8 @@ format:
 #     toc: yes
 #     toc_float:
 #       collapsed: no
+editor_options:
+  chunk_output_type: console
 ---
 
 ```{r}
@@ -26,13 +28,14 @@ knitr::opts_chunk$set(
 )
 
 burst_model_object <- function(model) {
-  for (f in names(model$tables)) {
-    tab <- model$tables[[f]]
-    assign(paste0(f, "_control_mu"), tab[1L], envir = .GlobalEnv)
-    assign(paste0(f, "_disease_mu"), tab[2L], envir = .GlobalEnv)
-    assign(paste0(f, "_control_sd"), tab[3L], envir = .GlobalEnv)
-    assign(paste0(f, "_disease_sd"), tab[4L], envir = .GlobalEnv)
-  }
+  lapply(model$tables, function(tab) {
+    df <- cbind(feature = names(dimnames(tab))[2L],
+                expand.grid(rownames(tab), colnames(tab),
+                            KEEP.OUT.ATTRS = FALSE, stringsAsFactors = FALSE))
+    nms <- do.call(paste, c(as.list(df), sep = "_"))
+    liter(nms, c(tab), function(x, y) base::assign(x, y, envir = .GlobalEnv))
+  })
+  invisible()
 }
 
 library(helpr)
@@ -198,9 +201,9 @@ With specific parameters:
 | Training samples                            | `r counts[["control"]]`| `r counts[["disease"]]`|
 | Prevalence (prior)                          | `r prior[["control"]]` | `r prior[["disease"]]` |
 | Feature 1 ($\hat{\mu}_c,\ \hat{\mu}_d$)       | `r feat1_control_mu` | `r feat1_disease_mu` |
-| Feature 1 ($\hat{\sigma}_c,\ \hat{\sigma}_d$) | `r feat1_control_sd` | `r feat1_disease_sd` |
+| Feature 1 ($\hat{\sigma}_c,\ \hat{\sigma}_d$) | `r feat1_control_sigma` | `r feat1_disease_sigma` |
 | Feature 2 ($\hat{\mu}_c,\ \hat{\mu}_d$)       | `r feat2_control_mu` | `r feat2_disease_mu` |
-| Feature 2 ($\hat{\sigma}_c,\ \hat{\sigma}_d$) | `r feat2_control_sd` | `r feat2_disease_sd` |
+| Feature 2 ($\hat{\sigma}_c,\ \hat{\sigma}_d$) | `r feat2_control_sigma` | `r feat2_disease_sigma` |
 
 
 ### Sample "new" data
@@ -223,10 +226,10 @@ tibble::as_tibble(sample_data)
 #| echo: FALSE
 s1f1 <- s1[[1L]]  # sample 1; Feature 1
 s1f2 <- s1[[2L]]  # sample 1; Feature 2
-d11 <- dnorm(s1f1, feat1_control_mu, feat1_control_sd)  # class 1; feature 1
-d12 <- dnorm(s1f2, feat2_control_mu, feat2_control_sd)  # class 1; feature 2
-d21 <- dnorm(s1f1, feat1_disease_mu, feat1_disease_sd)  # class 2; feature 1
-d22 <- dnorm(s1f2, feat2_disease_mu, feat2_disease_sd)  # class 2; feature 2
+d11 <- dnorm(s1f1, feat1_control_mu, feat1_control_sigma)  # class 1; feature 1
+d12 <- dnorm(s1f2, feat2_control_mu, feat2_control_sigma)  # class 1; feature 2
+d21 <- dnorm(s1f1, feat1_disease_mu, feat1_disease_sigma)  # class 2; feature 1
+d22 <- dnorm(s1f2, feat2_disease_mu, feat2_disease_sigma)  # class 2; feature 2
 p_cont <- d11 * d12 * prior[["control"]]
 p_case <- d21 * d22 * prior[["disease"]]
 ```
@@ -255,8 +258,8 @@ $$
    P(control\ |\ x_1=`r s1f1`,x_2=`r s1f2`) &=& P(x_1=`r s1f1`\ |\ control) \times \\
                && P(x_2=`r s1f2`\ |\ control) \times \\
                && P(control) \\
-               &=& P(x_1=`r s1f1`\ |\ \mu_c=`r feat1_control_mu`, \sigma_c=`r feat1_control_sd`) \times \\
-               && P(x_2=`r s1f2`\ |\ \mu_c=`r feat2_control_mu`, \sigma_c=`r feat2_control_sd`) \times \\
+               &=& P(x_1=`r s1f1`\ |\ \mu_c=`r feat1_control_mu`, \sigma_c=`r feat1_control_sigma`) \times \\
+               && P(x_2=`r s1f2`\ |\ \mu_c=`r feat2_control_mu`, \sigma_c=`r feat2_control_sigma`) \times \\
                && (`r counts[["control"]]`\ /\ (`r counts[["control"]]` + `r counts[["disease"]]`)) \\
                &=& `r d11` \times `r d12` \times `r prior[["control"]]` \\
                &=& `r d11 * d12 * prior[["control"]]` \\
@@ -271,8 +274,8 @@ $$
    P(disease\ |\ x_1=`r s1f1`,x_2=`r s1f2`) &=& P(x_1=`r s1f1`\ |\ disease) \times \\ 
               && P(x_2=`r s1f2`\ |\ disease) \times \\
               && P(disease) \\
-              &=& P(x_1=`r s1f1`\ |\ \mu_d=`r feat1_disease_mu`, \sigma_d=`r feat1_disease_sd`) \times \\
-              && P(x_2=`r s1f2`\ |\ \mu_d=`r feat2_disease_mu`, \sigma_d=`r feat2_disease_sd`) \times \\
+              &=& P(x_1=`r s1f1`\ |\ \mu_d=`r feat1_disease_mu`, \sigma_d=`r feat1_disease_sigma`) \times \\
+              && P(x_2=`r s1f2`\ |\ \mu_d=`r feat2_disease_mu`, \sigma_d=`r feat2_disease_sigma`) \times \\
               && (`r counts[["disease"]]`\ /\ (`r counts[["control"]]` + `r counts[["disease"]]`)) \\
               &=& `r d21` \times `r d22` \times `r prior[["disease"]]` \\
               &=& `r d21 * d22 * prior[["disease"]]` \\
