@@ -2,7 +2,7 @@
 
 Stu Field
 
-19 May 2025
+23 May 2025
 
 ----------------------------------------------------------------------
 
@@ -179,13 +179,7 @@ With specific parameters:
 5 unknown samples with 2 measurements each:
 
 ``` r
-sample_data <- train[c(3L, 4L, 5L, 257L, 267L), 1:2L]
-measures <- t(sample_data)  # convert -> matrix
-s1 <- measures[, 1L]
-s2 <- measures[, 2L]
-s3 <- measures[, 3L]
-s4 <- measures[, 4L]
-s5 <- measures[, 5L]
+sample_data <- train[c(3:5L, 257L, 267L), 1:2L]
 tibble::as_tibble(sample_data)
 #> # A tibble: 5 × 2
 #>   feat1 feat2
@@ -195,6 +189,14 @@ tibble::as_tibble(sample_data)
 #> 3  3.77  2.72
 #> 4  4.10  2.85
 #> 5  4.08  2.84
+
+val_mat <- data.matrix(sample_data)  # convert -> matrix
+
+s1 <- val_mat[1L, ]
+s2 <- val_mat[2L, ]
+s3 <- val_mat[3L, ]
+s4 <- val_mat[4L, ]
+s5 <- val_mat[5L, ]
 ```
 
 ### Raw calculation sample 1:
