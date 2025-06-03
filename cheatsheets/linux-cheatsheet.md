@@ -2,7 +2,7 @@
 
 Stu Field
 
-20 September 2024
+03 June 2025
 
 -------------------------
 
@@ -323,13 +323,14 @@ lsb_release -a
 ```
 
 
-## apt-get
+## Using `apt-get`
 
 ```bash
 sudo apt-get install linux-headers-generic build-essential
 sudo vi /etc/apt/sources.list
-sudo apt-get update
+apt list --upgradable
 apt-cache showpkg r-base
+sudo apt-get update <pkgs>
 sudo apt-get install <pkgs>
 ```
 
@@ -342,5 +343,31 @@ VBoxManage modifyhd --resize 80000 VMwin7.vdi   # 80GB
 File -> Virtual Media Manager -> Release then Remove
 Settings -> Storage -> Controller:SATA -> Add Icon -> "point to *.vdi" -> OK
 ```
+
+## Create Directory with Structure
+
+```bash
+mkdir -p rootdir/subdir/foo
+mkdir -p rootdir/subdir/{foo,bar}
+mkdir -p rootdir/{subdir/foo,bar}
+```
+
+
+## Sudo Repeat
+
+```bash
+vi /etc/apt/sources.list/google.list
+sudo !!
+```
+
+## Typo Fix Previous Command
+
+```bash
+ping goggle.com
+^goggle^google
+```
+
+
+
 
 
