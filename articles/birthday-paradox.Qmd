@@ -27,7 +27,10 @@ library(ggplot2)
 
 # The Birthday Paradox
 
-In probability theory, the birthday problem asks for the probability that, in a set of n randomly chosen people, at least two will share a birthday. The birthday paradox refers to the counter-intuitive fact that only 23 people are needed for that probability to exceed 50%.
+In probability theory, the birthday problem asks for the probability that, in a
+set of n randomly chosen people, at least two will share a birthday. The
+birthday paradox refers to the counter-intuitive fact that only 23 people are
+needed for that probability to exceed 50%.
 
 This is the 
 [Birthday Paradox](https://en.wikipedia.org/wiki/Birthday_problem).
@@ -75,7 +78,7 @@ year (leap year?) and call it `prob_fun()`.
 # dpy = days-per-year
 prob_fun <- function(x, dpy = 365L) {
   x <- as.integer(x)
-  vapply(x, \(.x) {
+  vapply(x, function(.x) {
     v <- seq(dpy, dpy - .x + 1L)
     1 - (1 / dpy)^.x * prod(v)
   }, NA_real_, USE.NAMES = FALSE)
@@ -144,9 +147,9 @@ rsim <- withr::with_seed(101,              # set seed for reproducibility
     reps,                                  # nsims
     round(runif(ppl, min = 1, max = 365))) # n = 23; X ~ U(1, 365)
 )
-counts <- apply(rsim, 2, \(.x) table(.x))  # tabulate counts of duplicate wells
-dupes <- vapply(counts, \(.x) any(.x == 2), NA) # any (>1) duplicates present!
-prob  <- mean(dupes)
+counts <- apply(rsim, 2, function(.x) table(.x))        # tabulate counts of duplicate wells
+dupes  <- vapply(counts, function(.x) any(.x == 2), NA) # any (>1) duplicates present!
+prob   <- mean(dupes)
 prob
 ```
 

@@ -2,7 +2,7 @@
 
 Stu Field
 
-19 May 2025
+2 July 2025
 
 # The Birthday Paradox
 
@@ -58,7 +58,7 @@ in a year (leap year?) and call it `prob_fun()`.
 # dpy = days-per-year
 prob_fun <- function(x, dpy = 365L) {
   x <- as.integer(x)
-  vapply(x, \(.x) {
+  vapply(x, function(.x) {
     v <- seq(dpy, dpy - .x + 1L)
     1 - (1 / dpy)^.x * prod(v)
   }, NA_real_, USE.NAMES = FALSE)
@@ -123,9 +123,9 @@ rsim <- withr::with_seed(101,              # set seed for reproducibility
     reps,                                  # nsims
     round(runif(ppl, min = 1, max = 365))) # n = 23; X ~ U(1, 365)
 )
-counts <- apply(rsim, 2, \(.x) table(.x))  # tabulate counts of duplicate wells
-dupes <- vapply(counts, \(.x) any(.x == 2), NA) # any (>1) duplicates present!
-prob  <- mean(dupes)
+counts <- apply(rsim, 2, function(.x) table(.x))        # tabulate counts of duplicate wells
+dupes  <- vapply(counts, function(.x) any(.x == 2), NA) # any (>1) duplicates present!
+prob   <- mean(dupes)
 prob
 #> [1] 0.507
 ```
