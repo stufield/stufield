@@ -4,14 +4,20 @@ Welcome To My Homepage! <img src="https://raw.githubusercontent.com/stufield/stu
 </h1>
 
 
-Senior Data Scientist ✨ Machine Learning 🚀 Model Development 🔧 Tool Development 💻 Software Programmer 📦 R Software 📈 Leadership
+Bridging data, science & strategy 🚀 Machine Learning 🛠️ Tool Development 📦 R Software 🧭 Leadership 🧬 Life Sciences Domain Expert ✨ Former Sr. Data Scientist
 
 -----------
 
+🔬 Domain expertise: Proteomics, biomarker discovery, diagnostics, life sciences, predictive modeling
+
+📊 Technical tools: R, machine learning, statistics, Python, experimental design, reproducible research
+
+💪 Strengths: Translating complexity, cross-functional collaboration, storytelling with data
+
+-----------
 
 > "Making predictions is easy ... making accurate ones is much more difficult."
->   -- Me --
-
+>   ⎯ Me⎯
 
 -----------
 
@@ -19,6 +25,7 @@ Senior Data Scientist ✨ Machine Learning 🚀 Model Development 🔧 Tool Deve
 GIFs:
 <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcnlzMnJnZnltb21mcmcxN2hlajhtcXJsbTVwNHl5M2w0ODU4MzFkbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKz2eMXx7dn95FS/giphy.gif" width="200px">
 -->
+
 <p align="center">
 <img src="https://raw.githubusercontent.com/stufield/stufield/main/toy-story-data.gif" width="350px">
 &nbsp;
@@ -26,30 +33,9 @@ GIFs:
 </p>
 
 
-
-<!--
-### Professional Summary
-
-An experienced data scientist with 10+ years in the Life Sciences
-proteomics (high dimensional) space,
-Created, designed, and maintained a comprehensive R-based machine
-learning analysis ecosystem that standardizes and enables biomarker
-discovery and model development.
-A strong proponent of reproducible research and bioinformatics pipelines.
-Strong leadership and mentoring skills has lead to 40+ production
-level, predictive models resulting in significant revenue generation.
-Exceptional data visualization and manipulation, coupled with a
-rigorous analytics approach, has driven biomarker discovery and
-model development within the life sciences proteomics domain.
--->
-
-
-
-
 <!--
 You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4], [![LinkedIn][3.2]][3].
 -->
-
 
 
 ## About Me <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="40px">
@@ -83,13 +69,7 @@ is essential to building and effective team that delivers to stakeholders,
 fosters a sense of accomplishment, and drives revenue generation.
 
 I am always open to discuss possible roles 🔭 and whether my skill set
-can solve problems in your space. Please reach out via:
-
-| How | Where        |
-|:--- |:------------ |
-| 📫  | [![Gmail Badge](https://img.shields.io/badge/-Gmail-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:stu.g.field@gmail.com)](mailto:stu.g.field@gmail.com) |
-| ☎️   | 720.259.9982 |
-| 🔗  | www.linkedin.com/in/stu-field-sr-data-sci |
+can solve problems in your space!
 
 
 
@@ -97,6 +77,7 @@ can solve problems in your space. Please reach out via:
 
 
 ### Skills
+
 | Machine Learning 🚀    | Statistics 📊        | Open-Source 💻 | Software Tools 🔧 |
 |:---------------------- |:-------------------- |:-------------- |:----------------- |
 | Random Forest          | Logistic regression  | R              | Linux🐧, MacOS 🍎 |
@@ -153,9 +134,10 @@ can solve problems in your space. Please reach out via:
 
 
 #### Other Interests
+
 - 💬 Favorite food: 🐟 🌮
-- 📚 I am currently learning woodworking🪵 ... I'm not very good, but I can make a lot of sawdust!
-- 💬 Ask me about: bikes and `R` ... I'll talk your👂 off!
+- 📚 I am currently learning woodworking 🪵 ... I'm mostly good at making a lot of sawdust!
+- 💬 Ask me about: bikes and `R` ... I'll talk your 👂 off!
 - 🚴 I'm an avid cyclist:
   come say hi on [<img src="https://raw.githubusercontent.com/stufield/stufield/main/strava-icon.svg" width="20px">][5]
 
@@ -168,12 +150,16 @@ can solve problems in your space. Please reach out via:
 - I maintain several `R` software libraries (📦) that implement
   statistical and machine learning techniques in biomarker discovery.
   Some of my popular published 📦 are:
+  - [gitr](https://github.com/stufield/gitr)
+  - [helpr](https://github.com/stufield/helpr)
+  - [wranglr](https://github.com/stufield/wranglr)
+  - [featureselectr](https://github.com/stufield/featureselectr)
+  - [stabilityselectr](https://github.com/stufield/stabilityselectr)
+  - [pcapkg](https://github.com/stufield/pcapkg)
+  - [power](https://github.com/stufield/power)
   - [SomaDataIO](https://cran.r-project.org/web/packages/SomaDataIO/index.html)
     ([CRAN](https://cloud.r-project.org/))
   - [SomaPlotr](https://github.com/SomaLogic/SomaPlotr)
-  - [gitr](https://github.com/stufield/gitr)
-  - [helpr](https://github.com/stufield/helpr)
-  - [power](https://github.com/stufield/power)
 - These projects support analyses in the general Life Sciences (BioTech)
   space to generate proteomic based insights in health spaces such as:
   - cardiovascular disease
@@ -190,7 +176,7 @@ can solve problems in your space. Please reach out via:
   - survival analyses
   - ensemble methods
 - I am a proponent of the open-source software, conducting the majority
-  of my research/analysis via Linux toolkits, R, and the RStudio IDE.
+  of my research/analysis via Linux toolkits, R, and the `RStudio/Posit` IDE.
 - I promote conforming to the adherence of so-called "tidy" data, a
   philosophy of data science designed to share underlying data
   structure, grammar, and format which facilitates the generation
@@ -267,14 +253,6 @@ Badges for X
   <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=stufield&repo=SomaPlotr&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" />
 </a>
 
-<a href="https://github.com/stufield/testthat">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=stufield&repo=testthat&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" />
-</a>
-
-<a href="https://github.com/stufield/tibble">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=stufield&repo=tibble&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" />
-</a>
-
 
 
 ------------
@@ -305,7 +283,7 @@ Badges for X
 <!-- links to your social media accounts -->
 [1]: https://twitter.com/stufield3
 [2]: https://github.com/stufield
-[3]: https://www.linkedin.com/in/stu-field-133396a
+[3]: https://www.linkedin.com/in/stu-field-sr-data-sci
 [4]: https://www.instagram.com/carlito_caliente/
 [5]: https://www.strava.com/athletes/3292229
 
