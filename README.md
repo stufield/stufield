@@ -118,7 +118,7 @@ can solve problems in your space!
 | [Mack-Wolfe Tests](articles/mack-wolfe.md)             | <a href="articles/mack-wolfe.md"><img src="articles/figures/mack-wolfe-four-scenario-beeswarm-1.png" width="100px"></a> |
 | [Mixed Effects](articles/mixed-effects-models.md)      | <a href="articles/mixed-effects-models.md"><img src="articles/figures/mixed-plot_long_combined-1.png" width="100px"></a> |
 | [Monty Hall Paradox](articles/monty-hall-paradox.md)   | <a href="articles/monty-hall-paradox.md"><img src="articles/figures/monty-hall-plot-sim-1.png" width="100px"></a> |
-| [Decision Boundaries](articles/decision-boundaries.md) | <a href="articles/decision-boundaries.md"><img src="articles/figures/kknn-bayes-knn-vs-bayes-1.png" width="100px"></a> |
+| [Decision Boundaries](articles/decision-boundaries.md) | <a href="articles/decision-boundaries.md"><img src="articles/figures/knn-bayes-knn-vs-bayes-1.png" width="100px"></a> |
 | [Class Imbalance](articles/class-imbalance.md)          | <a href="articles/class-imbalance.md"><img src="articles/figures/class-imbalance-plot-imbalance-1.png" width="100px"></a> |
 
 
