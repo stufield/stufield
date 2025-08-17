@@ -3,16 +3,22 @@
 Welcome To My Homepage! <img src="https://raw.githubusercontent.com/stufield/stufield/main/wave.gif" width="30px">
 </h1>
 
-
-Bridging data, science & strategy 🚀 Machine Learning 🛠️ Tool Development 📦 R Software 🧭 Leadership 🧬 Life Sciences Domain Expert ✨ Former Sr. Data Scientist
+Bridging data, science & strategy
+🚀 Machine Learning 
+🛠️ Tool Development 
+📦 R Software 
+🧭 Leadership 
+🧬 Life Sciences Domain Expert 
+✨ Director of Data Science @ [Cercle.ai](https://www.cercle.ai/)
+<p align="right"> <img src="https://komarev.com/ghpvc/?username=stufield&label=Profile%20Views&color=0e75b6&style=social" alt="stufield" /> </p>
 
 -----------
 
-🔬 Domain expertise: Proteomics, biomarker discovery, diagnostics, life sciences, predictive modeling
+🔬 **Domain expertise**: Proteomics, biomarker discovery, diagnostics, life sciences, predictive modeling
 
-📊 Technical tools: R, machine learning, statistics, Python, experimental design, reproducible research
+📊 **Technical tools**: R, machine learning, statistics, Python, experimental design, reproducible research
 
-💪 Strengths: Translating complexity, cross-functional collaboration, storytelling with data
+💪 **Strengths**: Translating complexity, cross-functional collaboration, storytelling with data
 
 -----------
 
@@ -48,7 +54,7 @@ it can also be as simple as fixing something that's broken
 In particular, I like to apply my data science skills to better
 understand, or even solve, the problems we face.
 
-Over the past 12+ years I have combined my statistical knowledge
+Over the past 14+ years I have combined my statistical knowledge
 and Open-Source Software tools to solve complex problems in the
 Life Sciences proteomics (high dimensional) space.
 In so doing, I have created a comprehensive R-based machine
@@ -195,6 +201,7 @@ Badges for X
 
 
 ### 🔧 Tools & Languages
+
 <!-- Badges -->
 ![](https://img.shields.io/badge/Code-R-informational?style=flat&logo=R&logoColor=blue&color=blue)
 ![](https://img.shields.io/badge/GitHub-Actions-informational?style=flat&logo=github&logoColor=white&color=blue)
@@ -213,6 +220,18 @@ Badges for X
 ![](https://img.shields.io/badge/Collaboration-Slack-informational?style=flat&logo=slack&color=blue)
 
 
+### 📈 GitHub Stats
+
+<a href="https://github.com/stufield/stufield">
+  <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=stufield&hide=java,html&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" />
+</a>
+<a href="https://github.com/stufield/stufield">
+  <img align="center" src="https://github-readme-stats.vercel.app/api?username=stufield&show_icons=true&line_height=27&count_private=true&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" alt="Stu's GitHub Stats" />
+</a>
+
+
+------------
+
 ### 🔧 GitHub Commits
 <!-- Badges -->
 <!-- GH Badges -->
@@ -230,19 +249,6 @@ Badges for X
 ![](https://img.shields.io/github/last-commit/stufield/grapevine?logo=github&label=grapevine)
 
 
-------------
-
-
-### 📈 GitHub Stats
-
-<a href="https://github.com/stufield/stufield">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=stufield&hide=java,html&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" />
-</a>
-<a href="https://github.com/stufield/stufield">
-  <img align="center" src="https://github-readme-stats.vercel.app/api?username=stufield&show_icons=true&line_height=27&count_private=true&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" alt="Stu's GitHub Stats" />
-</a>
-
-
 #### Contributions
 
 <a href="https://github.com/stufield/SomaDataIO">
@@ -252,7 +258,6 @@ Badges for X
 <a href="https://github.com/stufield/SomaPlotr">
   <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=stufield&repo=SomaPlotr&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" />
 </a>
-
 
 
 ------------
