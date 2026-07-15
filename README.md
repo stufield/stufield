@@ -101,13 +101,17 @@ can solve problems in your space!
   high-throughput, multi-plex, proteomics machine
   learning analysis ecosystem which enabled (and standardized)
   biomarker discovery and model development across analysts.
+
 - **Project Leadership:** led highly successful Open-Source Software (OSS)
   initiative enabling customers to not only understand highly complex
   analysis concepts in the proteomics space, but to conduct those analyses themselves.
+
 - **Analysis Reports:** generated standardized analysis templates
   enabling reproducible research and results across the organization.
-- **Leadership:** successfully led a team of 3-5 direct reports through
+
+- **Leadership:** successfully led a team of 6+ direct reports through
   analyses, code review, self-enablement, and career development.
+
 - **Written Accomplishment:** proven ability to summarize complex analyses via strong
   publication record.
 
