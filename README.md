@@ -86,35 +86,37 @@ can solve problems in your space!
 
 | Machine Learning 🚀    | Statistics 📊        | Open-Source 💻 | Software Tools 🔧 |
 |:---------------------- |:-------------------- |:-------------- |:----------------- |
-| Random Forest          | Logistic regression  | R              | Linux🐧, MacOS 🍎 |
-| Naive Bayes            | Linear regression    | C++            | Git, GitHub :octocat: |
-| Lasso/ridge regression | GLMMs                | Python 🐍      | AWS               |
-| k-Nearest neighbour    | Mixed-effects models | LaTeX          | BASH, GNU         |
-| PCA                    | Survival analysis    | CI/CD          | BitBucket         |
-| Ensemble methods       | Multivariate statistics | Docker 🐋   | Slack             |
-| Maximum Likelihood     | ANOVA                |                | Kubernetes        |
+| Random forest          | Regression problems  | R              | Linux🐧, MacOS 🍎 |
+| Naive Bayes            | Real-world data (RWD)| C++            | Git, GitHub :octocat: |
+| Lasso regularization   | GLMs                 | CI/CD          | AWS               |
+| k-Nearest neighbour    | Causal inference IPTW| LaTeX          | BASH, GNU         |
+| PCA                    | Survival analysis    | Python 🐍      | Docker 🐋         |
+| Maximum-likelihood     | Linear mixed-effects | Opencode       | LLM/Agentic workflows |
 
 
-#### Application of Skill Set
 
-- **Data Analysis:** created high-dimensional,
-  high-throughput, multi-plex, proteomics machine
-  learning analysis ecosystem which enabled (and standardized)
-  biomarker discovery and model development across analysts.
+### Current Skills Application as Director of Data Science
 
-- **Project Leadership:** led highly successful Open-Source Software (OSS)
-  initiative enabling customers to not only understand highly complex
-  analysis concepts in the proteomics space, but to conduct those analyses themselves.
+* Execute organization's data science strategy, aligning
+  analytics with business and clinical goals
+* Instituted a culture of rigorous, reproducible analysis --
+  shifting the team from reactive one-off requests to disciplined
+  workflows emphasizing data quality as the primary standard
+* Deliver causal inference analyses on large-scale reproductive
+  health data (IPTW, propensity scoring, covariate balancing)
+  to inform clinical treatment protocol decisions
+* Lead our key pharmaceutical partnerships, translating
+  multi-arm observational results into clinical insights
+* Collaborate with customers and C-suite to create
+  framework for data-based decision making
+* Architect and maintain a company-wide \R analytics ecosystem
+  -- standardizing workflows from data ingestion through Quarto-driven
+  client reporting
+* Build and mentor a data science team of 3-5; own hiring,
+  statistical analysis plans, code review, and technical growth
 
-- **Analysis Reports:** generated standardized analysis templates
-  enabling reproducible research and results across the organization.
 
-- **Leadership:** successfully led a team of 6+ direct reports through
-  analyses, code review, self-enablement, and career development.
-
-- **Written Accomplishment:** proven ability to summarize complex analyses via strong
-  publication record.
-
+-----
 
 ## Tech Notes & Vignettes 📚
 
