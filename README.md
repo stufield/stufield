@@ -12,13 +12,18 @@ Bridging data, science & strategy
 ✨ Director of Data Science @ [Cercle.ai](https://www.cercle.ai/)
 <p align="right"> <img src="https://komarev.com/ghpvc/?username=stufield&label=Profile%20Views&color=0e75b6&style=social" alt="stufield" /> </p>
 
------------
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/stufield/stufield/main/06-combined-A-thirds.png">
+</p>
+
 
 🔬 **Domain expertise**: Proteomics, biomarker discovery, diagnostics, life sciences, predictive modeling
 
 📊 **Technical tools**: R, machine learning, statistics, Python, experimental design, reproducible research
 
 💪 **Strengths**: Translating complexity, cross-functional collaboration, storytelling with data
+
 
 -----------
 
@@ -27,16 +32,14 @@ Bridging data, science & strategy
 
 -----------
 
-<!--
-GIFs:
-<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcnlzMnJnZnltb21mcmcxN2hlajhtcXJsbTVwNHl5M2w0ODU4MzFkbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKz2eMXx7dn95FS/giphy.gif" width="200px">
--->
 
+<!--
 <p align="center">
 <img src="https://raw.githubusercontent.com/stufield/stufield/main/toy-story-data.gif" width="350px">
 &nbsp;
 <img src="https://raw.githubusercontent.com/stufield/stufield/main/plot-grid.png" width="300px">
 </p>
+-->
 
 
 <!--
