@@ -227,8 +227,6 @@ Badges for X
 ------------
 
 ### 🔧 GitHub Commits
-<!-- Badges -->
-<!-- GH Badges -->
 ![](https://img.shields.io/github/last-commit/stufield/gitr?logo=github&label=gitr)
 ![](https://img.shields.io/github/last-commit/stufield/helpr?logo=github&label=helpr)
 ![](https://img.shields.io/github/last-commit/stufield/wranglr?logo=github&label=wranglr)
@@ -240,9 +238,6 @@ Badges for X
 ![](https://img.shields.io/github/last-commit/stufield/git-hooks?logo=github&label=git-hooks)
 ![](https://img.shields.io/github/last-commit/stufield/code-works?logo=github&label=code-works)
 ![](https://img.shields.io/github/last-commit/stufield/reprex-collection?logo=github&label=reprex-collection)
-![](https://img.shields.io/github/last-commit/stufield/SomaDataIO?logo=github&label=SomaDataIO)
-![](https://img.shields.io/github/last-commit/stufield/SomaPlotr?logo=github&label=SomaPlotr)
-![](https://img.shields.io/github/last-commit/stufield/grapevine?logo=github&label=grapevine)
 
 
 #### Contributions
