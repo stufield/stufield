@@ -10,17 +10,26 @@ Bridging data, science & strategy
 🧭 Leadership 
 🧬 Life Sciences Domain Expert 
 ✨ Director of Data Science @ [Cercle.ai](https://www.cercle.ai/)
-<p align="right"> <img src="https://komarev.com/ghpvc/?username=stufield&label=Profile%20Views&color=0e75b6&style=social" alt="stufield" /> </p>
 
+<p align="right">
+<img src="https://komarev.com/ghpvc/?username=stufield&label=Profile%20Views&color=0e75b6&style=social" alt="stufield" />
+<a href="https://github.com/stufield/repo-views" target="blank">
+<img src="https://raw.githubusercontent.com/stufield/repo-views/master/svg/views-badge.svg" alt="Cumulative repo traffic" />
+</a>
+</p>
+
+<p align="center">
+<img src="https://ghchart.rshah.org/42587a/stufield" alt="stufield's Github Contribution Chart" />
+</p>
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/stufield/stufield/main/06-combined-A-thirds.png">
 </p>
 
 
-🔬 **Domain expertise**: Proteomics, biomarker discovery, diagnostics, life sciences, predictive modeling
+🔬 **Domain expertise**: IVF clinical analysis, proteomics, biomarker discovery, predictive modeling
 
-📊 **Technical tools**: R, machine learning, statistics, Python, experimental design, reproducible research
+📊 **Technical tools**: R, machine learning, statistics, experimental design, reproducible research
 
 💪 **Strengths**: Translating complexity, cross-functional collaboration, storytelling with data
 
@@ -33,21 +42,7 @@ Bridging data, science & strategy
 -----------
 
 
-<!--
-<p align="center">
-<img src="https://raw.githubusercontent.com/stufield/stufield/main/toy-story-data.gif" width="350px">
-&nbsp;
-<img src="https://raw.githubusercontent.com/stufield/stufield/main/plot-grid.png" width="300px">
-</p>
--->
-
-
-<!--
-You can find me on [![Twitter][1.2]][1], [![Instagram][4.2]][4], [![LinkedIn][3.2]][3].
--->
-
-
-## About Me <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="40px">
+<h2 align="center">🧬 About Me 🧬</h2>
 
 I love to solve problems.
 
@@ -57,32 +52,8 @@ it can also be as simple as fixing something that's broken
 In particular, I like to apply my data science skills to better
 understand, or even solve, the problems we face.
 
-Over the past 14+ years I have combined my statistical knowledge
-and Open-Source Software tools to solve complex problems in the
-Life Sciences proteomics (high dimensional) space.
-In so doing, I have created a comprehensive R-based machine
-learning analysis ecosystem that standardizes and enables
-biomarker discovery and predictive model development.
-
-Sometimes the problem is inconsistency across teams or analysts ...
-thus I promote adherence of "tidy" data principles and am a
-strong proponent reproducible research and use of bioinformatics pipelines.
-
-Other times the problem can be sharing results across the organization ...
-thus developing an Application Program Interface (API) infrastructure
-that enables anyone to access model results with ease.
-
-With my teaching background, I find it important to mentor junior team members
-while simultaneously leading more senior members. This collaborative spirit
-is essential to building and effective team that delivers to stakeholders,
-fosters a sense of accomplishment, and drives revenue generation.
-
 I am always open to discuss possible roles 🔭 and whether my skill set
 can solve problems in your space!
-
-
-
---------------------
 
 
 ### Skills
@@ -159,6 +130,41 @@ can solve problems in your space!
 
 ----------------
 
+## Contributing 👍
+
+<h4 align="center">📆 GitHub Streak</h4>
+
+<p class="rich-diff-level-zero" align="center">
+  <a href="https://github-readme-streak-stats.herokuapp.com/?user=stufield&theme=dark" rel="nofollow" class="rech-diff-level-one">
+    <img src="https://github-readme-streak-stats.herokuapp.com/?user=stufield&theme=dark" alt="GitHub Streak" data-canonical-src="https://github-readme-streak-stats.herokuapp.com/?user=stufield&theme=dark" style="max-width:100%;">
+   </a>
+</p>
+
+<br>
+
+<h4 align="center">📊 Graph</h4>
+
+<p class="rich-diff-level-zero" align="center">
+  <a href="https://github-readme-activity-graph.vercel.app/graph?username=stufield&theme=react-dark" rel="nofollow" class="rech-diff-level-one">
+    <img
+      src="https://github-readme-activity-graph.vercel.app/graph?username=stufield&theme=react-dark"
+      alt="GitHub Streak" data-canonical-src="https://github-readme-activity-graph.vercel.app/graph?username=stufield&theme=react-dark"
+      style="max-width:100%;"
+    >
+  </a>
+</p>
+
+<br>
+
+<h4 align="center">💹 Isometric</h4>
+<br><p align="center"><em>(Languages pie is based on recent commits)</em></p>
+<p align="center">
+	<a href="./profile-3d-contrib/profile-night-green.svg">
+		<img width="900em" src="./profile-3d-contrib/profile-night-green.svg">
+	</a>
+</p>
+
+
 
 ### More Details
 
@@ -175,27 +181,6 @@ can solve problems in your space!
   - [SomaDataIO](https://cran.r-project.org/web/packages/SomaDataIO/index.html)
     ([CRAN](https://cloud.r-project.org/))
   - [SomaPlotr](https://github.com/SomaLogic/SomaPlotr)
-- These projects support analyses in the general Life Sciences (BioTech)
-  space to generate proteomic based insights in health spaces such as:
-  - cardiovascular disease
-  - liver disease (NASH/NAFLD)
-  - alcohol effects
-  - biological aging
-  - exercise status
-  - metabolic disease
-- Favorite techniques:
-  - random forest
-  - logistic regression (ol' faithful)
-  - naive Bayes
-  - KKNN (nearest neighbor)
-  - survival analyses
-  - ensemble methods
-- I am a proponent of the open-source software, conducting the majority
-  of my research/analysis via Linux toolkits, R, and the `RStudio/Posit` IDE.
-- I promote conforming to the adherence of so-called "tidy" data, a
-  philosophy of data science designed to share underlying data
-  structure, grammar, and format which facilitates the generation
-  of reproducible analyses.
 
 
 -------------------
@@ -232,12 +217,12 @@ Badges for X
 ### 📈 GitHub Stats
 
 <a href="https://github.com/stufield/stufield">
-  <img align="center" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=stufield&theme=github_dark" alt="Top Languages" />
-</a>
-<a href="https://github.com/stufield/stufield">
-  <img align="center" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=stufield&theme=github_dark" alt="Stu's GitHub Stats" />
+  <img align="center" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=stufield&exclude=java&theme=github_dark&title_color=809EB0&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" alt="Top Languages" />
 </a>
 
+<a href="https://github.com/stufield/stufield">
+  <img align="center" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=stufield&theme=github_dark&hide_logo=false&title_color=809EB0&text_color=809EB0&icon_color=42587A&bg_color=1d1f21&v=2" alt="Stu's GitHub Stats" />
+</a>
 
 ------------
 
@@ -246,15 +231,17 @@ Badges for X
 <!-- GH Badges -->
 ![](https://img.shields.io/github/last-commit/stufield/gitr?logo=github&label=gitr)
 ![](https://img.shields.io/github/last-commit/stufield/helpr?logo=github&label=helpr)
+![](https://img.shields.io/github/last-commit/stufield/wranglr?logo=github&label=wranglr)
+![](https://img.shields.io/github/last-commit/stufield/libml?logo=github&label=libml)
 ![](https://img.shields.io/github/last-commit/stufield/stufield?logo=github&label=stufield)
-![](https://img.shields.io/github/last-commit/stufield/SomaDataIO?logo=github&label=SomaDataIO)
-![](https://img.shields.io/github/last-commit/stufield/SomaPlotr?logo=github&label=SomaPlotr)
+![](https://img.shields.io/github/last-commit/stufield/stabilityselectr?logo=github&label=stabilityselectr)
 ![](https://img.shields.io/github/last-commit/stufield/system-config?logo=github&label=system-config)
 ![](https://img.shields.io/github/last-commit/stufield/tech-notes?logo=github&label=tech-notes)
 ![](https://img.shields.io/github/last-commit/stufield/git-hooks?logo=github&label=git-hooks)
 ![](https://img.shields.io/github/last-commit/stufield/code-works?logo=github&label=code-works)
 ![](https://img.shields.io/github/last-commit/stufield/reprex-collection?logo=github&label=reprex-collection)
-![](https://img.shields.io/github/last-commit/stufield/devel?logo=github&label=devel)
+![](https://img.shields.io/github/last-commit/stufield/SomaDataIO?logo=github&label=SomaDataIO)
+![](https://img.shields.io/github/last-commit/stufield/SomaPlotr?logo=github&label=SomaPlotr)
 ![](https://img.shields.io/github/last-commit/stufield/grapevine?logo=github&label=grapevine)
 
 
@@ -268,6 +255,11 @@ Badges for X
 <a href="https://github.com/stufield/wranglr">
   <img src="https://img.shields.io/github/stars/stufield/wranglr?logo=github&label=wranglr%20stars" alt="wranglr stars" />
   <img src="https://img.shields.io/github/languages/top/stufield/wranglr?logo=github" alt="wranglr top language" />
+</a>
+
+<a href="https://github.com/stufield/stabilityselectr">
+  <img src="https://img.shields.io/github/stars/stufield/stabilityselectr?logo=github&label=stabilityselectr%20stars" alt="stabilityselectr stars" />
+  <img src="https://img.shields.io/github/languages/top/stufield/stabilityselectr?logo=github" alt="stabilityselectr top language" />
 </a>
 
 
