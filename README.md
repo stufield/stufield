@@ -232,10 +232,10 @@ Badges for X
 ### 📈 GitHub Stats
 
 <a href="https://github.com/stufield/stufield">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=stufield&hide=java,html&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" />
+  <img align="center" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=stufield&theme=github_dark" alt="Top Languages" />
 </a>
 <a href="https://github.com/stufield/stufield">
-  <img align="center" src="https://github-readme-stats.vercel.app/api?username=stufield&show_icons=true&line_height=27&count_private=true&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" alt="Stu's GitHub Stats" />
+  <img align="center" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=stufield&theme=github_dark" alt="Stu's GitHub Stats" />
 </a>
 
 
@@ -260,12 +260,14 @@ Badges for X
 
 #### Contributions
 
-<a href="https://github.com/stufield/SomaDataIO">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=stufield&repo=SomaDataIO&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" />
+<a href="https://github.com/stufield/helpr">
+  <img src="https://img.shields.io/github/stars/stufield/helpr?logo=github&label=helpr%20stars" alt="helpr stars" />
+  <img src="https://img.shields.io/github/languages/top/stufield/helpr?logo=github" alt="helpr top language" />
 </a>
 
-<a href="https://github.com/stufield/SomaPlotr">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=stufield&repo=SomaPlotr&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" />
+<a href="https://github.com/stufield/wranglr">
+  <img src="https://img.shields.io/github/stars/stufield/wranglr?logo=github&label=wranglr%20stars" alt="wranglr stars" />
+  <img src="https://img.shields.io/github/languages/top/stufield/wranglr?logo=github" alt="wranglr top language" />
 </a>
 
 
