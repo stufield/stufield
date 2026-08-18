@@ -1,0 +1,12 @@
+title,path,figure
+False Discovery,articles/false-pos-q-values.md,articles/figures/fdr-power-1.png
+Mixture Models,articles/mixture-em.md,articles/figures/mixture-plot-em2-1.png
+Logistic Regression,articles/logistic-regression.md,articles/figures/logistic-logit-1.png
+Naive Bayes,articles/naive-bayes-tech-note.md,articles/figures/bayes-PDFs-1.png
+The Birthday Paradox,articles/birthday-paradox.md,articles/figures/birthday-paradox-ggplot-prob-fun-1.png
+Mack-Wolfe Tests,articles/mack-wolfe.md,articles/figures/mack-wolfe-four-scenario-beeswarm-1.png
+Mixed Effects,articles/mixed-effects-models.md,articles/figures/mixed-plot_long_combined-1.png
+Monty Hall Paradox,articles/monty-hall-paradox.md,articles/figures/monty-hall-plot-sim-1.png
+Decision Boundaries,articles/decision-boundaries.md,articles/figures/knn-bayes-knn-vs-bayes-1.png
+Class Imbalance,articles/class-imbalance.md,articles/figures/class-imbalance-plot-imbalance-1.png
+Pitch Classifier,articles/baseball-strike-classifier.md,articles/figures/strike-log-odds-1.png

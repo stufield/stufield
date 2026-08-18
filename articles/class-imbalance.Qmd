@@ -2,7 +2,7 @@
 title: Effect of Class Imbalance on Prediction Accuracy; a cautionary tale of balance
 author: "Stu Field"
 date: today
-date-format: "D MMMM YYYY"
+date-format: "DD MMMM YYYY"
 format:
   gfm:
     preview-mode: raw

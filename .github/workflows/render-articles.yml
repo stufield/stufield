@@ -1,0 +1,78 @@
+# Re-renders the Quarto articles to GitHub-flavoured markdown.
+#
+# Event-driven rather than periodic: the rendered .md files are
+# derived from the .Qmd sources, so nothing changes unless a source
+# changes. The weekly cron is a dependency-drift canary -- every
+# article seeds its RNG, so a scheduled run producing a diff means a
+# package update altered the results, which is worth knowing.
+name: Render Articles
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - articles/**.qmd
+      - articles/Makefile
+  schedule:
+    # Weekly, Sunday 06:00 UTC. Deterministic output means a diff here
+    # signals a changed dependency, not RNG noise.
+    - cron: '0 6 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# A long render must not race a second push.
+concurrency:
+  group: render-articles
+  cancel-in-progress: false
+
+jobs:
+  render:
+    name: Render Quarto articles
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: quarto-dev/quarto-actions/setup@v2
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      # helpr is deliberately pinned to github::stufield/helpr -- an
+      # unrelated package of the same name exists on CRAN, and `any::`
+      # would silently install the wrong one.
+      #
+      # mixr is a private repo, so pak needs a repo-scoped PAT via
+      # GITHUB_PAT. Without ARTICLES_TOKEN this step is what fails.
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        env:
+          GITHUB_PAT: ${{ secrets.ARTICLES_TOKEN }}
+        with:
+          packages: |
+            any::knitr
+            any::rmarkdown
+            any::dplyr
+            any::tidyr
+            any::tibble
+            any::ggplot2
+            any::patchwork
+            any::withr
+            any::randomForest
+            any::kknn
+            github::stufield/libml
+            github::stufield/helpr
+            github::stufield/SomaPlotr
+            github::stufield/mixr
+
+      - name: Render
+        run: make -C articles all
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add articles/*.md articles/figures
+          git diff --quiet --cached || git commit -m "chore: re-render articles"
+          git push

@@ -2,36 +2,42 @@
 # GNU Make Automatic Variables:
 # ----------------------------------- #
 # $*: stem of target
-# $@: filename of target 
-# $%: target member name
+# $@: filename of target
 # $<: the first prerequisites for target
 # $^: prerequisites for target
 # $?: prerequisites newer than target
-#######################
-# Local Variables:
-#######################
+
 MV = mv -f
 RM = rm -rf
 CP = cp -f
-TOUCH = touch
-PDFLATEX = pdflatex
-RSCRIPT = Rscript --vanilla
-#########################
+SED = sed
+
 .PRECIOUS: %.tex Makefile
-.PHONY: clean
-#########################
+.PHONY: all clean
 
-all: quarto clean
+QMD := $(wildcard *.[Qq]md)
+MD  := $(patsubst %.qmd,%.md,$(patsubst %.Qmd,%.md,$(QMD)))
 
-quarto:
-	@ echo "Rendering Rmarkdown *.md files"
-	@ for i in *.[Qq]md; do echo $$i && quarto render $$i --to default; done
-	@ for i in *[.]md; do sed -i '1,2G' $$i; done
+all: $(MD)
 
-%.pdf: %.tex
-	@ $(PDFLATEX) $*
-	@ $(PDFLATEX) $*
+# Quarto's gfm writer emits title, author and date on consecutive
+# lines, which GitHub collapses into a single run-together paragraph.
+# Appending a blank line after each of the first two separates them.
+#
+# `-i.bak` is the only in-place form portable across BSD sed (macOS)
+# and GNU sed (CI runners); a bare `-i` fails on one or the other.
+
+define render
+	@ echo "rendering $<"
+	@ quarto render $< --to gfm
+	@ $(SED) -i.bak '1,2G' $@ && $(RM) $@.bak
+endef
+
+%.md: %.Qmd
+	$(render)
+
+%.md: %.qmd
+	$(render)
 
 clean:
-	@ $(RM) *.log *.aux *.out *.html
-
+	@ $(RM) *.log *.aux *.out *.html *.bak

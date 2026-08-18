@@ -92,21 +92,29 @@ can solve problems in your space!
 
 -----
 
-## Tech Notes & Vignettes 📚
+## Tech Notes & Tutorials 📚
 
-| Topic 🚀                                               | Thumbnail 📈     |
-|:------------------------------------------------------ |:----------------:|
-| [False Discovery](articles/false-pos-q-values.md)      | <a href="articles/false-pos-q-values.md"><img src="articles/figures/fdr-power-1.png" width="100px"></a> |
-| [Mixture Models](articles/mixture-em.md)               | <a href="articles/mixture-em.md"><img src="articles/figures/mixture-plot-em2-1.png" width="100px"></a> |
-| [Logistic Regression](articles/logistic-regression.md) | <a href="articles/logistic-regression.md"><img src="articles/figures/logistic-logit-1.png" width="100px"></a> |
-| [Naive Bayes](articles/naive-bayes-tech-note.md)       | <a href="articles/naive-bayes-tech-note.md"><img src="articles/figures/bayes-PDFs-1.png" width="100px"></a> |
-| [The Birthday Paradox](articles/birthday-paradox.md)   | <a href="articles/birthday-paradox.md"><img src="articles/figures/birthday-paradox-ggplot-prob-fun-1.png" width="100px"></a> |
-| [Mack-Wolfe Tests](articles/mack-wolfe.md)             | <a href="articles/mack-wolfe.md"><img src="articles/figures/mack-wolfe-four-scenario-beeswarm-1.png" width="100px"></a> |
-| [Mixed Effects](articles/mixed-effects-models.md)      | <a href="articles/mixed-effects-models.md"><img src="articles/figures/mixed-plot_long_combined-1.png" width="100px"></a> |
-| [Monty Hall Paradox](articles/monty-hall-paradox.md)   | <a href="articles/monty-hall-paradox.md"><img src="articles/figures/monty-hall-plot-sim-1.png" width="100px"></a> |
-| [Decision Boundaries](articles/decision-boundaries.md) | <a href="articles/decision-boundaries.md"><img src="articles/figures/knn-bayes-knn-vs-bayes-1.png" width="100px"></a> |
-| [Class Imbalance](articles/class-imbalance.md)         | <a href="articles/class-imbalance.md"><img src="articles/figures/class-imbalance-plot-imbalance-1.png" width="100px"></a> |
-| [Pitch Classifier](articles/baseball-strike-classifier.md) | <a href="articles/baseball-strike-classifier.md"><img src="articles/figures/strike-log-odds-1.png" width="100px"></a> |
+<!-- ARTICLES:START -->
+<table>
+<tr>
+<td align="center" width="210"><a href="articles/false-pos-q-values.md"><img src="articles/figures/fdr-power-1.png" width="190"></a><br><sub><b>False Discovery</b></sub></td>
+<td align="center" width="210"><a href="articles/mixture-em.md"><img src="articles/figures/mixture-plot-em2-1.png" width="190"></a><br><sub><b>Mixture Models</b></sub></td>
+<td align="center" width="210"><a href="articles/logistic-regression.md"><img src="articles/figures/logistic-logit-1.png" width="190"></a><br><sub><b>Logistic Regression</b></sub></td>
+<td align="center" width="210"><a href="articles/naive-bayes-tech-note.md"><img src="articles/figures/bayes-PDFs-1.png" width="190"></a><br><sub><b>Naive Bayes</b></sub></td>
+</tr>
+<tr>
+<td align="center" width="210"><a href="articles/birthday-paradox.md"><img src="articles/figures/birthday-paradox-ggplot-prob-fun-1.png" width="190"></a><br><sub><b>The Birthday Paradox</b></sub></td>
+<td align="center" width="210"><a href="articles/mack-wolfe.md"><img src="articles/figures/mack-wolfe-four-scenario-beeswarm-1.png" width="190"></a><br><sub><b>Mack-Wolfe Tests</b></sub></td>
+<td align="center" width="210"><a href="articles/mixed-effects-models.md"><img src="articles/figures/mixed-plot_long_combined-1.png" width="190"></a><br><sub><b>Mixed Effects</b></sub></td>
+<td align="center" width="210"><a href="articles/monty-hall-paradox.md"><img src="articles/figures/monty-hall-plot-sim-1.png" width="190"></a><br><sub><b>Monty Hall Paradox</b></sub></td>
+</tr>
+<tr>
+<td align="center" width="210"><a href="articles/decision-boundaries.md"><img src="articles/figures/knn-bayes-knn-vs-bayes-1.png" width="190"></a><br><sub><b>Decision Boundaries</b></sub></td>
+<td align="center" width="210"><a href="articles/class-imbalance.md"><img src="articles/figures/class-imbalance-plot-imbalance-1.png" width="190"></a><br><sub><b>Class Imbalance</b></sub></td>
+<td align="center" width="210"><a href="articles/baseball-strike-classifier.md"><img src="articles/figures/strike-log-odds-1.png" width="190"></a><br><sub><b>Pitch Classifier</b></sub></td>
+</tr>
+</table>
+<!-- ARTICLES:END -->
 
 
 

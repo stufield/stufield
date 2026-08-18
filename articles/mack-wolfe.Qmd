@@ -2,7 +2,7 @@
 title: "The Mack-Wolfe Test"
 author: "Stu Field"
 date: today
-date-format: "D MMMM YYYY"
+date-format: "DD MMMM YYYY"
 format:
   gfm:
     preview-mode: raw
@@ -23,6 +23,9 @@ format:
 ```{r}
 #| label: setup
 #| include: FALSE
+library(helpr)
+library(libml)
+library(SomaPlotr)
 library(patchwork)
 knitr::opts_chunk$set(
   collapse = TRUE,
