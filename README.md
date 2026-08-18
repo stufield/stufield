@@ -105,44 +105,54 @@ can solve problems in your space!
 | [Mixed Effects](articles/mixed-effects-models.md)      | <a href="articles/mixed-effects-models.md"><img src="articles/figures/mixed-plot_long_combined-1.png" width="100px"></a> |
 | [Monty Hall Paradox](articles/monty-hall-paradox.md)   | <a href="articles/monty-hall-paradox.md"><img src="articles/figures/monty-hall-plot-sim-1.png" width="100px"></a> |
 | [Decision Boundaries](articles/decision-boundaries.md) | <a href="articles/decision-boundaries.md"><img src="articles/figures/knn-bayes-knn-vs-bayes-1.png" width="100px"></a> |
-| [Class Imbalance](articles/class-imbalance.md)          | <a href="articles/class-imbalance.md"><img src="articles/figures/class-imbalance-plot-imbalance-1.png" width="100px"></a> |
-
-
-## Baseball
-
-| Topic 🚀                                               | Thumbnail 📈     |
-|:------------------------------------------------------ |:----------------:|
+| [Class Imbalance](articles/class-imbalance.md)         | <a href="articles/class-imbalance.md"><img src="articles/figures/class-imbalance-plot-imbalance-1.png" width="100px"></a> |
 | [Pitch Classifier](articles/baseball-strike-classifier.md) | <a href="articles/baseball-strike-classifier.md"><img src="articles/figures/strike-log-odds-1.png" width="100px"></a> |
 
 
 
-----------------
+<hr>
 
 
-#### Other Interests
+## 📊 GitHub Stats
 
-- 💬 Favorite food: 🐟 🌮
-- 📚 I am currently learning woodworking 🪵 ... I'm mostly good at making a lot of sawdust!
-- 💬 Ask me about: bikes and `R` ... I'll talk your 👂 off!
-- 🚴 I'm an avid cyclist:
-  come say hi on [<img src="https://raw.githubusercontent.com/stufield/stufield/main/strava-icon.svg" width="20px">][5]
+<a href="https://github.com/stufield/stufield">
+  <img align="center" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=stufield&exclude=java&theme=github_dark&title_color=809EB0&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" alt="Top Languages" />
+</a>
+
+<a href="https://github.com/stufield/stufield">
+  <img
+    align="center"
+    src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=stufield&theme=github_dark&hide_logo=false&title_color=809EB0&text_color=809EB0&icon_color=42587A&bg_color=1d1f21&v=2"
+    alt="Stu's GitHub Stats" 
+  >
+</a>
 
 
-----------------
+<h3 align="center">⏳ GitHub Profile ⏳</h3>
+<p align="center">
+  <a href="./profile-3d-contrib/profile-night-green.svg">
+    <img
+      width="900em"
+      align="center"
+      alt="GitHub Profile"
+      src="./profile-3d-contrib/profile-night-green.svg"
+    >
+  </a>
+</p>
 
-## Contributing 👍
 
-<h4 align="center">📆 GitHub Streak</h4>
-
+<h3 align="center">🔥 Commit Streak 🔥</h3>
 <p class="rich-diff-level-zero" align="center">
   <a href="https://github-readme-streak-stats.herokuapp.com/?user=stufield&theme=dark" rel="nofollow" class="rech-diff-level-one">
-    <img src="https://github-readme-streak-stats.herokuapp.com/?user=stufield&theme=dark" alt="GitHub Streak" data-canonical-src="https://github-readme-streak-stats.herokuapp.com/?user=stufield&theme=dark" style="max-width:100%;">
+    <img
+      src="https://github-readme-streak-stats.herokuapp.com/?user=stufield&theme=dark"
+      alt="GitHub Streak" data-canonical-src="https://github-readme-streak-stats.herokuapp.com/?user=stufield&theme=dark"
+      style="max-width:100%;">
    </a>
 </p>
 
 <br>
 
-<h4 align="center">📊 Graph</h4>
 
 <p class="rich-diff-level-zero" align="center">
   <a href="https://github-readme-activity-graph.vercel.app/graph?username=stufield&theme=react-dark" rel="nofollow" class="rech-diff-level-one">
@@ -154,143 +164,57 @@ can solve problems in your space!
   </a>
 </p>
 
-<br>
 
-<h4 align="center">💹 Isometric</h4>
-<br><p align="center"><em>(Languages pie is based on recent commits)</em></p>
-<p align="center">
-	<a href="./profile-3d-contrib/profile-night-green.svg">
-		<img width="900em" src="./profile-3d-contrib/profile-night-green.svg">
-	</a>
-</p>
+<hr>
 
 
-
-### More Details
-
-- I maintain several `R` software libraries (📦) that implement
-  statistical and machine learning techniques in biomarker discovery.
-  Some of my popular published 📦 are:
-  - [gitr](https://github.com/stufield/gitr)
-  - [helpr](https://github.com/stufield/helpr)
-  - [wranglr](https://github.com/stufield/wranglr)
-  - [featureselectr](https://github.com/stufield/featureselectr)
-  - [stabilityselectr](https://github.com/stufield/stabilityselectr)
-  - [pcapkg](https://github.com/stufield/pcapkg)
-  - [power](https://github.com/stufield/power)
-  - [SomaDataIO](https://cran.r-project.org/web/packages/SomaDataIO/index.html)
-    ([CRAN](https://cloud.r-project.org/))
-  - [SomaPlotr](https://github.com/SomaLogic/SomaPlotr)
-
-
--------------------
-
-
-<!--
-Badges for X
-![](https://img.shields.io/twitter/follow/stufield3?style=social)
-![](https://img.shields.io/github/followers/stufield?style=social)
--->
-
-
-
-### 🔧 Tools & Languages
-
-<!-- Badges -->
-![](https://img.shields.io/badge/Code-R-informational?style=flat&logo=R&logoColor=blue&color=blue)
-![](https://img.shields.io/badge/GitHub-Actions-informational?style=flat&logo=github&logoColor=white&color=blue)
-![](https://img.shields.io/badge/OS-Linux-informational?style=flat&logo=linux&color=blue)
-![](https://img.shields.io/badge/OS-Mac-informational?style=flat&logo=apple&color=blue)
-![](https://img.shields.io/badge/Shell-BASH,Zsh-informational?style=flat&logo=gnu-bash&color=blue)
-![](https://img.shields.io/badge/Code-Make-informational?style=flat&logo=cmake&color=blue)
-![](https://img.shields.io/badge/Editor-VIM-informational?style=flat&logo=vim&color=blue)
-![](https://img.shields.io/badge/Tools-Docker-informational?style=flat&logo=docker&color=blue)
-
-![](https://img.shields.io/badge/VCS-Git-informational?style=flat&logo=git&color=blue)
-![](https://img.shields.io/badge/CI-Travis-informational?style=flat&logo=travis&color=blue)
-![](https://img.shields.io/badge/CI-Jenkins-informational?style=flat&logo=jenkins&color=blue)
-![](https://img.shields.io/badge/Cloud-Digital_Ocean-informational?style=flat&logo=digitalocean&color=blue)
-![](https://img.shields.io/badge/Code-Python-informational?style=flat&logo=python&color=blue)
-![](https://img.shields.io/badge/Collaboration-Slack-informational?style=flat&logo=slack&color=blue)
-
-
-### 📈 GitHub Stats
-
-<a href="https://github.com/stufield/stufield">
-  <img align="center" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=stufield&exclude=java&theme=github_dark&title_color=809EB0&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" alt="Top Languages" />
-</a>
-
-<a href="https://github.com/stufield/stufield">
-  <img align="center" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=stufield&theme=github_dark&hide_logo=false&title_color=809EB0&text_color=809EB0&icon_color=42587A&bg_color=1d1f21&v=2" alt="Stu's GitHub Stats" />
-</a>
-
-------------
-
-### 🔧 GitHub Commits
-![](https://img.shields.io/github/last-commit/stufield/gitr?logo=github&label=gitr)
-![](https://img.shields.io/github/last-commit/stufield/helpr?logo=github&label=helpr)
-![](https://img.shields.io/github/last-commit/stufield/wranglr?logo=github&label=wranglr)
-![](https://img.shields.io/github/last-commit/stufield/libml?logo=github&label=libml)
-![](https://img.shields.io/github/last-commit/stufield/stufield?logo=github&label=stufield)
-![](https://img.shields.io/github/last-commit/stufield/stabilityselectr?logo=github&label=stabilityselectr)
-![](https://img.shields.io/github/last-commit/stufield/system-config?logo=github&label=system-config)
-![](https://img.shields.io/github/last-commit/stufield/tech-notes?logo=github&label=tech-notes)
-![](https://img.shields.io/github/last-commit/stufield/git-hooks?logo=github&label=git-hooks)
-![](https://img.shields.io/github/last-commit/stufield/code-works?logo=github&label=code-works)
-![](https://img.shields.io/github/last-commit/stufield/reprex-collection?logo=github&label=reprex-collection)
-
-
-#### Contributions
+### 🔧 GitHub Favorites 🤩
 
 <a href="https://github.com/stufield/helpr">
-  <img src="https://img.shields.io/github/stars/stufield/helpr?logo=github&label=helpr%20stars" alt="helpr stars" />
-  <img src="https://img.shields.io/github/languages/top/stufield/helpr?logo=github" alt="helpr top language" />
+  <img align="center" src="https://img.shields.io/github/last-commit/stufield/helpr?logo=github&label=helpr" alt="helpr" />
 </a>
 
 <a href="https://github.com/stufield/wranglr">
-  <img src="https://img.shields.io/github/stars/stufield/wranglr?logo=github&label=wranglr%20stars" alt="wranglr stars" />
-  <img src="https://img.shields.io/github/languages/top/stufield/wranglr?logo=github" alt="wranglr top language" />
+  <img align="center" src="https://img.shields.io/github/last-commit/stufield/wranglr?logo=github&label=wranglr" alt="wranglr" />
+</a>
+
+<a href="https://github.com/stufield/libml">
+  <img align="center" src="https://img.shields.io/github/last-commit/stufield/libml?logo=github&label=libml" alt="libml" />
+</a>
+
+<a href="https://github.com/stufield/gitr">
+  <img align="center" src="https://img.shields.io/github/last-commit/stufield/gitr?logo=github&label=gitr" alt="gitr" />
+</a>
+
+<a href="https://github.com/stufield/stufield">
+  <img align="center" src="https://img.shields.io/github/last-commit/stufield/stufield?logo=github&label=stufield" alt="stufield" />
 </a>
 
 <a href="https://github.com/stufield/stabilityselectr">
-  <img src="https://img.shields.io/github/stars/stufield/stabilityselectr?logo=github&label=stabilityselectr%20stars" alt="stabilityselectr stars" />
-  <img src="https://img.shields.io/github/languages/top/stufield/stabilityselectr?logo=github" alt="stabilityselectr top language" />
+  <img align="center" src="https://img.shields.io/github/last-commit/stufield/stabilityselectr?logo=github&label=stabilityselectr" alt="stabilityselectr" />
 </a>
 
 
 ------------
 
+### Other Interests
 
-### 🔗 Links & Resources
+- 💬 Favorite food: 🐟 🌮
+- 📚 I am currently learning woodworking 🪵 ... I'm mostly good at making a lot of sawdust!
+- 💬 Ask me about: bikes and `R` ... I'll talk your 👂 off!
+- 🚴 I'm an avid cyclist:
+  come say hi on [<img src="https://raw.githubusercontent.com/stufield/stufield/main/strava-icon.svg" width="20px">][3]
 
-- [https://github.com/MartinHeinz/MartinHeinz](https://github.com/MartinHeinz/MartinHeinz)
-- [https://dplyr.tidyverse.org/articles/programming.html](https://dplyr.tidyverse.org/articles/programming.html)
 
+----------------
 
-------------
-
-<!-- links to social media icons -->
-
-<!-- icons with padding -->
-[1.1]: http://i.imgur.com/tXSoThF.png (twitter icon with padding)
-[2.1]: http://i.imgur.com/0o48UoR.png (github icon with padding)
-
-<!-- icons without padding -->
-[1.2]: http://i.imgur.com/wWzX9uB.png (twitter icon without padding)
-[2.2]: http://i.imgur.com/9I6NRUm.png (github icon without padding)
-[3.2]: https://raw.githubusercontent.com/stufield/stufield/main/linkedin-3-16.png
-[4.2]: https://raw.githubusercontent.com/stufield/stufield/main/icons8-instagram-24.png
-[5.1]: https://raw.githubusercontent.com/stufield/stufield/main/strava-icon.svg
-[5.2]: https://raw.githubusercontent.com/stufield/stufield/main/icons8-strava-24.png
 
 <!-- links to your social media accounts -->
-[1]: https://twitter.com/stufield3
-[2]: https://github.com/stufield
-[3]: https://www.linkedin.com/in/stu-field-sr-data-sci
+[1]: https://github.com/stufield
+[2]: https://www.linkedin.com/in/stu-field
+[3]: https://www.strava.com/athletes/3292229
 [4]: https://www.instagram.com/carlito_caliente/
-[5]: https://www.strava.com/athletes/3292229
-
-
+[5]: https://twitter.com/stufield3
 
 <!--
 **stufield/stufield** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
