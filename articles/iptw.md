@@ -1,6 +1,8 @@
 # Clinical Outcomes and Inverse Probability Weighting
 Stu Field
 
+*Adjusting for confounded variables in model fit*
+
 # Overview
 
 - Typical modeling of IVF outcomes center around probability of
@@ -210,56 +212,56 @@ model <- stats::glm(
 get_session_info()
 #> $packages
 #>  package      * version date (UTC) lib source
-#>  cli            3.6.6   2026-04-09 []  CRAN (R 4.6.0)
-#>  digest         0.6.39  2025-11-19 []  CRAN (R 4.6.0)
-#>  dplyr        * 1.2.1   2026-04-03 []  CRAN (R 4.6.0)
-#>  evaluate       1.0.5   2025-08-27 []  CRAN (R 4.6.0)
-#>  farver         2.1.2   2024-05-13 []  CRAN (R 4.6.0)
-#>  fastmap        1.2.0   2024-05-15 []  CRAN (R 4.6.0)
-#>  generics       0.1.4   2025-05-09 []  CRAN (R 4.6.0)
-#>  ggplot2      * 4.0.3   2026-04-22 []  CRAN (R 4.6.0)
-#>  glue           1.8.1   2026-04-17 []  CRAN (R 4.6.0)
-#>  gtable         0.3.6   2024-10-25 []  CRAN (R 4.6.0)
-#>  htmltools      0.5.9   2025-12-04 []  CRAN (R 4.6.0)
-#>  jsonlite       2.0.0   2025-03-27 []  CRAN (R 4.6.0)
+#>  cli            3.6.6   2026-04-09 []  RSPM
+#>  digest         0.6.39  2025-11-19 []  RSPM
+#>  dplyr        * 1.2.1   2026-04-03 []  RSPM
+#>  evaluate       1.0.5   2025-08-27 []  RSPM
+#>  farver         2.1.2   2024-05-13 []  RSPM
+#>  fastmap        1.2.0   2024-05-15 []  RSPM
+#>  generics       0.1.4   2025-05-09 []  RSPM
+#>  ggplot2      * 4.0.3   2026-04-22 []  RSPM
+#>  glue           1.8.1   2026-04-17 []  RSPM
+#>  gtable         0.3.6   2024-10-25 []  RSPM
+#>  htmltools      0.5.9   2025-12-04 []  RSPM
+#>  jsonlite       2.0.0   2025-03-27 []  RSPM
 #>  knitr          1.51    2025-12-20 []  any (@1.51)
-#>  labeling       0.4.3   2023-08-29 []  CRAN (R 4.6.0)
-#>  lifecycle      1.0.5   2026-01-08 []  CRAN (R 4.6.0)
-#>  magrittr       2.0.5   2026-04-04 []  CRAN (R 4.6.0)
+#>  labeling       0.4.3   2023-08-29 []  RSPM
+#>  lifecycle      1.0.5   2026-01-08 []  RSPM
+#>  magrittr       2.0.5   2026-04-04 []  RSPM
 #>  nnet           7.3-20  2025-01-01 []  CRAN (R 4.6.1)
-#>  otel           0.2.0   2025-08-29 []  CRAN (R 4.6.0)
+#>  otel           0.2.0   2025-08-29 []  RSPM
 #>  patchwork    * 1.3.2   2025-08-25 []  any (@1.3.2)
-#>  pillar         1.11.1  2025-09-17 []  CRAN (R 4.6.0)
-#>  pkgconfig      2.0.3   2019-09-22 []  CRAN (R 4.6.0)
-#>  R6             2.6.1   2025-02-15 []  CRAN (R 4.6.0)
-#>  RColorBrewer   1.1-3   2022-04-03 []  CRAN (R 4.6.0)
-#>  rlang          1.3.0   2026-07-05 []  CRAN (R 4.6.1)
-#>  rmarkdown      2.31    2026-03-26 []  CRAN (R 4.6.0)
-#>  S7             0.2.2   2026-04-22 []  CRAN (R 4.6.0)
-#>  scales         1.4.0   2025-04-24 []  CRAN (R 4.6.0)
+#>  pillar         1.11.1  2025-09-17 []  RSPM
+#>  pkgconfig      2.0.3   2019-09-22 []  RSPM
+#>  R6             2.6.1   2025-02-15 []  RSPM
+#>  RColorBrewer   1.1-3   2022-04-03 []  RSPM
+#>  rlang          1.3.0   2026-07-05 []  RSPM
+#>  rmarkdown      2.31    2026-03-26 []  RSPM
+#>  S7             0.2.2   2026-04-22 []  RSPM
+#>  scales         1.4.0   2025-04-24 []  RSPM
 #>  sessioninfo    1.2.4   2026-06-04 []  any (@1.2.4)
 #>  tibble         3.3.1   2026-01-11 []  any (@3.3.1)
-#>  tidyselect     1.2.1   2024-03-11 []  CRAN (R 4.6.0)
-#>  utf8           1.2.6   2025-06-08 []  CRAN (R 4.6.0)
-#>  vctrs          0.7.3   2026-04-11 []  CRAN (R 4.6.0)
-#>  withr          3.0.3   2026-06-19 []  CRAN (R 4.6.0)
-#>  xfun           0.60    2026-07-09 []  CRAN (R 4.6.1)
-#>  yaml           2.3.12  2025-12-10 []  CRAN (R 4.6.0)
+#>  tidyselect     1.2.1   2024-03-11 []  RSPM
+#>  utf8           1.2.6   2025-06-08 []  RSPM
+#>  vctrs          0.7.3   2026-04-11 []  RSPM
+#>  withr          3.0.3   2026-06-19 []  RSPM
+#>  xfun           0.60    2026-07-09 []  RSPM
+#>  yaml           2.3.12  2025-12-10 []  RSPM
 #> 
 #>  * ── Packages attached to the search path.
 #> 
 #> $platform
 #>  setting  value
 #>  version  R version 4.6.1 (2026-06-24)
-#>  os       macOS Tahoe 26.5.2
-#>  system   aarch64, darwin23
+#>  os       Ubuntu 24.04.4 LTS
+#>  system   x86_64, linux-gnu
 #>  ui       X11
 #>  language (EN)
-#>  collate  en_US.UTF-8
-#>  ctype    en_US.UTF-8
+#>  collate  C.UTF-8
+#>  ctype    C.UTF-8
 #>  tz       UTC
 #>  date     2026-08-19
-#>  pandoc   3.10 @ /Applications/quarto/bin/tools/ (via rmarkdown)
+#>  pandoc   3.1.3 @ /usr/bin/ (via rmarkdown)
 #>  quarto   1.10.18 @ /usr/local/bin/quarto
 ```
 

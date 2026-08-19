@@ -1,6 +1,8 @@
 # Effect of Class Imbalance on Prediction Accuracy
 Stu Field
 
+*A cautionary tale of balance*
+
 --------------------------------------------------------------------------------
 
 # Overview of Setup

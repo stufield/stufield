@@ -1,4 +1,4 @@
-# Monty Hall Paradox
+# The Monty Hall Paradox
 Stu Field
 
 Suppose you’re on a game show, and you’re given the choice of three
