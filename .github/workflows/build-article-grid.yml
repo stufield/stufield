@@ -4,16 +4,16 @@
 # on a schedule: the grid is derived data, so it only changes when its
 # inputs change. A cron would burn minutes producing no diff.
 #
-# build-articles.R uses base R only, so no package installation is
+# build-article-grid.R uses base R only, so no package installation is
 # needed and the job finishes in seconds.
-name: Build README
+name: Build Articles Grid in README
 
 on:
   push:
     branches: [main]
     paths:
       - articles/index.csv
-      - scripts/build-articles.R
+      - scripts/build-article-grid.R
   workflow_dispatch:
 
 permissions:
