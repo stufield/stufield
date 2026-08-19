@@ -61,8 +61,8 @@ jobs:
             any::withr
             any::randomForest
             any::kknn
-            github::stufield/libml
             github::stufield/helpr
+            github::stufield/libml
             github::stufield/SomaPlotr
             github::stufield/mixr
 
