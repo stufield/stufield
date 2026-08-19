@@ -2,7 +2,7 @@
 
 Stu Field
 
-19 May 2025
+19 August 2026
 
 # Overview
 
@@ -141,10 +141,10 @@ get_gini(rf_model)
 #> # A tibble: 4 × 2
 #>   Feature          Gini_Importance
 #>   <chr>                      <dbl>
-#> 1 plate_location_z           7629.
-#> 2 plate_location_x           7441.
-#> 3 strikes                     739.
-#> 4 balls                       229.
+#> 1 plate_location_z           7708.
+#> 2 plate_location_x           7343.
+#> 3 strikes                     795.
+#> 4 balls                       238.
 ```
 
 and predict strike probability:
@@ -164,27 +164,27 @@ summary(cmat) # evaluate performance
 #> 
 #>      Predicted
 #> Truth     0     1
-#>     0 16569   606
-#>     1    99 17076
+#>     0 16562   613
+#>     1    84 17091
 #> ── Performance Metrics (CI95%) ─────────────────────────────────────────────────
 #> 
 #> # A tibble: 10 × 5
 #>    metric              n estimate CI95_lower CI95_upper
 #>    <chr>           <int>    <dbl>      <dbl>      <dbl>
-#>  1 Sensitivity     17175   0.994      0.993      0.996 
-#>  2 Specificity     17175   0.965      0.962      0.968 
-#>  3 PPV (Precision) 17682   0.966      0.963      0.969 
-#>  4 NPV             16668   0.994      0.993      0.995 
-#>  5 Accuracy        34350   0.979      0.978      0.981 
-#>  6 Bal Accuracy    34350   0.979      0.978      0.981 
+#>  1 Sensitivity     17175   0.995      0.994      0.996 
+#>  2 Specificity     17175   0.964      0.961      0.967 
+#>  3 PPV (Precision) 17704   0.965      0.962      0.968 
+#>  4 NPV             16646   0.995      0.994      0.996 
+#>  5 Accuracy        34350   0.980      0.978      0.981 
+#>  6 Bal Accuracy    34350   0.980      0.978      0.981 
 #>  7 Prevalence      34350   0.5        0.494      0.506 
 #>  8 AUC             34350   0.999      0.999      0.999 
-#>  9 Brier Score     34350   0.0177     0.0161     0.0193
-#> 10 MCC                NA   0.959     NA         NA
+#>  9 Brier Score     34350   0.0172     0.0157     0.0188
+#> 10 MCC                NA   0.960     NA         NA
 #> ── Additional Statistics ───────────────────────────────────────────────────────
 #> 
 #> F_measure    G_mean    Wt_Acc 
-#>     0.980     0.979     0.987
+#>     0.980     0.980     0.987
 ```
 
 Model performance was surprisingly accurate. Stark contrast to my
@@ -211,16 +211,16 @@ dplyr::select(pitch_data2, all_of(feats), is_strike, strike_prob)
 #> # A tibble: 34,350 × 6
 #>    plate_location_x plate_location_z strikes balls is_strike strike_prob
 #>               <dbl>            <dbl>   <int> <int>     <int>       <dbl>
-#>  1           -0.899            2.80        0     0         0       0.7  
-#>  2            0.441            1.20        0     1         0       0.004
-#>  3            0.028            0.216       2     1         0       0    
-#>  4           -0.801            0.772       0     0         0       0.004
-#>  5            1.28             2.89        0     0         0       0.02 
-#>  6            0.853            1.78        0     2         0       0.52 
-#>  7            1.06             2.00        0     1         0       0.092
-#>  8            1.70             2.38        0     0         0       0.02 
-#>  9           -0.88             0.957       1     0         0       0    
-#> 10           -1.65             2.80        0     0         0       0.012
+#>  1            0.314           -0.576       2     1         0       0    
+#>  2           -1.30             0.71        2     1         0       0    
+#>  3           -0.308            3.85        2     0         0       0.008
+#>  4           -1.71             1.65        2     0         0       0    
+#>  5            1.46             1.80        1     0         0       0    
+#>  6            0.871            2.48        0     2         0       0.444
+#>  7           -1.07             3.47        1     0         0       0.008
+#>  8           -1.76             1.99        0     1         0       0.004
+#>  9           -1.46             3.64        2     1         0       0    
+#> 10            1.13             3.12        2     1         0       0.012
 #> # ℹ 34,340 more rows
 ```
 
@@ -234,6 +234,14 @@ plot_emp_roc(pitch_data2$is_strike, pitch_data2$strike_prob, pos_class = 1L,
              plot_fit = TRUE, lwd = 1, cutoff_shape = 21,
              cutoff_size = 2.5, outline = FALSE, col = "#002D72") +
   ggtitle("Strike Classifier ROC Curve")
+#> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+#> ℹ Please use `linewidth` instead.
+#> ℹ The deprecated feature was likely used in the libml package.
+#>   Please report the issue to the authors.
+#> Warning: The `size` argument of `element_line()` is deprecated as of ggplot2 3.4.0.
+#> ℹ Please use the `linewidth` argument instead.
+#> ℹ The deprecated feature was likely used in the libml package.
+#>   Please report the issue to the authors.
 ```
 
 ![](figures/strike-roc-1.png)
@@ -268,5 +276,5 @@ A curious pattern emerges:
 ----------------------------------------------------------------------
 
 Created in `RStudio` (`v2024.09.1+394`), by
-[Quarto](https://quarto.org/) (`v1.4.555`), and R version 4.4.1
-(2024-06-14).
+[Quarto](https://quarto.org/) (`v1.4.555`), and R version 4.6.1
+(2026-06-24).

@@ -2,7 +2,7 @@
 
 Stu Field
 
-2 July 2025
+19 August 2026
 
 # The Birthday Paradox
 
