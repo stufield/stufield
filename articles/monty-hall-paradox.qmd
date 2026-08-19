@@ -1,19 +1,12 @@
 ---
 title: "Monty Hall Paradox"
 author: "Stu Field"
-date: today
-date-format: "DD MMMM YYYY"
 format:
   gfm:
     preview-mode: raw
     columns: 70
-# output:
-#   html_document:
-#     code_folding: show
-#     number_sections: yes
-#     toc: yes
-#     toc_float:
-#       collapsed: no
+editor_options:
+  chunk_output_type: console
 ---
 
 
