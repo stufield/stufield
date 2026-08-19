@@ -1,10 +1,19 @@
-# Re-renders the Quarto articles to GitHub-flavoured markdown.
+# Re-renders the Quarto articles to GitHub-flavoured markdown, then
+# rebuilds the README article grid.
 #
-# Event-driven rather than periodic: the rendered .md files are
-# derived from the .Qmd sources, so nothing changes unless a source
-# changes. The weekly cron is a dependency-drift canary -- every
-# article seeds its RNG, so a scheduled run producing a diff means a
-# package update altered the results, which is worth knowing.
+# The two steps are combined into one workflow, run as sequential jobs
+# via `needs`, because build-article-grid.R checks that every figure
+# referenced in articles/index.csv exists on disk. A new article's
+# figure is only produced by the render job -- running the grid build
+# as a separate, independently-triggered workflow let it race the
+# render and fail on a missing file whenever both fired from the same
+# push.
+#
+# Event-driven rather than periodic: both outputs are derived from
+# their sources, so nothing changes unless a source changes. The
+# weekly cron is a dependency-drift canary -- every article seeds its
+# RNG, so a scheduled run producing a diff means a package update
+# altered the results, which is worth knowing.
 name: Render Articles
 
 on:
@@ -13,6 +22,8 @@ on:
     paths:
       - articles/**.qmd
       - articles/Makefile
+      - articles/index.csv
+      - scripts/build-article-grid.R
   schedule:
     # Weekly, Sunday 06:00 UTC. Deterministic output means a diff here
     # signals a changed dependency, not RNG noise.
@@ -22,7 +33,7 @@ on:
 permissions:
   contents: write
 
-# A long render must not race a second push.
+# A long render must not race a second push
 concurrency:
   group: render-articles
   cancel-in-progress: false
@@ -30,7 +41,7 @@ concurrency:
 jobs:
   render:
     name: Render Quarto articles
-    runs-on: macos-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
 
@@ -74,4 +85,30 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add articles/*.md articles/figures
           git diff --quiet --cached || git commit -m "chore: re-render articles"
+          git push
+
+  # Run even if `render` failed or was a no-op -- a failed render
+  # must not silently skip a grid rebuild triggered by a direct
+  # index.csv/script change on the same push
+  build-readme:
+    name: Regenerate article grid
+    needs: render    # only delays job start; does not refresh the checkout
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main  # ensure picks up commit that render just pushed 
+
+      - uses: r-lib/actions/setup-r@v2
+
+      - name: Rebuild grid
+        run: Rscript --vanilla scripts/build-article-grid.R
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --quiet --cached || git commit -m "chore: rebuild article grid"
           git push
