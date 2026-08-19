@@ -1,5 +1,5 @@
 ---
-title: "Na&iuml;ve Bayes Classifiers"
+title: "Naïve Bayes Classifiers"
 author: "Stu Field"
 format:
   gfm:
@@ -8,6 +8,7 @@ format:
 editor_options:
   chunk_output_type: console
 ---
+
 
 ```{r}
 #| label: setup

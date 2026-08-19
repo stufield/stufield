@@ -1,5 +1,5 @@
 ---
-title: "Decision boundaries: KNN vs Na&iuml;ve Bayes"
+title: "Decision boundaries: KNN vs Naïve Bayes"
 author: "Stu Field"
 format:
   gfm:

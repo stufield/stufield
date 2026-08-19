@@ -10,6 +10,10 @@ editor_options:
   chunk_output_type: console
 ---
 
+::: {.content-visible when-format="gfm"}
+*Adjusting for confounded variables in model fit*
+:::
+
 
 ```{r}
 #| label: setup

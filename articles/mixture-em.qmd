@@ -9,12 +9,11 @@ editor_options:
   chunk_output_type: console
 ---
 
+
 ```{r}
 #| label: setup
 #| include: FALSE 
 library(helpr)
-
-#source("mixture-em.R")
 
 knitr::opts_chunk$set(
   collapse = TRUE,

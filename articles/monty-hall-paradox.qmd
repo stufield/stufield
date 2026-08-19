@@ -1,5 +1,5 @@
 ---
-title: "Monty Hall Paradox"
+title: "The Monty Hall Paradox"
 author: "Stu Field"
 format:
   gfm:
