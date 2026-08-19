@@ -30,7 +30,7 @@ concurrency:
 jobs:
   render:
     name: Render Quarto articles
-    runs-on: ubuntu-24.04
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v7
 
@@ -43,12 +43,8 @@ jobs:
       # helpr is deliberately pinned to github::stufield/helpr -- an
       # unrelated package of the same name exists on CRAN, and `any::`
       # would silently install the wrong one.
-      #
-      # mixr is a private repo, so pak needs a repo-scoped PAT via
-      # GITHUB_PAT. Without ARTICLES_TOKEN this step is what fails.
+
       - uses: r-lib/actions/setup-r-dependencies@v2
-        env:
-          GITHUB_PAT: ${{ secrets.ARTICLES_TOKEN }}
         with:
           packages: |
             any::knitr
@@ -63,8 +59,8 @@ jobs:
             any::kknn
             github::stufield/helpr
             github::stufield/libml
-            github::stufield/SomaPlotr
             github::stufield/mixr
+            github::stufield/SomaPlotr
 
       # -B (--always-make) is required: actions/checkout does not
       # preserve mtimes, so every file lands with its checkout timestamp.
