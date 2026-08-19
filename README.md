@@ -23,7 +23,7 @@ Bridging data, science & strategy
 </p>
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/stufield/stufield/main/06-combined-A-thirds.png">
+<img src="https://raw.githubusercontent.com/stufield/stufield/main/artifacts/06-combined-A-thirds.png">
 </p>
 
 
@@ -211,7 +211,7 @@ can solve problems in your space!
 - 📚 I am currently learning woodworking 🪵 ... I'm mostly good at making a lot of sawdust!
 - 💬 Ask me about: bikes and `R` ... I'll talk your 👂 off!
 - 🚴 I'm an avid cyclist:
-  come say hi on [<img src="https://raw.githubusercontent.com/stufield/stufield/main/strava-icon.svg" width="20px">][3]
+  come say hi on [<img src="https://raw.githubusercontent.com/stufield/stufield/main/artifacts/strava-icon.svg" width="20px">][3]
 
 
 ----------------
