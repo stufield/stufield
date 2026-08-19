@@ -10,3 +10,4 @@ Monty Hall Paradox,articles/monty-hall-paradox.md,articles/figures/monty-hall-pl
 Decision Boundaries,articles/decision-boundaries.md,articles/figures/knn-bayes-knn-vs-bayes-1.png
 Class Imbalance,articles/class-imbalance.md,articles/figures/class-imbalance-plot-imbalance-1.png
 Pitch Classifier,articles/baseball-strike-classifier.md,articles/figures/strike-log-odds-1.png
+IPTW,articles/iptw.md,articles/figures/ipw-plot-var-1.png

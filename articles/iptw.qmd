@@ -1,0 +1,321 @@
+---
+title: "Clinical Outcomes and Inverse Probability Weighting"
+subtitle: "Adjusting for confounded variables in model fit"
+author: "Stu Field"
+format:
+  gfm:
+    preview-mode: raw
+    columns: 70
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r}
+#| label: setup
+#| include: FALSE
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment  = "#>",
+  fig.path = paste0("figures/ipw-")
+)
+library(dplyr)
+library(ggplot2)
+library(patchwork)
+options(pillar.min_chars = Inf, width = 120L)
+calc_ess <- function(w) {
+  (sum(w))^2 / sum(w^2)
+}
+.fmt_pct <- function(x, digits = 1L) {
+  sprintf("%.*f%%", digits, 100 * x)
+}
+trim_weights <- function(x, p = c(0.01, 0.99)) {
+  q  <- quantile(x, p = p)
+  lo <- unname(q[1L])
+  hi <- unname(q[2L])
+  x[x > hi] <- hi
+  x[x < lo] <- lo
+  x
+}
+colors <- c("#42587A", "#5B0D67", "#00A499")
+plot_cdf <- function(data, var, group = NULL, xlim = NULL, ...) {
+  var   <- enquo(var)
+  group <- enquo(group)
+  vars  <- unname(c(var, group, enquos(...)))
+  if (rlang::quo_is_null(group)) {
+    p <- select(data, !!!vars) |>
+      ggplot(aes(x = !!var)) +
+      stat_ecdf(colour = colors[1L], linewidth = 0.75,
+                linetype = "solid")
+  } else {
+    p <- select(data, !!!vars) |>
+      ggplot(aes(x = !!var, color = !!group, ...)) +
+      stat_ecdf(linewidth = 0.75, linetype = "solid") +
+      scale_color_manual(values = colors)
+  }
+  p + coord_cartesian(xlim = xlim) +
+    scale_x_continuous(n.breaks = 8L) +
+    scale_y_continuous(n.breaks = 6L) +
+    labs(x = var, y = bquote(italic(P) ~ (X < x)))
+}
+plot_pdf <- function(data, var, group = NULL, xlim = NULL,
+                     fill = FALSE, linetype = "solid", ...) {
+
+  var   <- enquo(var)
+  group <- enquo(group)
+  vars  <- unname(c(var, group, enquos(...)))
+  if (rlang::quo_is_null(group)) {
+    col <- colors[1L]
+    p <- select(data, !!!vars) |>
+      ggplot(aes(x = !!var, ...)) +
+      geom_density(colour = col, fill = ifelse(fill, col, NA),
+                   alpha = ifelse(fill, 0.2,  1),
+                   linewidth = 0.75, linetype = linetype)
+  } else {
+    p <- select(data, !!!vars) |>
+      ggplot(aes(x = !!var, color = !!group, ...)) +
+      geom_density(if (fill) aes(fill = !!group),
+                   alpha     = ifelse(fill, 0.2,  1),
+                   linewidth = ifelse(fill, 0.25, 0.75),
+                   linetype  = linetype) +
+      scale_color_manual(values = colors)
+    if (fill) {
+      p <- p + scale_fill_manual(values = colors)
+    }
+  }
+  p + coord_cartesian(xlim = xlim) +
+    scale_x_continuous(n.breaks = 8L) +
+    scale_y_continuous(n.breaks = 6L) +
+    labs(y = "Probability Density", x = var)
+}
+```
+
+
+# Overview
+
+* Typical modeling of IVF outcomes center around probability of
+  pregnancy or live birth from an individual ovarian stimulation cycle
+* Cumulative life birth rate (CLBR) is defined as the probability
+  of *one or more* positive live birth outcomes, from a completed
+  stimulation cycle, *regardless* of oocytes retrieved, fertilized
+  oocytes, transferred embryos, or clinical pregnancies.
+* **analysis goals**: does CLBR differ by treatment (i.e. protocol) type?
+  Does the *type* of FSH administered confer a clinical benefit as
+  seen in increased CLBR outcomes?
+
+
+## The Model
+
+We model the *cumulative* live birth outcome per cycle,
+$\hat{y}$ = success or failure, as:
+
+$$ y_i \sim \mathrm{Bernoulli}(p_i) $$
+
+where $y_i \in \{0, 1\}$ = outcome for the $i^{th}$ IVF cycle,
+$p_i$ = probability of success for the $i^{th}$ IVF cycle,
+
+
+$$
+\begin{aligned}
+\log\!\left(\frac{p_i}{1 - p_i}\right) &= \ \beta_0 +
+  \sum_j \beta_j^{\text{prot}}\,\mathbf{1}[\text{protocol}_i = j] +
+  \beta_{\text{age}}(\text{age}_i) + \\ &
+  \beta_{\text{lvl}}(\text{amh}_i) +
+  \beta_{\text{wt}}(\text{bmi}_i) +
+  \beta_{\text{dose}}\,\overline{\text{Gn}}_i +
+  \beta_{\text{dur}}\,\text{stim}_i + \\ &
+  \sum_k \gamma_k\,\mathbf{1}[\text{source}_i = k] + \\ &
+  \sum_k \gamma_k\,\mathbf{1}[\text{region}_i = k] + \\ &
+  \sum_k \gamma_k\,\mathbf{1}[\text{race}_i = k] + \\ &
+  \epsilon_i
+\end{aligned}
+$$
+
+
+## Model Fit in R
+
+```r
+model <- stats::glm(
+  clbr ~ protocol + age + amh + drug_dose + bmi + year + stim_duration +
+    data_source + race_census + census_region,
+  family  = binomial("logit"),
+  data    = model_data
+)
+```
+
+# Confounding Variables
+
+* this is Real World Data (RWD)
+  - live clinical data from the wild
+  - not a fully-balanced clinical trial!
+* uncontrolled confounding variables are likely
+  - covariates are supposed to b independent, but ...
+  - what if *Protocol* is confounded by *Age*?
+
+::: {style="width: 50%;"}
+```{r}
+#| label: age-protocol
+#| echo: FALSE
+data.frame(check.names = FALSE, row.names = "mean age",
+  "rFSH" = 20.5, "eFSH" = 30.3, "Mixed rFSH+eFSH" = 40.4) |>
+  knitr::kable()
+```
+:::
+
+
+$$
+\begin{aligned}
+CLBR \sim protocol\ +\ age\ +\ ...\ +\ \epsilon
+\end{aligned}
+$$
+
+
+# Welcome IPW
+
+* Inverse Probability Weighting
+* build a classifier (model) predicting *Protocol* given *Age*
+  - if a strong bias exists, age should predict protocol
+  - stronger predictions reflect stronger bias
+* new model:
+
+$$
+\begin{aligned}
+\text{protocol} \sim age\ +\ ...\ +\ \epsilon
+\end{aligned}
+$$
+
+* invert the probability
+  - $\uparrow$ $P(protocol = protocol_k | X)$ down weighted
+  - $\downarrow$ $P(protocol = protocol_k | X)$ up weighted
+* aggregate effect $\rightarrow$ create pseudo-population that
+  de-couples correlation *Protocol* $\sim$ *Age*
+
+
+-----------
+
+# Example in R
+
+```{r}
+#| label: weights
+#| fig.cap: "Weight distribution by protocol."
+#| fig.height: 5
+#| fig.width: 10
+set.seed(101)
+n_vec <- c(500, 1000, 1500)
+sd    <- 2
+df <- tibble::tibble(
+  protocol = factor(rep(c("A", "B", "C"), times = n_vec)),
+  variable = c(
+    rnorm(n_vec[1L], mean = 10, sd = sd),
+    rnorm(n_vec[2L], mean = 12, sd = sd),
+    rnorm(n_vec[3L], mean = 15, sd = sd)
+  )
+)
+
+df |>
+  group_by(protocol) |>
+  summarize(n = n(), mu = mean(variable), sigma = sd(variable))
+
+# fit 3-class model
+model <- nnet::multinom(protocol ~ variable, data = df)
+probs <- predict(model, type = "probs")
+
+# P(protocol = protocol_k | X)
+row_idx <- 1:nrow(df)
+col_idx <- match(df$protocol, colnames(probs))
+ps      <- probs[cbind(row_idx, col_idx)]
+
+# invert + trim 1%
+df$weights <- trim_weights(1 / ps, c(0.01, 0.99))
+
+tapply(df$weights, df$protocol, quantile, p = 0.5)
+
+df |>
+  plot_cdf(weights, group = protocol) +
+  geom_hline(yintercept = 0.5, alpha = 0.75, linetype = "dashed") +
+  labs(title = "CDF distribution of weights by protocol")
+```
+
+```{r}
+#| label: plot-var
+#| fig.cap: "Continuous variable (e.g. age) pre- and post-weighting."
+#| fig.height: 5
+#| fig.width: 10
+#| echo: FALSE
+p1 <- df |>
+  plot_pdf(variable, protocol, fill = TRUE) +
+  labs(title = "Unadjusted") +
+  guides(fill = "none", color = "none")
+p2 <- df |>
+  plot_pdf(variable, protocol, fill = TRUE, weight = weights) +
+  labs(title = "Adjusted")
+p1 + p2
+```
+
+```{r}
+#| label: ess
+df |>
+  group_by(protocol) |>
+  summarize(
+    n        = n(),                           # orig sample size
+    n_adj    = calc_ess(weights),             # effective sample size
+    mean     = mean(variable),                # mu orig
+    mean_adj = weighted.mean(variable, weights)) |> # mu adjust
+  mutate(prop_n   = .fmt_pct(prop.table(n)),        # prop orig
+         prop_adj = .fmt_pct(prop.table(n_adj)))    # prop adjust
+```
+
+
+## Final Fit in R
+
+```r
+model <- stats::glm(
+  clbr ~ protocol,
+  weights = weights,
+  family  = quasibinomial("logit"),
+  data    = model_data
+)
+```
+
+-----------
+
+
+# References
+
+* ASA Regulatory [Workshop](https://ww2.amstat.org/meetings/biop/2020/):
+[Short Course](https://ww2.amstat.org/meetings/biop/2020/onlineprogram/handouts/SC4-Handouts.pdf)
+
+* **WeightIt package in R**:
+[https://ngreifer.github.io/WeightIt/index.html](https://ngreifer.github.io/WeightIt/index.html)
+
+::: {.callout-note}
+# Citation
+  Greifer N (2026). WeightIt: Weighting for Covariate Balance in
+  Observational Studies. doi:10.32614/CRAN.package.WeightIt
+  <https://doi.org/10.32614/CRAN.package.WeightIt>.
+  R package version 1.7.0, <https://CRAN.R-project.org/package=WeightIt>.
+:::
+
+
+
+# Session Info {.unnumbered}
+
+```{r}
+#| label: get-session
+#| include: FALSE
+get_session_info <- function(pkgs = NULL) {
+  ret <- list(
+    packages = dplyr::select(sessioninfo::package_info(), -library),
+    platform = sessioninfo::platform_info()
+  )
+  if (!is.null(pkgs)) {
+    ret$packages <- ret$packages[pkgs, ]
+  }
+  ret
+}
+```
+```{r}
+#| label: session
+#| code-fold: TRUE
+get_session_info()
+```

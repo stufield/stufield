@@ -57,6 +57,7 @@ jobs:
             any::withr
             any::randomForest
             any::kknn
+            any::sessioninfo
             github::stufield/helpr
             github::stufield/libml
             github::stufield/mixr
