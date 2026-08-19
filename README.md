@@ -112,6 +112,7 @@ can solve problems in your space!
 <td align="center" width="210"><a href="articles/decision-boundaries.md"><img src="articles/figures/knn-bayes-knn-vs-bayes-1.png" width="190"></a><br><sub><b>Decision Boundaries</b></sub></td>
 <td align="center" width="210"><a href="articles/class-imbalance.md"><img src="articles/figures/class-imbalance-plot-imbalance-1.png" width="190"></a><br><sub><b>Class Imbalance</b></sub></td>
 <td align="center" width="210"><a href="articles/baseball-strike-classifier.md"><img src="articles/figures/strike-log-odds-1.png" width="190"></a><br><sub><b>Pitch Classifier</b></sub></td>
+<td align="center" width="210"><a href="articles/iptw.md"><img src="articles/figures/ipw-plot-var-1.png" width="190"></a><br><sub><b>IPTW</b></sub></td>
 </tr>
 </table>
 <!-- ARTICLES:END -->
