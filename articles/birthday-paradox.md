@@ -1,8 +1,5 @@
 # The Birthday Paradox
-
 Stu Field
-
-19 August 2026
 
 # The Birthday Paradox
 

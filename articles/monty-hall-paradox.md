@@ -1,8 +1,5 @@
 # Monty Hall Paradox
-
 Stu Field
-
-19 August 2026
 
 Suppose you’re on a game show, and you’re given the choice of three
 doors: behind one door is a car; behind the others are goats. You pick

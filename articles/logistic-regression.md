@@ -1,8 +1,5 @@
 # Technical note: Logistic Regression
-
 Stu Field
-
-19 August 2026
 
 ## Multivariate Logistic Regression
 

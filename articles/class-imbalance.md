@@ -1,8 +1,5 @@
-# Effect of Class Imbalance on Prediction Accuracy; a cautionary tale of balance
-
+# Effect of Class Imbalance on Prediction Accuracy
 Stu Field
-
-19 August 2026
 
 --------------------------------------------------------------------------------
 

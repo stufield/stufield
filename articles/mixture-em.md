@@ -1,8 +1,5 @@
 # Mixture Model Expectation-Maximization
-
 Stu Field
-
-19 August 2026
 
 ----------------------------------------------------------------------
 

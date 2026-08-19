@@ -1,8 +1,5 @@
 # Baseball Analytics: Strike Classifier
-
 Stu Field
-
-19 August 2026
 
 # Overview
 
@@ -141,10 +138,10 @@ get_gini(rf_model)
 #> # A tibble: 4 × 2
 #>   Feature          Gini_Importance
 #>   <chr>                      <dbl>
-#> 1 plate_location_z           7708.
-#> 2 plate_location_x           7343.
-#> 3 strikes                     795.
-#> 4 balls                       238.
+#> 1 plate_location_z           7657.
+#> 2 plate_location_x           7324.
+#> 3 strikes                     789.
+#> 4 balls                       241.
 ```
 
 and predict strike probability:
@@ -164,27 +161,27 @@ summary(cmat) # evaluate performance
 #> 
 #>      Predicted
 #> Truth     0     1
-#>     0 16562   613
-#>     1    84 17091
+#>     0 16551   624
+#>     1    66 17109
 #> ── Performance Metrics (CI95%) ─────────────────────────────────────────────────
 #> 
 #> # A tibble: 10 × 5
 #>    metric              n estimate CI95_lower CI95_upper
 #>    <chr>           <int>    <dbl>      <dbl>      <dbl>
-#>  1 Sensitivity     17175   0.995      0.994      0.996 
-#>  2 Specificity     17175   0.964      0.961      0.967 
-#>  3 PPV (Precision) 17704   0.965      0.962      0.968 
-#>  4 NPV             16646   0.995      0.994      0.996 
-#>  5 Accuracy        34350   0.980      0.978      0.981 
-#>  6 Bal Accuracy    34350   0.980      0.978      0.981 
+#>  1 Sensitivity     17175   0.996      0.995      0.997 
+#>  2 Specificity     17175   0.964      0.960      0.967 
+#>  3 PPV (Precision) 17733   0.965      0.962      0.968 
+#>  4 NPV             16617   0.996      0.995      0.997 
+#>  5 Accuracy        34350   0.980      0.978      0.982 
+#>  6 Bal Accuracy    34350   0.980      0.978      0.982 
 #>  7 Prevalence      34350   0.5        0.494      0.506 
 #>  8 AUC             34350   0.999      0.999      0.999 
-#>  9 Brier Score     34350   0.0172     0.0157     0.0188
+#>  9 Brier Score     34350   0.0172     0.0156     0.0187
 #> 10 MCC                NA   0.960     NA         NA
 #> ── Additional Statistics ───────────────────────────────────────────────────────
 #> 
 #> F_measure    G_mean    Wt_Acc 
-#>     0.980     0.980     0.987
+#>     0.980     0.980     0.988
 ```
 
 Model performance was surprisingly accurate. Stark contrast to my
@@ -211,16 +208,16 @@ dplyr::select(pitch_data2, all_of(feats), is_strike, strike_prob)
 #> # A tibble: 34,350 × 6
 #>    plate_location_x plate_location_z strikes balls is_strike strike_prob
 #>               <dbl>            <dbl>   <int> <int>     <int>       <dbl>
-#>  1            0.314           -0.576       2     1         0       0    
-#>  2           -1.30             0.71        2     1         0       0    
-#>  3           -0.308            3.85        2     0         0       0.008
-#>  4           -1.71             1.65        2     0         0       0    
-#>  5            1.46             1.80        1     0         0       0    
-#>  6            0.871            2.48        0     2         0       0.444
-#>  7           -1.07             3.47        1     0         0       0.008
-#>  8           -1.76             1.99        0     1         0       0.004
-#>  9           -1.46             3.64        2     1         0       0    
-#> 10            1.13             3.12        2     1         0       0.012
+#>  1            1.81             2.49        2     1         0       0    
+#>  2            1.60             2.37        1     1         0       0.02 
+#>  3           -0.329            4.62        2     1         0       0.016
+#>  4            0.968            1.21        0     0         0       0.016
+#>  5            1.16             1.35        1     0         0       0.024
+#>  6            1.03             1.28        0     0         0       0.016
+#>  7            1.25             0.981       1     3         0       0    
+#>  8            0.395            3.36        1     2         0       0.316
+#>  9           -0.944            3.08        0     0         0       0.372
+#> 10            1.37             3.13        2     2         0       0.004
 #> # ℹ 34,340 more rows
 ```
 

@@ -1,8 +1,5 @@
 # The Mack-Wolfe Test
-
 Stu Field
-
-19 August 2026
 
 # Mack-Wolfe Non-Parametric Peak Tests
 

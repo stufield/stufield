@@ -1,8 +1,5 @@
 # Longitudinal Data Analysis via Linear Mixed-Effects Models
-
 Stu Field
-
-19 August 2026
 
 ----------------------------------------------------------------------
 
@@ -296,7 +293,7 @@ summary(fit1)
 > Random effects:
 >  Formula: ~1 | pid
 >         (Intercept) Residual
-> StdDev:  0.03568671 244.4632
+> StdDev:  0.03568687 244.4632
 > 
 > Fixed effects:  yij ~ time 
 >                Value Std.Error  DF  t-value p-value
