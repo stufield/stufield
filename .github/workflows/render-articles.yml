@@ -66,8 +66,10 @@ jobs:
             github::stufield/SomaPlotr
             github::stufield/mixr
 
+      # -B (--always-make) is required: actions/checkout does not
+      # preserve mtimes, so every file lands with its checkout timestamp.
       - name: Render
-        run: make -C articles all
+        run: make -C articles -B all
 
       - name: Commit if changed
         run: |
