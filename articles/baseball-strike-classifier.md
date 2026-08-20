@@ -19,6 +19,7 @@ Pitch data were obtained from [FanGraphs](https://www.fangraphs.com/)
     - step-wise forward/backward feature selection
     - [Stability
       Selection](https://rss.onlinelibrary.wiley.com/doi/10.1111/j.1467-9868.2010.00740.x)
+    - [R package](https://stufield.github.io/stabilityselectr/)
     - [PCA](https://en.wikipedia.org/wiki/Principal_component_analysis)
 3.  **Fit binary classification models**:
     - Logistic Regression
@@ -138,9 +139,9 @@ get_gini(rf_model)
 #> # A tibble: 4 × 2
 #>   Feature          Gini_Importance
 #>   <chr>                      <dbl>
-#> 1 plate_location_z           7655.
-#> 2 plate_location_x           7340.
-#> 3 strikes                     782.
+#> 1 plate_location_z           7686.
+#> 2 plate_location_x           7506.
+#> 3 strikes                     727.
 #> 4 balls                       233.
 ```
 
@@ -151,7 +152,8 @@ rf_probs <- predict(rf_model,
                     newdata = pitch_data2[, feats], # predict on *training* data
                     type = "prob")[, 2L]            # class 2 = strike
 
-cmat <- calc_confusion(pitch_data2$is_strike, rf_probs, pos_class = 1L) # confusion matrix
+# confusion matrix
+cmat <- calc_confusion(pitch_data2$is_strike, rf_probs, pos_class = 1L)
 
 summary(cmat) # evaluate performance
 #> ══ Confusion Matrix Summary ════════════════════════════════════════════════════
@@ -161,27 +163,27 @@ summary(cmat) # evaluate performance
 #> 
 #>      Predicted
 #> Truth     0     1
-#>     0 16540   635
-#>     1   108 17067
+#>     0 16613   562
+#>     1    93 17082
 #> ── Performance Metrics (CI95%) ─────────────────────────────────────────────────
 #> 
 #> # A tibble: 10 × 5
 #>    metric              n estimate CI95_lower CI95_upper
 #>    <chr>           <int>    <dbl>      <dbl>      <dbl>
-#>  1 Sensitivity     17175   0.994      0.992      0.995 
-#>  2 Specificity     17175   0.963      0.960      0.966 
-#>  3 PPV (Precision) 17702   0.964      0.961      0.967 
-#>  4 NPV             16648   0.994      0.992      0.995 
-#>  5 Accuracy        34350   0.978      0.977      0.980 
-#>  6 Bal Accuracy    34350   0.978      0.977      0.980 
+#>  1 Sensitivity     17175   0.995      0.993      0.996 
+#>  2 Specificity     17175   0.967      0.964      0.970 
+#>  3 PPV (Precision) 17644   0.968      0.965      0.971 
+#>  4 NPV             16706   0.994      0.993      0.996 
+#>  5 Accuracy        34350   0.981      0.979      0.983 
+#>  6 Bal Accuracy    34350   0.981      0.979      0.983 
 #>  7 Prevalence      34350   0.5        0.494      0.506 
-#>  8 AUC             34350   0.999      0.999      0.999 
-#>  9 Brier Score     34350   0.0179     0.0163     0.0195
-#> 10 MCC                NA   0.957     NA         NA
+#>  8 AUC             34350   0.999      0.999      1.000 
+#>  9 Brier Score     34350   0.0166     0.0151     0.0182
+#> 10 MCC                NA   0.962     NA         NA
 #> ── Additional Statistics ───────────────────────────────────────────────────────
 #> 
 #> F_measure    G_mean    Wt_Acc 
-#>     0.979     0.978     0.986
+#>     0.981     0.981     0.988
 ```
 
 Model performance was surprisingly accurate. Stark contrast to my
@@ -208,16 +210,16 @@ dplyr::select(pitch_data2, all_of(feats), is_strike, strike_prob)
 #> # A tibble: 34,350 × 6
 #>    plate_location_x plate_location_z strikes balls is_strike strike_prob
 #>               <dbl>            <dbl>   <int> <int>     <int>       <dbl>
-#>  1           -0.297            3.72        0     0         0       0.012
-#>  2           -0.15             3.93        2     1         0       0    
-#>  3           -0.148            1.44        2     2         0       0.248
-#>  4            1.02             2.14        1     0         0       0.084
-#>  5            1.22             2.00        0     0         0       0.044
-#>  6            0.698            4.21        2     2         0       0.012
-#>  7            0.156            0.997       0     0         0       0.008
-#>  8            1.01             3.40        1     0         0       0.008
-#>  9           -1.12             1.41        1     0         0       0.008
-#> 10           -2.04             1.80        0     0         0       0    
+#>  1           -1.04             3.38        1     1         0       0.008
+#>  2           -0.083            1.06        0     0         0       0    
+#>  3           -0.347            3.98        2     3         0       0.02 
+#>  4           -0.571            1.65        0     0         0       0.668
+#>  5            0.967           -0.375       0     3         0       0.024
+#>  6           -1.34             0.036       2     2         0       0    
+#>  7           -1.94             3.61        0     1         0       0.012
+#>  8            1.19             2.57        2     1         0       0    
+#>  9           -0.617            4.11        1     0         0       0.004
+#> 10           -1.45             2.42        1     0         0       0    
 #> # ℹ 34,340 more rows
 ```
 
@@ -272,6 +274,77 @@ A curious pattern emerges:
 
 ----------------------------------------------------------------------
 
-Created in `RStudio` (`v2024.09.1+394`), by
-[Quarto](https://quarto.org/) (`v1.4.555`), and R version 4.6.1
-(2026-06-24).
+# Session Info
+
+<details class="code-fold">
+<summary>Code</summary>
+
+``` r
+get_session_info()
+#> $packages
+#>  package      * version    date (UTC) lib source
+#>  cli            3.6.6      2026-04-09 []  RSPM
+#>  digest         0.6.39     2025-11-19 []  RSPM
+#>  dplyr        * 1.2.1      2026-04-03 []  RSPM
+#>  evaluate       1.0.5      2025-08-27 []  RSPM
+#>  farver         2.1.2      2024-05-13 []  RSPM
+#>  fastmap        1.2.0      2024-05-15 []  RSPM
+#>  gbm            2.3.1      2026-07-09 []  RSPM
+#>  generics       0.1.4      2025-05-09 []  RSPM
+#>  ggplot2      * 4.0.3      2026-04-22 []  RSPM
+#>  glue           1.8.1      2026-04-17 []  RSPM
+#>  gtable         0.3.6      2024-10-25 []  RSPM
+#>  helpr        * 0.0.2.9000 2026-08-19 []  Github (stufield/helpr@db72926)
+#>  htmltools      0.5.9      2025-12-04 []  RSPM
+#>  igraph         2.3.3      2026-06-26 []  RSPM
+#>  jsonlite       2.0.0      2025-03-27 []  RSPM
+#>  kknn           1.4.1      2025-05-19 []  any (@1.4.1)
+#>  knitr          1.51       2025-12-20 []  any (@1.51)
+#>  labeling       0.4.3      2023-08-29 []  RSPM
+#>  lattice        0.22-9     2026-02-09 []  CRAN (R 4.6.1)
+#>  libml        * 0.0.1.9000 2026-08-19 []  Github (stufield/libml@e2aebe0)
+#>  lifecycle      1.0.5      2026-01-08 []  RSPM
+#>  magrittr       2.0.5      2026-04-04 []  RSPM
+#>  Matrix         1.7-5      2026-03-21 []  CRAN (R 4.6.1)
+#>  otel           0.2.0      2025-08-29 []  RSPM
+#>  pillar         1.11.1     2025-09-17 []  RSPM
+#>  pkgconfig      2.0.3      2019-09-22 []  RSPM
+#>  purrr          1.2.2      2026-04-10 []  RSPM
+#>  R6             2.6.1      2025-02-15 []  RSPM
+#>  randomForest * 4.7-1.2    2024-09-22 []  RSPM
+#>  RColorBrewer   1.1-3      2022-04-03 []  RSPM
+#>  Rcpp           1.1.2      2026-07-05 []  RSPM
+#>  rlang          1.3.0      2026-07-05 []  RSPM
+#>  rmarkdown      2.31       2026-03-26 []  RSPM
+#>  S7             0.2.2      2026-04-22 []  RSPM
+#>  scales         1.4.0      2025-04-24 []  RSPM
+#>  sessioninfo    1.2.4      2026-06-04 []  any (@1.2.4)
+#>  survival       3.8-6      2026-01-16 []  CRAN (R 4.6.1)
+#>  tibble         3.3.1      2026-01-11 []  any (@3.3.1)
+#>  tidyr          1.3.2      2025-12-19 []  any (@1.3.2)
+#>  tidyselect     1.2.1      2024-03-11 []  RSPM
+#>  utf8           1.2.6      2025-06-08 []  RSPM
+#>  vctrs          0.7.3      2026-04-11 []  RSPM
+#>  withr        * 3.0.3      2026-06-19 []  RSPM
+#>  wranglr      * 0.0.2.9000 2026-08-19 []  Github (stufield/wranglr@cd4c5f4)
+#>  xfun           0.60       2026-07-09 []  RSPM
+#>  yaml           2.3.12     2025-12-10 []  RSPM
+#> 
+#>  * ── Packages attached to the search path.
+#> 
+#> $platform
+#>  setting  value
+#>  version  R version 4.6.1 (2026-06-24)
+#>  os       Ubuntu 24.04.4 LTS
+#>  system   x86_64, linux-gnu
+#>  ui       X11
+#>  language (EN)
+#>  collate  C.UTF-8
+#>  ctype    C.UTF-8
+#>  tz       UTC
+#>  date     2026-08-20
+#>  pandoc   3.1.3 @ /usr/bin/ (via rmarkdown)
+#>  quarto   1.10.18 @ /usr/local/bin/quarto
+```
+
+</details>

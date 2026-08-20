@@ -182,12 +182,15 @@ statistic given that the null hypothesis is true, $P(statistic|null)$.
 The q-value makes sense only in the context of “multiple-testing”,
 producing a distribution of p-values and rephrases the question to
 answer: “of the significant tests (for a given cutoff), what
-proportion are expected to be from the null distribution” (i.e.
-false-positives)?
+proportion are expected to be from the null distribution”
+(i.e. false-positives)?
 
 ----------------------------------------------------------------------
 
 # Code Reference
+
+<details class="code-fold">
+<summary>Code</summary>
 
 ``` r
 par_def <- list(mar = c(5, 5, 3, 1), mgp = c(3.5, 0.75, 0))
@@ -238,6 +241,10 @@ add_text <- function(x, y, text, pos = 4, ...) {
 }
 ```
 
+</details>
+
+----------------------------------------------------------------------
+
 # References
 
 [Original source](cfile7.uf.tistory.com/attach/207D9A554D2FAEC6169E07)
@@ -247,3 +254,64 @@ of the Royal Society, B*. **64**:479–498.
 
 Storey, J. and Tibshirani, R. 2002. Statistical significance for
 genomewide studies. *PNAS*. **100**:9440–9445.
+
+----------------------------------------------------------------------
+
+# Session Info
+
+<details class="code-fold">
+<summary>Code</summary>
+
+``` r
+get_session_info()
+#> $packages
+#>  package      * version date (UTC) lib source
+#>  cli            3.6.6   2026-04-09 []  RSPM
+#>  digest         0.6.39  2025-11-19 []  RSPM
+#>  dplyr          1.2.1   2026-04-03 []  RSPM
+#>  evaluate       1.0.5   2025-08-27 []  RSPM
+#>  farver         2.1.2   2024-05-13 []  RSPM
+#>  fastmap        1.2.0   2024-05-15 []  RSPM
+#>  generics       0.1.4   2025-05-09 []  RSPM
+#>  ggplot2        4.0.3   2026-04-22 []  RSPM
+#>  glue           1.8.1   2026-04-17 []  RSPM
+#>  gtable         0.3.6   2024-10-25 []  RSPM
+#>  htmltools      0.5.9   2025-12-04 []  RSPM
+#>  jsonlite       2.0.0   2025-03-27 []  RSPM
+#>  knitr          1.51    2025-12-20 []  any (@1.51)
+#>  lifecycle      1.0.5   2026-01-08 []  RSPM
+#>  magrittr       2.0.5   2026-04-04 []  RSPM
+#>  otel           0.2.0   2025-08-29 []  RSPM
+#>  pillar         1.11.1  2025-09-17 []  RSPM
+#>  pkgconfig      2.0.3   2019-09-22 []  RSPM
+#>  R6             2.6.1   2025-02-15 []  RSPM
+#>  RColorBrewer   1.1-3   2022-04-03 []  RSPM
+#>  rlang          1.3.0   2026-07-05 []  RSPM
+#>  rmarkdown      2.31    2026-03-26 []  RSPM
+#>  S7             0.2.2   2026-04-22 []  RSPM
+#>  scales         1.4.0   2025-04-24 []  RSPM
+#>  sessioninfo    1.2.4   2026-06-04 []  any (@1.2.4)
+#>  tibble         3.3.1   2026-01-11 []  any (@3.3.1)
+#>  tidyselect     1.2.1   2024-03-11 []  RSPM
+#>  vctrs          0.7.3   2026-04-11 []  RSPM
+#>  withr          3.0.3   2026-06-19 []  RSPM
+#>  xfun           0.60    2026-07-09 []  RSPM
+#>  yaml           2.3.12  2025-12-10 []  RSPM
+#> 
+#> 
+#> $platform
+#>  setting  value
+#>  version  R version 4.6.1 (2026-06-24)
+#>  os       Ubuntu 24.04.4 LTS
+#>  system   x86_64, linux-gnu
+#>  ui       X11
+#>  language (EN)
+#>  collate  C.UTF-8
+#>  ctype    C.UTF-8
+#>  tz       UTC
+#>  date     2026-08-20
+#>  pandoc   3.1.3 @ /usr/bin/ (via rmarkdown)
+#>  quarto   1.10.18 @ /usr/local/bin/quarto
+```
+
+</details>

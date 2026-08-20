@@ -75,3 +75,57 @@ the model, where $\theta = {\beta_0, \beta_1,\dots,\beta_p}$ are the
 parameters of the model. The parameters are estimated by the principle
 of maximum likelihood. **Technical point**: there is no error term for
 the overall logistic regression model, unlike in linear regressions.
+
+----------------------------------------------------------------------
+
+# Session Info
+
+<details class="code-fold">
+<summary>Code</summary>
+
+``` r
+get_session_info()
+#> $packages
+#>  package     * version date (UTC) lib source
+#>  cli           3.6.6   2026-04-09 []  RSPM
+#>  digest        0.6.39  2025-11-19 []  RSPM
+#>  dplyr         1.2.1   2026-04-03 []  RSPM
+#>  evaluate      1.0.5   2025-08-27 []  RSPM
+#>  fastmap       1.2.0   2024-05-15 []  RSPM
+#>  generics      0.1.4   2025-05-09 []  RSPM
+#>  glue          1.8.1   2026-04-17 []  RSPM
+#>  htmltools     0.5.9   2025-12-04 []  RSPM
+#>  jsonlite      2.0.0   2025-03-27 []  RSPM
+#>  knitr         1.51    2025-12-20 []  any (@1.51)
+#>  lifecycle     1.0.5   2026-01-08 []  RSPM
+#>  magrittr      2.0.5   2026-04-04 []  RSPM
+#>  otel          0.2.0   2025-08-29 []  RSPM
+#>  pillar        1.11.1  2025-09-17 []  RSPM
+#>  pkgconfig     2.0.3   2019-09-22 []  RSPM
+#>  R6            2.6.1   2025-02-15 []  RSPM
+#>  rlang         1.3.0   2026-07-05 []  RSPM
+#>  rmarkdown     2.31    2026-03-26 []  RSPM
+#>  sessioninfo   1.2.4   2026-06-04 []  any (@1.2.4)
+#>  tibble        3.3.1   2026-01-11 []  any (@3.3.1)
+#>  tidyselect    1.2.1   2024-03-11 []  RSPM
+#>  vctrs         0.7.3   2026-04-11 []  RSPM
+#>  xfun          0.60    2026-07-09 []  RSPM
+#>  yaml          2.3.12  2025-12-10 []  RSPM
+#> 
+#> 
+#> $platform
+#>  setting  value
+#>  version  R version 4.6.1 (2026-06-24)
+#>  os       Ubuntu 24.04.4 LTS
+#>  system   x86_64, linux-gnu
+#>  ui       X11
+#>  language (EN)
+#>  collate  C.UTF-8
+#>  ctype    C.UTF-8
+#>  tz       UTC
+#>  date     2026-08-20
+#>  pandoc   3.1.3 @ /usr/bin/ (via rmarkdown)
+#>  quarto   1.10.18 @ /usr/local/bin/quarto
+```
+
+</details>
