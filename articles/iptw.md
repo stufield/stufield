@@ -26,27 +26,24 @@ where $y_i \in \{0, 1\}$ = outcome for the $i^{th}$ IVF cycle, $p_i$ =
 probability of success for the $i^{th}$ IVF cycle,
 
 $$
-\begin{aligned}
-\log\!\left(\frac{p_i}{1 - p_i}\right) &= \ \beta_0 +
+\log\!\left(\frac{p_i}{1 - p_i}\right) = \beta_0 +
   \sum_j \beta_j^{\text{prot}}\,\mathbf{1}[\text{protocol}_i = j] +
-  \beta_{\text{age}}(\text{age}_i) + \\ &
-  \beta_{\text{lvl}}(\text{amh}_i) +
-  \beta_{\text{wt}}(\text{bmi}_i) +
-  \beta_{\text{dose}}\,\overline{\text{Gn}}_i +
-  \beta_{\text{dur}}\,\text{stim}_i + \\ &
-  \sum_k \gamma_k\,\mathbf{1}[\text{source}_i = k] + \\ &
-  \sum_k \gamma_k\,\mathbf{1}[\text{region}_i = k] + \\ &
-  \sum_k \gamma_k\,\mathbf{1}[\text{race}_i = k] + \\ &
+$$ $$
+  \beta_{\text{age}}(\text{age}_i)\ +
+$$ $$
+  \beta_{\text{wt}}(\text{bmi}_i)\ +
+$$ $$
+  \sum_k \gamma_k\,\mathbf{1}[\text{region}_i = k]\ +
+$$ $$
+  \sum_k \gamma_k\,\mathbf{1}[\text{race}_i = k]
   \epsilon_i
-\end{aligned}
 $$
 
 ## Model Fit in R
 
 ``` r
 model <- stats::glm(
-  clbr ~ protocol + age + amh + drug_dose + bmi + year + stim_duration +
-    data_source + race_census + census_region,
+  clbr ~ protocol + age + bmi + census_region + race_census,
   family  = binomial("logit"),
   data    = model_data
 )
@@ -54,46 +51,40 @@ model <- stats::glm(
 
 # Confounding Variables
 
-- this is Real World Data (RWD)
+- Real World Data (RWD) is full of confounding/uncontrolled variables
   - live clinical data from the wild
-  - not a fully-balanced clinical trial!
+  - it is *not* a fully-balanced clinical trial!
 - uncontrolled confounding variables are likely
   - covariates are supposed to b independent, but …
-  - what if *Protocol* is confounded by *Age*?
+  - what if *protocol* is confounded by *age*?
 
 <div style="width: 50%;">
 
-|          | rFSH | eFSH | Mixed rFSH+eFSH |
-|:---------|-----:|-----:|----------------:|
-| mean age | 20.5 | 30.3 |            40.4 |
+|          | FSH-a | FSH-b | Mix FSH-a + FSH-b |
+|:---------|------:|------:|------------------:|
+| mean age |  20.5 |  30.3 |              40.4 |
 
 </div>
 
 $$
-\begin{aligned}
-CLBR \sim protocol\ +\ age\ +\ ...\ +\ \epsilon
-\end{aligned}
+clbr \sim protocol\ +\ age\ +\ ...\ +\ \epsilon
 $$
 
 # Welcome IPW
 
 - Inverse Probability Weighting
-- build a classifier (model) predicting *Protocol* given *Age*
+- build a classifier (model) predicting *protocol* given *age*
   - if a strong bias exists, age should predict protocol
   - stronger predictions reflect stronger bias
 - new model:
 
 $$
-\begin{aligned}
 \text{protocol} \sim age\ +\ ...\ +\ \epsilon
-\end{aligned}
-$$
-
-- invert the probability
-  - $\uparrow$ $P(protocol = protocol_k | X)$ down weighted
-  - $\downarrow$ $P(protocol = protocol_k | X)$ up weighted
-- aggregate effect $\rightarrow$ create pseudo-population that
-  de-couples correlation *Protocol* $\sim$ *Age*
+$$ \* invert the probability - $\uparrow$
+$P(protocol = protocol_k | X)$ down weighted - $\downarrow$
+$P(protocol = protocol_k | X)$ up weighted \* aggregate effect
+$\rightarrow$ create pseudo-population that de-couples correlation
+*protocol* $\sim$ *age*
 
 ----------------------------------------------------------------------
 
@@ -105,7 +96,7 @@ n_vec <- c(500, 1000, 1500)
 sd    <- 2
 df <- tibble::tibble(
   protocol = factor(rep(c("A", "B", "C"), times = n_vec)),
-  variable = c(
+  age = c(
     rnorm(n_vec[1L], mean = 10, sd = sd),
     rnorm(n_vec[2L], mean = 12, sd = sd),
     rnorm(n_vec[3L], mean = 15, sd = sd)
@@ -114,7 +105,7 @@ df <- tibble::tibble(
 
 df |>
   group_by(protocol) |>
-  summarize(n = n(), mu = mean(variable), sigma = sd(variable))
+  summarize(n = n(), mu = mean(age), sigma = sd(age))
 #> # A tibble: 3 × 4
 #>   protocol     n    mu sigma
 #>   <fct>    <int> <dbl> <dbl>
@@ -123,7 +114,7 @@ df |>
 #> 3 C         1500 15.1   1.99
 
 # fit 3-class model
-model <- nnet::multinom(protocol ~ variable, data = df)
+model <- nnet::multinom(protocol ~ age, data = df)
 #> # weights:  9 (4 variable)
 #> initial  value 3295.836866 
 #> iter  10 value 1998.633588
@@ -149,9 +140,9 @@ df |>
   labs(title = "CDF distribution of weights by protocol")
 ```
 
-![Weight distribution by protocol.](figures/ipw-weights-1.png)
+![Weight distribution by protocol.](figures/ipw-calc-weights-1.png)
 
-![Continuous variable (e.g. age) pre- and
+![Continuous variable (i.e. age) pre- and
 post-weighting.](figures/ipw-plot-var-1.png)
 
 ``` r
@@ -160,10 +151,10 @@ df |>
   summarize(
     n        = n(),                           # orig sample size
     n_adj    = calc_ess(weights),             # effective sample size
-    mean     = mean(variable),                # mu orig
-    mean_adj = weighted.mean(variable, weights)) |> # mu adjust
-  mutate(prop_n   = .fmt_pct(prop.table(n)),        # prop orig
-         prop_adj = .fmt_pct(prop.table(n_adj)))    # prop adjust
+    mean     = mean(age),                        # mu orig
+    mean_adj = weighted.mean(age, weights)) |>   # mu adjust
+  mutate(prop_n   = .fmt_pct(prop.table(n)),     # prop orig
+         prop_adj = .fmt_pct(prop.table(n_adj))) # prop adjust
 #> # A tibble: 3 × 7
 #>   protocol     n n_adj  mean mean_adj prop_n prop_adj
 #>   <fct>    <int> <dbl> <dbl>    <dbl> <chr>  <chr>   
@@ -260,7 +251,7 @@ get_session_info()
 #>  collate  C.UTF-8
 #>  ctype    C.UTF-8
 #>  tz       UTC
-#>  date     2026-08-19
+#>  date     2026-08-20
 #>  pandoc   3.1.3 @ /usr/bin/ (via rmarkdown)
 #>  quarto   1.10.18 @ /usr/local/bin/quarto
 ```

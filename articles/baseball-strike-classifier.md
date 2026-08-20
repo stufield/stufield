@@ -138,10 +138,10 @@ get_gini(rf_model)
 #> # A tibble: 4 × 2
 #>   Feature          Gini_Importance
 #>   <chr>                      <dbl>
-#> 1 plate_location_z           7626.
-#> 2 plate_location_x           7402.
-#> 3 strikes                     814.
-#> 4 balls                       228.
+#> 1 plate_location_z           7655.
+#> 2 plate_location_x           7340.
+#> 3 strikes                     782.
+#> 4 balls                       233.
 ```
 
 and predict strike probability:
@@ -161,27 +161,27 @@ summary(cmat) # evaluate performance
 #> 
 #>      Predicted
 #> Truth     0     1
-#>     0 16555   620
-#>     1    91 17084
+#>     0 16540   635
+#>     1   108 17067
 #> ── Performance Metrics (CI95%) ─────────────────────────────────────────────────
 #> 
 #> # A tibble: 10 × 5
 #>    metric              n estimate CI95_lower CI95_upper
 #>    <chr>           <int>    <dbl>      <dbl>      <dbl>
-#>  1 Sensitivity     17175   0.995      0.993      0.996 
-#>  2 Specificity     17175   0.964      0.961      0.967 
-#>  3 PPV (Precision) 17704   0.965      0.962      0.968 
-#>  4 NPV             16646   0.995      0.993      0.996 
-#>  5 Accuracy        34350   0.979      0.978      0.981 
-#>  6 Bal Accuracy    34350   0.979      0.978      0.981 
+#>  1 Sensitivity     17175   0.994      0.992      0.995 
+#>  2 Specificity     17175   0.963      0.960      0.966 
+#>  3 PPV (Precision) 17702   0.964      0.961      0.967 
+#>  4 NPV             16648   0.994      0.992      0.995 
+#>  5 Accuracy        34350   0.978      0.977      0.980 
+#>  6 Bal Accuracy    34350   0.978      0.977      0.980 
 #>  7 Prevalence      34350   0.5        0.494      0.506 
 #>  8 AUC             34350   0.999      0.999      0.999 
-#>  9 Brier Score     34350   0.0174     0.0158     0.0190
-#> 10 MCC                NA   0.959     NA         NA
+#>  9 Brier Score     34350   0.0179     0.0163     0.0195
+#> 10 MCC                NA   0.957     NA         NA
 #> ── Additional Statistics ───────────────────────────────────────────────────────
 #> 
 #> F_measure    G_mean    Wt_Acc 
-#>     0.980     0.979     0.987
+#>     0.979     0.978     0.986
 ```
 
 Model performance was surprisingly accurate. Stark contrast to my
@@ -208,16 +208,16 @@ dplyr::select(pitch_data2, all_of(feats), is_strike, strike_prob)
 #> # A tibble: 34,350 × 6
 #>    plate_location_x plate_location_z strikes balls is_strike strike_prob
 #>               <dbl>            <dbl>   <int> <int>     <int>       <dbl>
-#>  1            0.88             1.33        0     0         0       0.032
-#>  2            1.09            -0.334       2     0         0       0    
-#>  3            0.243            0.792       0     0         0       0.004
-#>  4            1.26             3.07        2     2         0       0.008
-#>  5            0.996            3.91        1     2         0       0    
-#>  6            0.141            1.11        0     0         0       0.004
-#>  7           -1.91            -0.294       2     1         0       0    
-#>  8           -0.015            0.168       0     0         0       0.004
-#>  9            0.871            3.36        1     3         0       0.192
-#> 10            0.96             2.63        1     1         0       0.224
+#>  1           -0.297            3.72        0     0         0       0.012
+#>  2           -0.15             3.93        2     1         0       0    
+#>  3           -0.148            1.44        2     2         0       0.248
+#>  4            1.02             2.14        1     0         0       0.084
+#>  5            1.22             2.00        0     0         0       0.044
+#>  6            0.698            4.21        2     2         0       0.012
+#>  7            0.156            0.997       0     0         0       0.008
+#>  8            1.01             3.40        1     0         0       0.008
+#>  9           -1.12             1.41        1     0         0       0.008
+#> 10           -2.04             1.80        0     0         0       0    
 #> # ℹ 34,340 more rows
 ```
 
