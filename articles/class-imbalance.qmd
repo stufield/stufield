@@ -31,8 +31,6 @@ library(withr)
 ```
 
 
---------
-
 
 # Overview of Setup
 
@@ -40,13 +38,11 @@ library(withr)
 - initial global data set of 800 samples >>> 50/50 classes
 - random split data into 400 training set, 400 test set
 - test set is used for Accuracy calculations
-- at each iteration the training set is bootstrap sampled from class 1 *only*
+- at each iteration the training set is bootstrap sampled from
+  class 1 *only*
 - at the same time, class 2 is down-sampled by the same amount,
   resulting in a larger and larger class-imbalance (1 > 2)
 
-
-
---------
 
 
 ## Simulate Data
@@ -74,9 +70,10 @@ sim_data <- withr::with_seed(1, {
 ```
 
 
-## Look at Data
+## Look at the Data
 
-Plot the simulated data based on the 2 predictors (by class)
+Plot the simulated data based on the
+2 predictors (by class)
 
 ```{r}
 #| label: plot-scatter
@@ -97,8 +94,8 @@ Random split of simulated data into 50/50 training and test sets
 train <- withr::with_seed(101, dplyr::sample_frac(sim_data, 0.5))
 # merge on `id`s NOT present in the training set
 test <- dplyr::anti_join(sim_data, train, by = "id") |>
-  dplyr::select(-id)               # remove the tracking field `id` from test
-train <- dplyr::select(train, -id) # remove the tracking field `id` from train
+  dplyr::select(-id)               # rm tracking field `id` from test
+train <- dplyr::select(train, -id) # rm tracking field `id` from train
 ```
 
 
@@ -156,12 +153,13 @@ simres  # view the `tibble` of simulation results
 ```
 
 
-## Class imbalance vs. prediction accuracy
+## Class Imbalance vs. Prediction Accuracy
 
-- Simulation starts with class 1 at `r round(100 * simres$class_balance[1L], 2L)`%
+- Simulation starts with class 1 at
+  `r round(100 * simres$class_balance[1L], 2L)`%
   and Accuracy = `r round(simres$accuracy[1L], 3L)`.
-
-- Simulation ends with class 1 at `r round(100 * simres$class_balance[nrow(simres)], 2L)`%
+- Simulation ends with class 1 at
+  `r round(100 * simres$class_balance[nrow(simres)], 2L)`%
   and Accuracy = `r round(simres$accuracy[nrow(simres)], 3L)`.
 
 ```{r}
@@ -172,4 +170,30 @@ simres |>
   geom_smooth(formula = y ~ x, method = "loess") +
   labs(x = "Class 1 Proportion (Imbalance)", y = "Prediction Accuracy",
        title = "Logistic Regression | Accuracy vs. Class Imbalance")
+```
+
+
+-------------
+
+
+# Session Info {.unnumbered}
+
+```{r}
+#| label: get-session
+#| include: FALSE
+get_session_info <- function(pkgs = NULL) {
+  ret <- list(
+    packages = dplyr::select(sessioninfo::package_info(), -library),
+    platform = sessioninfo::platform_info()
+  )
+  if (!is.null(pkgs)) {
+    ret$packages <- ret$packages[pkgs, ]
+  }
+  ret
+}
+```
+```{r}
+#| label: session
+#| code-fold: TRUE
+get_session_info()
 ```

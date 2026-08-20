@@ -52,10 +52,10 @@ theme_set(thm)
 
 # Overview
 
-The general goal is to use a probabilistic modeling framework to predict
-the class of an unknown sample. Such mathematical models, or classifiers,
-are based on training data and are built (i.e. model fitting) in order
-to make class predictions about the unknown sample.
+The general goal is to use a probabilistic modeling framework to
+predict the class of an unknown sample. Such mathematical models, or
+classifiers, are based on training data and are built (i.e. model
+fitting) in order to make class predictions about the unknown sample.
 
 
 --------
@@ -78,9 +78,10 @@ $$
 \end{equation}
 $$ {#eq-bayes-full}
 
-where the term $P(data)$ is a normalizing constant that is independent of the
-*outcome*, and is often ignored if *relative* posteriors are desired over
-*absolute* posteriors. (@eq-bayes-full) then simplifies to,
+where the term $P(data)$ is a normalizing constant that is independent
+of the *outcome*, and is often ignored if *relative* posteriors are
+desired over *absolute* posteriors. (@eq-bayes-full) then simplifies
+to,
 
 $$
 \begin{equation}
@@ -89,14 +90,15 @@ $$
 $$
 
 
-# Na&iuml;ve Bayes in Practice
+# Naïve Bayes in Practice
 
-Consider an example where *proteomic* measurements (i.e. features = proteins),
-assumed to have Gaussian (i.e. Normal) distributions, are taken from an
-individual and the posterior probability of interest is whether that individual
-belongs to one of $k$ possible outcomes/classes.  For example, if there are
-$k=2$ possible classes, disease or control (i.e. a *binary* classifier), this
-can be re-written as:
+Consider an example where *proteomic* measurements (i.e. features =
+proteins), assumed to have Gaussian (i.e. Normal) distributions, are
+taken from an individual and the posterior probability of interest is
+whether that individual belongs to one of $k$ possible
+outcomes/classes.  For example, if there are $k=2$ possible classes,
+disease or control (i.e. a *binary* classifier), this can be
+re-written as:
 
 $$
 \begin{eqnarray}
@@ -105,9 +107,9 @@ $$
 \end{eqnarray}
 $$
 
-If we have $p$ features and na&iuml;vely assume all are independent, we can
-multiply their individual probabilities to produce a cumulative probability.
-For the disease posterior this gives:
+If we have $p$ features and na&iuml;vely assume all are independent,
+we can multiply their individual probabilities to produce a cumulative
+probability. For the disease posterior this gives:
 
 $$
 \begin{eqnarray}
@@ -116,14 +118,16 @@ $$
 \end{eqnarray}
 $$
 
-Na&iuml;ve Bayes models contain $2pk + k$ parameters, where $k$ is the number
-of classes, $p$ is the number of features; a **mean** ($\mu$) and **standard
-deviation** ($\sigma$) for each feature $\times$ class combination, plus the
-class-specific **prior**, which is often determined by the training class
-proportions (i.e. an *uninformative* prior).
-Na&iuml;ve Bayes models assume Gaussian densities and are calculated via the
-probability density function (PDF) given class-specific parameters
-$\mu$ and $\sigma$:
+Naïve Bayes models contain $2pk + k$ parameters, where $k$ is the
+number of classes, $p$ is the number of features; a **mean** ($\mu$)
+and **standard deviation** ($\sigma$) for each feature $\times$ class
+combination, plus the class-specific **prior**, which is often
+determined by the training class proportions (i.e. an *uninformative*
+prior).
+
+Naïve Bayes models assume Gaussian densities and are calculated
+via the probability density function (PDF) given class-specific
+parameters $\mu$ and $\sigma$:
 
 $$
 \begin{eqnarray}
@@ -141,9 +145,9 @@ $$
 \end{eqnarray}
 $$ {#eq-bayes}
 
-The result of (@eq-bayes) gives a probability *density* for
-each class, which is not constrained on the interval $[0,\ 1]$.
-Normalized posterior probabilities ($Pr$) are obtained by calculating the
+The result of (@eq-bayes) gives a probability *density* for each
+class, which is not constrained on the interval $[0,\ 1]$. Normalized
+posterior probabilities ($Pr$) are obtained by calculating the
 class-specific proportion of the total density,
 
 $$
@@ -178,8 +182,8 @@ tibble::as_tibble(train)
 ## The Model
 
 Consider a $k = 2$ class (disease vs. control) and $p = 2$ feature
-example, with $2pk + k = 10$ parameters. The na&iuml;ve Bayes model looks
-like this:
+example, with $2pk + k = 10$ parameters. The Naïve Bayes model
+looks like this:
 
 ```{r}
 #| label: model
@@ -291,8 +295,8 @@ $$
 \end{eqnarray*}
 $$
 
-Normalized posterior probabilities for 5 unknown samples are shown below.
-The disease class prediction is based on a decision cutoff of
+Normalized posterior probabilities for 5 unknown samples are shown
+below. The disease class prediction is based on a decision cutoff of
 $Pr(disease) \ge 0.5$
 
 ```{r}
@@ -309,16 +313,16 @@ preds
 
 
 
-# Na&iuml;ve Bayes Visualization
+# Naïve Bayes Visualization
 
 ## Probability density functions (PDFs)
 
-Probability density functions (scaled by sample size) of the training data
-used to fit the na&iuml;ve Bayes model.
-Curves are colored by class and the feature measurements for Sample 1
-($\vec x =$ `r s1f1`, `r s1f2`) are represented by the dashed vertical line.
-This graphically indicates that Sample 1 is more likely to have come from
-the control distribution.
+Probability density functions (scaled by sample size) of the training
+data used to fit the Naïve Bayes model. Curves are colored by class
+and the feature measurements for Sample 1 ($\vec x =$ `r s1f1`,
+`r s1f2`) are represented by the dashed vertical line. This graphically
+indicates that Sample 1 is more likely to have come from the control
+distribution.
 
 ```{r}
 #| label: PDFs
@@ -367,13 +371,13 @@ p2 <- libml::plot_bayes_boundary(
              shape = "cross", color = "green", size = 3, stroke = 2)
 ```
 
-Bivariate plots of training data used to fit the two feature
-na&iuml;ve Bayes model. Dotted lines are the class specific means of the
-model parameters, points are colored by class.
+Bivariate plots of training data used to fit the two feature Naïve
+Bayes model. Dotted lines are the class specific means of the model
+parameters, points are colored by class.
 
-The non-linear Bayes decision boundary reflecting
-the $p = 0.5$ cutoff is represented by the "purple" dashed line.
-The green `X`'s represent the bivariate coordinates of samples 1--5.
+The non-linear Bayes decision boundary reflecting the $p = 0.5$ cutoff
+is represented by the "purple" dashed line. The green `X`'s represent
+the bivariate coordinates of samples 1--5.
 
 ```{r}
 #| label: bivariate-decision-boundary
@@ -381,4 +385,30 @@ The green `X`'s represent the bivariate coordinates of samples 1--5.
 #| fig.width: 12
 #| fig.height: 5
 p1 + p2
+```
+
+
+-------------
+
+
+# Session Info {.unnumbered}
+
+```{r}
+#| label: get-session
+#| include: FALSE
+get_session_info <- function(pkgs = NULL) {
+  ret <- list(
+    packages = dplyr::select(sessioninfo::package_info(), -library),
+    platform = sessioninfo::platform_info()
+  )
+  if (!is.null(pkgs)) {
+    ret$packages <- ret$packages[pkgs, ]
+  }
+  ret
+}
+```
+```{r}
+#| label: session
+#| code-fold: TRUE
+get_session_info()
 ```

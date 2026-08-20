@@ -22,10 +22,10 @@ library(ggplot2)
 
 # The Birthday Paradox
 
-In probability theory, the birthday problem asks for the probability that, in a
-set of n randomly chosen people, at least two will share a birthday. The
-birthday paradox refers to the counter-intuitive fact that only 23 people are
-needed for that probability to exceed 50%.
+In probability theory, the birthday problem asks for the probability
+that, in a set of n randomly chosen people, at least two will share a
+birthday. The birthday paradox refers to the counter-intuitive fact
+that only 23 people are needed for that probability to exceed 50%.
 
 This is the 
 [Birthday Paradox](https://en.wikipedia.org/wiki/Birthday_problem).
@@ -35,13 +35,13 @@ This is the
 
 - you take 23 random people
 - what is the probability that any two birthdays occur on the same day?
-- In `R`, this is `runif(min = 1, max = 365)` $\times 23$.
 - To answer, first calculate the probability that all 23 birthdays
-  occur on *different* days ($P(x)$), then the two are mutually exclusive,
-  $P(x') = 1 - P(x)$ is the probability that all birthdays are *not*
-  on different days
+  occur on *different* days ($P(x)$), then the two are mutually
+  exclusive, $P(x') = 1 - P(x)$ is the probability that all birthdays
+  are *not* on different days
 
-Thus,
+
+which becomes,
 
 $$
 P(x) = \frac{365}{365} \times \frac{364}{365} \times \frac{363}{365} \times\ ...\ \times \frac{343}{365}
@@ -55,7 +55,8 @@ $$
 
 This can be represented in `R` like so:
 
-```{r prob-closed}
+```{r}
+#| label: prob-closed
 px <- (1 / 365)^23 * prod(365:343)
 px
 
@@ -63,14 +64,15 @@ px
 (1 - px)
 ```
 
-We can next write a generalized function for this "duplicated" probability
-representing *any* number of people for any number of days in a
-year (leap year?) and call it `prob_fun()`.
+We can next write a generalized function for this "duplicated"
+probability representing *any* number of people for any number of days
+in a year (leap year?) and call it `prob_fun()`.
 
 ```{r}
 #| label: prob-fun
-# x = number of people (trials), can be vectorized
-# dpy = days-per-year
+# x   = number of people (trials), can be vectorized
+# dpy = days/year
+
 prob_fun <- function(x, dpy = 365L) {
   x <- as.integer(x)
   vapply(x, function(.x) {
@@ -78,27 +80,33 @@ prob_fun <- function(x, dpy = 365L) {
     1 - (1 / dpy)^.x * prod(v)
   }, NA_real_, USE.NAMES = FALSE)
 }
+
 ppl <- 23
+
 prob_fun(ppl)   # confirms the above
 ```
 
 
 ## Visualize `n` People
 
-This can be generalized across an arbitrary number of people to get
-a overall view of how probability changes as a function of the 
-opportunity for duplicate birthdays. Using the `prob_fun()` function above,
-the red-dashed line represents the $n =$ `r ppl` days described in
-classic example. The cyan-dashed lines are reference lines for 25% and 75%
-respectively.
+This can be generalized across an arbitrary number of people to get a
+overall view of how probability changes as a function of the
+opportunity for duplicate birthdays. Using the `prob_fun()` function
+above, the red-dashed line represents the $n =$ `r ppl` days described
+in classic example. The cyan-dashed lines are reference lines for 25%
+and 75% respectively.
 
 ```{r}
 #| label: ggplot-prob-fun
+#| fig.cap: >
+  "The birthday paradox visualized as a cumulative
+  distribution function (CDF)."
 base <- ggplot() + xlim(1, 50)
+
 base +
   geom_function(fun = prob_fun, colour = "navy", linewidth = 1) +
   labs(title = "The Birthday Paradox", x = "No. People",
-       y = "Prob. duplicated birthdays") +
+       y = "P(duplicated birthday)") +
   annotate("segment",
            x = c(ppl, 1), xend = rep(ppl, 2),
            y = c(0, prob_fun(ppl)), yend = rep(prob_fun(ppl), 2),
@@ -119,8 +127,6 @@ base +
 
 
 
-
-
 ## Simulation
 
 Next, let's simulate this. I draw `r ppl` "people" from the
@@ -131,9 +137,8 @@ X \sim U(1, 365),
 $$
 
 and count the number of times the same number is drawn *exactly* twice
-on *any* day of the year.
-I repeat this 10000 times and determine an empirical probability
-of the event occurring.
+on *any* day of the year. Repeat this 10000 times and determine an
+empirical probability of the event occurring.
 
 ```{r runif-sim}
 reps <- 10000
@@ -151,14 +156,38 @@ prob
 ### Caveats
 
 1. the *same* day could be selected *more* than twice; 
-   this simulation reflects the probability that *exactly* 2 people are chosen
-   with the same birthday (not 3 or more).
+   this simulation reflects the probability that *exactly*
+   2 people are chosen with the same birthday (not 3 or more).
 
-1. the *same* birthday could be selected twice multiple times;
+2. the *same* birthday could be selected twice multiple times;
    this simulation reflects the probability that two people are chosen
    with the same birthday *at least* once (but could be more).
 
-Considering the 2 caveats above, the simulation agrees fairly well with the 
-closed form solution described above and from `prob_fun()`.
+Considering the 2 caveats above, the simulation agrees fairly well
+with the closed form solution described above and from `prob_fun()`.
 
 
+-------------
+
+
+# Session Info {.unnumbered}
+
+```{r}
+#| label: get-session
+#| include: FALSE
+get_session_info <- function(pkgs = NULL) {
+  ret <- list(
+    packages = dplyr::select(sessioninfo::package_info(), -library),
+    platform = sessioninfo::platform_info()
+  )
+  if (!is.null(pkgs)) {
+    ret$packages <- ret$packages[pkgs, ]
+  }
+  ret
+}
+```
+```{r}
+#| label: session
+#| code-fold: TRUE
+get_session_info()
+```

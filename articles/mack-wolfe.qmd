@@ -15,8 +15,9 @@ editor_options:
 #| include: FALSE
 library(helpr)
 library(libml)
-library(SomaPlotr)
 library(patchwork)
+library(SomaPlotr)
+
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment  = "#>",
@@ -38,16 +39,16 @@ cap_4_plot <- paste(
 
 Given an expected group ordering
 (i.e. `Group A < Group B < Group C < Group D`),
-the Mack-Wolfe test counts for *each* value in `Group A`, the number of
-values in `Group B` that are greater in magnitude (+0.5 for ties),
+the Mack-Wolfe test counts for *each* value in `Group A`, the number
+of values in `Group B` that are greater in magnitude (+0.5 for ties),
 and repeats this calculation for all *each* $n \choose 2$, $n \ge 2$,
-pairwise combinations ($A-B$, $A-C$, $A-D$, $B-C$, $B-D$, $C-D$).
-In the extreme, if there are 9 samples in `Group A` and 15 samples in
+pairwise combinations ($A-B$, $A-C$, $A-D$, $B-C$, $B-D$, $C-D$). In
+the extreme, if there are 9 samples in `Group A` and 15 samples in
 `Group B`, and *all* the samples in `Group B` are greater than the
-highest value in `Group A`, this results in $9 \times 15 = 135$
-for that pairwise combination. The process is repeated and summed for the
-other 5 combinations.  See below for 4 different possible JT-test scenarios
-(Mack-Wolfe with peak at end).
+highest value in `Group A`, this results in $9 \times 15 = 135$ for
+that pairwise combination. The process is repeated and summed for the
+other 5 combinations. See below for 4 different possible JT-test
+scenarios (Mack-Wolfe with peak at end).
 
 
 ```{r} 
@@ -99,9 +100,9 @@ p[[1L]] + p[[2L]] + p[[3L]] + p[[4L]]
 ---------
 
 
-For scenarios where there is an expected peak, the test statistic ($A_p$)
-is calculated as essentially the sum of two JT-tests, summing over the
-_upward_ side and _downward_ side JT-tests.
+For scenarios where there is an expected peak, the test statistic
+($A_p$) is calculated as essentially the sum of two JT-tests, summing
+over the _upward_ side and _downward_ side JT-tests.
 
 For example, if **peak = Group C**,
 i.e. `Group A < Group B < Group C > Group D`,
@@ -113,6 +114,33 @@ $$
 \end{equation}
 $$
 
-The significance is inferred typically using a large-sample approximation
-to the Gaussian distribution ($A^*$), i.e. conversion to a $Z_{score}$,
-from which an associated p-value can be calculated.
+The significance is inferred typically using a large-sample
+approximation to the Gaussian distribution ($A^*$), i.e. conversion to
+a $Z_{score}$, from which an associated p-value can be calculated.
+
+
+
+-------------
+
+
+# Session Info {.unnumbered}
+
+```{r}
+#| label: get-session
+#| include: FALSE
+get_session_info <- function(pkgs = NULL) {
+  ret <- list(
+    packages = dplyr::select(sessioninfo::package_info(), -library),
+    platform = sessioninfo::platform_info()
+  )
+  if (!is.null(pkgs)) {
+    ret$packages <- ret$packages[pkgs, ]
+  }
+  ret
+}
+```
+```{r}
+#| label: session
+#| code-fold: TRUE
+get_session_info()
+```

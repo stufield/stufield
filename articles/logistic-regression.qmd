@@ -54,8 +54,8 @@ $$
 which gives the log-odds defined by a standard multivariate linear
 regression model. Notice that this transform changes the range of
 $\pi(X)$ from $(0,1)$ to $(-\infty, +\infty)$, as is usual for linear
-regression. Notice also that it is trivial to convert from log-odds
-to probability via:
+regression. Notice also that it is trivial to convert from log-odds to
+probability via:
 
 $$
 \begin{eqnarray}
@@ -66,9 +66,9 @@ $$
 $$
 
 
-Plots of the logit ('link') function and its inverse, the logistic function.
-The logistic function maps any value on the y-axis of the logit function
-to a value on $(0, 1)$.
+Plots of the logit ('link') function and its inverse, the logistic
+function. The logistic function maps any value on the y-axis of the
+logit function to a value on $(0, 1)$.
 
 ```{r}
 #| label: logit
@@ -86,15 +86,15 @@ abline(v = 0, lty = 2)
 ```
 
 Similar to linear regression, and analogously to univariate logistic
-regression, the above equations represent the mean or expected probability,
-$\pi(X)$, given $X$.
+regression, the above equations represent the mean or expected
+probability, $\pi(X)$, given $X$.
 
-As this is an estimate, each data point will have an error distribution,
-but rather than a normal distribution (linear regression), we use a
-binomial distribution, to match the dichotomous outcomes. The mean of
-the binomial distribution is $\pi(X)$, and the variance is $\pi(X)(1-\pi(X))$.
-Of course, now $X$ is a vector, whereas it is a scalar value in
-the univariate case.
+As this is an estimate, each data point will have an error
+distribution, but rather than a normal distribution (linear
+regression), we use a binomial distribution, to match the dichotomous
+outcomes. The mean of the binomial distribution is $\pi(X)$, and the
+variance is $\pi(X)(1-\pi(X))$.  Of course, now $X$ is a vector,
+whereas it is a scalar value in the univariate case.
 
 Let $\cal{L} = L$$(Data; \theta)$ be the likelihood of the data given
 the model, where $\theta = {\beta_0, \beta_1,\dots,\beta_p}$ are the
@@ -103,3 +103,26 @@ of maximum likelihood. **Technical point**: there is no error term for
 the overall logistic regression model, unlike in linear regressions.
 
 
+------------
+
+# Session Info {.unnumbered}
+
+```{r}
+#| label: get-session
+#| include: FALSE
+get_session_info <- function(pkgs = NULL) {
+  ret <- list(
+    packages = dplyr::select(sessioninfo::package_info(), -library),
+    platform = sessioninfo::platform_info()
+  )
+  if (!is.null(pkgs)) {
+    ret$packages <- ret$packages[pkgs, ]
+  }
+  ret
+}
+```
+```{r}
+#| label: session
+#| code-fold: TRUE
+get_session_info()
+```

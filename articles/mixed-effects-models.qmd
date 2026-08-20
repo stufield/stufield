@@ -15,6 +15,7 @@ editor_options:
 #| include: FALSE
 library(ggplot2)
 library(mixr)
+
 knitr::opts_chunk$set(
   fig.align  = "center",    # alignment for figures; left, right, center
   comment    = ">",         # return comment of source code
@@ -24,6 +25,7 @@ knitr::opts_chunk$set(
   include    = TRUE,        # should the chunk be included as output?
   tidy       = FALSE        # should output be cleaned up?
 )
+
 thm <- theme_bw() + 
   theme(
     panel.background  = element_rect(fill = "transparent", colour = NA), 
@@ -33,7 +35,9 @@ thm <- theme_bw() +
     legend.background = element_rect(fill = "transparent", colour = NA),
     legend.key        = element_rect(fill = "transparent", colour = NA)
   )
+
 theme_set(thm)
+
 y_lab <- bquote("Response ("*y[ij]*")")
 ```
 
@@ -81,9 +85,9 @@ $$ {#eq-betas}
 
 The Total Sum of Squares (TSS) measures the total variance in the
 response (*Y*), thus $R^2$ is the proportion of the total variance in
-*Y* that can be explained by the model. The remaining variance is packed
-into $\epsilon$. To calculate the accuracy of the coefficient estimates,
-we need a measure of variance in *Y*:
+*Y* that can be explained by the model. The remaining variance is
+packed into $\epsilon$. To calculate the accuracy of the coefficient
+estimates, we need a measure of variance in *Y*:
 
 $$
 \begin{eqnarray}
@@ -109,7 +113,8 @@ $$ {#eq-RSE}
 # Multiple-Linear Regression
 
 The linear model can easily be expanded to include multiple predictors
-(regressors/variables/proteins). The extension of (@eq-lme) can be modeled as:
+(regressors/variables/proteins). The extension of (@eq-lme) can be
+modeled as:
 
 $$
 \begin{eqnarray}
@@ -373,11 +378,11 @@ $$
 \end{equation}
 $$
 
-again for the $j^{th}$ observation of the $i^{th}$ subject, $b_{0i}$ is
-still the subject-specific random intercept and $\beta_1$ is still the
-fixed-effect for _time_. However, now there is a fixed-effect for
-_group_ and an interaction term ($\beta_3$ term) that is multiplied by a
-dummy variable such that:
+again for the $j^{th}$ observation of the $i^{th}$ subject, $b_{0i}$
+is still the subject-specific random intercept and $\beta_1$ is still
+the fixed-effect for _time_. However, now there is a fixed-effect for
+_group_ and an interaction term ($\beta_3$ term) that is multiplied by
+a dummy variable such that:
 
 $$
 \begin{equation}
@@ -417,16 +422,17 @@ lme_diagnostic(fit2)
 ```
 
 Notice that the subject-subject offsets ($\beta_0$) are approximately
-centered about 1000 (RFU) for both treatment and control (as they should
-be; we set them to the same intercept), and a vertical line up from 1000
-would cross the confidence interval for most subjects. The more variable
-the estimates (and intervals) of $\beta_0$ seen in the left panel, the
-greater the improvement in model fit can be found in fitting
-subject-specific offsets in a mixed-effects model framework. Secondly,
-as can be expected, the slope coefficient ($\beta_1$) is vastly
-different between treated and control. Depending on the statistical
-question, subject-specific slopes may be desired (but typically not for
-longitudinal time-series data in a clinical setting).
+centered about 1000 (RFU) for both treatment and control (as they
+should be; we set them to the same intercept), and a vertical line up
+from 1000 would cross the confidence interval for most subjects. The
+more variable the estimates (and intervals) of $\beta_0$ seen in the
+left panel, the greater the improvement in model fit can be found in
+fitting subject-specific offsets in a mixed-effects model framework.
+Secondly, as can be expected, the slope coefficient ($\beta_1$) is
+vastly different between treated and control. Depending on the
+statistical question, subject-specific slopes may be desired (but
+typically not for longitudinal time-series data in a clinical
+setting).
 
 ## Summary
 
@@ -468,9 +474,10 @@ case the _control_ group does not vary with time.
 To illustrate how the model output is constructed, we simulate
 identically to the above, however give the control group a slope of
 $\beta_1 = 250$. This results in a significant fixed-effect for time
-_and_ an significant interaction; the additional effect of being in the
-_treatment_ group. Relate the values back to the original (@eq-lme-dummy)
-above in @sec-group-dependent to see how the terms are partitioned.
+_and_ an significant interaction; the additional effect of being in
+the _treatment_ group. Relate the values back to the original
+(@eq-lme-dummy) above in @sec-group-dependent to see how the terms are
+partitioned.
 
 ```{r}
 #| label: plot_long_combined3
@@ -515,10 +522,10 @@ t2  <- round(tmp["time:Grouptreatment", "t-value"], 2L)
 Notice that the $\hat{\beta_0}=$ `r b0` has not changed, as we haven't
 changed any baseline values, but now half of the effect has moved into
 the _time_ effect ($\hat{\beta_1}=$ `r b1`), and away from the
-interaction coefficient ($\hat{\beta_3}=$ `r b3`) which was carrying the
-entire slope effect for the treatment group. Stated alternatively, the
-significance of the interaction has dropped, though still a significant
-$p-$value, shifting from `r t1` to `r t2`.
+interaction coefficient ($\hat{\beta_3}=$ `r b3`) which was carrying
+the entire slope effect for the treatment group. Stated alternatively,
+the significance of the interaction has dropped, though still a
+significant $p-$value, shifting from `r t1` to `r t2`.
 
 
 ------------
@@ -533,19 +540,41 @@ mixed-effects modeling in `R`.
 
 1. Make sure you are fitting the correct model for your desired
    question.
-1. Be sure you can write the full equation for the model(s) you are fitting.
-1. A wrapper for `nlme::lme()` to avoid convergence failures to stop
+2. Be sure you can write the full equation for the model(s) you are fitting.
+3. A wrapper for `nlme::lme()` to avoid convergence failures to stop
    your code from running to completion can be found via
    `mixr::fit_lme_safely()`.
-1. Prior to model fitting, plot the subject-specific coefficients with
+4. Prior to model fitting, plot the subject-specific coefficients with
    the diagnostic wrapper `mixr::lmeDiagnostic()`.
-1. The `lme()` function uses Expectation Maximization combined with
+5. The `lme()` function uses Expectation Maximization combined with
    Newton-Raphson iterations to fit the various model coefficients.
-1. See also: `mixr::fitMixedEffectsModels()` and
+6. See also: `mixr::fitMixedEffectsModels()` and
    `mixr::createMixedEffectsTable()`.
 
 
-## Pitfalls
 
-- __Mike Hinterberg__: effects are fit sequentially according to the
-  magnitude of the effect.
+-------------
+
+
+
+# Session Info {.unnumbered}
+
+```{r}
+#| label: get-session
+#| include: FALSE
+get_session_info <- function(pkgs = NULL) {
+  ret <- list(
+    packages = dplyr::select(sessioninfo::package_info(), -library),
+    platform = sessioninfo::platform_info()
+  )
+  if (!is.null(pkgs)) {
+    ret$packages <- ret$packages[pkgs, ]
+  }
+  ret
+}
+```
+```{r}
+#| label: session
+#| code-fold: TRUE
+get_session_info()
+```

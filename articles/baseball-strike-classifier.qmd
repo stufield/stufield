@@ -46,6 +46,7 @@ Pitch data were obtained from [FanGraphs](https://www.fangraphs.com/)
 1. **Feature reduction**: using a combination of
     - step-wise forward/backward feature selection
     - [Stability Selection](https://rss.onlinelibrary.wiley.com/doi/10.1111/j.1467-9868.2010.00740.x)
+    - [R package](https://stufield.github.io/stabilityselectr/)
     - [PCA](https://en.wikipedia.org/wiki/Principal_component_analysis)
 1. **Fit binary classification models**:
     - Logistic Regression
@@ -73,12 +74,12 @@ tibble::enframe(sapply(pitch_data, class)) |> tail(-1L)
 ```
 
 Notice there is a class imbalance in the strike response (~ 2:1) which
-could be problematic generalizing to new data outside of these training data.
-See my other tutorial on the dangers of class imbalance
+could be problematic generalizing to new data outside of these
+training data.  See my other tutorial on the dangers of class imbalance
 [here](https://github.com/stufield/stufield/blob/main/articles/class-imbalance.md).
-Since there samples (pitches) are not in short supply (unlike in, for examples,
-biological data sets), I will simply down sample the major class for
-training.
+Since there samples (pitches) are not in short supply (unlike in, for
+examples, biological data sets), I will simply down sample the major
+class for training.
 
 ```{r}
 pitch_data2 <- rebalance(pitch_data, is_strike)
@@ -102,12 +103,12 @@ feats <- c("plate_location_x",
 ```
 
 Not surprisingly, `plate_location_*` coordinates were by far the most
-significant predictors in most model building exercises,
-followed by `balls` and `strikes`. As one would expect,
-the pitch count was highly influential on upcoming pitch location.
-Incidentally, PCA revealed `spin_rate` dominated the variance,
-as it was the first (principal) component containing over 99% of the
-total variance, however this variation was *not* associated with `is_strike`.
+significant predictors in most model building exercises, followed by
+`balls` and `strikes`. As one would expect, the pitch count was highly
+influential on upcoming pitch location.  Incidentally, PCA revealed
+`spin_rate` dominated the variance, as it was the first (principal)
+component containing over 99% of the total variance, however this
+variation was *not* associated with `is_strike`.
 
 
 ## Fit Model
@@ -140,22 +141,23 @@ rf_probs <- predict(rf_model,
                     newdata = pitch_data2[, feats], # predict on *training* data
                     type = "prob")[, 2L]            # class 2 = strike
 
-cmat <- calc_confusion(pitch_data2$is_strike, rf_probs, pos_class = 1L) # confusion matrix
+# confusion matrix
+cmat <- calc_confusion(pitch_data2$is_strike, rf_probs, pos_class = 1L)
 
 summary(cmat) # evaluate performance
 ```
 
-Model performance was surprisingly accurate.
-Stark contrast to my experience in Life Sciences (proteomics) where
-performance is typically *much* lower and `AUC > 0.95` are uncommon.
+Model performance was surprisingly accurate. Stark contrast to my
+experience in Life Sciences (proteomics) where performance is
+typically *much* lower and `AUC > 0.95` are uncommon.
 
-Also keep in mind that performance here was evaluated on the *training* data,
-and a typical machine learning training and test setup would certainly generate
-reduced *test* performance. 
+Also keep in mind that performance here was evaluated on the
+*training* data, and a typical machine learning training and test
+setup would certainly generate reduced *test* performance. 
 
-That said, it should be noted that random forest
-models do perform a sort of *quasi*-internal cross-validation,
-out-of-bag (OOB) samples, that should guard (somewhat) against over-fitting.
+That said, it should be noted that random forest models do perform a
+sort of *quasi*-internal cross-validation, out-of-bag (OOB) samples,
+that should guard (somewhat) against over-fitting.
 
 
 ## Append predictions to original data
@@ -184,13 +186,13 @@ plot_emp_roc(pitch_data2$is_strike, pitch_data2$strike_prob, pos_class = 1L,
   ggtitle("Strike Classifier ROC Curve")
 ```
 
-Perhaps another visual that can be useful is a log-odds plot, where the
-predictions are plotted against the decision boundary to see how close
-they are. Sort of a visual representation of the Brier Score.
+Perhaps another visual that can be useful is a log-odds plot, where
+the predictions are plotted against the decision boundary to see how
+close they are. Sort of a visual representation of the Brier Score.
 
-Because there are `r nrow(pitch_data2)` samples, this plot can
-become cluttered so I will randomly sample 1000 pitches to represent
-patterns in the predictions.
+Because there are `r nrow(pitch_data2)` samples, this plot can become
+cluttered so I will randomly sample 1000 pitches to represent patterns
+in the predictions.
 
 ```{r}
 #| label: log-odds
@@ -210,9 +212,27 @@ A curious pattern emerges:
    This is odd. **TODO:** look into this further ... something with
    a Random Forest?
 
---------------
 
-Created in `RStudio` (`v2024.09.1+394`),
-by [Quarto](https://quarto.org/) (`v1.4.555`),
-and `r R.version$version.string`.
+-----------
 
+# Session Info {.unnumbered}
+
+```{r}
+#| label: get-session
+#| include: FALSE
+get_session_info <- function(pkgs = NULL) {
+  ret <- list(
+    packages = dplyr::select(sessioninfo::package_info(), -library),
+    platform = sessioninfo::platform_info()
+  )
+  if (!is.null(pkgs)) {
+    ret$packages <- ret$packages[pkgs, ]
+  }
+  ret
+}
+```
+```{r}
+#| label: session
+#| code-fold: TRUE
+get_session_info()
+```

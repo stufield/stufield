@@ -24,7 +24,7 @@ library(helpr)
 library(libml)
 library(withr)
 
-sim_data <- function(n = 200) {
+sim_data1 <- function(n = 200) {
   withr::local_seed(1001)
   df   <- data.frame(x1 = rnorm(n, 45, 2), x2 = rnorm(n, 75, 2))
   df$y <- ifelse(df$x1 < 44 | df$x2 <= 74, "control", "disease") |> factor()
@@ -137,7 +137,7 @@ plot_decision_boundary <- function(data, res = 50L,
 It can be useful to visualize the decision boundaries of various
 models. Here we compare 2 commonly used models:
 
-* Na&iuml;ve Bayes
+* Naïve Bayes
 * *k*-nearest neighbors (KNN)
 
 
@@ -146,10 +146,10 @@ models. Here we compare 2 commonly used models:
 
 
 
-## KNN vs Na&iuml;ve Bayes
+## KNN vs Naïve Bayes
 
 Below are decision boundaries for 2 simulated data sets using
-*k*-nearest neighbors and Na&iuml;ve Bayes models. In the first data
+*k*-nearest neighbors and Naïve Bayes models. In the first data
 set (upper 2 panels) the true class boundary is simulated such that
 the disease (purple) Feature_1 \> 44 and Feature_2 \> 74, these data
 are simulated with an *unrealistic* threshold to form the classes. The
@@ -163,12 +163,12 @@ between the two methods.
 #| echo: FALSE
 #| fig.width: 11
 #| fig.height: 5
-plot_decision_boundary(sim_data(), k = 15L)
-plot_decision_boundary(sim_data(), model_type = "bayes")
+plot_decision_boundary(sim_data1(), k = 15L)
+plot_decision_boundary(sim_data1(), model_type = "bayes")
 withr::with_par(
   list(mgp = c(2.00, 0.75, 0.00), mar = c(3, 4, 3, 1), mfrow = 1:2L), {
-  plot_decision_boundary(sim_data(), k = 15L)
-  plot_decision_boundary(sim_data(), model_type = "bayes")
+  plot_decision_boundary(sim_data1(), k = 15L)
+  plot_decision_boundary(sim_data1(), model_type = "bayes")
 })
 withr::with_par(
   list(mgp = c(2.00, 0.75, 0.00), mar = c(3, 4, 3, 1), mfrow = 1:2L), {
@@ -185,11 +185,11 @@ withr::with_par(
 #| fig.width: 11
 #| fig.height: 10
 withr::with_par(
-  list(mgp = c(2.00, 0.75, 0.00),
-       mar = c(3, 4, 3, 1),
+  list(mgp   = c(2.00, 0.75, 0.00),
+       mar   = c(3, 4, 3, 1),
        mfrow = c(3L, 3L)), {
   for ( i in 2:10L ) {
-    plot_decision_boundary(sim_data(), k = i)
+    plot_decision_boundary(sim_data1(), k = i)
   }
 })
 ```
@@ -203,7 +203,7 @@ withr::with_par(
 ```{r}
 #| label: code
 # simulated data set 1
-sim_data
+sim_data1
 
 # simulated data set 1
 sim_data2
@@ -213,4 +213,28 @@ predict_bivariate_knn
 
 # plotting routine for decision boundary
 plot_decision_boundary
+```
+
+------------
+
+# Session Info {.unnumbered}
+
+```{r}
+#| label: get-session
+#| include: FALSE
+get_session_info <- function(pkgs = NULL) {
+  ret <- list(
+    packages = dplyr::select(sessioninfo::package_info(), -library),
+    platform = sessioninfo::platform_info()
+  )
+  if (!is.null(pkgs)) {
+    ret$packages <- ret$packages[pkgs, ]
+  }
+  ret
+}
+```
+```{r}
+#| label: session
+#| code-fold: TRUE
+get_session_info()
 ```

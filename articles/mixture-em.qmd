@@ -25,10 +25,6 @@ caption_em1 <- paste(
   "Fig. 1: The log-likelihood trajectory and posterior responsibilities",
   "for the final estimates. Responsibilities are for",
   "$dist_2$ (left) but can be either (random assignment).")
-
-caption_em2 <- paste(
-  "Fig. 2: The distribution, overall density, and individual",
-  "densities for the final estimates.")
 ```
 
 
@@ -37,13 +33,14 @@ caption_em2 <- paste(
 
 # Mixture E-M
 
-Expectation maximization (E-M) is an iterative procedure (algorithm) for
-finding the maximum likelihood solution (estimates) for difficult maximum
-likelihood problems (e.g. models with latent variables). This is achieved in a
-similar way to *k*-means clustering, however instead of minimizing the
-within-cluster variance at each iteration, we maximize the likelihood of the
-data by calculating weighted-maximum likelihood estimates of the parameters at
-each iteration. We are trying to fit the model:
+Expectation maximization (E-M) is an iterative procedure (algorithm)
+for finding the maximum likelihood solution (estimates) for difficult
+maximum likelihood problems (e.g. models with latent variables). This
+is achieved in a similar way to *k*-means clustering, however instead
+of minimizing the within-cluster variance at each iteration, we
+maximize the likelihood of the data by calculating weighted-maximum
+likelihood estimates of the parameters at each iteration. We are
+trying to fit the model:
 
 $$
 \begin{eqnarray}
@@ -70,16 +67,18 @@ $$
 \end{eqnarray}
 $$ {#eq-algorithm}
 
-1. **Expectation**: compute _responsibilities_ from posterior probabilities,
-where the responsibilities are the relative contribution of distribution 2
-(the second mode) in _explaining_ each data point (this is a _soft_ assignment).
-Responsibilities of mode 2 for observation $i$ given the current estimates are:
+2. **Expectation**: compute _responsibilities_ from posterior
+   probabilities, where the responsibilities are the relative
+   contribution of distribution 2 (the second mode) in _explaining_
+   each data point (this is a _soft_ assignment). Responsibilities of
+   mode 2 for observation $i$ given the current estimates are:
 
 $$
 \hat\gamma_i = \frac{\hat\pi\phi_{\theta_2}(y_i)}{(1-\hat\pi)\phi_{\theta_1}(y_i) + \hat\pi\phi_{\theta_2}(y_i)},\quad\quad i = 1,\dots,n.
 $$
 
-1. **Maximization**: compute _weighted_ maximum likelihood to update the estimates:
+3. **Maximization**: compute _weighted_ maximum likelihood
+   to update the estimates:
 
 $$
 \begin{eqnarray}
@@ -93,22 +92,22 @@ $$
 \end{eqnarray}
 $$ {#eq-parameters}
 
-1. Compute log-likelihood:
+4. Compute log-likelihood:
 
 $$
 {\cal L} = \sum_{i=1}^n log\big[\; (1-\hat\pi)\phi_{\theta_1}(y_i) + \hat\pi\phi_{\theta_2}(y_i)\; \big]
 $$
 
-1. Check **convergence**: check if criterion of the log-likelihood has been met,
-if not, repeat above steps with new values of
-$\hat\mu_1,\ \hat\mu_2,\ \hat\sigma_1^2,\ \hat\sigma_2^2, \text{ and } \hat\pi$
-as initial guesses.
+5. Check **convergence**: check if criterion of the log-likelihood
+   has been met, if not, repeat above steps with new values of
+   $\hat\mu_1,\ \hat\mu_2,\ \hat\sigma_1^2,\ \hat\sigma_2^2, \text{ and } \hat\pi$
+   as initial guesses.
 	
 	
 ------
 
 
-## Running the Algorithm
+## Run the Algorithm
 
 ```{r}
 #| label: em
@@ -122,13 +121,22 @@ mix_fit <- withr::with_seed(1, normal_k2_mixture(data))
 ```
 
 
-## Visualizing the Algorithm
+## Visualize the Algorithm
+
+Estimates:
+
+```{r}
+#| label: estimates
+# helpr has a S3 print method
+mix_fit
+```
 
 ```{r}
 #| label: plot-em1
 #| fig.cap: caption_em1
 #| fig.width: 9
 #| fig.height: 5
+# helpr has a S3 plot method
 par(mfrow = c(1, 2L))
 plot(mix_fit, "likelihood")
 plot(mix_fit, "posterior")
@@ -136,17 +144,36 @@ plot(mix_fit, "posterior")
 
 ```{r}
 #| label: plot-em2
-#| fig.cap: caption_em2
+#| fig.cap: >
+  "Fig. 2: The distribution, overall density, and individual
+  densities for the final estimates."
 #| fig.width: 9
 #| fig.height: 5
 plot(mix_fit)
 ```
 
 
-Estimates:
+-----------
+
+
+# Session Info {.unnumbered}
 
 ```{r}
-#| label: estimates
-mix_fit
+#| label: get-session
+#| include: FALSE
+get_session_info <- function(pkgs = NULL) {
+  ret <- list(
+    packages = dplyr::select(sessioninfo::package_info(), -library),
+    platform = sessioninfo::platform_info()
+  )
+  if (!is.null(pkgs)) {
+    ret$packages <- ret$packages[pkgs, ]
+  }
+  ret
+}
 ```
-
+```{r}
+#| label: session
+#| code-fold: TRUE
+get_session_info()
+```
