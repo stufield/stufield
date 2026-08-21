@@ -80,11 +80,13 @@ $$
 
 $$
 \text{protocol} \sim age\ +\ ...\ +\ \epsilon
-$$ \* invert the probability - $\uparrow$
-$P(protocol = protocol_k | X)$ down weighted - $\downarrow$
-$P(protocol = protocol_k | X)$ up weighted \* aggregate effect
-$\rightarrow$ create pseudo-population that de-couples correlation
-*protocol* $\sim$ *age*
+$$
+
+- invert the probability
+  - $\uparrow$ $P(protocol = protocol_k | X)$ down weighted
+  - $\downarrow$ $P(protocol = protocol_k | X)$ up weighted
+- aggregate effect $\rightarrow$ create pseudo-population that
+  de-couples correlation *protocol* $\sim$ *age*
 
 ----------------------------------------------------------------------
 

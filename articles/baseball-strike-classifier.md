@@ -139,9 +139,9 @@ get_gini(rf_model)
 #> # A tibble: 4 × 2
 #>   Feature          Gini_Importance
 #>   <chr>                      <dbl>
-#> 1 plate_location_z           7708.
-#> 2 plate_location_x           7379.
-#> 3 strikes                     672.
+#> 1 plate_location_z           7674.
+#> 2 plate_location_x           7398.
+#> 3 strikes                     768.
 #> 4 balls                       234.
 ```
 
@@ -163,27 +163,27 @@ summary(cmat) # evaluate performance
 #> 
 #>      Predicted
 #> Truth     0     1
-#>     0 16535   640
-#>     1    74 17101
+#>     0 16566   609
+#>     1    91 17084
 #> ── Performance Metrics (CI95%) ─────────────────────────────────────────────────
 #> 
 #> # A tibble: 10 × 5
 #>    metric              n estimate CI95_lower CI95_upper
 #>    <chr>           <int>    <dbl>      <dbl>      <dbl>
-#>  1 Sensitivity     17175   0.996      0.995      0.997 
-#>  2 Specificity     17175   0.963      0.960      0.966 
-#>  3 PPV (Precision) 17741   0.964      0.961      0.967 
-#>  4 NPV             16609   0.996      0.994      0.997 
-#>  5 Accuracy        34350   0.979      0.977      0.981 
-#>  6 Bal Accuracy    34350   0.979      0.977      0.981 
+#>  1 Sensitivity     17175   0.995      0.993      0.996 
+#>  2 Specificity     17175   0.965      0.961      0.968 
+#>  3 PPV (Precision) 17693   0.966      0.963      0.969 
+#>  4 NPV             16657   0.995      0.993      0.996 
+#>  5 Accuracy        34350   0.980      0.978      0.981 
+#>  6 Bal Accuracy    34350   0.980      0.978      0.981 
 #>  7 Prevalence      34350   0.5        0.494      0.506 
 #>  8 AUC             34350   0.999      0.999      0.999 
-#>  9 Brier Score     34350   0.0181     0.0165     0.0197
-#> 10 MCC                NA   0.959     NA         NA
+#>  9 Brier Score     34350   0.0176     0.0160     0.0191
+#> 10 MCC                NA   0.960     NA         NA
 #> ── Additional Statistics ───────────────────────────────────────────────────────
 #> 
 #> F_measure    G_mean    Wt_Acc 
-#>     0.980     0.979     0.987
+#>     0.980     0.980     0.987
 ```
 
 Model performance was surprisingly accurate. Stark contrast to my
@@ -210,16 +210,16 @@ dplyr::select(pitch_data2, all_of(feats), is_strike, strike_prob)
 #> # A tibble: 34,350 × 6
 #>    plate_location_x plate_location_z strikes balls is_strike strike_prob
 #>               <dbl>            <dbl>   <int> <int>     <int>       <dbl>
-#>  1            0.902            2.95        0     0         0       0.408
-#>  2            1.05             1.46        1     1         0       0.112
-#>  3            0.206            0.409       1     0         0       0    
-#>  4           -0.866            3.90        1     1         0       0.008
-#>  5            1.35             3.14        1     1         0       0.008
-#>  6           -0.232            1.19        0     0         0       0.016
-#>  7           -1.02             2.13        0     0         0       0.388
-#>  8           -0.724            1.71        0     0         0       0.688
-#>  9            1.51             2.54        2     2         0       0.02 
-#> 10           -0.015            0.168       0     0         0       0.012
+#>  1            0.972            2.03        0     1         0       0.348
+#>  2            0.979            3.01        1     0         0       0.212
+#>  3           -0.995            1.30        1     0         0       0.068
+#>  4            1.35             2.61        0     1         0       0    
+#>  5            1.09             3.81        2     3         0       0.02 
+#>  6            0.379           -0.734       2     1         0       0    
+#>  7            1.11             2.76        0     2         0       0.104
+#>  8            1.53             3.00        0     0         0       0.016
+#>  9           -1.62             1.52        1     1         0       0.004
+#> 10            0.778            2.12        0     0         0       0.712
 #> # ℹ 34,340 more rows
 ```
 

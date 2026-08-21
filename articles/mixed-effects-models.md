@@ -293,7 +293,7 @@ summary(fit1)
 > Random effects:
 >  Formula: ~1 | pid
 >         (Intercept) Residual
-> StdDev:  0.03568677 244.4632
+> StdDev:  0.03568671 244.4632
 > 
 > Fixed effects:  yij ~ time 
 >                Value Std.Error  DF  t-value p-value
