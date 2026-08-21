@@ -139,10 +139,10 @@ get_gini(rf_model)
 #> # A tibble: 4 × 2
 #>   Feature          Gini_Importance
 #>   <chr>                      <dbl>
-#> 1 plate_location_z           7686.
-#> 2 plate_location_x           7506.
-#> 3 strikes                     727.
-#> 4 balls                       233.
+#> 1 plate_location_z           7708.
+#> 2 plate_location_x           7379.
+#> 3 strikes                     672.
+#> 4 balls                       234.
 ```
 
 and predict strike probability:
@@ -163,27 +163,27 @@ summary(cmat) # evaluate performance
 #> 
 #>      Predicted
 #> Truth     0     1
-#>     0 16613   562
-#>     1    93 17082
+#>     0 16535   640
+#>     1    74 17101
 #> ── Performance Metrics (CI95%) ─────────────────────────────────────────────────
 #> 
 #> # A tibble: 10 × 5
 #>    metric              n estimate CI95_lower CI95_upper
 #>    <chr>           <int>    <dbl>      <dbl>      <dbl>
-#>  1 Sensitivity     17175   0.995      0.993      0.996 
-#>  2 Specificity     17175   0.967      0.964      0.970 
-#>  3 PPV (Precision) 17644   0.968      0.965      0.971 
-#>  4 NPV             16706   0.994      0.993      0.996 
-#>  5 Accuracy        34350   0.981      0.979      0.983 
-#>  6 Bal Accuracy    34350   0.981      0.979      0.983 
+#>  1 Sensitivity     17175   0.996      0.995      0.997 
+#>  2 Specificity     17175   0.963      0.960      0.966 
+#>  3 PPV (Precision) 17741   0.964      0.961      0.967 
+#>  4 NPV             16609   0.996      0.994      0.997 
+#>  5 Accuracy        34350   0.979      0.977      0.981 
+#>  6 Bal Accuracy    34350   0.979      0.977      0.981 
 #>  7 Prevalence      34350   0.5        0.494      0.506 
-#>  8 AUC             34350   0.999      0.999      1.000 
-#>  9 Brier Score     34350   0.0166     0.0151     0.0182
-#> 10 MCC                NA   0.962     NA         NA
+#>  8 AUC             34350   0.999      0.999      0.999 
+#>  9 Brier Score     34350   0.0181     0.0165     0.0197
+#> 10 MCC                NA   0.959     NA         NA
 #> ── Additional Statistics ───────────────────────────────────────────────────────
 #> 
 #> F_measure    G_mean    Wt_Acc 
-#>     0.981     0.981     0.988
+#>     0.980     0.979     0.987
 ```
 
 Model performance was surprisingly accurate. Stark contrast to my
@@ -210,16 +210,16 @@ dplyr::select(pitch_data2, all_of(feats), is_strike, strike_prob)
 #> # A tibble: 34,350 × 6
 #>    plate_location_x plate_location_z strikes balls is_strike strike_prob
 #>               <dbl>            <dbl>   <int> <int>     <int>       <dbl>
-#>  1           -1.04             3.38        1     1         0       0.008
-#>  2           -0.083            1.06        0     0         0       0    
-#>  3           -0.347            3.98        2     3         0       0.02 
-#>  4           -0.571            1.65        0     0         0       0.668
-#>  5            0.967           -0.375       0     3         0       0.024
-#>  6           -1.34             0.036       2     2         0       0    
-#>  7           -1.94             3.61        0     1         0       0.012
-#>  8            1.19             2.57        2     1         0       0    
-#>  9           -0.617            4.11        1     0         0       0.004
-#> 10           -1.45             2.42        1     0         0       0    
+#>  1            0.902            2.95        0     0         0       0.408
+#>  2            1.05             1.46        1     1         0       0.112
+#>  3            0.206            0.409       1     0         0       0    
+#>  4           -0.866            3.90        1     1         0       0.008
+#>  5            1.35             3.14        1     1         0       0.008
+#>  6           -0.232            1.19        0     0         0       0.016
+#>  7           -1.02             2.13        0     0         0       0.388
+#>  8           -0.724            1.71        0     0         0       0.688
+#>  9            1.51             2.54        2     2         0       0.02 
+#> 10           -0.015            0.168       0     0         0       0.012
 #> # ℹ 34,340 more rows
 ```
 
@@ -342,7 +342,7 @@ get_session_info()
 #>  collate  C.UTF-8
 #>  ctype    C.UTF-8
 #>  tz       UTC
-#>  date     2026-08-20
+#>  date     2026-08-21
 #>  pandoc   3.1.3 @ /usr/bin/ (via rmarkdown)
 #>  quarto   1.10.18 @ /usr/local/bin/quarto
 ```

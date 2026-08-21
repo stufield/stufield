@@ -26,7 +26,7 @@ where $y_i \in \{0, 1\}$ = outcome for the $i^{th}$ IVF cycle, $p_i$ =
 probability of success for the $i^{th}$ IVF cycle,
 
 $$
-\log\!\left(\frac{p_i}{1 - p_i}\right) = \beta_0 +
+\log \left(\frac{p_i}{1 - p_i}\right) = \beta_0 +
   \sum_j \beta_j^{\text{prot}}\,\mathbf{1}[\text{protocol}_i = j] +
 $$ $$
   \beta_{\text{age}}(\text{age}_i)\ +
@@ -251,7 +251,7 @@ get_session_info()
 #>  collate  C.UTF-8
 #>  ctype    C.UTF-8
 #>  tz       UTC
-#>  date     2026-08-20
+#>  date     2026-08-21
 #>  pandoc   3.1.3 @ /usr/bin/ (via rmarkdown)
 #>  quarto   1.10.18 @ /usr/local/bin/quarto
 ```
