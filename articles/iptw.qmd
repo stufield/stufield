@@ -120,7 +120,7 @@ $p_i$ = probability of success for the $i^{th}$ IVF cycle,
 
 
 $$
-\log\!\left(\frac{p_i}{1 - p_i}\right) = \beta_0 +
+\log \left(\frac{p_i}{1 - p_i}\right) = \beta_0 +
   \sum_j \beta_j^{\text{prot}}\,\mathbf{1}[\text{protocol}_i = j] +
 $$
 $$
