@@ -293,7 +293,7 @@ summary(fit1)
 > Random effects:
 >  Formula: ~1 | pid
 >         (Intercept) Residual
-> StdDev:  0.03568671 244.4632
+> StdDev:  0.03568677 244.4632
 > 
 > Fixed effects:  yij ~ time 
 >                Value Std.Error  DF  t-value p-value
@@ -644,7 +644,7 @@ get_session_info()
 >  collate  C.UTF-8
 >  ctype    C.UTF-8
 >  tz       UTC
->  date     2026-08-21
+>  date     2026-08-23
 >  pandoc   3.1.3 @ /usr/bin/ (via rmarkdown)
 >  quarto   1.10.18 @ /usr/local/bin/quarto
 ```

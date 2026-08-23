@@ -139,10 +139,10 @@ get_gini(rf_model)
 #> # A tibble: 4 × 2
 #>   Feature          Gini_Importance
 #>   <chr>                      <dbl>
-#> 1 plate_location_z           7674.
-#> 2 plate_location_x           7398.
-#> 3 strikes                     768.
-#> 4 balls                       234.
+#> 1 plate_location_z           7739.
+#> 2 plate_location_x           7382.
+#> 3 strikes                     677.
+#> 4 balls                       240.
 ```
 
 and predict strike probability:
@@ -163,27 +163,27 @@ summary(cmat) # evaluate performance
 #> 
 #>      Predicted
 #> Truth     0     1
-#>     0 16566   609
-#>     1    91 17084
+#>     0 16543   632
+#>     1    71 17104
 #> ── Performance Metrics (CI95%) ─────────────────────────────────────────────────
 #> 
 #> # A tibble: 10 × 5
 #>    metric              n estimate CI95_lower CI95_upper
 #>    <chr>           <int>    <dbl>      <dbl>      <dbl>
-#>  1 Sensitivity     17175   0.995      0.993      0.996 
-#>  2 Specificity     17175   0.965      0.961      0.968 
-#>  3 PPV (Precision) 17693   0.966      0.963      0.969 
-#>  4 NPV             16657   0.995      0.993      0.996 
+#>  1 Sensitivity     17175   0.996      0.995      0.997 
+#>  2 Specificity     17175   0.963      0.960      0.966 
+#>  3 PPV (Precision) 17736   0.964      0.961      0.967 
+#>  4 NPV             16614   0.996      0.995      0.997 
 #>  5 Accuracy        34350   0.980      0.978      0.981 
 #>  6 Bal Accuracy    34350   0.980      0.978      0.981 
 #>  7 Prevalence      34350   0.5        0.494      0.506 
 #>  8 AUC             34350   0.999      0.999      0.999 
-#>  9 Brier Score     34350   0.0176     0.0160     0.0191
+#>  9 Brier Score     34350   0.0175     0.0159     0.0191
 #> 10 MCC                NA   0.960     NA         NA
 #> ── Additional Statistics ───────────────────────────────────────────────────────
 #> 
 #> F_measure    G_mean    Wt_Acc 
-#>     0.980     0.980     0.987
+#>     0.980     0.979     0.988
 ```
 
 Model performance was surprisingly accurate. Stark contrast to my
@@ -210,16 +210,16 @@ dplyr::select(pitch_data2, all_of(feats), is_strike, strike_prob)
 #> # A tibble: 34,350 × 6
 #>    plate_location_x plate_location_z strikes balls is_strike strike_prob
 #>               <dbl>            <dbl>   <int> <int>     <int>       <dbl>
-#>  1            0.972            2.03        0     1         0       0.348
-#>  2            0.979            3.01        1     0         0       0.212
-#>  3           -0.995            1.30        1     0         0       0.068
-#>  4            1.35             2.61        0     1         0       0    
-#>  5            1.09             3.81        2     3         0       0.02 
-#>  6            0.379           -0.734       2     1         0       0    
-#>  7            1.11             2.76        0     2         0       0.104
-#>  8            1.53             3.00        0     0         0       0.016
-#>  9           -1.62             1.52        1     1         0       0.004
-#> 10            0.778            2.12        0     0         0       0.712
+#>  1           -0.111            1.23        0     1         0       0.064
+#>  2            1.25             1.48        1     2         0       0.004
+#>  3           -1.12             0.436       1     2         0       0    
+#>  4            1.08             2.72        0     0         0       0.032
+#>  5           -0.013            0.358       0     0         0       0.008
+#>  6           -1.05             3.18        0     0         0       0.032
+#>  7           -0.34             3.92        0     0         0       0.024
+#>  8           -2.60             0.442       2     2         0       0    
+#>  9            0.393            3.36        0     0         0       0.672
+#> 10           -1.82             1.50        1     0         0       0    
 #> # ℹ 34,340 more rows
 ```
 
@@ -342,7 +342,7 @@ get_session_info()
 #>  collate  C.UTF-8
 #>  ctype    C.UTF-8
 #>  tz       UTC
-#>  date     2026-08-21
+#>  date     2026-08-23
 #>  pandoc   3.1.3 @ /usr/bin/ (via rmarkdown)
 #>  quarto   1.10.18 @ /usr/local/bin/quarto
 ```

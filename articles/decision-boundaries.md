@@ -61,7 +61,7 @@ sim_data1
 #>         "disease"))
 #>     df
 #> }
-#> <bytecode: 0x55c55096e328>
+#> <bytecode: 0x55cccfd952c8>
 
 # simulated data set 1
 sim_data2
@@ -76,7 +76,7 @@ sim_data2
 #>     df$y <- factor(rep(c("control", "disease"), each = n))
 #>     df
 #> }
-#> <bytecode: 0x55c556e647a8>
+#> <bytecode: 0x55ccd622aff8>
 
 # predicting nearest neighbors from scratch
 predict_bivariate_knn
@@ -119,7 +119,7 @@ predict_bivariate_knn
 #>         0.5, class_names[2L], class_names[1L]))
 #>     data.frame(class = classes, prob = neighbor_prop_disease)
 #> }
-#> <bytecode: 0x55c5546a08b0>
+#> <bytecode: 0x55ccd3ac9b80>
 
 # plotting routine for decision boundary
 plot_decision_boundary
@@ -160,7 +160,7 @@ plot_decision_boundary
 #>         "disease", col_d, col_c))
 #>     invisible(data)
 #> }
-#> <bytecode: 0x55c5532a5ae0>
+#> <bytecode: 0x55ccd26cedb0>
 ```
 
 ----------------------------------------------------------------------
@@ -230,7 +230,7 @@ get_session_info()
 #>  collate  C.UTF-8
 #>  ctype    C.UTF-8
 #>  tz       UTC
-#>  date     2026-08-21
+#>  date     2026-08-23
 #>  pandoc   3.1.3 @ /usr/bin/ (via rmarkdown)
 #>  quarto   1.10.18 @ /usr/local/bin/quarto
 ```
