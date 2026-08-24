@@ -82,7 +82,8 @@ examples, biological data sets), I will simply down sample the major
 class for training.
 
 ```{r}
-pitch_data2 <- rebalance(pitch_data, is_strike)
+# seed rebalance for reproducibility
+pitch_data2 <- withr::with_seed(123, rebalance(pitch_data, is_strike))
 
 table(pitch_data2$is_strike)  # class imbalance removed
 ```
@@ -121,8 +122,8 @@ perform especially well with discrete variables/predictors
 
 ```{r}
 #| label: fit-rf-model
-rf_model <- withr::with_seed(123, {  # set seed for reproducibility
-  randomForest::randomForest(        # use randomForest package
+rf_model <- withr::with_seed(123, {   # for reproducibility
+  randomForest::randomForest(         # use randomForest package
     as.matrix(pitch_data2[, feats]),  # feature data matrix
     as.factor(pitch_data2$is_strike), # convert response to factor
     ntree = 250
