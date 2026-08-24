@@ -216,6 +216,7 @@ get_session_info <- function(pkgs = NULL) {
     packages = dplyr::select(sessioninfo::package_info(), -library),
     platform = sessioninfo::platform_info()
   )
+  ret$platform$date <- NULL
   if (!is.null(pkgs)) {
     ret$packages <- ret$packages[pkgs, ]
   }
