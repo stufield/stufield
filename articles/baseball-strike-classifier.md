@@ -89,7 +89,8 @@ examples, biological data sets), I will simply down sample the major
 class for training.
 
 ``` r
-pitch_data2 <- rebalance(pitch_data, is_strike)
+# seed rebalance for reproducibility
+pitch_data2 <- withr::with_seed(123, rebalance(pitch_data, is_strike))
 
 table(pitch_data2$is_strike)  # class imbalance removed
 #> 
@@ -126,8 +127,8 @@ Forest model. In my experience CART methods can perform especially
 well with discrete variables/predictors (i.e. `strikes` and `balls`).
 
 ``` r
-rf_model <- withr::with_seed(123, {  # set seed for reproducibility
-  randomForest::randomForest(        # use randomForest package
+rf_model <- withr::with_seed(123, {   # for reproducibility
+  randomForest::randomForest(         # use randomForest package
     as.matrix(pitch_data2[, feats]),  # feature data matrix
     as.factor(pitch_data2$is_strike), # convert response to factor
     ntree = 250
@@ -139,10 +140,10 @@ get_gini(rf_model)
 #> # A tibble: 4 × 2
 #>   Feature          Gini_Importance
 #>   <chr>                      <dbl>
-#> 1 plate_location_z           7739.
-#> 2 plate_location_x           7382.
-#> 3 strikes                     677.
-#> 4 balls                       240.
+#> 1 plate_location_z           7640.
+#> 2 plate_location_x           7358.
+#> 3 strikes                     785.
+#> 4 balls                       243.
 ```
 
 and predict strike probability:
@@ -163,7 +164,7 @@ summary(cmat) # evaluate performance
 #> 
 #>      Predicted
 #> Truth     0     1
-#>     0 16543   632
+#>     0 16526   649
 #>     1    71 17104
 #> ── Performance Metrics (CI95%) ─────────────────────────────────────────────────
 #> 
@@ -171,19 +172,19 @@ summary(cmat) # evaluate performance
 #>    metric              n estimate CI95_lower CI95_upper
 #>    <chr>           <int>    <dbl>      <dbl>      <dbl>
 #>  1 Sensitivity     17175   0.996      0.995      0.997 
-#>  2 Specificity     17175   0.963      0.960      0.966 
-#>  3 PPV (Precision) 17736   0.964      0.961      0.967 
-#>  4 NPV             16614   0.996      0.995      0.997 
-#>  5 Accuracy        34350   0.980      0.978      0.981 
-#>  6 Bal Accuracy    34350   0.980      0.978      0.981 
+#>  2 Specificity     17175   0.962      0.959      0.965 
+#>  3 PPV (Precision) 17753   0.963      0.960      0.967 
+#>  4 NPV             16597   0.996      0.995      0.997 
+#>  5 Accuracy        34350   0.979      0.977      0.981 
+#>  6 Bal Accuracy    34350   0.979      0.977      0.981 
 #>  7 Prevalence      34350   0.5        0.494      0.506 
 #>  8 AUC             34350   0.999      0.999      0.999 
-#>  9 Brier Score     34350   0.0175     0.0159     0.0191
-#> 10 MCC                NA   0.960     NA         NA
+#>  9 Brier Score     34350   0.0177     0.0161     0.0193
+#> 10 MCC                NA   0.959     NA         NA
 #> ── Additional Statistics ───────────────────────────────────────────────────────
 #> 
 #> F_measure    G_mean    Wt_Acc 
-#>     0.980     0.979     0.988
+#>     0.979     0.979     0.987
 ```
 
 Model performance was surprisingly accurate. Stark contrast to my
@@ -210,16 +211,16 @@ dplyr::select(pitch_data2, all_of(feats), is_strike, strike_prob)
 #> # A tibble: 34,350 × 6
 #>    plate_location_x plate_location_z strikes balls is_strike strike_prob
 #>               <dbl>            <dbl>   <int> <int>     <int>       <dbl>
-#>  1           -0.111            1.23        0     1         0       0.064
-#>  2            1.25             1.48        1     2         0       0.004
-#>  3           -1.12             0.436       1     2         0       0    
-#>  4            1.08             2.72        0     0         0       0.032
-#>  5           -0.013            0.358       0     0         0       0.008
-#>  6           -1.05             3.18        0     0         0       0.032
-#>  7           -0.34             3.92        0     0         0       0.024
-#>  8           -2.60             0.442       2     2         0       0    
-#>  9            0.393            3.36        0     0         0       0.672
-#> 10           -1.82             1.50        1     0         0       0    
+#>  1            1.49             2.78        1     2         0       0.004
+#>  2           -0.073            0.552       1     1         0       0.004
+#>  3            1.44             2.94        2     0         0       0.012
+#>  4            0.686            3.41        2     0         0       0.14 
+#>  5            0.084            4.31        2     0         0       0    
+#>  6           -0.708            0.952       0     0         0       0.004
+#>  7            0.2             -0.241       2     1         0       0    
+#>  8           -0.146            4.14        1     1         0       0.012
+#>  9            0.021            4.11        2     0         0       0    
+#> 10           -1.43             2.19        1     0         0       0.004
 #> # ℹ 34,340 more rows
 ```
 
@@ -342,7 +343,6 @@ get_session_info()
 #>  collate  C.UTF-8
 #>  ctype    C.UTF-8
 #>  tz       UTC
-#>  date     2026-08-23
 #>  pandoc   3.1.3 @ /usr/bin/ (via rmarkdown)
 #>  quarto   1.10.18 @ /usr/local/bin/quarto
 ```
