@@ -61,7 +61,7 @@ sim_data1
 #>         "disease"))
 #>     df
 #> }
-#> <bytecode: 0x55c11b0dbe60>
+#> <bytecode: 0x557ec2fc6278>
 
 # simulated data set 1
 sim_data2
@@ -76,7 +76,7 @@ sim_data2
 #>     df$y <- factor(rep(c("control", "disease"), each = n))
 #>     df
 #> }
-#> <bytecode: 0x55c1189bee20>
+#> <bytecode: 0x557ebd64e7d8>
 
 # predicting nearest neighbors from scratch
 predict_bivariate_knn
@@ -119,7 +119,7 @@ predict_bivariate_knn
 #>         0.5, class_names[2L], class_names[1L]))
 #>     data.frame(class = classes, prob = neighbor_prop_disease)
 #> }
-#> <bytecode: 0x55c11ee0c2a8>
+#> <bytecode: 0x557ec2d75170>
 
 # plotting routine for decision boundary
 plot_decision_boundary
@@ -160,7 +160,7 @@ plot_decision_boundary
 #>         "disease", col_d, col_c))
 #>     invisible(data)
 #> }
-#> <bytecode: 0x55c11da11388>
+#> <bytecode: 0x557ec192dab0>
 ```
 
 ----------------------------------------------------------------------
