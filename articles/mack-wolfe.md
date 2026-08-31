@@ -111,7 +111,7 @@ get_session_info()
 #>  knitr          1.51       2025-12-20 []  any (@1.51)
 #>  labeling       0.4.3      2023-08-29 []  RSPM
 #>  lattice        0.22-9     2026-02-09 []  CRAN (R 4.6.1)
-#>  libml        * 0.0.1.9000 2026-08-19 []  Github (stufield/libml@e2aebe0)
+#>  libml        * 0.0.1.9000 2026-08-31 []  Github (stufield/libml@fddfa9e)
 #>  lifecycle      1.0.5      2026-01-08 []  RSPM
 #>  magrittr       2.0.5      2026-04-04 []  RSPM
 #>  Matrix         1.7-5      2026-03-21 []  CRAN (R 4.6.1)

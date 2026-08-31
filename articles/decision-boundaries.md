@@ -6,8 +6,8 @@ Stu Field
 It can be useful to visualize the decision boundaries of various
 models. Here we compare 2 commonly used models:
 
-- Naïve Bayes
 - *k*-nearest neighbors (KNN)
+- Naïve Bayes
 
 ----------------------------------------------------------------------
 
@@ -15,32 +15,33 @@ models. Here we compare 2 commonly used models:
 
 Below are decision boundaries for 2 simulated data sets using
 *k*-nearest neighbors and Naïve Bayes models. In the first data set
-(upper 2 panels) the true class boundary is simulated such that the
-disease (purple) Feature_1 \> 44 and Feature_2 \> 74, these data are
-simulated with an *unrealistic* threshold to form the classes. The
-lower panels are simulated from bivariate normal distributions,
-somewhat more realistic, and show the difference in the boundary
-between the two methods.
+(upper 2 panels) the true class boundary is simulated such that:
+
+- the disease (purple) Feature_1 \> 44
+- Feature_2 \> 74
+
+these data are simulated with an *unrealistic* threshold to form the
+classes.
 
 ![](figures/knn-bayes-knn-vs-bayes-1.png)
 
-![](figures/knn-bayes-knn-vs-bayes-2.png)
+The panels below are simulated from bivariate normal distributions,
+somewhat more realistic, and show the difference in the boundary
+between the two methods.
 
-![](figures/knn-bayes-knn-vs-bayes-3.png)
-
-![](figures/knn-bayes-knn-vs-bayes-4.png)
+![](figures/knn-bayes-knn-vs-bayes2-1.png)
 
 ## Choosing *k* in KNN
 
+Choosing appropriate *k* for the neighborhood can be difficult, and
+often arbitrary. It is often useful to plot the decision boundary at
+successive values of *k* and visually inspect.
+
 ``` r
-withr::with_par(
-  list(mgp   = c(2.00, 0.75, 0.00),
-       mar   = c(3, 4, 3, 1),
-       mfrow = c(3L, 3L)), {
-  for ( i in 2:10L ) {
-    plot_decision_boundary(sim_data1(), k = i)
-  }
-})
+pk <- lapply(2:10L, plot_knn_boundary, data = sim_data1())
+patchwork::wrap_plots(
+  pk, ncol = 3L, guides = "collect", axis_titles = "collect"
+)
 ```
 
 ![](figures/knn-bayes-knn-k-1.png)
@@ -50,117 +51,67 @@ withr::with_par(
 ### Code Reference
 
 ``` r
-# simulated data set 1
+# simulated dataset #1
 sim_data1
-#> function (n = 200) 
-#> {
-#>     withr::local_seed(1001)
-#>     df <- data.frame(x1 = rnorm(n, 45, 2), x2 = rnorm(n, 75, 
-#>         2))
-#>     df$y <- factor(ifelse(df$x1 < 44 | df$x2 <= 74, "control", 
-#>         "disease"))
-#>     df
-#> }
-#> <bytecode: 0x557ec2fc6278>
+------------------- 
+function (n = 200) 
+{
+    withr::local_seed(1001)
+    df <- data.frame(x1 = rnorm(n, 45, 2), x2 = rnorm(n, 75, 
+        2))
+    df$y <- factor(ifelse(df$x1 < 44 | df$x2 <= 74, "control", 
+        "disease"))
+    df
+}
 
-# simulated data set 1
+# simulated dataset #2
 sim_data2
-#> function (n = 100) 
-#> {
-#>     withr::local_seed(999)
-#>     df1 <- data.frame(x1 = rnorm(n, 46, 1.5), x2 = rnorm(n, 75, 
-#>         1.5))
-#>     df2 <- data.frame(x1 = rnorm(n, 44, 1), x2 = rnorm(n, 78, 
-#>         1))
-#>     df <- rbind(df1, df2)
-#>     df$y <- factor(rep(c("control", "disease"), each = n))
-#>     df
-#> }
-#> <bytecode: 0x557ebd64e7d8>
+------------------- 
+function (n = 100) 
+{
+    withr::local_seed(999)
+    df1 <- data.frame(x1 = rnorm(n, 46, 1.5), x2 = rnorm(n, 75, 
+        1.5))
+    df2 <- data.frame(x1 = rnorm(n, 44, 1), x2 = rnorm(n, 78, 
+        1))
+    df <- rbind(df1, df2)
+    df$y <- factor(rep(c("control", "disease"), each = n))
+    df
+}
 
-# predicting nearest neighbors from scratch
-predict_bivariate_knn
-#> function (X, y, k, newdata, method = "minkowski") 
-#> {
-#>     if (k < 2L) {
-#>         stop("Neighborhood (k) must be > 1: ", k, call. = FALSE)
-#>     }
-#>     if (missing(newdata)) {
-#>         newdata <- X
-#>     }
-#>     X <- data.matrix(X)
-#>     ntr <- nrow(X)
-#>     if (length(y) != ntr) {
-#>         stop(sprintf("Length of class vector [y=%i] unequal to n training samples (n=%i)", 
-#>             length(y), ntr), call. = FALSE)
-#>     }
-#>     if (ntr < k) {
-#>         warning(sprintf("Neighborhood (k=%i) exceeds training data (n=%i) ... resetting k=%i", 
-#>             k, ntr, ntr), call. = FALSE)
-#>         k <- ntr
-#>     }
-#>     nte <- nrow(newdata)
-#>     class_names <- names(table(y))
-#>     neighbor_list <- lapply(seq_len(nte), function(.i) {
-#>         new_vals <- newdata[.i, ]
-#>         if (length(new_vals) != 2L) {
-#>             stop("Problem with new values ... length =", length(new_vals), 
-#>                 call. = FALSE)
-#>         }
-#>         dist_vec <- sort(setNames(head(dist(rbind(new_vals, X), 
-#>             method = method), ntr), seq_len(ntr)))
-#>         as.integer(names(head(dist_vec, k)))
-#>     })
-#>     neighbor_prop_disease <- vapply(neighbor_list, function(.x) {
-#>         prop.table(table(y[.x]))[[class_names[2L]]]
-#>     }, double(1))
-#>     classes <- ifelse(neighbor_prop_disease == 0.5, sample(class_names, 
-#>         1, prob = prop.table(table(y))), ifelse(neighbor_prop_disease >= 
-#>         0.5, class_names[2L], class_names[1L]))
-#>     data.frame(class = classes, prob = neighbor_prop_disease)
-#> }
-#> <bytecode: 0x557ec2d75170>
-
-# plotting routine for decision boundary
-plot_decision_boundary
-#> function (data, res = 50L, model_type = c("knn", "bayes"), k = 15L, 
-#>     line_col = "#00A499", lwd = 2, lty = 1, contours = 0.5) 
-#> {
-#>     y <- data$y
-#>     X <- data[, c("x1", "x2")]
-#>     x1 <- data$x1
-#>     x2 <- data$x2
-#>     x1grid <- seq(min(x1), max(x1), length = res)
-#>     x2grid <- seq(min(x2), max(x2), length = res)
-#>     grid <- expand.grid(x1 = x1grid, x2 = x2grid, KEEP.OUT.ATTRS = FALSE)
-#>     model_type <- match.arg(model_type)
-#>     if (model_type == "bayes") {
-#>         rm(k)
-#>         model <- libml::fit_nb(y ~ ., data = data)
-#>         prob_vec <- predict(model, grid, type = "raw")[["disease"]]
-#>         title <- "Naive Bayes | disease (Pr>=0.5) space: "
-#>     }
-#>     else if (model_type == "knn") {
-#>         model <- predict_bivariate_knn(X, y, k, grid)
-#>         prob_vec <- model$prob
-#>         title <- sprintf("KNN (k=%i) | disease (Pr>=0.5) space: ", 
-#>             k)
-#>     }
-#>     prob_grid <- matrix(prob_vec, nrow = res)
-#>     pos_space <- round(sum(prob_grid >= 0.5)/res^2, 3L)
-#>     contour(x = x1grid, y = x2grid, z = prob_grid, levels = contours, 
-#>         lwd = lwd, lty = lty, labcex = 1, vfont = c("sans serif", 
-#>             "bold"), col = line_col, xlab = "Feature1", ylab = "Feature2", 
-#>         main = paste0(title, pos_space), axes = TRUE)
-#>     col_d <- ggplot2::alpha("#840B55", 0.5)
-#>     col_c <- ggplot2::alpha("steelblue", 0.5)
-#>     points(grid, pch = "•", cex = 0.75, col = ifelse(prob_vec >= 
-#>         0.5, col_d, col_c))
-#>     points(X, cex = 1.25, pch = 21, col = 1, bg = ifelse(y == 
-#>         "disease", col_d, col_c))
-#>     invisible(data)
-#> }
-#> <bytecode: 0x557ec192dab0>
+# plot decision boundary for KNN
+plot_knn_boundary
+------------------------------------ 
+function (data, k = 15L, res = 50L) 
+{
+    stopifnot(ncol(data) == 3L)
+    train <- dplyr::rename_with(dplyr::rename_if(data, is.factor, 
+        function(.x) "class"), function(.x) c("F1", "F2"), !"class")
+    df <- libml:::expand_grid(list(F1 = seq(min(train$F1), max(train$F1), 
+        length = res), F2 = seq(min(train$F2), max(train$F2), 
+        length = res)))
+    m <- libml::fit_kknn(class ~ ., train = train, test = train, 
+        k_neighbors = k)
+    pred <- libml::calc_predictions(m, df)
+    df$Pr <- pred$prob_disease
+    col_palette <- libml:::col_palette
+    pos_space <- round(sum(matrix(df$Pr, nrow = res) >= 0.5)/res^2, 
+        3L)
+    p <- ggplot(df, aes(x = F1, y = F2))
+    p + geom_raster(aes(fill = Pr), alpha = 0.5) + geom_contour(aes(x = F1, 
+        y = F2, z = Pr), binwidth = 0.501, color = "navy", linewidth = 0.5, 
+        linetype = "dashed") + scale_fill_gradient(low = col_palette$lightgreen, 
+        high = col_palette$purple, limits = c(0, 1), name = "P(pos_class)", 
+        breaks = seq(0, 1, 0.25), guide = guide_colorbar(order = 2)) + 
+        geom_point(data = train, aes(x = F1, y = F2, color = class), 
+            size = 2.5, alpha = 0.5) + scale_color_manual(values = c(col_palette$lightgreen, 
+        col_palette$purple), guide = guide_legend(order = 1)) + 
+        geom_point(data = train, aes(x = F1, y = F2), size = 2.5, 
+            shape = 21, color = "black") + labs(x = "Feature 1", 
+        y = "Feature 2", caption = "dashed line: P = 0.5", title = sprintf("KNN (k=%i | space = %0.2f)", 
+            k, pos_space), color = NULL) + libml:::libml_theme(legend_pos = "right") + 
+        NULL
+}
 ```
 
 ----------------------------------------------------------------------
@@ -182,21 +133,24 @@ get_session_info()
 #>  fastmap        1.2.0      2024-05-15 []  RSPM
 #>  gbm            2.3.1      2026-07-09 []  RSPM
 #>  generics       0.1.4      2025-05-09 []  RSPM
-#>  ggplot2        4.0.3      2026-04-22 []  RSPM
+#>  ggplot2      * 4.0.3      2026-04-22 []  RSPM
 #>  glue           1.8.1      2026-04-17 []  RSPM
 #>  gtable         0.3.6      2024-10-25 []  RSPM
 #>  helpr        * 0.0.2.9000 2026-08-19 []  Github (stufield/helpr@db72926)
 #>  htmltools      0.5.9      2025-12-04 []  RSPM
 #>  igraph         2.3.3      2026-06-26 []  RSPM
+#>  isoband        0.3.0      2025-12-07 []  RSPM
 #>  jsonlite       2.0.0      2025-03-27 []  RSPM
 #>  kknn           1.4.1      2025-05-19 []  any (@1.4.1)
 #>  knitr          1.51       2025-12-20 []  any (@1.51)
+#>  labeling       0.4.3      2023-08-29 []  RSPM
 #>  lattice        0.22-9     2026-02-09 []  CRAN (R 4.6.1)
-#>  libml        * 0.0.1.9000 2026-08-19 []  Github (stufield/libml@e2aebe0)
+#>  libml        * 0.0.1.9000 2026-08-31 []  Github (stufield/libml@fddfa9e)
 #>  lifecycle      1.0.5      2026-01-08 []  RSPM
 #>  magrittr       2.0.5      2026-04-04 []  RSPM
 #>  Matrix         1.7-5      2026-03-21 []  CRAN (R 4.6.1)
 #>  otel           0.2.0      2025-08-29 []  RSPM
+#>  patchwork    * 1.3.2      2025-08-25 []  any (@1.3.2)
 #>  pillar         1.11.1     2025-09-17 []  RSPM
 #>  pkgconfig      2.0.3      2019-09-22 []  RSPM
 #>  purrr          1.2.2      2026-04-10 []  RSPM

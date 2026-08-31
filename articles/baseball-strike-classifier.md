@@ -234,14 +234,6 @@ plot_emp_roc(pitch_data2$is_strike, pitch_data2$strike_prob, pos_class = 1L,
              plot_fit = TRUE, lwd = 1, cutoff_shape = 21,
              cutoff_size = 2.5, outline = FALSE, col = "#002D72") +
   ggtitle("Strike Classifier ROC Curve")
-#> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-#> ℹ Please use `linewidth` instead.
-#> ℹ The deprecated feature was likely used in the libml package.
-#>   Please report the issue to the authors.
-#> Warning: The `size` argument of `element_line()` is deprecated as of ggplot2 3.4.0.
-#> ℹ Please use the `linewidth` argument instead.
-#> ℹ The deprecated feature was likely used in the libml package.
-#>   Please report the issue to the authors.
 ```
 
 ![](figures/strike-roc-1.png)
@@ -303,7 +295,7 @@ get_session_info()
 #>  knitr          1.51       2025-12-20 []  any (@1.51)
 #>  labeling       0.4.3      2023-08-29 []  RSPM
 #>  lattice        0.22-9     2026-02-09 []  CRAN (R 4.6.1)
-#>  libml        * 0.0.1.9000 2026-08-19 []  Github (stufield/libml@e2aebe0)
+#>  libml        * 0.0.1.9000 2026-08-31 []  Github (stufield/libml@fddfa9e)
 #>  lifecycle      1.0.5      2026-01-08 []  RSPM
 #>  magrittr       2.0.5      2026-04-04 []  RSPM
 #>  Matrix         1.7-5      2026-03-21 []  CRAN (R 4.6.1)
