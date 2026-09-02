@@ -155,7 +155,7 @@ boundary at successive values of *k* and visually inspect.
 #| label: knn-k
 #| fig.width: 11
 #| fig.height: 10
-pk <- lapply(2:10L, plot_knn_boundary, data = sim_data1())
+pk <- lapply(seq(5, 45, by = 5), plot_knn_boundary, data = sim_data1())
 patchwork::wrap_plots(
   pk, ncol = 3L, guides = "collect", axis_titles = "collect"
 )
