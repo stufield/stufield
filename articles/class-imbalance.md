@@ -180,7 +180,7 @@ get_session_info()
 #>  R6             2.6.1   2025-02-15 []  RSPM
 #>  RColorBrewer   1.1-3   2022-04-03 []  RSPM
 #>  rlang          1.3.0   2026-07-05 []  RSPM
-#>  rmarkdown      2.31    2026-03-26 []  RSPM
+#>  rmarkdown      2.32    2026-09-01 []  RSPM
 #>  S7             0.2.2   2026-04-22 []  RSPM
 #>  scales         1.4.0   2025-04-24 []  RSPM
 #>  sessioninfo    1.2.4   2026-06-04 []  any (@1.2.4)

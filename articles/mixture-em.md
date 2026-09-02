@@ -157,7 +157,7 @@ get_session_info()
 #>  pkgconfig     2.0.3      2019-09-22 []  RSPM
 #>  R6            2.6.1      2025-02-15 []  RSPM
 #>  rlang         1.3.0      2026-07-05 []  RSPM
-#>  rmarkdown     2.31       2026-03-26 []  RSPM
+#>  rmarkdown     2.32       2026-09-01 []  RSPM
 #>  sessioninfo   1.2.4      2026-06-04 []  any (@1.2.4)
 #>  tibble        3.3.1      2026-01-11 []  any (@3.3.1)
 #>  tidyselect    1.2.1      2024-03-11 []  RSPM

@@ -111,7 +111,7 @@ get_session_info()
 #>  knitr          1.51       2025-12-20 []  any (@1.51)
 #>  labeling       0.4.3      2023-08-29 []  RSPM
 #>  lattice        0.22-9     2026-02-09 []  CRAN (R 4.6.1)
-#>  libml        * 0.0.1.9000 2026-08-31 []  Github (stufield/libml@fddfa9e)
+#>  libml        * 0.0.1.9000 2026-09-02 []  Github (stufield/libml@3266ef2)
 #>  lifecycle      1.0.5      2026-01-08 []  RSPM
 #>  magrittr       2.0.5      2026-04-04 []  RSPM
 #>  Matrix         1.7-5      2026-03-21 []  CRAN (R 4.6.1)
@@ -125,7 +125,7 @@ get_session_info()
 #>  Rcpp           1.1.2      2026-07-05 []  RSPM
 #>  readxl         1.5.0      2026-05-16 []  RSPM
 #>  rlang          1.3.0      2026-07-05 []  RSPM
-#>  rmarkdown      2.31       2026-03-26 []  RSPM
+#>  rmarkdown      2.32       2026-09-01 []  RSPM
 #>  S7             0.2.2      2026-04-22 []  RSPM
 #>  scales         1.4.0      2025-04-24 []  RSPM
 #>  sessioninfo    1.2.4      2026-06-04 []  any (@1.2.4)
@@ -137,7 +137,7 @@ get_session_info()
 #>  tidyselect     1.2.1      2024-03-11 []  RSPM
 #>  vctrs          0.7.3      2026-04-11 []  RSPM
 #>  withr          3.0.3      2026-06-19 []  RSPM
-#>  wranglr      * 0.0.2.9000 2026-08-19 []  Github (stufield/wranglr@cd4c5f4)
+#>  wranglr      * 0.0.2.9000 2026-09-02 []  Github (stufield/wranglr@c6e05af)
 #>  xfun           0.60       2026-07-09 []  RSPM
 #>  yaml           2.3.12     2025-12-10 []  RSPM
 #> 
