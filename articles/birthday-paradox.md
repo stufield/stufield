@@ -169,7 +169,7 @@ get_session_info()
 #>  gtable         0.3.6   2024-10-25 []  RSPM
 #>  htmltools      0.5.9   2025-12-04 []  RSPM
 #>  jsonlite       2.0.0   2025-03-27 []  RSPM
-#>  knitr          1.51    2025-12-20 []  any (@1.51)
+#>  knitr          1.52    2026-09-06 []  any (@1.52)
 #>  labeling       0.4.3   2023-08-29 []  RSPM
 #>  lifecycle      1.0.5   2026-01-08 []  RSPM
 #>  magrittr       2.0.5   2026-04-04 []  RSPM
@@ -195,7 +195,7 @@ get_session_info()
 #> $platform
 #>  setting  value
 #>  version  R version 4.6.1 (2026-06-24)
-#>  os       Ubuntu 24.04.4 LTS
+#>  os       Ubuntu 24.04.5 LTS
 #>  system   x86_64, linux-gnu
 #>  ui       X11
 #>  language (EN)

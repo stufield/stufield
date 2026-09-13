@@ -366,16 +366,16 @@ get_session_info()
 #>  ggplot2      * 4.0.3      2026-04-22 []  RSPM
 #>  glue           1.8.1      2026-04-17 []  RSPM
 #>  gtable         0.3.6      2024-10-25 []  RSPM
-#>  helpr        * 0.0.2.9000 2026-08-19 []  Github (stufield/helpr@db72926)
+#>  helpr        * 0.0.2.9000 2026-09-13 []  Github (stufield/helpr@db72926)
 #>  htmltools      0.5.9      2025-12-04 []  RSPM
 #>  igraph         2.3.3      2026-06-26 []  RSPM
 #>  isoband        0.3.0      2025-12-07 []  RSPM
 #>  jsonlite       2.0.0      2025-03-27 []  RSPM
 #>  kknn           1.4.1      2025-05-19 []  any (@1.4.1)
-#>  knitr          1.51       2025-12-20 []  any (@1.51)
+#>  knitr          1.52       2026-09-06 []  any (@1.52)
 #>  labeling       0.4.3      2023-08-29 []  RSPM
 #>  lattice        0.22-9     2026-02-09 []  CRAN (R 4.6.1)
-#>  libml        * 0.0.1.9000 2026-09-02 []  Github (stufield/libml@3266ef2)
+#>  libml        * 0.0.1.9000 2026-09-13 []  Github (stufield/libml@3266ef2)
 #>  lifecycle      1.0.5      2026-01-08 []  RSPM
 #>  magrittr       2.0.5      2026-04-04 []  RSPM
 #>  Matrix         1.7-5      2026-03-21 []  CRAN (R 4.6.1)
@@ -399,7 +399,7 @@ get_session_info()
 #>  utf8           1.2.6      2025-06-08 []  RSPM
 #>  vctrs          0.7.3      2026-04-11 []  RSPM
 #>  withr          3.0.3      2026-06-19 []  RSPM
-#>  wranglr      * 0.0.2.9000 2026-09-02 []  Github (stufield/wranglr@c6e05af)
+#>  wranglr      * 0.0.2.9000 2026-09-13 []  Github (stufield/wranglr@c6e05af)
 #>  xfun           0.60       2026-07-09 []  RSPM
 #>  yaml           2.3.12     2025-12-10 []  RSPM
 #> 
@@ -408,7 +408,7 @@ get_session_info()
 #> $platform
 #>  setting  value
 #>  version  R version 4.6.1 (2026-06-24)
-#>  os       Ubuntu 24.04.4 LTS
+#>  os       Ubuntu 24.04.5 LTS
 #>  system   x86_64, linux-gnu
 #>  ui       X11
 #>  language (EN)
