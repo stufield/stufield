@@ -295,7 +295,7 @@ get_session_info()
 #>  tidyselect     1.2.1   2024-03-11 []  RSPM
 #>  vctrs          0.7.3   2026-04-11 []  RSPM
 #>  withr          3.0.3   2026-06-19 []  RSPM
-#>  xfun           0.60    2026-07-09 []  RSPM
+#>  xfun           0.61    2026-09-16 []  RSPM
 #>  yaml           2.3.12  2025-12-10 []  RSPM
 #> 
 #> 
