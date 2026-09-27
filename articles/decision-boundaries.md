@@ -136,7 +136,7 @@ get_session_info()
 #>  ggplot2      * 4.0.3      2026-04-22 []  RSPM
 #>  glue           1.8.1      2026-04-17 []  RSPM
 #>  gtable         0.3.6      2024-10-25 []  RSPM
-#>  helpr        * 0.0.2.9000 2026-09-13 []  Github (stufield/helpr@db72926)
+#>  helpr        * 0.0.2.9000 2026-09-27 []  Github (stufield/helpr@db72926)
 #>  htmltools      0.5.9      2025-12-04 []  RSPM
 #>  igraph         2.3.3      2026-06-26 []  RSPM
 #>  isoband        0.3.0      2025-12-07 []  RSPM
@@ -145,7 +145,7 @@ get_session_info()
 #>  knitr          1.52       2026-09-06 []  any (@1.52)
 #>  labeling       0.4.3      2023-08-29 []  RSPM
 #>  lattice        0.22-9     2026-02-09 []  CRAN (R 4.6.1)
-#>  libml        * 0.0.1.9000 2026-09-13 []  Github (stufield/libml@3266ef2)
+#>  libml        * 0.0.1.9000 2026-09-27 []  Github (stufield/libml@3266ef2)
 #>  lifecycle      1.0.5      2026-01-08 []  RSPM
 #>  magrittr       2.0.5      2026-04-04 []  RSPM
 #>  Matrix         1.7-5      2026-03-21 []  CRAN (R 4.6.1)
@@ -168,7 +168,7 @@ get_session_info()
 #>  tidyselect     1.2.1      2024-03-11 []  RSPM
 #>  vctrs          0.7.3      2026-04-11 []  RSPM
 #>  withr        * 3.0.3      2026-06-19 []  RSPM
-#>  wranglr      * 0.0.2.9000 2026-09-13 []  Github (stufield/wranglr@c6e05af)
+#>  wranglr      * 0.0.2.9000 2026-09-27 []  Github (stufield/wranglr@c6e05af)
 #>  xfun           0.61       2026-09-16 []  RSPM
 #>  yaml           2.3.12     2025-12-10 []  RSPM
 #> 
