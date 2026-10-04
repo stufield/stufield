@@ -103,9 +103,9 @@ get_session_info()
 #>  ggplot2        4.0.3      2026-04-22 []  RSPM
 #>  glue           1.8.1      2026-04-17 []  RSPM
 #>  gtable         0.3.6      2024-10-25 []  RSPM
-#>  helpr        * 0.0.2.9000 2026-09-27 []  Github (stufield/helpr@db72926)
+#>  helpr        * 0.0.3      2026-10-04 []  Github (stufield/helpr@62da638)
 #>  htmltools      0.5.9      2025-12-04 []  RSPM
-#>  igraph         2.3.3      2026-06-26 []  RSPM
+#>  igraph         2.3.4      2026-09-30 []  RSPM
 #>  jsonlite       2.0.0      2025-03-27 []  RSPM
 #>  kknn           1.4.1      2025-05-19 []  any (@1.4.1)
 #>  knitr          1.52       2026-09-06 []  any (@1.52)
@@ -137,7 +137,7 @@ get_session_info()
 #>  tidyselect     1.2.1      2024-03-11 []  RSPM
 #>  vctrs          0.7.3      2026-04-11 []  RSPM
 #>  withr          3.0.3      2026-06-19 []  RSPM
-#>  wranglr      * 0.0.2.9000 2026-09-27 []  Github (stufield/wranglr@c6e05af)
+#>  wranglr      * 0.0.3      2026-10-04 []  Github (stufield/wranglr@1d8e6e3)
 #>  xfun           0.61       2026-09-16 []  RSPM
 #>  yaml           2.3.12     2025-12-10 []  RSPM
 #> 

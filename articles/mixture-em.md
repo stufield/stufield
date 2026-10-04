@@ -138,33 +138,33 @@ plot(mix_fit)
 ``` r
 get_session_info()
 #> $packages
-#>  package     * version    date (UTC) lib source
-#>  cli           3.6.6      2026-04-09 []  RSPM
-#>  digest        0.6.39     2025-11-19 []  RSPM
-#>  dplyr         1.2.1      2026-04-03 []  RSPM
-#>  evaluate      1.0.5      2025-08-27 []  RSPM
-#>  fastmap       1.2.0      2024-05-15 []  RSPM
-#>  generics      0.1.4      2025-05-09 []  RSPM
-#>  glue          1.8.1      2026-04-17 []  RSPM
-#>  helpr       * 0.0.2.9000 2026-09-27 []  Github (stufield/helpr@db72926)
-#>  htmltools     0.5.9      2025-12-04 []  RSPM
-#>  jsonlite      2.0.0      2025-03-27 []  RSPM
-#>  knitr         1.52       2026-09-06 []  any (@1.52)
-#>  lifecycle     1.0.5      2026-01-08 []  RSPM
-#>  magrittr      2.0.5      2026-04-04 []  RSPM
-#>  otel          0.2.0      2025-08-29 []  RSPM
-#>  pillar        1.11.1     2025-09-17 []  RSPM
-#>  pkgconfig     2.0.3      2019-09-22 []  RSPM
-#>  R6            2.6.1      2025-02-15 []  RSPM
-#>  rlang         1.3.0      2026-07-05 []  RSPM
-#>  rmarkdown     2.32       2026-09-01 []  RSPM
-#>  sessioninfo   1.2.4      2026-06-04 []  any (@1.2.4)
-#>  tibble        3.3.1      2026-01-11 []  any (@3.3.1)
-#>  tidyselect    1.2.1      2024-03-11 []  RSPM
-#>  vctrs         0.7.3      2026-04-11 []  RSPM
-#>  withr         3.0.3      2026-06-19 []  RSPM
-#>  xfun          0.61       2026-09-16 []  RSPM
-#>  yaml          2.3.12     2025-12-10 []  RSPM
+#>  package     * version date (UTC) lib source
+#>  cli           3.6.6   2026-04-09 []  RSPM
+#>  digest        0.6.39  2025-11-19 []  RSPM
+#>  dplyr         1.2.1   2026-04-03 []  RSPM
+#>  evaluate      1.0.5   2025-08-27 []  RSPM
+#>  fastmap       1.2.0   2024-05-15 []  RSPM
+#>  generics      0.1.4   2025-05-09 []  RSPM
+#>  glue          1.8.1   2026-04-17 []  RSPM
+#>  helpr       * 0.0.3   2026-10-04 []  Github (stufield/helpr@62da638)
+#>  htmltools     0.5.9   2025-12-04 []  RSPM
+#>  jsonlite      2.0.0   2025-03-27 []  RSPM
+#>  knitr         1.52    2026-09-06 []  any (@1.52)
+#>  lifecycle     1.0.5   2026-01-08 []  RSPM
+#>  magrittr      2.0.5   2026-04-04 []  RSPM
+#>  otel          0.2.0   2025-08-29 []  RSPM
+#>  pillar        1.11.1  2025-09-17 []  RSPM
+#>  pkgconfig     2.0.3   2019-09-22 []  RSPM
+#>  R6            2.6.1   2025-02-15 []  RSPM
+#>  rlang         1.3.0   2026-07-05 []  RSPM
+#>  rmarkdown     2.32    2026-09-01 []  RSPM
+#>  sessioninfo   1.2.4   2026-06-04 []  any (@1.2.4)
+#>  tibble        3.3.1   2026-01-11 []  any (@3.3.1)
+#>  tidyselect    1.2.1   2024-03-11 []  RSPM
+#>  vctrs         0.7.3   2026-04-11 []  RSPM
+#>  withr         3.0.3   2026-06-19 []  RSPM
+#>  xfun          0.61    2026-09-16 []  RSPM
+#>  yaml          2.3.12  2025-12-10 []  RSPM
 #> 
 #>  * ── Packages attached to the search path.
 #> 
