@@ -232,7 +232,7 @@ get_session_info()
 #>  ctype    C.UTF-8
 #>  tz       UTC
 #>  pandoc   3.1.3 @ /usr/bin/ (via rmarkdown)
-#>  quarto   1.10.18 @ /usr/local/bin/quarto
+#>  quarto   1.10.19 @ /usr/local/bin/quarto
 ```
 
 </details>
