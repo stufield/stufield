@@ -400,7 +400,7 @@ get_session_info()
 #>  vctrs          0.7.3      2026-04-11 []  RSPM
 #>  withr          3.0.3      2026-06-19 []  RSPM
 #>  wranglr      * 0.0.3      2026-10-04 []  Github (stufield/wranglr@1d8e6e3)
-#>  xfun           0.61       2026-09-16 []  RSPM
+#>  xfun           0.62       2026-10-16 []  RSPM
 #>  yaml           2.3.12     2025-12-10 []  RSPM
 #> 
 #>  * ── Packages attached to the search path.
