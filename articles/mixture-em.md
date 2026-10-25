@@ -146,7 +146,7 @@ get_session_info()
 #>  fastmap       1.2.0   2024-05-15 []  RSPM
 #>  generics      0.1.4   2025-05-09 []  RSPM
 #>  glue          1.8.1   2026-04-17 []  RSPM
-#>  helpr       * 0.0.3   2026-10-04 []  Github (stufield/helpr@62da638)
+#>  helpr       * 0.0.3   2026-10-25 []  Github (stufield/helpr@62da638)
 #>  htmltools     0.5.9   2025-12-04 []  RSPM
 #>  jsonlite      2.0.0   2025-03-27 []  RSPM
 #>  knitr         1.52    2026-09-06 []  any (@1.52)
