@@ -115,7 +115,7 @@ get_session_info()
 #> 
 #> $platform
 #>  setting  value
-#>  version  R version 4.6.1 (2026-06-24)
+#>  version  R version 4.6.2 (2026-10-29)
 #>  os       Ubuntu 24.04.5 LTS
 #>  system   x86_64, linux-gnu
 #>  ui       X11
@@ -124,7 +124,7 @@ get_session_info()
 #>  ctype    C.UTF-8
 #>  tz       UTC
 #>  pandoc   3.1.3 @ /usr/bin/ (via rmarkdown)
-#>  quarto   1.10.19 @ /usr/local/bin/quarto
+#>  quarto   1.10.20 @ /usr/local/bin/quarto
 ```
 
 </details>

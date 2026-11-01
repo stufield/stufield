@@ -168,12 +168,12 @@ get_session_info()
 #>  jsonlite       2.0.0   2025-03-27 []  RSPM
 #>  knitr          1.52    2026-09-06 []  any (@1.52)
 #>  labeling       0.4.3   2023-08-29 []  RSPM
-#>  lattice        0.22-9  2026-02-09 []  CRAN (R 4.6.1)
+#>  lattice        0.23-1  2026-08-12 []  CRAN (R 4.6.2)
 #>  lifecycle      1.0.5   2026-01-08 []  RSPM
 #>  magrittr       2.0.5   2026-04-04 []  RSPM
-#>  Matrix         1.7-5   2026-03-21 []  CRAN (R 4.6.1)
-#>  mgcv           1.9-4   2025-11-07 []  CRAN (R 4.6.1)
-#>  nlme           3.1-169 2026-03-27 []  CRAN (R 4.6.1)
+#>  Matrix         1.7-6   2026-07-25 []  CRAN (R 4.6.2)
+#>  mgcv           1.9-4   2025-11-07 []  CRAN (R 4.6.2)
+#>  nlme           3.1-171 2026-09-01 []  CRAN (R 4.6.2)
 #>  otel           0.2.0   2025-08-29 []  RSPM
 #>  pillar         1.11.1  2025-09-17 []  RSPM
 #>  pkgconfig      2.0.3   2019-09-22 []  RSPM
@@ -196,7 +196,7 @@ get_session_info()
 #> 
 #> $platform
 #>  setting  value
-#>  version  R version 4.6.1 (2026-06-24)
+#>  version  R version 4.6.2 (2026-10-29)
 #>  os       Ubuntu 24.04.5 LTS
 #>  system   x86_64, linux-gnu
 #>  ui       X11
@@ -205,7 +205,7 @@ get_session_info()
 #>  ctype    C.UTF-8
 #>  tz       UTC
 #>  pandoc   3.1.3 @ /usr/bin/ (via rmarkdown)
-#>  quarto   1.10.19 @ /usr/local/bin/quarto
+#>  quarto   1.10.20 @ /usr/local/bin/quarto
 ```
 
 </details>

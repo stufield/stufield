@@ -221,7 +221,7 @@ get_session_info()
 #>  labeling       0.4.3   2023-08-29 []  RSPM
 #>  lifecycle      1.0.5   2026-01-08 []  RSPM
 #>  magrittr       2.0.5   2026-04-04 []  RSPM
-#>  nnet           7.3-20  2025-01-01 []  CRAN (R 4.6.1)
+#>  nnet           7.3-21  2026-08-03 []  CRAN (R 4.6.2)
 #>  otel           0.2.0   2025-08-29 []  RSPM
 #>  patchwork    * 1.3.2   2025-08-25 []  any (@1.3.2)
 #>  pillar         1.11.1  2025-09-17 []  RSPM
@@ -245,7 +245,7 @@ get_session_info()
 #> 
 #> $platform
 #>  setting  value
-#>  version  R version 4.6.1 (2026-06-24)
+#>  version  R version 4.6.2 (2026-10-29)
 #>  os       Ubuntu 24.04.5 LTS
 #>  system   x86_64, linux-gnu
 #>  ui       X11
@@ -254,7 +254,7 @@ get_session_info()
 #>  ctype    C.UTF-8
 #>  tz       UTC
 #>  pandoc   3.1.3 @ /usr/bin/ (via rmarkdown)
-#>  quarto   1.10.19 @ /usr/local/bin/quarto
+#>  quarto   1.10.20 @ /usr/local/bin/quarto
 ```
 
 </details>

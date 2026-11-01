@@ -366,7 +366,7 @@ get_session_info()
 #>  ggplot2      * 4.0.3      2026-04-22 []  RSPM
 #>  glue           1.8.1      2026-04-17 []  RSPM
 #>  gtable         0.3.6      2024-10-25 []  RSPM
-#>  helpr        * 0.0.3      2026-10-25 []  Github (stufield/helpr@62da638)
+#>  helpr        * 0.0.3      2026-11-01 []  Github (stufield/helpr@62da638)
 #>  htmltools      0.5.9      2025-12-04 []  RSPM
 #>  igraph         2.3.4      2026-09-30 []  RSPM
 #>  isoband        0.3.0      2025-12-07 []  RSPM
@@ -374,11 +374,11 @@ get_session_info()
 #>  kknn           1.4.1      2025-05-19 []  any (@1.4.1)
 #>  knitr          1.52       2026-09-06 []  any (@1.52)
 #>  labeling       0.4.3      2023-08-29 []  RSPM
-#>  lattice        0.22-9     2026-02-09 []  CRAN (R 4.6.1)
-#>  libml        * 0.0.1.9000 2026-10-25 []  Github (stufield/libml@3266ef2)
+#>  lattice        0.23-1     2026-08-12 []  CRAN (R 4.6.2)
+#>  libml        * 0.0.1.9000 2026-11-01 []  Github (stufield/libml@3266ef2)
 #>  lifecycle      1.0.5      2026-01-08 []  RSPM
 #>  magrittr       2.0.5      2026-04-04 []  RSPM
-#>  Matrix         1.7-5      2026-03-21 []  CRAN (R 4.6.1)
+#>  Matrix         1.7-6      2026-07-25 []  CRAN (R 4.6.2)
 #>  otel           0.2.0      2025-08-29 []  RSPM
 #>  patchwork    * 1.3.2      2025-08-25 []  any (@1.3.2)
 #>  pillar         1.11.1     2025-09-17 []  RSPM
@@ -392,14 +392,14 @@ get_session_info()
 #>  S7             0.2.2      2026-04-22 []  RSPM
 #>  scales         1.4.0      2025-04-24 []  RSPM
 #>  sessioninfo    1.2.4      2026-06-04 []  any (@1.2.4)
-#>  survival       3.8-6      2026-01-16 []  CRAN (R 4.6.1)
+#>  survival       3.8-12     2026-09-09 []  CRAN (R 4.6.2)
 #>  tibble         3.3.1      2026-01-11 []  any (@3.3.1)
 #>  tidyr          1.3.2      2025-12-19 []  any (@1.3.2)
 #>  tidyselect     1.2.1      2024-03-11 []  RSPM
 #>  utf8           1.2.6      2025-06-08 []  RSPM
 #>  vctrs          0.7.3      2026-04-11 []  RSPM
 #>  withr          3.0.3      2026-06-19 []  RSPM
-#>  wranglr      * 0.0.3      2026-10-25 []  Github (stufield/wranglr@1d8e6e3)
+#>  wranglr      * 0.0.3      2026-11-01 []  Github (stufield/wranglr@1d8e6e3)
 #>  xfun           0.62       2026-10-16 []  RSPM
 #>  yaml           2.3.12     2025-12-10 []  RSPM
 #> 
@@ -407,7 +407,7 @@ get_session_info()
 #> 
 #> $platform
 #>  setting  value
-#>  version  R version 4.6.1 (2026-06-24)
+#>  version  R version 4.6.2 (2026-10-29)
 #>  os       Ubuntu 24.04.5 LTS
 #>  system   x86_64, linux-gnu
 #>  ui       X11
@@ -416,7 +416,7 @@ get_session_info()
 #>  ctype    C.UTF-8
 #>  tz       UTC
 #>  pandoc   3.1.3 @ /usr/bin/ (via rmarkdown)
-#>  quarto   1.10.19 @ /usr/local/bin/quarto
+#>  quarto   1.10.20 @ /usr/local/bin/quarto
 ```
 
 </details>
